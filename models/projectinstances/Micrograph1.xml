@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns1:UANodeSet xmlns:ns1="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd" xmlns:ns2="http://opcfoundation.org/UA/2008/02/Types.xsd">
+    <ns1:NamespaceUris>
+        <ns1:Uri>http://engelglobal.com/IMM/Micrograph1/</ns1:Uri>
+        <ns1:Uri>http://engelglobal.com/IMM/</ns1:Uri>
+        <ns1:Uri>http://engelglobal.com/IMM/Types/</ns1:Uri>
+    </ns1:NamespaceUris>
+    <ns1:Aliases>
+        <ns1:Alias Alias="Boolean">i=1</ns1:Alias>
+        <ns1:Alias Alias="String">i=12</ns1:Alias>
+        <ns1:Alias Alias="AnalogItemType">i=2368</ns1:Alias>
+        <ns1:Alias Alias="Organizes">i=35</ns1:Alias>
+        <ns1:Alias Alias="HasTypeDefinition">i=40</ns1:Alias>
+        <ns1:Alias Alias="HasProperty">i=46</ns1:Alias>
+        <ns1:Alias Alias="HasComponent">i=47</ns1:Alias>
+        <ns1:Alias Alias="Int32">i=6</ns1:Alias>
+        <ns1:Alias Alias="FolderType">i=61</ns1:Alias>
+        <ns1:Alias Alias="BaseDataVariableType">i=63</ns1:Alias>
+        <ns1:Alias Alias="PropertyType">i=68</ns1:Alias>
+        <ns1:Alias Alias="Range">i=884</ns1:Alias>
+    </ns1:Aliases>
+    <ns1:Extensions>
+        <ns1:Extension>
+            <ns3:GeneratorInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                <Generatorversion>1.3-SNAPSHOT</Generatorversion>
+                <Generationdatetime>2020-02-13T15:39:17.883+01:00</Generationdatetime>
+            </ns3:GeneratorInformation>
+        </ns1:Extension>
+    </ns1:Extensions>
+    <ns1:UAObject NodeId="ns=1;s=Micrograph1" BrowseName="1:Micrograph1">
+        <ns1:DisplayName>Micrograph1</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">FolderType</ns1:Reference>
+            <ns1:Reference ReferenceType="Organizes" IsForward="false">ns=2;s=IMM.Project</ns1:Reference>
+        </ns1:References>
+    </ns1:UAObject>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=Micrograph1" NodeId="ns=1;s=sv_bSupervision2" BrowseName="1:sv_bSupervision2">
+        <ns1:DisplayName>sv_bSupervision2</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Micrograph1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_bSupervision2</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>5</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=Micrograph1" NodeId="ns=1;s=sv_bSupervision1" BrowseName="1:sv_bSupervision1">
+        <ns1:DisplayName>sv_bSupervision1</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Micrograph1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_bSupervision1</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>5</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=Micrograph1" NodeId="ns=1;s=sv_bManualRecorderStart" BrowseName="1:sv_bManualRecorderStart">
+        <ns1:DisplayName>sv_bManualRecorderStart</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Micrograph1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_bManualRecorderStart</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>2</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=Micrograph1" NodeId="ns=1;s=sv_bManualRecorderStop" BrowseName="1:sv_bManualRecorderStop">
+        <ns1:DisplayName>sv_bManualRecorderStop</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Micrograph1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_bManualRecorderStop</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>2</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Int32" AccessLevel="3" ParentNodeId="ns=1;s=Micrograph1" NodeId="ns=1;s=sv_UnitIdAggregatAssignedToSup2" BrowseName="1:sv_UnitIdAggregatAssignedToSup2">
+        <ns1:DisplayName>sv_UnitIdAggregatAssignedToSup2</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_UnitIdAggregatAssignedToSup2.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Micrograph1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_UnitIdAggregatAssignedToSup2</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>5</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_UnitIdAggregatAssignedToSup2" NodeId="ns=1;s=sv_UnitIdAggregatAssignedToSup2.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=sv_Micrograph" NodeId="ns=1;s=sv_Micrograph.bReconfig" BrowseName="1:bReconfig">
+        <ns1:DisplayName>bReconfig</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_Micrograph</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_Micrograph.bReconfig</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Int32" AccessLevel="1" ParentNodeId="ns=1;s=sv_Micrograph.measureState" NodeId="ns=1;s=sv_Micrograph.measureState.iMeasureNumber" BrowseName="1:iMeasureNumber">
+        <ns1:DisplayName>iMeasureNumber</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_Micrograph.measureState</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_Micrograph.measureState.iMeasureNumber</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Int32" AccessLevel="1" ParentNodeId="ns=1;s=sv_Micrograph.measureState" NodeId="ns=1;s=sv_Micrograph.measureState.iMeasureLength" BrowseName="1:iMeasureLength">
+        <ns1:DisplayName>iMeasureLength</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_Micrograph.measureState</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_Micrograph.measureState.iMeasureLength</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAObject ParentNodeId="ns=1;s=sv_Micrograph" NodeId="ns=1;s=sv_Micrograph.measureState" BrowseName="1:measureState">
+        <ns1:DisplayName>measureState</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">ns=3;s=Micrograph1.TMicrographMeasureState</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_Micrograph</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_Micrograph.measureState</NativeKey>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAObject>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=sv_Micrograph" NodeId="ns=1;s=sv_Micrograph.bUseIecImpl" BrowseName="1:bUseIecImpl">
+        <ns1:DisplayName>bUseIecImpl</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_Micrograph</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_Micrograph.bUseIecImpl</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>13</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Int32" AccessLevel="1" ParentNodeId="ns=1;s=sv_Micrograph" NodeId="ns=1;s=sv_Micrograph.iUsIntervalTime" BrowseName="1:iUsIntervalTime">
+        <ns1:DisplayName>iUsIntervalTime</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_Micrograph</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_Micrograph.iUsIntervalTime</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="String" AccessLevel="1" ParentNodeId="ns=1;s=sv_Micrograph.curveConfig[1]" NodeId="ns=1;s=sv_Micrograph.curveConfig[1].sVariableName" BrowseName="1:sVariableName">
+        <ns1:DisplayName>sVariableName</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_Micrograph.curveConfig[1]</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_Micrograph.curveConfig[1].sVariableName</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAObject ParentNodeId="ns=1;s=sv_Micrograph" NodeId="ns=1;s=sv_Micrograph.curveConfig[1]" BrowseName="1:curveConfig[1]">
+        <ns1:DisplayName>curveConfig[1]</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">ns=3;s=Micrograph1.TMicrographCurveConfig</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_Micrograph</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_Micrograph.curveConfig[1]</NativeKey>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAObject>
+    <ns1:UAVariable DataType="String" AccessLevel="1" ParentNodeId="ns=1;s=sv_Micrograph.curveConfig[2]" NodeId="ns=1;s=sv_Micrograph.curveConfig[2].sVariableName" BrowseName="1:sVariableName">
+        <ns1:DisplayName>sVariableName</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_Micrograph.curveConfig[2]</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_Micrograph.curveConfig[2].sVariableName</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAObject ParentNodeId="ns=1;s=sv_Micrograph" NodeId="ns=1;s=sv_Micrograph.curveConfig[2]" BrowseName="1:curveConfig[2]">
+        <ns1:DisplayName>curveConfig[2]</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">ns=3;s=Micrograph1.TMicrographCurveConfig</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_Micrograph</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_Micrograph.curveConfig[2]</NativeKey>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAObject>
+    <ns1:UAVariable DataType="String" AccessLevel="1" ParentNodeId="ns=1;s=sv_Micrograph.curveConfig[3]" NodeId="ns=1;s=sv_Micrograph.curveConfig[3].sVariableName" BrowseName="1:sVariableName">
+        <ns1:DisplayName>sVariableName</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_Micrograph.curveConfig[3]</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_Micrograph.curveConfig[3].sVariableName</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAObject ParentNodeId="ns=1;s=sv_Micrograph" NodeId="ns=1;s=sv_Micrograph.curveConfig[3]" BrowseName="1:curveConfig[3]">
+        <ns1:DisplayName>curveConfig[3]</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">ns=3;s=Micrograph1.TMicrographCurveConfig</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_Micrograph</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_Micrograph.curveConfig[3]</NativeKey>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAObject>
+    <ns1:UAVariable DataType="String" AccessLevel="1" ParentNodeId="ns=1;s=sv_Micrograph.curveConfig[4]" NodeId="ns=1;s=sv_Micrograph.curveConfig[4].sVariableName" BrowseName="1:sVariableName">
+        <ns1:DisplayName>sVariableName</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_Micrograph.curveConfig[4]</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_Micrograph.curveConfig[4].sVariableName</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAObject ParentNodeId="ns=1;s=sv_Micrograph" NodeId="ns=1;s=sv_Micrograph.curveConfig[4]" BrowseName="1:curveConfig[4]">
+        <ns1:DisplayName>curveConfig[4]</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">ns=3;s=Micrograph1.TMicrographCurveConfig</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_Micrograph</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_Micrograph.curveConfig[4]</NativeKey>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAObject>
+    <ns1:UAVariable DataType="String" AccessLevel="1" ParentNodeId="ns=1;s=sv_Micrograph.curveConfig[5]" NodeId="ns=1;s=sv_Micrograph.curveConfig[5].sVariableName" BrowseName="1:sVariableName">
+        <ns1:DisplayName>sVariableName</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_Micrograph.curveConfig[5]</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_Micrograph.curveConfig[5].sVariableName</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAObject ParentNodeId="ns=1;s=sv_Micrograph" NodeId="ns=1;s=sv_Micrograph.curveConfig[5]" BrowseName="1:curveConfig[5]">
+        <ns1:DisplayName>curveConfig[5]</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">ns=3;s=Micrograph1.TMicrographCurveConfig</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_Micrograph</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_Micrograph.curveConfig[5]</NativeKey>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAObject>
+    <ns1:UAVariable DataType="String" AccessLevel="1" ParentNodeId="ns=1;s=sv_Micrograph.curveConfig[6]" NodeId="ns=1;s=sv_Micrograph.curveConfig[6].sVariableName" BrowseName="1:sVariableName">
+        <ns1:DisplayName>sVariableName</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_Micrograph.curveConfig[6]</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_Micrograph.curveConfig[6].sVariableName</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAObject ParentNodeId="ns=1;s=sv_Micrograph" NodeId="ns=1;s=sv_Micrograph.curveConfig[6]" BrowseName="1:curveConfig[6]">
+        <ns1:DisplayName>curveConfig[6]</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">ns=3;s=Micrograph1.TMicrographCurveConfig</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_Micrograph</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_Micrograph.curveConfig[6]</NativeKey>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAObject>
+    <ns1:UAVariable DataType="String" AccessLevel="1" ParentNodeId="ns=1;s=sv_Micrograph.curveConfig[7]" NodeId="ns=1;s=sv_Micrograph.curveConfig[7].sVariableName" BrowseName="1:sVariableName">
+        <ns1:DisplayName>sVariableName</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_Micrograph.curveConfig[7]</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_Micrograph.curveConfig[7].sVariableName</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAObject ParentNodeId="ns=1;s=sv_Micrograph" NodeId="ns=1;s=sv_Micrograph.curveConfig[7]" BrowseName="1:curveConfig[7]">
+        <ns1:DisplayName>curveConfig[7]</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">ns=3;s=Micrograph1.TMicrographCurveConfig</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_Micrograph</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_Micrograph.curveConfig[7]</NativeKey>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAObject>
+    <ns1:UAVariable DataType="String" AccessLevel="1" ParentNodeId="ns=1;s=sv_Micrograph.curveConfig[8]" NodeId="ns=1;s=sv_Micrograph.curveConfig[8].sVariableName" BrowseName="1:sVariableName">
+        <ns1:DisplayName>sVariableName</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_Micrograph.curveConfig[8]</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_Micrograph.curveConfig[8].sVariableName</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAObject ParentNodeId="ns=1;s=sv_Micrograph" NodeId="ns=1;s=sv_Micrograph.curveConfig[8]" BrowseName="1:curveConfig[8]">
+        <ns1:DisplayName>curveConfig[8]</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">ns=3;s=Micrograph1.TMicrographCurveConfig</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_Micrograph</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_Micrograph.curveConfig[8]</NativeKey>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAObject>
+    <ns1:UAVariable DataType="String" AccessLevel="1" ParentNodeId="ns=1;s=sv_Micrograph.curveConfig[9]" NodeId="ns=1;s=sv_Micrograph.curveConfig[9].sVariableName" BrowseName="1:sVariableName">
+        <ns1:DisplayName>sVariableName</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_Micrograph.curveConfig[9]</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_Micrograph.curveConfig[9].sVariableName</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAObject ParentNodeId="ns=1;s=sv_Micrograph" NodeId="ns=1;s=sv_Micrograph.curveConfig[9]" BrowseName="1:curveConfig[9]">
+        <ns1:DisplayName>curveConfig[9]</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">ns=3;s=Micrograph1.TMicrographCurveConfig</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_Micrograph</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_Micrograph.curveConfig[9]</NativeKey>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAObject>
+    <ns1:UAVariable DataType="Int32" AccessLevel="1" ParentNodeId="ns=1;s=sv_Micrograph" NodeId="ns=1;s=sv_Micrograph.iMsMeasurementTime" BrowseName="1:iMsMeasurementTime">
+        <ns1:DisplayName>iMsMeasurementTime</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_Micrograph</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_Micrograph.iMsMeasurementTime</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAObject ParentNodeId="ns=1;s=Micrograph1" NodeId="ns=1;s=sv_Micrograph" BrowseName="1:sv_Micrograph">
+        <ns1:DisplayName>sv_Micrograph</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">ns=3;s=Micrograph1.TMicrograph</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Micrograph1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_Micrograph</NativeKey>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAObject>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=Micrograph1" NodeId="ns=1;s=sv_bUsedInSequence" BrowseName="1:sv_bUsedInSequence">
+        <ns1:DisplayName>sv_bUsedInSequence</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Micrograph1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_bUsedInSequence</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=Micrograph1" NodeId="ns=1;s=sv_bMainSwitch" BrowseName="1:sv_bMainSwitch">
+        <ns1:DisplayName>sv_bMainSwitch</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Micrograph1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_bMainSwitch</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>5</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Int32" AccessLevel="3" ParentNodeId="ns=1;s=Micrograph1" NodeId="ns=1;s=sv_UnitIdAggregatAssignedToSup1" BrowseName="1:sv_UnitIdAggregatAssignedToSup1">
+        <ns1:DisplayName>sv_UnitIdAggregatAssignedToSup1</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_UnitIdAggregatAssignedToSup1.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Micrograph1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Micrograph1.sv_UnitIdAggregatAssignedToSup1</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>5</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_UnitIdAggregatAssignedToSup1" NodeId="ns=1;s=sv_UnitIdAggregatAssignedToSup1.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+</ns1:UANodeSet>

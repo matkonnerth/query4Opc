@@ -1,0 +1,2821 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns1:UANodeSet xmlns:ns1="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd" xmlns:ns2="http://opcfoundation.org/UA/2008/02/Types.xsd">
+    <ns1:NamespaceUris>
+        <ns1:Uri>http://engelglobal.com/IMM/CoreMove1/</ns1:Uri>
+        <ns1:Uri>http://engelglobal.com/IMM/</ns1:Uri>
+        <ns1:Uri>http://engelglobal.com/Units/</ns1:Uri>
+        <ns1:Uri>http://engelglobal.com/IMM/Types/</ns1:Uri>
+    </ns1:NamespaceUris>
+    <ns1:Aliases>
+        <ns1:Alias Alias="Boolean">i=1</ns1:Alias>
+        <ns1:Alias Alias="Float">i=10</ns1:Alias>
+        <ns1:Alias Alias="Double">i=11</ns1:Alias>
+        <ns1:Alias Alias="AnalogItemType">i=2368</ns1:Alias>
+        <ns1:Alias Alias="Organizes">i=35</ns1:Alias>
+        <ns1:Alias Alias="Int16">i=4</ns1:Alias>
+        <ns1:Alias Alias="HasTypeDefinition">i=40</ns1:Alias>
+        <ns1:Alias Alias="HasProperty">i=46</ns1:Alias>
+        <ns1:Alias Alias="HasComponent">i=47</ns1:Alias>
+        <ns1:Alias Alias="Int32">i=6</ns1:Alias>
+        <ns1:Alias Alias="FolderType">i=61</ns1:Alias>
+        <ns1:Alias Alias="BaseDataVariableType">i=63</ns1:Alias>
+        <ns1:Alias Alias="PropertyType">i=68</ns1:Alias>
+        <ns1:Alias Alias="Range">i=884</ns1:Alias>
+        <ns1:Alias Alias="Core.TForwardBackwardCoreShake">ns=4;s=Core.TForwardBackwardCoreShake</ns1:Alias>
+        <ns1:Alias Alias="Core.TPosInactive">ns=4;s=Core.TPosInactive</ns1:Alias>
+        <ns1:Alias Alias="Core.TRobotLock">ns=4;s=Core.TRobotLock</ns1:Alias>
+        <ns1:Alias Alias="Core.TSpeedBitsEm74">ns=4;s=Core.TSpeedBitsEm74</ns1:Alias>
+    </ns1:Aliases>
+    <ns1:Extensions>
+        <ns1:Extension>
+            <ns3:GeneratorInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                <Generatorversion>1.3-SNAPSHOT</Generatorversion>
+                <Generationdatetime>2020-02-13T15:39:17.735+01:00</Generationdatetime>
+            </ns3:GeneratorInformation>
+        </ns1:Extension>
+    </ns1:Extensions>
+    <ns1:UAObject NodeId="ns=1;s=CoreMove1" BrowseName="1:CoreMove1">
+        <ns1:DisplayName>CoreMove1</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">FolderType</ns1:Reference>
+            <ns1:Reference ReferenceType="Organizes" IsForward="false">ns=2;s=IMM.Project</ns1:Reference>
+        </ns1:References>
+    </ns1:UAObject>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bMoveBClmpPrBlt" BrowseName="1:sv_bMoveBClmpPrBlt">
+        <ns1:DisplayName>sv_bMoveBClmpPrBlt</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bMoveBClmpPrBlt</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bOutputBP" BrowseName="1:sv_bOutputBP">
+        <ns1:DisplayName>sv_bOutputBP</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bOutputBP</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bMoveForward" BrowseName="1:sv_bMoveForward">
+        <ns1:DisplayName>sv_bMoveForward</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bMoveForward</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bSequenceSafetyReactivated" BrowseName="1:sv_bSequenceSafetyReactivated">
+        <ns1:DisplayName>sv_bSequenceSafetyReactivated</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bSequenceSafetyReactivated</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=di_RpmZero" BrowseName="1:di_RpmZero">
+        <ns1:DisplayName>di_RpmZero</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.di_RpmZero</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bSequenceForwardMidAction" BrowseName="1:sv_bSequenceForwardMidAction">
+        <ns1:DisplayName>sv_bSequenceForwardMidAction</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bSequenceForwardMidAction</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Float" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_rCoreFHoldP" BrowseName="1:sv_rCoreFHoldP">
+        <ns1:DisplayName>sv_rCoreFHoldP</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_rCoreFHoldP.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=3;s=system.Pressure</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_rCoreFHoldP</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_rCoreFHoldP" NodeId="ns=1;s=sv_rCoreFHoldP.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Int32" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_iSafetyRelevantForward" BrowseName="1:sv_iSafetyRelevantForward">
+        <ns1:DisplayName>sv_iSafetyRelevantForward</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_iSafetyRelevantForward.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_iSafetyRelevantForward</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_iSafetyRelevantForward" NodeId="ns=1;s=sv_iSafetyRelevantForward.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Int32" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_iCoreCounter" BrowseName="1:sv_iCoreCounter">
+        <ns1:DisplayName>sv_iCoreCounter</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_iCoreCounter.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=3;s=system.Counter</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_iCoreCounter</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_iCoreCounter" NodeId="ns=1;s=sv_iCoreCounter.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Float" AccessLevel="3" ParentNodeId="ns=1;s=sv_OutRefsCoreBV" NodeId="ns=1;s=sv_OutRefsCoreBV.rOffsetAddedByVis" BrowseName="1:rOffsetAddedByVis">
+        <ns1:DisplayName>rOffsetAddedByVis</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_OutRefsCoreBV.rOffsetAddedByVis.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=3;s=system.FlowRate</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_OutRefsCoreBV</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_OutRefsCoreBV.rOffsetAddedByVis</NativeKey>
+                    <DisplayLevel>4</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_OutRefsCoreBV.rOffsetAddedByVis" NodeId="ns=1;s=sv_OutRefsCoreBV.rOffsetAddedByVis.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAObject ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_OutRefsCoreBV" BrowseName="1:sv_OutRefsCoreBV">
+        <ns1:DisplayName>sv_OutRefsCoreBV</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">ns=4;s=system.TOutRefs</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_OutRefsCoreBV</NativeKey>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAObject>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bOutputBV" BrowseName="1:sv_bOutputBV">
+        <ns1:DisplayName>sv_bOutputBV</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bOutputBV</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bMonitorControlPosCoreF" BrowseName="1:sv_bMonitorControlPosCoreF">
+        <ns1:DisplayName>sv_bMonitorControlPosCoreF</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_bMonitorControlPosCoreF.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bMonitorControlPosCoreF</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_bMonitorControlPosCoreF" NodeId="ns=1;s=sv_bMonitorControlPosCoreF.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bSequenceForward" BrowseName="1:sv_bSequenceForward">
+        <ns1:DisplayName>sv_bSequenceForward</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bSequenceForward</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bCoreFFlex" BrowseName="1:sv_bCoreFFlex">
+        <ns1:DisplayName>sv_bCoreFFlex</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bCoreFFlex</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bMonitorControlPosCoreB" BrowseName="1:sv_bMonitorControlPosCoreB">
+        <ns1:DisplayName>sv_bMonitorControlPosCoreB</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_bMonitorControlPosCoreB.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bMonitorControlPosCoreB</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_bMonitorControlPosCoreB" NodeId="ns=1;s=sv_bMonitorControlPosCoreB.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=di_Select_sim" BrowseName="1:di_Select_sim">
+        <ns1:DisplayName>di_Select_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.di_Select_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=di_SwitchBackward" BrowseName="1:di_SwitchBackward">
+        <ns1:DisplayName>di_SwitchBackward</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.di_SwitchBackward</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Float" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_rCoreBP" BrowseName="1:sv_rCoreBP">
+        <ns1:DisplayName>sv_rCoreBP</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_rCoreBP.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=3;s=system.Pressure</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_rCoreBP</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_rCoreBP" NodeId="ns=1;s=sv_rCoreBP.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bCoreFTime" BrowseName="1:sv_bCoreFTime">
+        <ns1:DisplayName>sv_bCoreFTime</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bCoreFTime</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Int16" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_iSwitchBackward1Dyn" BrowseName="1:sv_iSwitchBackward1Dyn">
+        <ns1:DisplayName>sv_iSwitchBackward1Dyn</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_iSwitchBackward1Dyn</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>1</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Float" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_rCoreBV" BrowseName="1:sv_rCoreBV">
+        <ns1:DisplayName>sv_rCoreBV</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_rCoreBV.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=3;s=system.FlowRate</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_rCoreBV</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_rCoreBV" NodeId="ns=1;s=sv_rCoreBV.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=di_SwitchBackward1_sim" BrowseName="1:di_SwitchBackward1_sim">
+        <ns1:DisplayName>di_SwitchBackward1_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.di_SwitchBackward1_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bSequenceSafetyDeactivated" BrowseName="1:sv_bSequenceSafetyDeactivated">
+        <ns1:DisplayName>sv_bSequenceSafetyDeactivated</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bSequenceSafetyDeactivated</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Int16" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_iSwitchForward2Dyn" BrowseName="1:sv_iSwitchForward2Dyn">
+        <ns1:DisplayName>sv_iSwitchForward2Dyn</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_iSwitchForward2Dyn</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>1</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Int16" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_iSwitchForwardFDyn" BrowseName="1:sv_iSwitchForwardFDyn">
+        <ns1:DisplayName>sv_iSwitchForwardFDyn</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_iSwitchForwardFDyn</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>1</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=do_Forward" BrowseName="1:do_Forward">
+        <ns1:DisplayName>do_Forward</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.do_Forward</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Float" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_rCoreForwDelay" BrowseName="1:sv_rCoreForwDelay">
+        <ns1:DisplayName>sv_rCoreForwDelay</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_rCoreForwDelay.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=3;s=system.TimeReal</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_rCoreForwDelay</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_rCoreForwDelay" NodeId="ns=1;s=sv_rCoreForwDelay.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bOutputFHoldP" BrowseName="1:sv_bOutputFHoldP">
+        <ns1:DisplayName>sv_bOutputFHoldP</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bOutputFHoldP</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Int16" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_iSwitchForwardDyn" BrowseName="1:sv_iSwitchForwardDyn">
+        <ns1:DisplayName>sv_iSwitchForwardDyn</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_iSwitchForwardDyn</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>1</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=di_ReferenceReady_sim" BrowseName="1:di_ReferenceReady_sim">
+        <ns1:DisplayName>di_ReferenceReady_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.di_ReferenceReady_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bCoreForwTime" BrowseName="1:sv_bCoreForwTime">
+        <ns1:DisplayName>sv_bCoreForwTime</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bCoreForwTime</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Double" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_dCoreBMid" BrowseName="1:sv_dCoreBMid">
+        <ns1:DisplayName>sv_dCoreBMid</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_dCoreBMid.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=3;s=system.Time</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_dCoreBMid</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                    <ManipulatorClass Unit="system.Time">
+                        <Divisor>1000000</Divisor>
+                        <Multiplier>0</Multiplier>
+                    </ManipulatorClass>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_dCoreBMid" NodeId="ns=1;s=sv_dCoreBMid.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bCoreFMid" BrowseName="1:sv_bCoreFMid">
+        <ns1:DisplayName>sv_bCoreFMid</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bCoreFMid</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Int16" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_iSwitchBackwardDyn" BrowseName="1:sv_iSwitchBackwardDyn">
+        <ns1:DisplayName>sv_iSwitchBackwardDyn</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_iSwitchBackwardDyn</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>1</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bPreInjCycleCore" BrowseName="1:sv_bPreInjCycleCore">
+        <ns1:DisplayName>sv_bPreInjCycleCore</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bPreInjCycleCore</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bReferenced" BrowseName="1:sv_bReferenced">
+        <ns1:DisplayName>sv_bReferenced</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bReferenced</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=di_SwitchForward_sim" BrowseName="1:di_SwitchForward_sim">
+        <ns1:DisplayName>di_SwitchForward_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.di_SwitchForward_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bControlPosCoreF" BrowseName="1:sv_bControlPosCoreF">
+        <ns1:DisplayName>sv_bControlPosCoreF</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bControlPosCoreF</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bCoreBMidTime" BrowseName="1:sv_bCoreBMidTime">
+        <ns1:DisplayName>sv_bCoreBMidTime</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bCoreBMidTime</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bSequenceBackward" BrowseName="1:sv_bSequenceBackward">
+        <ns1:DisplayName>sv_bSequenceBackward</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bSequenceBackward</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Int32" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_iSafetyRelevantBackward" BrowseName="1:sv_iSafetyRelevantBackward">
+        <ns1:DisplayName>sv_iSafetyRelevantBackward</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_iSafetyRelevantBackward.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_iSafetyRelevantBackward</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_iSafetyRelevantBackward" NodeId="ns=1;s=sv_iSafetyRelevantBackward.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=do_ShutOffValve" BrowseName="1:do_ShutOffValve">
+        <ns1:DisplayName>do_ShutOffValve</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.do_ShutOffValve</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bControlPosCoreB" BrowseName="1:sv_bControlPosCoreB">
+        <ns1:DisplayName>sv_bControlPosCoreB</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bControlPosCoreB</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bUsedInSequence" BrowseName="1:sv_bUsedInSequence">
+        <ns1:DisplayName>sv_bUsedInSequence</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bUsedInSequence</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Int16" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_iSwitchShakeDyn" BrowseName="1:sv_iSwitchShakeDyn">
+        <ns1:DisplayName>sv_iSwitchShakeDyn</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_iSwitchShakeDyn</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>1</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bCoreForwDelay" BrowseName="1:sv_bCoreForwDelay">
+        <ns1:DisplayName>sv_bCoreForwDelay</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bCoreForwDelay</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=di_Backward" BrowseName="1:di_Backward">
+        <ns1:DisplayName>di_Backward</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.di_Backward</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Int32" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_iForwardBackward" BrowseName="1:sv_iForwardBackward">
+        <ns1:DisplayName>sv_iForwardBackward</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_iForwardBackward</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bStopShakingAtEjection" BrowseName="1:sv_bStopShakingAtEjection">
+        <ns1:DisplayName>sv_bStopShakingAtEjection</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bStopShakingAtEjection</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=di_RpmZero_sim" BrowseName="1:di_RpmZero_sim">
+        <ns1:DisplayName>di_RpmZero_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.di_RpmZero_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Double" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_dCoreB" BrowseName="1:sv_dCoreB">
+        <ns1:DisplayName>sv_dCoreB</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_dCoreB.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=3;s=system.Time</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_dCoreB</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                    <ManipulatorClass Unit="system.Time">
+                        <Divisor>1000000</Divisor>
+                        <Multiplier>0</Multiplier>
+                    </ManipulatorClass>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_dCoreB" NodeId="ns=1;s=sv_dCoreB.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bCoreBTimeActiv" BrowseName="1:sv_bCoreBTimeActiv">
+        <ns1:DisplayName>sv_bCoreBTimeActiv</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bCoreBTimeActiv</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=do_Forward2" BrowseName="1:do_Forward2">
+        <ns1:DisplayName>do_Forward2</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.do_Forward2</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Double" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_dCoreF" BrowseName="1:sv_dCoreF">
+        <ns1:DisplayName>sv_dCoreF</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_dCoreF.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=3;s=system.Time</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_dCoreF</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                    <ManipulatorClass Unit="system.Time">
+                        <Divisor>1000000</Divisor>
+                        <Multiplier>0</Multiplier>
+                    </ManipulatorClass>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_dCoreF" NodeId="ns=1;s=sv_dCoreF.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bShutDownCycleCore" BrowseName="1:sv_bShutDownCycleCore">
+        <ns1:DisplayName>sv_bShutDownCycleCore</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bShutDownCycleCore</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bReference" BrowseName="1:sv_bReference">
+        <ns1:DisplayName>sv_bReference</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bReference</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>10</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bMonitoringCoreF" BrowseName="1:sv_bMonitoringCoreF">
+        <ns1:DisplayName>sv_bMonitoringCoreF</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bMonitoringCoreF</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bEm74Activated" BrowseName="1:sv_bEm74Activated">
+        <ns1:DisplayName>sv_bEm74Activated</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bEm74Activated</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>5</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bMechanicB" BrowseName="1:sv_bMechanicB">
+        <ns1:DisplayName>sv_bMechanicB</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bMechanicB</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bMonitoringCoreB" BrowseName="1:sv_bMonitoringCoreB">
+        <ns1:DisplayName>sv_bMonitoringCoreB</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bMonitoringCoreB</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bSequenceBackwardMid" BrowseName="1:sv_bSequenceBackwardMid">
+        <ns1:DisplayName>sv_bSequenceBackwardMid</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bSequenceBackwardMid</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bMechanicF" BrowseName="1:sv_bMechanicF">
+        <ns1:DisplayName>sv_bMechanicF</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bMechanicF</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Double" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_dMonitoringCoreB" BrowseName="1:sv_dMonitoringCoreB">
+        <ns1:DisplayName>sv_dMonitoringCoreB</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_dMonitoringCoreB.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=3;s=system.Time</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_dMonitoringCoreB</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                    <ManipulatorClass Unit="system.Time">
+                        <Divisor>1000000</Divisor>
+                        <Multiplier>0</Multiplier>
+                    </ManipulatorClass>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_dMonitoringCoreB" NodeId="ns=1;s=sv_dMonitoringCoreB.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Float" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_rCoreBHoldP" BrowseName="1:sv_rCoreBHoldP">
+        <ns1:DisplayName>sv_rCoreBHoldP</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_rCoreBHoldP.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=3;s=system.Pressure</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_rCoreBHoldP</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_rCoreBHoldP" NodeId="ns=1;s=sv_rCoreBHoldP.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Double" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_dMonitoringCoreF" BrowseName="1:sv_dMonitoringCoreF">
+        <ns1:DisplayName>sv_dMonitoringCoreF</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_dMonitoringCoreF.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=3;s=system.Time</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_dMonitoringCoreF</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                    <ManipulatorClass Unit="system.Time">
+                        <Divisor>1000000</Divisor>
+                        <Multiplier>0</Multiplier>
+                    </ManipulatorClass>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_dMonitoringCoreF" NodeId="ns=1;s=sv_dMonitoringCoreF.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Int16" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_iSwitchBackwardBDyn" BrowseName="1:sv_iSwitchBackwardBDyn">
+        <ns1:DisplayName>sv_iSwitchBackwardBDyn</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_iSwitchBackwardBDyn</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>1</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bCoreFMidTime" BrowseName="1:sv_bCoreFMidTime">
+        <ns1:DisplayName>sv_bCoreFMidTime</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bCoreFMidTime</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=di_SafeState" BrowseName="1:di_SafeState">
+        <ns1:DisplayName>di_SafeState</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.di_SafeState</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bTimeDependentCoreFMid" BrowseName="1:sv_bTimeDependentCoreFMid">
+        <ns1:DisplayName>sv_bTimeDependentCoreFMid</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bTimeDependentCoreFMid</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Float" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_rCoreForwTime" BrowseName="1:sv_rCoreForwTime">
+        <ns1:DisplayName>sv_rCoreForwTime</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_rCoreForwTime.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=3;s=system.TimeReal</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_rCoreForwTime</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_rCoreForwTime" NodeId="ns=1;s=sv_rCoreForwTime.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bOutputBHoldP" BrowseName="1:sv_bOutputBHoldP">
+        <ns1:DisplayName>sv_bOutputBHoldP</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bOutputBHoldP</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Float" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_rCoreFMidP" BrowseName="1:sv_rCoreFMidP">
+        <ns1:DisplayName>sv_rCoreFMidP</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_rCoreFMidP.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=3;s=system.Pressure</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_rCoreFMidP</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_rCoreFMidP" NodeId="ns=1;s=sv_rCoreFMidP.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bOutputFV" BrowseName="1:sv_bOutputFV">
+        <ns1:DisplayName>sv_bOutputFV</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bOutputFV</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Float" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_rCoreFMidV" BrowseName="1:sv_rCoreFMidV">
+        <ns1:DisplayName>sv_rCoreFMidV</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_rCoreFMidV.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=3;s=system.FlowRate</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_rCoreFMidV</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_rCoreFMidV" NodeId="ns=1;s=sv_rCoreFMidV.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bOutputFP" BrowseName="1:sv_bOutputFP">
+        <ns1:DisplayName>sv_bOutputFP</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bOutputFP</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=do_SpeedBit1" BrowseName="1:do_SpeedBit1">
+        <ns1:DisplayName>do_SpeedBit1</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.do_SpeedBit1</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=di_BackwardInt_sim" BrowseName="1:di_BackwardInt_sim">
+        <ns1:DisplayName>di_BackwardInt_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.di_BackwardInt_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Float" AccessLevel="3" ParentNodeId="ns=1;s=sv_OutRefsCoreFV" NodeId="ns=1;s=sv_OutRefsCoreFV.rOffsetAddedByVis" BrowseName="1:rOffsetAddedByVis">
+        <ns1:DisplayName>rOffsetAddedByVis</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_OutRefsCoreFV.rOffsetAddedByVis.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=3;s=system.FlowRate</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_OutRefsCoreFV</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_OutRefsCoreFV.rOffsetAddedByVis</NativeKey>
+                    <DisplayLevel>4</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_OutRefsCoreFV.rOffsetAddedByVis" NodeId="ns=1;s=sv_OutRefsCoreFV.rOffsetAddedByVis.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAObject ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_OutRefsCoreFV" BrowseName="1:sv_OutRefsCoreFV">
+        <ns1:DisplayName>sv_OutRefsCoreFV</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">ns=4;s=system.TOutRefs</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_OutRefsCoreFV</NativeKey>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAObject>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bCoreB" BrowseName="1:sv_bCoreB">
+        <ns1:DisplayName>sv_bCoreB</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bCoreB</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=do_SpeedBit2" BrowseName="1:do_SpeedBit2">
+        <ns1:DisplayName>do_SpeedBit2</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.do_SpeedBit2</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bOutputActive" BrowseName="1:sv_bOutputActive">
+        <ns1:DisplayName>sv_bOutputActive</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bOutputActive</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Int16" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_iSwitchBackward2Dyn" BrowseName="1:sv_iSwitchBackward2Dyn">
+        <ns1:DisplayName>sv_iSwitchBackward2Dyn</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_iSwitchBackward2Dyn</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>1</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Int32" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_iMoldSwivDev" BrowseName="1:sv_iMoldSwivDev">
+        <ns1:DisplayName>sv_iMoldSwivDev</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_iMoldSwivDev.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_iMoldSwivDev</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_iMoldSwivDev" NodeId="ns=1;s=sv_iMoldSwivDev.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=di_Select1_sim" BrowseName="1:di_Select1_sim">
+        <ns1:DisplayName>di_Select1_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.di_Select1_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=di_SafeState_sim" BrowseName="1:di_SafeState_sim">
+        <ns1:DisplayName>di_SafeState_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.di_SafeState_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Float" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_rControlPosCoreF" BrowseName="1:sv_rControlPosCoreF">
+        <ns1:DisplayName>sv_rControlPosCoreF</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_rControlPosCoreF.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=3;s=system.Stroke</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_rControlPosCoreF</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_rControlPosCoreF" NodeId="ns=1;s=sv_rControlPosCoreF.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bTimeDependentCoreB" BrowseName="1:sv_bTimeDependentCoreB">
+        <ns1:DisplayName>sv_bTimeDependentCoreB</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bTimeDependentCoreB</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bSequenceForwardMid" BrowseName="1:sv_bSequenceForwardMid">
+        <ns1:DisplayName>sv_bSequenceForwardMid</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bSequenceForwardMid</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Int16" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_iSwitchForward1Dyn" BrowseName="1:sv_iSwitchForward1Dyn">
+        <ns1:DisplayName>sv_iSwitchForward1Dyn</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_iSwitchForward1Dyn</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>1</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=di_SwitchBackward_sim" BrowseName="1:di_SwitchBackward_sim">
+        <ns1:DisplayName>di_SwitchBackward_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.di_SwitchBackward_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Float" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_rCoreFP" BrowseName="1:sv_rCoreFP">
+        <ns1:DisplayName>sv_rCoreFP</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_rCoreFP.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=3;s=system.Pressure</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_rCoreFP</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_rCoreFP" NodeId="ns=1;s=sv_rCoreFP.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bOffOnEndPosF" BrowseName="1:sv_bOffOnEndPosF">
+        <ns1:DisplayName>sv_bOffOnEndPosF</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bOffOnEndPosF</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=di_SwitchForward2_sim" BrowseName="1:di_SwitchForward2_sim">
+        <ns1:DisplayName>di_SwitchForward2_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.di_SwitchForward2_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bCoreBMidFlex" BrowseName="1:sv_bCoreBMidFlex">
+        <ns1:DisplayName>sv_bCoreBMidFlex</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bCoreBMidFlex</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Float" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_rControlPosCoreB" BrowseName="1:sv_rControlPosCoreB">
+        <ns1:DisplayName>sv_rControlPosCoreB</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_rControlPosCoreB.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=3;s=system.Stroke</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_rControlPosCoreB</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_rControlPosCoreB" NodeId="ns=1;s=sv_rControlPosCoreB.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bMoveBackward" BrowseName="1:sv_bMoveBackward">
+        <ns1:DisplayName>sv_bMoveBackward</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bMoveBackward</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bCoreFMidFlex" BrowseName="1:sv_bCoreFMidFlex">
+        <ns1:DisplayName>sv_bCoreFMidFlex</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bCoreFMidFlex</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bTimeDependentCoreF" BrowseName="1:sv_bTimeDependentCoreF">
+        <ns1:DisplayName>sv_bTimeDependentCoreF</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bTimeDependentCoreF</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=di_BackwardInt" BrowseName="1:di_BackwardInt">
+        <ns1:DisplayName>di_BackwardInt</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.di_BackwardInt</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bOffOnEndPosB" BrowseName="1:sv_bOffOnEndPosB">
+        <ns1:DisplayName>sv_bOffOnEndPosB</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bOffOnEndPosB</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Float" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_rCoreFV" BrowseName="1:sv_rCoreFV">
+        <ns1:DisplayName>sv_rCoreFV</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_rCoreFV.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=3;s=system.FlowRate</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_rCoreFV</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_rCoreFV" NodeId="ns=1;s=sv_rCoreFV.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=di_SwitchForward" BrowseName="1:di_SwitchForward">
+        <ns1:DisplayName>di_SwitchForward</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.di_SwitchForward</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bOutputBMidV" BrowseName="1:sv_bOutputBMidV">
+        <ns1:DisplayName>sv_bOutputBMidV</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bOutputBMidV</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Core.TRobotLock" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_RobotLock" BrowseName="1:sv_RobotLock">
+        <ns1:DisplayName>sv_RobotLock</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_RobotLock</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>8</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bSequenceBackwardMidAction" BrowseName="1:sv_bSequenceBackwardMidAction">
+        <ns1:DisplayName>sv_bSequenceBackwardMidAction</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bSequenceBackwardMidAction</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=di_Select1" BrowseName="1:di_Select1">
+        <ns1:DisplayName>di_Select1</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.di_Select1</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bOutputBMidP" BrowseName="1:sv_bOutputBMidP">
+        <ns1:DisplayName>sv_bOutputBMidP</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bOutputBMidP</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bCoreShakeFinished" BrowseName="1:sv_bCoreShakeFinished">
+        <ns1:DisplayName>sv_bCoreShakeFinished</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bCoreShakeFinished</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=di_Select2" BrowseName="1:di_Select2">
+        <ns1:DisplayName>di_Select2</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.di_Select2</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Core.TPosInactive" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_PosInactive" BrowseName="1:sv_PosInactive">
+        <ns1:DisplayName>sv_PosInactive</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_PosInactive</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bCoreBMidTimeActiv" BrowseName="1:sv_bCoreBMidTimeActiv">
+        <ns1:DisplayName>sv_bCoreBMidTimeActiv</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bCoreBMidTimeActiv</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bCoreFMidTimeActiv" BrowseName="1:sv_bCoreFMidTimeActiv">
+        <ns1:DisplayName>sv_bCoreFMidTimeActiv</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bCoreFMidTimeActiv</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Core.TForwardBackwardCoreShake" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_ForwardBackward" BrowseName="1:sv_ForwardBackward">
+        <ns1:DisplayName>sv_ForwardBackward</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_ForwardBackward</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=di_ForwardInt_sim" BrowseName="1:di_ForwardInt_sim">
+        <ns1:DisplayName>di_ForwardInt_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.di_ForwardInt_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bCoreF" BrowseName="1:sv_bCoreF">
+        <ns1:DisplayName>sv_bCoreF</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bCoreF</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bMoldChangeCore" BrowseName="1:sv_bMoldChangeCore">
+        <ns1:DisplayName>sv_bMoldChangeCore</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bMoldChangeCore</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Float" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_rCoreBMidP" BrowseName="1:sv_rCoreBMidP">
+        <ns1:DisplayName>sv_rCoreBMidP</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_rCoreBMidP.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=3;s=system.Pressure</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_rCoreBMidP</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_rCoreBMidP" NodeId="ns=1;s=sv_rCoreBMidP.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Float" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_rCoreBMidV" BrowseName="1:sv_rCoreBMidV">
+        <ns1:DisplayName>sv_rCoreBMidV</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_rCoreBMidV.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=3;s=system.FlowRate</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_rCoreBMidV</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_rCoreBMidV" NodeId="ns=1;s=sv_rCoreBMidV.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=di_SwitchForward1" BrowseName="1:di_SwitchForward1">
+        <ns1:DisplayName>di_SwitchForward1</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.di_SwitchForward1</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=di_SwitchForward2" BrowseName="1:di_SwitchForward2">
+        <ns1:DisplayName>di_SwitchForward2</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.di_SwitchForward2</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=do_ReferenceRun" BrowseName="1:do_ReferenceRun">
+        <ns1:DisplayName>do_ReferenceRun</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.do_ReferenceRun</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=do_Backward2" BrowseName="1:do_Backward2">
+        <ns1:DisplayName>do_Backward2</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.do_Backward2</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=di_Forward_sim" BrowseName="1:di_Forward_sim">
+        <ns1:DisplayName>di_Forward_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.di_Forward_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Double" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_dCoreFMid" BrowseName="1:sv_dCoreFMid">
+        <ns1:DisplayName>sv_dCoreFMid</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_dCoreFMid.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=3;s=system.Time</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_dCoreFMid</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                    <ManipulatorClass Unit="system.Time">
+                        <Divisor>1000000</Divisor>
+                        <Multiplier>0</Multiplier>
+                    </ManipulatorClass>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_dCoreFMid" NodeId="ns=1;s=sv_dCoreFMid.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=di_Forward" BrowseName="1:di_Forward">
+        <ns1:DisplayName>di_Forward</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.di_Forward</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bCoreBMid" BrowseName="1:sv_bCoreBMid">
+        <ns1:DisplayName>sv_bCoreBMid</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bCoreBMid</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=di_ReferenceReady" BrowseName="1:di_ReferenceReady">
+        <ns1:DisplayName>di_ReferenceReady</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.di_ReferenceReady</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Float" AccessLevel="0" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_rMldOpenPos" BrowseName="1:sv_rMldOpenPos">
+        <ns1:DisplayName>sv_rMldOpenPos</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_rMldOpenPos</NativeKey>
+                    <DisplayLevel>16</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Int32" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_CoreMoldSwivStatB" BrowseName="1:sv_CoreMoldSwivStatB">
+        <ns1:DisplayName>sv_CoreMoldSwivStatB</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_CoreMoldSwivStatB.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_CoreMoldSwivStatB</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_CoreMoldSwivStatB" NodeId="ns=1;s=sv_CoreMoldSwivStatB.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=di_SwitchBackward1" BrowseName="1:di_SwitchBackward1">
+        <ns1:DisplayName>di_SwitchBackward1</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.di_SwitchBackward1</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=di_SwitchBackward2_sim" BrowseName="1:di_SwitchBackward2_sim">
+        <ns1:DisplayName>di_SwitchBackward2_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.di_SwitchBackward2_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=di_SwitchBackward2" BrowseName="1:di_SwitchBackward2">
+        <ns1:DisplayName>di_SwitchBackward2</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.di_SwitchBackward2</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Int32" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_CoreMoldSwivStatF" BrowseName="1:sv_CoreMoldSwivStatF">
+        <ns1:DisplayName>sv_CoreMoldSwivStatF</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_CoreMoldSwivStatF.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_CoreMoldSwivStatF</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_CoreMoldSwivStatF" NodeId="ns=1;s=sv_CoreMoldSwivStatF.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bCoreBFlex" BrowseName="1:sv_bCoreBFlex">
+        <ns1:DisplayName>sv_bCoreBFlex</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bCoreBFlex</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=do_Backward" BrowseName="1:do_Backward">
+        <ns1:DisplayName>do_Backward</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.do_Backward</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bCoreBTime" BrowseName="1:sv_bCoreBTime">
+        <ns1:DisplayName>sv_bCoreBTime</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bCoreBTime</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bOutputFMidP" BrowseName="1:sv_bOutputFMidP">
+        <ns1:DisplayName>sv_bOutputFMidP</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bOutputFMidP</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=di_SwitchForward1_sim" BrowseName="1:di_SwitchForward1_sim">
+        <ns1:DisplayName>di_SwitchForward1_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.di_SwitchForward1_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bActivatedInSequence" BrowseName="1:sv_bActivatedInSequence">
+        <ns1:DisplayName>sv_bActivatedInSequence</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bActivatedInSequence</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>5</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bExtSupplyB" BrowseName="1:sv_bExtSupplyB">
+        <ns1:DisplayName>sv_bExtSupplyB</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bExtSupplyB</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bOutputFMidV" BrowseName="1:sv_bOutputFMidV">
+        <ns1:DisplayName>sv_bOutputFMidV</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bOutputFMidV</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bExtSupplyF" BrowseName="1:sv_bExtSupplyF">
+        <ns1:DisplayName>sv_bExtSupplyF</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bExtSupplyF</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Core.TSpeedBitsEm74" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_SpeedBitsB" BrowseName="1:sv_SpeedBitsB">
+        <ns1:DisplayName>sv_SpeedBitsB</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_SpeedBitsB</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bShakingUsedInSequence" BrowseName="1:sv_bShakingUsedInSequence">
+        <ns1:DisplayName>sv_bShakingUsedInSequence</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bShakingUsedInSequence</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=di_Backward_sim" BrowseName="1:di_Backward_sim">
+        <ns1:DisplayName>di_Backward_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.di_Backward_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Core.TSpeedBitsEm74" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_SpeedBitsF" BrowseName="1:sv_SpeedBitsF">
+        <ns1:DisplayName>sv_SpeedBitsF</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_SpeedBitsF</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=di_ForwardInt" BrowseName="1:di_ForwardInt">
+        <ns1:DisplayName>di_ForwardInt</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.di_ForwardInt</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=sv_LimitSwitchControlPosCoreF" NodeId="ns=1;s=sv_LimitSwitchControlPosCoreF.bRisingValue" BrowseName="1:bRisingValue">
+        <ns1:DisplayName>bRisingValue</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_LimitSwitchControlPosCoreF</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_LimitSwitchControlPosCoreF.bRisingValue</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAObject ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_LimitSwitchControlPosCoreF" BrowseName="1:sv_LimitSwitchControlPosCoreF">
+        <ns1:DisplayName>sv_LimitSwitchControlPosCoreF</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">ns=4;s=system.TLimitSwitch</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_LimitSwitchControlPosCoreF</NativeKey>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAObject>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bMoveFClmpPrBlt" BrowseName="1:sv_bMoveFClmpPrBlt">
+        <ns1:DisplayName>sv_bMoveFClmpPrBlt</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bMoveFClmpPrBlt</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=di_Select" BrowseName="1:di_Select">
+        <ns1:DisplayName>di_Select</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.di_Select</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=sv_LimitSwitchControlPosCoreB" NodeId="ns=1;s=sv_LimitSwitchControlPosCoreB.bRisingValue" BrowseName="1:bRisingValue">
+        <ns1:DisplayName>bRisingValue</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_LimitSwitchControlPosCoreB</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_LimitSwitchControlPosCoreB.bRisingValue</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAObject ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_LimitSwitchControlPosCoreB" BrowseName="1:sv_LimitSwitchControlPosCoreB">
+        <ns1:DisplayName>sv_LimitSwitchControlPosCoreB</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">ns=4;s=system.TLimitSwitch</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_LimitSwitchControlPosCoreB</NativeKey>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAObject>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bTimeDependentCoreBMid" BrowseName="1:sv_bTimeDependentCoreBMid">
+        <ns1:DisplayName>sv_bTimeDependentCoreBMid</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bTimeDependentCoreBMid</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=di_Select2_sim" BrowseName="1:di_Select2_sim">
+        <ns1:DisplayName>di_Select2_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.di_Select2_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=CoreMove1" NodeId="ns=1;s=sv_bCoreFTimeActiv" BrowseName="1:sv_bCoreFTimeActiv">
+        <ns1:DisplayName>sv_bCoreFTimeActiv</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CoreMove1</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CoreMove1.sv_bCoreFTimeActiv</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+</ns1:UANodeSet>

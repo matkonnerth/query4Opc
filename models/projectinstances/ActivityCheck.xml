@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns1:UANodeSet xmlns:ns1="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd" xmlns:ns2="http://opcfoundation.org/UA/2008/02/Types.xsd">
+    <ns1:NamespaceUris>
+        <ns1:Uri>http://engelglobal.com/IMM/ActivityCheck/</ns1:Uri>
+        <ns1:Uri>http://engelglobal.com/IMM/</ns1:Uri>
+        <ns1:Uri>http://engelglobal.com/IMM/Types/</ns1:Uri>
+        <ns1:Uri>http://engelglobal.com/Units/</ns1:Uri>
+    </ns1:NamespaceUris>
+    <ns1:Aliases>
+        <ns1:Alias Alias="Boolean">i=1</ns1:Alias>
+        <ns1:Alias Alias="Double">i=11</ns1:Alias>
+        <ns1:Alias Alias="AnalogItemType">i=2368</ns1:Alias>
+        <ns1:Alias Alias="Organizes">i=35</ns1:Alias>
+        <ns1:Alias Alias="HasTypeDefinition">i=40</ns1:Alias>
+        <ns1:Alias Alias="HasProperty">i=46</ns1:Alias>
+        <ns1:Alias Alias="HasComponent">i=47</ns1:Alias>
+        <ns1:Alias Alias="FolderType">i=61</ns1:Alias>
+        <ns1:Alias Alias="BaseDataVariableType">i=63</ns1:Alias>
+        <ns1:Alias Alias="PropertyType">i=68</ns1:Alias>
+        <ns1:Alias Alias="Range">i=884</ns1:Alias>
+        <ns1:Alias Alias="system.TStdOffTriggerState">ns=3;s=system.TStdOffTriggerState</ns1:Alias>
+    </ns1:Aliases>
+    <ns1:Extensions>
+        <ns1:Extension>
+            <ns3:GeneratorInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                <Generatorversion>1.3-SNAPSHOT</Generatorversion>
+                <Generationdatetime>2020-02-13T15:39:15.574+01:00</Generationdatetime>
+            </ns3:GeneratorInformation>
+        </ns1:Extension>
+    </ns1:Extensions>
+    <ns1:UAObject NodeId="ns=1;s=ActivityCheck" BrowseName="1:ActivityCheck">
+        <ns1:DisplayName>ActivityCheck</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">FolderType</ns1:Reference>
+            <ns1:Reference ReferenceType="Organizes" IsForward="false">ns=2;s=IMM.Project</ns1:Reference>
+        </ns1:References>
+    </ns1:UAObject>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=ActivityCheck" NodeId="ns=1;s=sv_bActivityCheckLicensed" BrowseName="1:sv_bActivityCheckLicensed">
+        <ns1:DisplayName>sv_bActivityCheckLicensed</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=ActivityCheck</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>ActivityCheck.sv_bActivityCheckLicensed</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="system.TStdOffTriggerState" AccessLevel="1" ParentNodeId="ns=1;s=sv_StdOffActivityCheck" NodeId="ns=1;s=sv_StdOffActivityCheck.TriggerState" BrowseName="1:TriggerState">
+        <ns1:DisplayName>TriggerState</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_StdOffActivityCheck</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>ActivityCheck.sv_StdOffActivityCheck.TriggerState</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Double" AccessLevel="3" ParentNodeId="ns=1;s=sv_StdOffActivityCheck" NodeId="ns=1;s=sv_StdOffActivityCheck.dTriggerDelay" BrowseName="1:dTriggerDelay">
+        <ns1:DisplayName>dTriggerDelay</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_StdOffActivityCheck.dTriggerDelay.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=4;s=system.TimeMin</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_StdOffActivityCheck</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>ActivityCheck.sv_StdOffActivityCheck.dTriggerDelay</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>9</InputLevel>
+                    <ManipulatorClass Unit="system.TimeMin">
+                        <Divisor>60000000</Divisor>
+                        <Multiplier>0</Multiplier>
+                    </ManipulatorClass>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_StdOffActivityCheck.dTriggerDelay" NodeId="ns=1;s=sv_StdOffActivityCheck.dTriggerDelay.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=sv_StdOffActivityCheck" NodeId="ns=1;s=sv_StdOffActivityCheck.bStart" BrowseName="1:bStart">
+        <ns1:DisplayName>bStart</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_StdOffActivityCheck</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>ActivityCheck.sv_StdOffActivityCheck.bStart</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Double" AccessLevel="1" ParentNodeId="ns=1;s=sv_StdOffActivityCheck" NodeId="ns=1;s=sv_StdOffActivityCheck.dTriggerActVal" BrowseName="1:dTriggerActVal">
+        <ns1:DisplayName>dTriggerActVal</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_StdOffActivityCheck.dTriggerActVal.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=4;s=system.TimeMin</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_StdOffActivityCheck</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>ActivityCheck.sv_StdOffActivityCheck.dTriggerActVal</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                    <ManipulatorClass Unit="system.TimeMin">
+                        <Divisor>60000000</Divisor>
+                        <Multiplier>0</Multiplier>
+                    </ManipulatorClass>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_StdOffActivityCheck.dTriggerActVal" NodeId="ns=1;s=sv_StdOffActivityCheck.dTriggerActVal.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAObject ParentNodeId="ns=1;s=ActivityCheck" NodeId="ns=1;s=sv_StdOffActivityCheck" BrowseName="1:sv_StdOffActivityCheck">
+        <ns1:DisplayName>sv_StdOffActivityCheck</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">ns=3;s=system.TStdOffTrigger</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=ActivityCheck</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>ActivityCheck.sv_StdOffActivityCheck</NativeKey>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAObject>
+</ns1:UANodeSet>

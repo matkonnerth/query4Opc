@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns1:UANodeSet xmlns:ns1="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd" xmlns:ns2="http://opcfoundation.org/UA/2008/02/Types.xsd">
+    <ns1:NamespaceUris>
+        <ns1:Uri>http://engelglobal.com/IMM/CatOPC/</ns1:Uri>
+        <ns1:Uri>http://engelglobal.com/IMM/</ns1:Uri>
+        <ns1:Uri>http://engelglobal.com/IMM/Types/</ns1:Uri>
+    </ns1:NamespaceUris>
+    <ns1:Aliases>
+        <ns1:Alias Alias="Boolean">i=1</ns1:Alias>
+        <ns1:Alias Alias="String">i=12</ns1:Alias>
+        <ns1:Alias Alias="Organizes">i=35</ns1:Alias>
+        <ns1:Alias Alias="HasTypeDefinition">i=40</ns1:Alias>
+        <ns1:Alias Alias="HasComponent">i=47</ns1:Alias>
+        <ns1:Alias Alias="FolderType">i=61</ns1:Alias>
+        <ns1:Alias Alias="BaseDataVariableType">i=63</ns1:Alias>
+    </ns1:Aliases>
+    <ns1:Extensions>
+        <ns1:Extension>
+            <ns3:GeneratorInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                <Generatorversion>1.3-SNAPSHOT</Generatorversion>
+                <Generationdatetime>2020-02-13T15:39:17.826+01:00</Generationdatetime>
+            </ns3:GeneratorInformation>
+        </ns1:Extension>
+    </ns1:Extensions>
+    <ns1:UAObject NodeId="ns=1;s=CatOPC" BrowseName="1:CatOPC">
+        <ns1:DisplayName>CatOPC</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">FolderType</ns1:Reference>
+            <ns1:Reference ReferenceType="Organizes" IsForward="false">ns=2;s=IMM.Project</ns1:Reference>
+        </ns1:References>
+    </ns1:UAObject>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=sv_BOOLSVComm" NodeId="ns=1;s=sv_BOOLSVComm.bActivated" BrowseName="1:bActivated">
+        <ns1:DisplayName>bActivated</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_BOOLSVComm</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CatOPC.sv_BOOLSVComm.bActivated</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>13</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=sv_BOOLSVComm" NodeId="ns=1;s=sv_BOOLSVComm.bVarFound" BrowseName="1:bVarFound">
+        <ns1:DisplayName>bVarFound</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_BOOLSVComm</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CatOPC.sv_BOOLSVComm.bVarFound</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>13</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=sv_BOOLSVComm" NodeId="ns=1;s=sv_BOOLSVComm.bValue" BrowseName="1:bValue">
+        <ns1:DisplayName>bValue</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_BOOLSVComm</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CatOPC.sv_BOOLSVComm.bValue</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>13</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="String" AccessLevel="3" ParentNodeId="ns=1;s=sv_BOOLSVComm" NodeId="ns=1;s=sv_BOOLSVComm.sVarName" BrowseName="1:sVarName">
+        <ns1:DisplayName>sVarName</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_BOOLSVComm</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CatOPC.sv_BOOLSVComm.sVarName</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>13</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAObject ParentNodeId="ns=1;s=CatOPC" NodeId="ns=1;s=sv_BOOLSVComm" BrowseName="1:sv_BOOLSVComm">
+        <ns1:DisplayName>sv_BOOLSVComm</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">ns=3;s=CatOPC.TBOOLSVComm</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=CatOPC</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>CatOPC.sv_BOOLSVComm</NativeKey>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAObject>
+</ns1:UANodeSet>

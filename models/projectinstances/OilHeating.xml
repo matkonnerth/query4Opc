@@ -1,0 +1,1032 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns1:UANodeSet xmlns:ns1="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd" xmlns:ns2="http://opcfoundation.org/UA/2008/02/Types.xsd">
+    <ns1:NamespaceUris>
+        <ns1:Uri>http://engelglobal.com/IMM/OilHeating/</ns1:Uri>
+        <ns1:Uri>http://engelglobal.com/IMM/</ns1:Uri>
+        <ns1:Uri>http://engelglobal.com/Units/</ns1:Uri>
+        <ns1:Uri>http://engelglobal.com/IMM/Types/</ns1:Uri>
+    </ns1:NamespaceUris>
+    <ns1:Aliases>
+        <ns1:Alias Alias="Boolean">i=1</ns1:Alias>
+        <ns1:Alias Alias="Float">i=10</ns1:Alias>
+        <ns1:Alias Alias="Double">i=11</ns1:Alias>
+        <ns1:Alias Alias="AnalogItemType">i=2368</ns1:Alias>
+        <ns1:Alias Alias="Organizes">i=35</ns1:Alias>
+        <ns1:Alias Alias="HasTypeDefinition">i=40</ns1:Alias>
+        <ns1:Alias Alias="HasProperty">i=46</ns1:Alias>
+        <ns1:Alias Alias="HasComponent">i=47</ns1:Alias>
+        <ns1:Alias Alias="FolderType">i=61</ns1:Alias>
+        <ns1:Alias Alias="BaseDataVariableType">i=63</ns1:Alias>
+        <ns1:Alias Alias="PropertyType">i=68</ns1:Alias>
+        <ns1:Alias Alias="Range">i=884</ns1:Alias>
+        <ns1:Alias Alias="HasDynamicComponent">ns=4;s=HasDynamicComponent</ns1:Alias>
+        <ns1:Alias Alias="system.TClControlParamInit">ns=4;s=system.TClControlParamInit</ns1:Alias>
+        <ns1:Alias Alias="system.TClControlParamType">ns=4;s=system.TClControlParamType</ns1:Alias>
+    </ns1:Aliases>
+    <ns1:Extensions>
+        <ns1:Extension>
+            <ns3:GeneratorInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                <Generatorversion>1.3-SNAPSHOT</Generatorversion>
+                <Generationdatetime>2020-02-13T15:39:15.968+01:00</Generationdatetime>
+            </ns3:GeneratorInformation>
+        </ns1:Extension>
+    </ns1:Extensions>
+    <ns1:UAObject NodeId="ns=1;s=OilHeating" BrowseName="1:OilHeating">
+        <ns1:DisplayName>OilHeating</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">FolderType</ns1:Reference>
+            <ns1:Reference ReferenceType="Organizes" IsForward="false">ns=2;s=IMM.Project</ns1:Reference>
+        </ns1:References>
+    </ns1:UAObject>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=OilHeating" NodeId="ns=1;s=do_OilHeat9" BrowseName="1:do_OilHeat9">
+        <ns1:DisplayName>do_OilHeat9</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=OilHeating</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.do_OilHeat9</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=OilHeating" NodeId="ns=1;s=sv_bHydraulicUnitActive" BrowseName="1:sv_bHydraulicUnitActive">
+        <ns1:DisplayName>sv_bHydraulicUnitActive</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=OilHeating</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_bHydraulicUnitActive</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=OilHeating" NodeId="ns=1;s=do_OilHeat8" BrowseName="1:do_OilHeat8">
+        <ns1:DisplayName>do_OilHeat8</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=OilHeating</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.do_OilHeat8</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=OilHeating" NodeId="ns=1;s=do_OilHeat7" BrowseName="1:do_OilHeat7">
+        <ns1:DisplayName>do_OilHeat7</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=OilHeating</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.do_OilHeat7</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=OilHeating" NodeId="ns=1;s=di_OilLevelPreOk_sim" BrowseName="1:di_OilLevelPreOk_sim">
+        <ns1:DisplayName>di_OilLevelPreOk_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=OilHeating</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.di_OilLevelPreOk_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=OilHeating" NodeId="ns=1;s=do_OilHeat6" BrowseName="1:do_OilHeat6">
+        <ns1:DisplayName>do_OilHeat6</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=OilHeating</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.do_OilHeat6</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=OilHeating" NodeId="ns=1;s=do_OilHeat5" BrowseName="1:do_OilHeat5">
+        <ns1:DisplayName>do_OilHeat5</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=OilHeating</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.do_OilHeat5</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=OilHeating" NodeId="ns=1;s=di_OilLevelOk_stat" BrowseName="1:di_OilLevelOk_stat">
+        <ns1:DisplayName>di_OilLevelOk_stat</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=OilHeating</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.di_OilLevelOk_stat</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=OilHeating" NodeId="ns=1;s=do_OilHeat4" BrowseName="1:do_OilHeat4">
+        <ns1:DisplayName>do_OilHeat4</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=OilHeating</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.do_OilHeat4</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=OilHeating" NodeId="ns=1;s=do_OilHeat3" BrowseName="1:do_OilHeat3">
+        <ns1:DisplayName>do_OilHeat3</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=OilHeating</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.do_OilHeat3</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Float" AccessLevel="1" ParentNodeId="ns=1;s=OilHeating" NodeId="ns=1;s=ao_CoolWaterValve" BrowseName="1:ao_CoolWaterValve">
+        <ns1:DisplayName>ao_CoolWaterValve</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=ao_CoolWaterValve.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=3;s=system.VoltageV</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=OilHeating</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.ao_CoolWaterValve</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=ao_CoolWaterValve" NodeId="ns=1;s=ao_CoolWaterValve.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=OilHeating" NodeId="ns=1;s=do_OilHeat2" BrowseName="1:do_OilHeat2">
+        <ns1:DisplayName>do_OilHeat2</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=OilHeating</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.do_OilHeat2</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=OilHeating" NodeId="ns=1;s=do_OilHeat12" BrowseName="1:do_OilHeat12">
+        <ns1:DisplayName>do_OilHeat12</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=OilHeating</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.do_OilHeat12</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=OilHeating" NodeId="ns=1;s=di_OilLevelOk" BrowseName="1:di_OilLevelOk">
+        <ns1:DisplayName>di_OilLevelOk</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=OilHeating</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.di_OilLevelOk</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=OilHeating" NodeId="ns=1;s=do_OilHeat11" BrowseName="1:do_OilHeat11">
+        <ns1:DisplayName>do_OilHeat11</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=OilHeating</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.do_OilHeat11</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=OilHeating" NodeId="ns=1;s=sv_bOutputActive" BrowseName="1:sv_bOutputActive">
+        <ns1:DisplayName>sv_bOutputActive</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=OilHeating</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_bOutputActive</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=OilHeating" NodeId="ns=1;s=do_OilHeat10" BrowseName="1:do_OilHeat10">
+        <ns1:DisplayName>do_OilHeat10</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=OilHeating</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.do_OilHeat10</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=OilHeating" NodeId="ns=1;s=do_OilPreHeating" BrowseName="1:do_OilPreHeating">
+        <ns1:DisplayName>do_OilPreHeating</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=OilHeating</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.do_OilPreHeating</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=OilHeating" NodeId="ns=1;s=di_OilLevelPreOk" BrowseName="1:di_OilLevelPreOk">
+        <ns1:DisplayName>di_OilLevelPreOk</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=OilHeating</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.di_OilLevelPreOk</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=OilHeating" NodeId="ns=1;s=do_OilHeat" BrowseName="1:do_OilHeat">
+        <ns1:DisplayName>do_OilHeat</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=OilHeating</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.do_OilHeat</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Double" AccessLevel="3" ParentNodeId="ns=1;s=sv_ClControlParamCooling" NodeId="ns=1;s=sv_ClControlParamCooling.dDelayTime" BrowseName="1:dDelayTime">
+        <ns1:DisplayName>dDelayTime</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_ClControlParamCooling.dDelayTime.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=3;s=system.Time</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.dDelayTime</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                    <ManipulatorClass Unit="system.Time">
+                        <Divisor>1000000</Divisor>
+                        <Multiplier>0</Multiplier>
+                    </ManipulatorClass>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_ClControlParamCooling.dDelayTime" NodeId="ns=1;s=sv_ClControlParamCooling.dDelayTime.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAObject ParentNodeId="ns=1;s=sv_ClControlParamCooling" NodeId="ns=1;s=sv_ClControlParamCooling.pAnaInDataPos" BrowseName="1:pAnaInDataPos">
+        <ns1:DisplayName>pAnaInDataPos</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">ns=4;s=system.TAnaInData</ns1:Reference>
+            <ns1:Reference ReferenceType="HasDynamicComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.pAnaInDataPos^</NativeKey>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAObject>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=sv_ClControlParamCooling" NodeId="ns=1;s=sv_ClControlParamCooling.bOnOff" BrowseName="1:bOnOff">
+        <ns1:DisplayName>bOnOff</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_ClControlParamCooling.bOnOff.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.bOnOff</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_ClControlParamCooling.bOnOff" NodeId="ns=1;s=sv_ClControlParamCooling.bOnOff.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Double" AccessLevel="1" ParentNodeId="ns=1;s=sv_ClControlParamCooling.PIDT1_Param" NodeId="ns=1;s=sv_ClControlParamCooling.PIDT1_Param.dT1" BrowseName="1:dT1">
+        <ns1:DisplayName>dT1</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling.PIDT1_Param</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.PIDT1_Param.dT1</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Float" AccessLevel="3" ParentNodeId="ns=1;s=sv_ClControlParamCooling.PIDT1_Param" NodeId="ns=1;s=sv_ClControlParamCooling.PIDT1_Param.rUMin" BrowseName="1:rUMin">
+        <ns1:DisplayName>rUMin</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_ClControlParamCooling.PIDT1_Param.rUMin.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=3;s=system.Percent</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling.PIDT1_Param</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.PIDT1_Param.rUMin</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_ClControlParamCooling.PIDT1_Param.rUMin" NodeId="ns=1;s=sv_ClControlParamCooling.PIDT1_Param.rUMin.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Float" AccessLevel="1" ParentNodeId="ns=1;s=sv_ClControlParamCooling.PIDT1_Param" NodeId="ns=1;s=sv_ClControlParamCooling.PIDT1_Param.prUMinSelected" BrowseName="1:prUMinSelected">
+        <ns1:DisplayName>prUMinSelected</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasDynamicComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling.PIDT1_Param</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.PIDT1_Param.prUMinSelected^</NativeKey>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Float" AccessLevel="3" ParentNodeId="ns=1;s=sv_ClControlParamCooling.PIDT1_Param" NodeId="ns=1;s=sv_ClControlParamCooling.PIDT1_Param.rKSOffs" BrowseName="1:rKSOffs">
+        <ns1:DisplayName>rKSOffs</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling.PIDT1_Param</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.PIDT1_Param.rKSOffs</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Double" AccessLevel="3" ParentNodeId="ns=1;s=sv_ClControlParamCooling.PIDT1_Param" NodeId="ns=1;s=sv_ClControlParamCooling.PIDT1_Param.dTV" BrowseName="1:dTV">
+        <ns1:DisplayName>dTV</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_ClControlParamCooling.PIDT1_Param.dTV.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=3;s=system.Time</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling.PIDT1_Param</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.PIDT1_Param.dTV</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                    <ManipulatorClass Unit="system.Time">
+                        <Divisor>1000000</Divisor>
+                        <Multiplier>0</Multiplier>
+                    </ManipulatorClass>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_ClControlParamCooling.PIDT1_Param.dTV" NodeId="ns=1;s=sv_ClControlParamCooling.PIDT1_Param.dTV.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Float" AccessLevel="3" ParentNodeId="ns=1;s=sv_ClControlParamCooling.PIDT1_Param" NodeId="ns=1;s=sv_ClControlParamCooling.PIDT1_Param.rKR" BrowseName="1:rKR">
+        <ns1:DisplayName>rKR</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_ClControlParamCooling.PIDT1_Param.rKR.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling.PIDT1_Param</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.PIDT1_Param.rKR</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_ClControlParamCooling.PIDT1_Param.rKR" NodeId="ns=1;s=sv_ClControlParamCooling.PIDT1_Param.rKR.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Float" AccessLevel="3" ParentNodeId="ns=1;s=sv_ClControlParamCooling.PIDT1_Param" NodeId="ns=1;s=sv_ClControlParamCooling.PIDT1_Param.rKS" BrowseName="1:rKS">
+        <ns1:DisplayName>rKS</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_ClControlParamCooling.PIDT1_Param.rKS.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling.PIDT1_Param</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.PIDT1_Param.rKS</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_ClControlParamCooling.PIDT1_Param.rKS" NodeId="ns=1;s=sv_ClControlParamCooling.PIDT1_Param.rKS.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Double" AccessLevel="3" ParentNodeId="ns=1;s=sv_ClControlParamCooling.PIDT1_Param" NodeId="ns=1;s=sv_ClControlParamCooling.PIDT1_Param.dTN" BrowseName="1:dTN">
+        <ns1:DisplayName>dTN</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_ClControlParamCooling.PIDT1_Param.dTN.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=3;s=system.Time</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling.PIDT1_Param</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.PIDT1_Param.dTN</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                    <ManipulatorClass Unit="system.Time">
+                        <Divisor>1000000</Divisor>
+                        <Multiplier>0</Multiplier>
+                    </ManipulatorClass>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_ClControlParamCooling.PIDT1_Param.dTN" NodeId="ns=1;s=sv_ClControlParamCooling.PIDT1_Param.dTN.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Float" AccessLevel="3" ParentNodeId="ns=1;s=sv_ClControlParamCooling.PIDT1_Param" NodeId="ns=1;s=sv_ClControlParamCooling.PIDT1_Param.rUMax" BrowseName="1:rUMax">
+        <ns1:DisplayName>rUMax</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_ClControlParamCooling.PIDT1_Param.rUMax.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=3;s=system.Percent</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling.PIDT1_Param</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.PIDT1_Param.rUMax</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_ClControlParamCooling.PIDT1_Param.rUMax" NodeId="ns=1;s=sv_ClControlParamCooling.PIDT1_Param.rUMax.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAObject ParentNodeId="ns=1;s=sv_ClControlParamCooling" NodeId="ns=1;s=sv_ClControlParamCooling.PIDT1_Param" BrowseName="1:PIDT1_Param">
+        <ns1:DisplayName>PIDT1_Param</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">ns=4;s=system.TCTRL_PIDT1_Param</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.PIDT1_Param</NativeKey>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAObject>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=sv_ClControlParamCooling" NodeId="ns=1;s=sv_ClControlParamCooling.bStartActValAsSetVal" BrowseName="1:bStartActValAsSetVal">
+        <ns1:DisplayName>bStartActValAsSetVal</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.bStartActValAsSetVal</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Double" AccessLevel="1" ParentNodeId="ns=1;s=sv_ClControlParamCooling" NodeId="ns=1;s=sv_ClControlParamCooling.dSmoothTime" BrowseName="1:dSmoothTime">
+        <ns1:DisplayName>dSmoothTime</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.dSmoothTime</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=sv_ClControlParamCooling" NodeId="ns=1;s=sv_ClControlParamCooling.bStopControlAtProfileEnd" BrowseName="1:bStopControlAtProfileEnd">
+        <ns1:DisplayName>bStopControlAtProfileEnd</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.bStopControlAtProfileEnd</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="system.TClControlParamInit" AccessLevel="3" ParentNodeId="ns=1;s=sv_ClControlParamCooling" NodeId="ns=1;s=sv_ClControlParamCooling.Init" BrowseName="1:Init">
+        <ns1:DisplayName>Init</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.Init</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Float" AccessLevel="3" ParentNodeId="ns=1;s=sv_ClControlParamCooling" NodeId="ns=1;s=sv_ClControlParamCooling.rPercentControlStart" BrowseName="1:rPercentControlStart">
+        <ns1:DisplayName>rPercentControlStart</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_ClControlParamCooling.rPercentControlStart.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=3;s=system.Percent</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.rPercentControlStart</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_ClControlParamCooling.rPercentControlStart" NodeId="ns=1;s=sv_ClControlParamCooling.rPercentControlStart.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Float" AccessLevel="1" ParentNodeId="ns=1;s=sv_ClControlParamCooling" NodeId="ns=1;s=sv_ClControlParamCooling.rNormScaleStartReduceGain" BrowseName="1:rNormScaleStartReduceGain">
+        <ns1:DisplayName>rNormScaleStartReduceGain</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.rNormScaleStartReduceGain</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=sv_ClControlParamCooling" NodeId="ns=1;s=sv_ClControlParamCooling.bAntiWindupAtIntegratorStop" BrowseName="1:bAntiWindupAtIntegratorStop">
+        <ns1:DisplayName>bAntiWindupAtIntegratorStop</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.bAntiWindupAtIntegratorStop</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=sv_ClControlParamCooling" NodeId="ns=1;s=sv_ClControlParamCooling.pbRedGainPL" BrowseName="1:pbRedGainPL">
+        <ns1:DisplayName>pbRedGainPL</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasDynamicComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.pbRedGainPL^</NativeKey>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Double" AccessLevel="3" ParentNodeId="ns=1;s=sv_ClControlParamCooling" NodeId="ns=1;s=sv_ClControlParamCooling.dDeadTime" BrowseName="1:dDeadTime">
+        <ns1:DisplayName>dDeadTime</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_ClControlParamCooling.dDeadTime.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=3;s=system.Time</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.dDeadTime</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                    <ManipulatorClass Unit="system.Time">
+                        <Divisor>1000000</Divisor>
+                        <Multiplier>0</Multiplier>
+                    </ManipulatorClass>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_ClControlParamCooling.dDeadTime" NodeId="ns=1;s=sv_ClControlParamCooling.dDeadTime.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Float" AccessLevel="1" ParentNodeId="ns=1;s=sv_ClControlParamCooling" NodeId="ns=1;s=sv_ClControlParamCooling.rGainRedOnBlock" BrowseName="1:rGainRedOnBlock">
+        <ns1:DisplayName>rGainRedOnBlock</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.rGainRedOnBlock</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Float" AccessLevel="3" ParentNodeId="ns=1;s=sv_ClControlParamCooling" NodeId="ns=1;s=sv_ClControlParamCooling.rUStart" BrowseName="1:rUStart">
+        <ns1:DisplayName>rUStart</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_ClControlParamCooling.rUStart.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=3;s=system.Percent</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.rUStart</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_ClControlParamCooling.rUStart" NodeId="ns=1;s=sv_ClControlParamCooling.rUStart.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=sv_ClControlParamCooling" NodeId="ns=1;s=sv_ClControlParamCooling.bAntiWindupAtPumpPLimit" BrowseName="1:bAntiWindupAtPumpPLimit">
+        <ns1:DisplayName>bAntiWindupAtPumpPLimit</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.bAntiWindupAtPumpPLimit</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAObject ParentNodeId="ns=1;s=sv_ClControlParamCooling" NodeId="ns=1;s=sv_ClControlParamCooling.pLinearization" BrowseName="1:pLinearization">
+        <ns1:DisplayName>pLinearization</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">ns=4;s=system.TLintab</ns1:Reference>
+            <ns1:Reference ReferenceType="HasDynamicComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.pLinearization^</NativeKey>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAObject>
+    <ns1:UAObject ParentNodeId="ns=1;s=sv_ClControlParamCooling" NodeId="ns=1;s=sv_ClControlParamCooling.pVelocityFeedForward" BrowseName="1:pVelocityFeedForward">
+        <ns1:DisplayName>pVelocityFeedForward</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">ns=4;s=system.TVelocityFeedForward</ns1:Reference>
+            <ns1:Reference ReferenceType="HasDynamicComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.pVelocityFeedForward^</NativeKey>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAObject>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=sv_ClControlParamCooling" NodeId="ns=1;s=sv_ClControlParamCooling.bLTOutYAxis" BrowseName="1:bLTOutYAxis">
+        <ns1:DisplayName>bLTOutYAxis</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.bLTOutYAxis</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Double" AccessLevel="1" ParentNodeId="ns=1;s=sv_ClControlParamCooling" NodeId="ns=1;s=sv_ClControlParamCooling.dTVPLimit" BrowseName="1:dTVPLimit">
+        <ns1:DisplayName>dTVPLimit</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.dTVPLimit</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=sv_ClControlParamCooling" NodeId="ns=1;s=sv_ClControlParamCooling.bActivated" BrowseName="1:bActivated">
+        <ns1:DisplayName>bActivated</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.bActivated</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Float" AccessLevel="3" ParentNodeId="ns=1;s=sv_ClControlParamCooling" NodeId="ns=1;s=sv_ClControlParamCooling.rGainPLRedOnBlock" BrowseName="1:rGainPLRedOnBlock">
+        <ns1:DisplayName>rGainPLRedOnBlock</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.rGainPLRedOnBlock</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>13</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=sv_ClControlParamCooling" NodeId="ns=1;s=sv_ClControlParamCooling.bCalcIntOnLimit" BrowseName="1:bCalcIntOnLimit">
+        <ns1:DisplayName>bCalcIntOnLimit</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.bCalcIntOnLimit</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="system.TClControlParamType" AccessLevel="3" ParentNodeId="ns=1;s=sv_ClControlParamCooling" NodeId="ns=1;s=sv_ClControlParamCooling.Type" BrowseName="1:Type">
+        <ns1:DisplayName>Type</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.Type</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Float" AccessLevel="3" ParentNodeId="ns=1;s=sv_ClControlParamCooling" NodeId="ns=1;s=sv_ClControlParamCooling.rBoostTn" BrowseName="1:rBoostTn">
+        <ns1:DisplayName>rBoostTn</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_ClControlParamCooling</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling.rBoostTn</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAObject ParentNodeId="ns=1;s=OilHeating" NodeId="ns=1;s=sv_ClControlParamCooling" BrowseName="1:sv_ClControlParamCooling">
+        <ns1:DisplayName>sv_ClControlParamCooling</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">ns=4;s=system.TClControlParam</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=OilHeating</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.sv_ClControlParamCooling</NativeKey>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAObject>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=OilHeating" NodeId="ns=1;s=di_OilLevelOk_sim" BrowseName="1:di_OilLevelOk_sim">
+        <ns1:DisplayName>di_OilLevelOk_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=OilHeating</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>OilHeating.di_OilLevelOk_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+</ns1:UANodeSet>

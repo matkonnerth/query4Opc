@@ -1,0 +1,956 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns1:UANodeSet xmlns:ns1="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd" xmlns:ns2="http://opcfoundation.org/UA/2008/02/Types.xsd">
+    <ns1:NamespaceUris>
+        <ns1:Uri>http://engelglobal.com/IMM/Machine/</ns1:Uri>
+        <ns1:Uri>http://engelglobal.com/IMM/</ns1:Uri>
+        <ns1:Uri>http://engelglobal.com/IMM/Types/</ns1:Uri>
+    </ns1:NamespaceUris>
+    <ns1:Aliases>
+        <ns1:Alias Alias="Boolean">i=1</ns1:Alias>
+        <ns1:Alias Alias="String">i=12</ns1:Alias>
+        <ns1:Alias Alias="AnalogItemType">i=2368</ns1:Alias>
+        <ns1:Alias Alias="Organizes">i=35</ns1:Alias>
+        <ns1:Alias Alias="Int16">i=4</ns1:Alias>
+        <ns1:Alias Alias="HasTypeDefinition">i=40</ns1:Alias>
+        <ns1:Alias Alias="HasProperty">i=46</ns1:Alias>
+        <ns1:Alias Alias="HasComponent">i=47</ns1:Alias>
+        <ns1:Alias Alias="FolderType">i=61</ns1:Alias>
+        <ns1:Alias Alias="BaseDataVariableType">i=63</ns1:Alias>
+        <ns1:Alias Alias="PropertyType">i=68</ns1:Alias>
+        <ns1:Alias Alias="Int64">i=8</ns1:Alias>
+        <ns1:Alias Alias="Range">i=884</ns1:Alias>
+        <ns1:Alias Alias="system.TReleaseSafety">ns=3;s=system.TReleaseSafety</ns1:Alias>
+    </ns1:Aliases>
+    <ns1:Extensions>
+        <ns1:Extension>
+            <ns3:GeneratorInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                <Generatorversion>1.3-SNAPSHOT</Generatorversion>
+                <Generationdatetime>2020-02-13T15:39:15.540+01:00</Generationdatetime>
+            </ns3:GeneratorInformation>
+        </ns1:Extension>
+    </ns1:Extensions>
+    <ns1:UAObject NodeId="ns=1;s=Machine" BrowseName="1:Machine">
+        <ns1:DisplayName>Machine</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">FolderType</ns1:Reference>
+            <ns1:Reference ReferenceType="Organizes" IsForward="false">ns=2;s=IMM.Project</ns1:Reference>
+        </ns1:References>
+    </ns1:UAObject>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_ConfigButton6_1_sim" BrowseName="1:di_ConfigButton6_1_sim">
+        <ns1:DisplayName>di_ConfigButton6_1_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_ConfigButton6_1_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_ConfigButton2_1" BrowseName="1:di_ConfigButton2_1">
+        <ns1:DisplayName>di_ConfigButton2_1</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_ConfigButton2_1</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Int16" AccessLevel="3" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=sv_iSwitchPreInjCycleDyn" BrowseName="1:sv_iSwitchPreInjCycleDyn">
+        <ns1:DisplayName>sv_iSwitchPreInjCycleDyn</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.sv_iSwitchPreInjCycleDyn</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>1</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_ConfigButton2_sim" BrowseName="1:di_ConfigButton2_sim">
+        <ns1:DisplayName>di_ConfigButton2_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_ConfigButton2_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_ConfigButton4_1" BrowseName="1:di_ConfigButton4_1">
+        <ns1:DisplayName>di_ConfigButton4_1</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_ConfigButton4_1</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_ConfigButton6_1" BrowseName="1:di_ConfigButton6_1">
+        <ns1:DisplayName>di_ConfigButton6_1</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_ConfigButton6_1</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_ConfigButton8_1" BrowseName="1:di_ConfigButton8_1">
+        <ns1:DisplayName>di_ConfigButton8_1</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_ConfigButton8_1</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_SwitchCommissioning" BrowseName="1:di_SwitchCommissioning">
+        <ns1:DisplayName>di_SwitchCommissioning</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_SwitchCommissioning</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_SwitchShutDownCycle_sim" BrowseName="1:di_SwitchShutDownCycle_sim">
+        <ns1:DisplayName>di_SwitchShutDownCycle_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_SwitchShutDownCycle_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_ConfigButton3_1_sim" BrowseName="1:di_ConfigButton3_1_sim">
+        <ns1:DisplayName>di_ConfigButton3_1_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_ConfigButton3_1_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Int16" AccessLevel="1" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=sv_iTempLicenseUsage" BrowseName="1:sv_iTempLicenseUsage">
+        <ns1:DisplayName>sv_iTempLicenseUsage</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.sv_iTempLicenseUsage</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_SwitchPreInjCycle" BrowseName="1:di_SwitchPreInjCycle">
+        <ns1:DisplayName>di_SwitchPreInjCycle</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_SwitchPreInjCycle</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_ConfigButton1_sim" BrowseName="1:di_ConfigButton1_sim">
+        <ns1:DisplayName>di_ConfigButton1_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_ConfigButton1_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_SwitchCommissioning_sim" BrowseName="1:di_SwitchCommissioning_sim">
+        <ns1:DisplayName>di_SwitchCommissioning_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_SwitchCommissioning_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_ConfigButton4" BrowseName="1:di_ConfigButton4">
+        <ns1:DisplayName>di_ConfigButton4</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_ConfigButton4</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_ConfigButton5" BrowseName="1:di_ConfigButton5">
+        <ns1:DisplayName>di_ConfigButton5</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_ConfigButton5</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_ConfigButton2" BrowseName="1:di_ConfigButton2">
+        <ns1:DisplayName>di_ConfigButton2</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_ConfigButton2</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_ConfigButton3" BrowseName="1:di_ConfigButton3">
+        <ns1:DisplayName>di_ConfigButton3</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_ConfigButton3</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_ConfigButton7_1_sim" BrowseName="1:di_ConfigButton7_1_sim">
+        <ns1:DisplayName>di_ConfigButton7_1_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_ConfigButton7_1_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_ConfigButton1" BrowseName="1:di_ConfigButton1">
+        <ns1:DisplayName>di_ConfigButton1</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_ConfigButton1</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_SwitchHomerun" BrowseName="1:di_SwitchHomerun">
+        <ns1:DisplayName>di_SwitchHomerun</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_SwitchHomerun</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_ConfigButton4_sim" BrowseName="1:di_ConfigButton4_sim">
+        <ns1:DisplayName>di_ConfigButton4_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_ConfigButton4_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_ConfigButton8" BrowseName="1:di_ConfigButton8">
+        <ns1:DisplayName>di_ConfigButton8</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_ConfigButton8</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Int16" AccessLevel="3" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=sv_iSwitchShutDownCycleDyn" BrowseName="1:sv_iSwitchShutDownCycleDyn">
+        <ns1:DisplayName>sv_iSwitchShutDownCycleDyn</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.sv_iSwitchShutDownCycleDyn</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>1</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_ConfigButton6" BrowseName="1:di_ConfigButton6">
+        <ns1:DisplayName>di_ConfigButton6</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_ConfigButton6</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_ConfigButton7" BrowseName="1:di_ConfigButton7">
+        <ns1:DisplayName>di_ConfigButton7</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_ConfigButton7</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Int64" AccessLevel="1" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=sv_lLicenseHandShakeFromIec" BrowseName="1:sv_lLicenseHandShakeFromIec">
+        <ns1:DisplayName>sv_lLicenseHandShakeFromIec</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.sv_lLicenseHandShakeFromIec</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="system.TReleaseSafety" AccessLevel="3" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=sv_ReleaseSafety" BrowseName="1:sv_ReleaseSafety">
+        <ns1:DisplayName>sv_ReleaseSafety</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">AnalogItemType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasProperty" IsForward="true">ns=1;s=sv_ReleaseSafety.EURange</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.sv_ReleaseSafety</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>3</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Range" AccessLevel="1" ParentNodeId="ns=1;s=sv_ReleaseSafety" NodeId="ns=1;s=sv_ReleaseSafety.EURange" BrowseName="0:EURange">
+        <ns1:DisplayName>EURange</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">PropertyType</ns1:Reference>
+        </ns1:References>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_SwitchPreInjCycle_sim" BrowseName="1:di_SwitchPreInjCycle_sim">
+        <ns1:DisplayName>di_SwitchPreInjCycle_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_SwitchPreInjCycle_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_ConfigButton3_sim" BrowseName="1:di_ConfigButton3_sim">
+        <ns1:DisplayName>di_ConfigButton3_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_ConfigButton3_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Int64" AccessLevel="1" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=sv_iHWSerialVIS" BrowseName="1:sv_iHWSerialVIS">
+        <ns1:DisplayName>sv_iHWSerialVIS</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.sv_iHWSerialVIS</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="String" AccessLevel="0" ParentNodeId="ns=1;s=sv_PrivateKey" NodeId="ns=1;s=sv_PrivateKey.sMantissa" BrowseName="1:sMantissa">
+        <ns1:DisplayName>sMantissa</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_PrivateKey</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.sv_PrivateKey.sMantissa</NativeKey>
+                    <DisplayLevel>16</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="String" AccessLevel="0" ParentNodeId="ns=1;s=sv_PrivateKey" NodeId="ns=1;s=sv_PrivateKey.sExponent" BrowseName="1:sExponent">
+        <ns1:DisplayName>sExponent</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=sv_PrivateKey</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.sv_PrivateKey.sExponent</NativeKey>
+                    <DisplayLevel>16</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAObject ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=sv_PrivateKey" BrowseName="1:sv_PrivateKey">
+        <ns1:DisplayName>sv_PrivateKey</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">ns=3;s=Machine.TPrivateKey</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.sv_PrivateKey</NativeKey>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAObject>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_ConfigButton1_1" BrowseName="1:di_ConfigButton1_1">
+        <ns1:DisplayName>di_ConfigButton1_1</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_ConfigButton1_1</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_ConfigButton3_1" BrowseName="1:di_ConfigButton3_1">
+        <ns1:DisplayName>di_ConfigButton3_1</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_ConfigButton3_1</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_ConfigButton8_sim" BrowseName="1:di_ConfigButton8_sim">
+        <ns1:DisplayName>di_ConfigButton8_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_ConfigButton8_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_ConfigButton5_1" BrowseName="1:di_ConfigButton5_1">
+        <ns1:DisplayName>di_ConfigButton5_1</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_ConfigButton5_1</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_SwitchHomerun_sim" BrowseName="1:di_SwitchHomerun_sim">
+        <ns1:DisplayName>di_SwitchHomerun_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_SwitchHomerun_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_ConfigButton8_1_sim" BrowseName="1:di_ConfigButton8_1_sim">
+        <ns1:DisplayName>di_ConfigButton8_1_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_ConfigButton8_1_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Int64" AccessLevel="1" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=sv_lLicenseHandShakeFromVis" BrowseName="1:sv_lLicenseHandShakeFromVis">
+        <ns1:DisplayName>sv_lLicenseHandShakeFromVis</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.sv_lLicenseHandShakeFromVis</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_ConfigButton7_1" BrowseName="1:di_ConfigButton7_1">
+        <ns1:DisplayName>di_ConfigButton7_1</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_ConfigButton7_1</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_Commissioning_sim" BrowseName="1:di_Commissioning_sim">
+        <ns1:DisplayName>di_Commissioning_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_Commissioning_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=sv_bBlowOutValves" BrowseName="1:sv_bBlowOutValves">
+        <ns1:DisplayName>sv_bBlowOutValves</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.sv_bBlowOutValves</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_ConfigButton4_1_sim" BrowseName="1:di_ConfigButton4_1_sim">
+        <ns1:DisplayName>di_ConfigButton4_1_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_ConfigButton4_1_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_SwitchShutDownCycle" BrowseName="1:di_SwitchShutDownCycle">
+        <ns1:DisplayName>di_SwitchShutDownCycle</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_SwitchShutDownCycle</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_ConfigButton5_sim" BrowseName="1:di_ConfigButton5_sim">
+        <ns1:DisplayName>di_ConfigButton5_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_ConfigButton5_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_ConfigButton1_1_sim" BrowseName="1:di_ConfigButton1_1_sim">
+        <ns1:DisplayName>di_ConfigButton1_1_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_ConfigButton1_1_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="1" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_Commissioning" BrowseName="1:di_Commissioning">
+        <ns1:DisplayName>di_Commissioning</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_Commissioning</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>16</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Int16" AccessLevel="3" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=sv_iSwitchStartupParaDyn" BrowseName="1:sv_iSwitchStartupParaDyn">
+        <ns1:DisplayName>sv_iSwitchStartupParaDyn</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.sv_iSwitchStartupParaDyn</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>1</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_ConfigButton6_sim" BrowseName="1:di_ConfigButton6_sim">
+        <ns1:DisplayName>di_ConfigButton6_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_ConfigButton6_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=sv_bShowStorage" BrowseName="1:sv_bShowStorage">
+        <ns1:DisplayName>sv_bShowStorage</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.sv_bShowStorage</NativeKey>
+                    <DisplayLevel>13</DisplayLevel>
+                    <InputLevel>13</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Int16" AccessLevel="3" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=sv_iSwitchHomerunDyn" BrowseName="1:sv_iSwitchHomerunDyn">
+        <ns1:DisplayName>sv_iSwitchHomerunDyn</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.sv_iSwitchHomerunDyn</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>1</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_ConfigButton2_1_sim" BrowseName="1:di_ConfigButton2_1_sim">
+        <ns1:DisplayName>di_ConfigButton2_1_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_ConfigButton2_1_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_ConfigButton5_1_sim" BrowseName="1:di_ConfigButton5_1_sim">
+        <ns1:DisplayName>di_ConfigButton5_1_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_ConfigButton5_1_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Int64" AccessLevel="1" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=sv_lLicenseHandShake" BrowseName="1:sv_lLicenseHandShake">
+        <ns1:DisplayName>sv_lLicenseHandShake</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.sv_lLicenseHandShake</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>14</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+    <ns1:UAVariable DataType="Boolean" AccessLevel="3" ParentNodeId="ns=1;s=Machine" NodeId="ns=1;s=di_ConfigButton7_sim" BrowseName="1:di_ConfigButton7_sim">
+        <ns1:DisplayName>di_ConfigButton7_sim</ns1:DisplayName>
+        <ns1:References>
+            <ns1:Reference ReferenceType="HasTypeDefinition" IsForward="true">BaseDataVariableType</ns1:Reference>
+            <ns1:Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</ns1:Reference>
+        </ns1:References>
+        <ns1:Extensions>
+            <ns1:Extension>
+                <ns3:ImmVariableInformation xmlns:ns3="http://engelglobal.com/Types.xsd">
+                    <NativeKey>Machine.di_ConfigButton7_sim</NativeKey>
+                    <DisplayLevel>1</DisplayLevel>
+                    <InputLevel>11</InputLevel>
+                </ns3:ImmVariableInformation>
+            </ns1:Extension>
+        </ns1:Extensions>
+    </ns1:UAVariable>
+</ns1:UANodeSet>
