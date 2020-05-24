@@ -1,0 +1,5 @@
+# starting the server
+redis-server --loadmodule /home/matzy/git/RedisGraph/src/redisgraph.so
+
+#import
+python bulk_insert.py GRAPH_DEMO -n example/Person.csv -n example/Country.csv -r example/KNOWS.csv -r example/VISITED.csv
