@@ -20,7 +20,7 @@ void QueryLite::hierachicalVisit(UA_Server *server, const UA_NodeId &root,
     for (UA_ReferenceDescription *rd = br.references;
          rd != br.references + br.referencesSize; rd++) {
 
-      filter->filter(root, *rd);
+      filter->filter(Result{root, *rd});
 
       hierachicalVisit(server, rd->nodeId.nodeId, referenceType, filter);
     }
@@ -31,17 +31,22 @@ void QueryLite::hierachicalVisit(UA_Server *server, const UA_NodeId &root,
 std::vector<Result> QueryLite::lookupInstances(UA_Server *server,
                                                const UA_NodeId &rootId,
                                                const UA_NodeId &type) {
-  TakeAllFilter takeAll{};
+  Sink types;
 
   hierachicalVisit(server, type, UA_NODEID_NUMERIC(0, UA_NS0ID_HASSUBTYPE),
-                   &takeAll);
-  takeAll.results().push_back(type);
-  std::cout << "types found: " << takeAll.results().size() << "\n";
+                   &types);
+  UA_ReferenceDescription typeRef{};
+  typeRef.nodeId.nodeId = type;
+  types.results().push_back(Result{UA_NODEID_NUMERIC(0, 0), typeRef});
+  std::cout << "types found: " << types.results().size() << "\n";
 
-  TypeFilter instancesOfType{takeAll.results()};
+  TypeFilter instancesOfType{types.results()};
+  Sink instances;
+  instancesOfType.connect(&instances);
 
   hierachicalVisit(server, rootId,
                    UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES),
                    &instancesOfType);
-  return instancesOfType.results();
+
+  return instances.results();
 }
