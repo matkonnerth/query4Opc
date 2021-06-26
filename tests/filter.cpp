@@ -7,7 +7,9 @@ MATCH(obj:ObjectNode)-[ref:HAS_TYPEDEFINITION]-(objType:Movie) RETURN obj
 MATCH(obj:ObjectNode)-[ref:HAS_TYPEDEFINITION]-(objType:Movie) RETURN obj
 How to specify a subtree?
 How to specify all subtypes?
-maybe run a query against all typedefinition, first a query to find all subtypes have to be performed
+
+MATCH(type:ObjectType)-[ref:HAS_SUBTYPE]-(type:ObjectType{nodeId:"MyType"})
+MATCH(obj:ObjectNode)-[ref:HAS_TYPEDEFINITION]-(type)
 */
 
 int main() {
