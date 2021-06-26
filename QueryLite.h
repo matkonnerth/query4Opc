@@ -13,5 +13,5 @@ public:
 
 private:
   static void hierachicalVisit(UA_Server *server, const UA_NodeId &root,
-                      const UA_NodeId &referenceType, AbstractFilter* filter);
+                      const UA_NodeId &referenceType, AbstractFilter<Result>* filter);
 };

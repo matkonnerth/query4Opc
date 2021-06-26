@@ -12,13 +12,13 @@ int main() {
     refs.emplace_back(ref);
   }
 
-  Sink s{};
+  Sink<Result> s{};
   UA_ReferenceDescription typeRef{};
   typeRef.nodeId.nodeId = UA_NODEID_NUMERIC(0, 58);
-  TypeFilter typeFilter{std::vector<Result>{Result{UA_NODEID_NUMERIC(0, 58), typeRef}}};
-  TypeFilter typeFilter2{std::vector<Result>{Result{UA_NODEID_NUMERIC(0, 58), typeRef}}};
+  TypeFilter<Result> typeFilter{std::vector<Result>{Result{UA_NODEID_NUMERIC(0, 58), typeRef}}};
+  TypeFilter<Result> typeFilter2{std::vector<Result>{Result{UA_NODEID_NUMERIC(0, 58), typeRef}}};
 
-  TakeAllFilter ta{};
+  TakeAllFilter<Result> ta{};
 
   typeFilter.connect(&typeFilter2);
   typeFilter2.connect(&ta);

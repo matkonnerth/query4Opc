@@ -3,7 +3,7 @@
 
 void QueryLite::hierachicalVisit(UA_Server *server, const UA_NodeId &root,
                                  const UA_NodeId &referenceType,
-                                 AbstractFilter *filter) {
+                                 AbstractFilter<Result> *filter) {
   UA_BrowseDescription bd;
   UA_BrowseDescription_init(&bd);
   bd.browseDirection = UA_BROWSEDIRECTION_FORWARD;
@@ -31,7 +31,7 @@ void QueryLite::hierachicalVisit(UA_Server *server, const UA_NodeId &root,
 std::vector<Result> QueryLite::lookupInstances(UA_Server *server,
                                                const UA_NodeId &rootId,
                                                const UA_NodeId &type) {
-  Sink types;
+  Sink<Result> types;
 
   hierachicalVisit(server, type, UA_NODEID_NUMERIC(0, UA_NS0ID_HASSUBTYPE),
                    &types);
@@ -40,8 +40,8 @@ std::vector<Result> QueryLite::lookupInstances(UA_Server *server,
   types.results().push_back(Result{UA_NODEID_NUMERIC(0, 0), typeRef});
   std::cout << "types found: " << types.results().size() << "\n";
 
-  TypeFilter instancesOfType{types.results()};
-  Sink instances;
+  TypeFilter<Result> instancesOfType{types.results()};
+  Sink<Result> instances;
   instancesOfType.connect(&instances);
 
   hierachicalVisit(server, rootId,

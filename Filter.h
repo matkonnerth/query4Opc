@@ -7,51 +7,55 @@ struct Result {
   UA_ReferenceDescription target;
 };
 
+template<typename T>
 class AbstractFilter {
 public:
-  virtual void filter(Result &&input) = 0;
+  virtual void filter(T &&input) = 0;
   virtual ~AbstractFilter() = default;
 };
 
-class Sink : public AbstractFilter {
+template<typename T>
+class Sink : public AbstractFilter<T> {
 public:
-  void filter(Result &&r) override { res.emplace_back(r); }
+  void filter(T &&r) override { res.emplace_back(r); }
 
   const auto &results() const { return res; }
   auto &results() { return res; }
 
 private:
-  std::vector<Result> res;
+  std::vector<T> res;
 };
 
-template <typename Derived> class Filter : public AbstractFilter {
+template <typename T, typename Derived> class Filter : public AbstractFilter<T>{
 public:
-  void filter(Result &&input) override {
+  void filter(T &&input) override {
     if (match(input)) {
       m_nextFilter->filter(std::move(input));
     }
   }
 
-  void connect(AbstractFilter *filter) { m_nextFilter = filter; }
+  void connect(AbstractFilter<T> *filter) { m_nextFilter = filter; }
 
 private:
-  bool match(const Result &input) {
+  bool match(const T &input) {
     Derived *d = static_cast<Derived *>(this);
     return d->match(input);
   }
-  AbstractFilter *m_nextFilter;
+  AbstractFilter<T> *m_nextFilter;
 };
 
-class TakeAllFilter : public Filter<TakeAllFilter> {
+template<typename T>
+class TakeAllFilter : public Filter<T, TakeAllFilter<T>> {
 public:
-  bool match(const Result &input) { return true; }
+  bool match(const T&input) { return true; }
 };
 
-class TypeFilter : public Filter<TypeFilter> {
+template<typename T>
+class TypeFilter : public Filter<T, TypeFilter<T>> {
 public:
-  TypeFilter(const std::vector<Result> &types) : m_types{types} {}
+  TypeFilter(const std::vector<T> &types) : m_types{types} {}
 
-  bool match(const Result &input) {
+  bool match(const T &input) {
     for (const auto &type : m_types) {
       if (UA_NodeId_equal(&type.target.nodeId.nodeId,
                           &input.target.typeDefinition.nodeId)) {
@@ -62,7 +66,7 @@ public:
   }
 
 private:
-  std::vector<Result> m_types;
+  std::vector<T> m_types;
 };
 
 /*
