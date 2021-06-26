@@ -10,3 +10,5 @@ target_link_libraries(server PRIVATE open62541::open62541)
 target_link_libraries(server PRIVATE NodesetLoader)
 
 add_subdirectory(csvExport)
+
+add_subdirectory(tests)
