@@ -2,20 +2,27 @@
 #include <open62541/server.h>
 #include <vector>
 
+/*
+template <typename Derived>
+struct TypeDefinitionTrait {
+  UA_NodeId typeDefinition() {
+    Derived *d = static_cast<Derived *>(this);
+    return d->typeDefinition();
+  }
+};
+*/
 struct Result {
   UA_NodeId parentId;
   UA_ReferenceDescription target;
 };
 
-template<typename T>
-class AbstractFilter {
+template <typename T> class AbstractFilter {
 public:
   virtual void filter(T &&input) = 0;
   virtual ~AbstractFilter() = default;
 };
 
-template<typename T>
-class Sink : public AbstractFilter<T> {
+template <typename T> class Sink : public AbstractFilter<T> {
 public:
   void filter(T &&r) override { res.emplace_back(r); }
 
@@ -26,7 +33,8 @@ private:
   std::vector<T> res;
 };
 
-template <typename T, typename Derived> class Filter : public AbstractFilter<T>{
+template <typename T, typename Derived>
+class Filter : public AbstractFilter<T> {
 public:
   void filter(T &&input) override {
     if (match(input)) {
@@ -44,14 +52,12 @@ private:
   AbstractFilter<T> *m_nextFilter;
 };
 
-template<typename T>
-class TakeAllFilter : public Filter<T, TakeAllFilter<T>> {
+template <typename T> class TakeAllFilter : public Filter<T, TakeAllFilter<T>> {
 public:
-  bool match(const T&input) { return true; }
+  bool match(const T &input) { return true; }
 };
 
-template<typename T>
-class TypeFilter : public Filter<T, TypeFilter<T>> {
+template <typename T> class TypeFilter : public Filter<T, TypeFilter<T>> {
 public:
   TypeFilter(const std::vector<T> &types) : m_types{types} {}
 

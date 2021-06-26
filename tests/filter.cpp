@@ -1,6 +1,15 @@
 #include "Filter.h"
 #include <iostream>
 
+/*
+MATCH(obj:ObjectNode)-[ref:HAS_TYPEDEFINITION]-(objType:Movie) RETURN obj
+
+MATCH(obj:ObjectNode)-[ref:HAS_TYPEDEFINITION]-(objType:Movie) RETURN obj
+How to specify a subtree?
+How to specify all subtypes?
+maybe run a query against all typedefinition, first a query to find all subtypes have to be performed
+*/
+
 int main() {
 
   std::vector<UA_ReferenceDescription> refs;
