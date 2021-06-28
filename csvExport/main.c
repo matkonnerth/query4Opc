@@ -58,7 +58,7 @@ int main(int argc, char *argv[]) {
     if (!file) {
       printf("could open %s file\n", NODECLASS_NAME[i]);
     }
-    fprintf(file, "id,browseName\n");
+    fprintf(file, "NodeId:ID,browseName\n");
     fclose(file);
   }
 
@@ -79,7 +79,7 @@ int main(int argc, char *argv[]) {
       return 1;
     }
     NodesetLoader_sort(loader);
-    fprintf(refs, "src,dest,type\n");
+    fprintf(refs, ":START_ID,:END_ID,:TYPE\n");
 
     for (int i = 0; i < NODECLASS_COUNT; i++) {
       TNode **nodes = NULL;
