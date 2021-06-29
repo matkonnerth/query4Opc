@@ -11,6 +11,10 @@
 #include <string.h>
 
 void dumpReference(void *context, TNode *node) {
+  if(!(node->nodeClass==NODECLASS_OBJECT || node->nodeClass==NODECLASS_OBJECTTYPE))
+  {
+    return;
+  }
   FILE *f = (FILE *)context;
   Reference *hierachicalRef = node->hierachicalRefs;
   while (hierachicalRef) {
