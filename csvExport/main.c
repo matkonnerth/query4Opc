@@ -83,7 +83,7 @@ int main(int argc, char *argv[]) {
       return 1;
     }
     NodesetLoader_sort(loader);
-    fprintf(refs, ":START_ID,:END_ID,:TYPE\n");
+    fprintf(refs, "START_ID,END_ID,TYPE\n");
 
     for (int i = 0; i < NODECLASS_COUNT; i++) {
       TNode **nodes = NULL;
