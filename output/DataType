@@ -1,4 +1,4 @@
-NodeId:ID,browseName
+NodeId,browseName
 0:i=24,BaseDataType
 0:i=25,DiagnosticInfo
 0:i=23,DataValue

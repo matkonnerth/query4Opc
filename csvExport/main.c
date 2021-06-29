@@ -62,7 +62,7 @@ int main(int argc, char *argv[]) {
     if (!file) {
       printf("could open %s file\n", NODECLASS_NAME[i]);
     }
-    fprintf(file, "NodeId:ID,browseName\n");
+    fprintf(file, "NodeId,browseName\n");
     fclose(file);
   }
 

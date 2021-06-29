@@ -1,4 +1,4 @@
-NodeId:ID,browseName
+NodeId,browseName
 0:i=31,References
 0:i=33,HierarchicalReferences
 0:i=32,NonHierarchicalReferences

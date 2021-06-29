@@ -1,4 +1,4 @@
-NodeId:ID,browseName
+NodeId,browseName
 0:i=11214,Annotations
 0:i=11215,HistoricalEventFilter
 0:i=11432,EnumStrings

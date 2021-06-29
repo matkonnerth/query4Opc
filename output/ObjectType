@@ -1,4 +1,4 @@
-NodeId:ID,browseName
+NodeId,browseName
 0:i=58,BaseObjectType
 0:i=21145,NetworkAddressType
 0:i=19677,PubSubDiagnosticsType

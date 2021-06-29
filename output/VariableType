@@ -1,4 +1,4 @@
-NodeId:ID,browseName
+NodeId,browseName
 0:i=62,BaseVariableType
 0:i=68,PropertyType
 0:i=63,BaseDataVariableType
