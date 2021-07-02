@@ -36,10 +36,10 @@ https://s3.amazonaws.com/artifacts.opencypher.org/openCypher9.pdf
 
 Neo4j queries
 alle Subtypen \
-`match (a:ObjectType {NodeId: "Base"}) -[:HasSubTyp*0..]->(node) return node`
+`match (a:ObjectType {NodeId: "Base"}) -[:HasSubTyp*0..]->(types) return types`
 
 Alle Instanzen \
-`match (a:ObjectType {NodeId: "Base"}) -[:HierachicalReferences*0..]->(node) return node`
+`match (a:ObjectType {NodeId: "Base"}) -[:HierachicalReferences*0..]->(instances) return instances`
 
 alle Instanzen mit bestimmtem Typ (keine Einschränkung auf Hierachie) \
 `match(obj:Object)-[:HasTypeDefinition]->(t:ObjectType{NodeId:"Base"}) return obj`
