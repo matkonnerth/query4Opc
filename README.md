@@ -29,28 +29,25 @@ Each NodeClass defines several attributes, for example every NodeClass has an at
 
 References between nodes are typed with the main distinction between hierachical and nonhierachical references
 
-
-
 https://s3.amazonaws.com/artifacts.opencypher.org/openCypher9.pdf
 
 
 ## Example cypher queries
 
 Neo4j queries
-alle Subtypen
-match (a:ObjectType {NodeId: "Base"}) -[:HasSubTyp*0..]->(node) return node
+alle Subtypen \
+`match (a:ObjectType {NodeId: "Base"}) -[:HasSubTyp*0..]->(node) return node`
 
-Alle Instanzen
-match (a:ObjectType {NodeId: "Base"}) -[:HierachicalReferences*0..]->(node) return node
+Alle Instanzen \
+`match (a:ObjectType {NodeId: "Base"}) -[:HierachicalReferences*0..]->(node) return node`
 
-alle Instanzen mit bestimmtem Typ (keine Einschränkung auf Hierachie)
-match(obj:Object)-[:HasTypeDefinition]->(t:ObjectType{NodeId:"Base"}) return obj, 
+alle Instanzen mit bestimmtem Typ (keine Einschränkung auf Hierachie) \
+`match(obj:Object)-[:HasTypeDefinition]->(t:ObjectType{NodeId:"Base"}) return obj`
 
 Hierachische Knoten holen
-match(root:Object{NodeId:"BaseInstance"})-[:HasComponent*0..]->(objs:Object) return objs
+`match(root:Object{NodeId:"BaseInstance"})-[:HasComponent*0..]->(objs:Object) return objs`
 
-Wie kann ich ihm hier sagen, das er alle HierachicalReferences und Subtypen mitnehmen soll?
-eigentlich fehlt noch eine query um alle hierachischen Referenztypen zu bekommen
+How to gather alle the hierachical references, I think there is a query missing.
 
 HierachicalReferences:
 HasComponent
@@ -59,7 +56,7 @@ HasSubType
 NonHierachicalReferences
 HasTypeDefinition
 
-## Questions:
+## Questions
 
 Should the cypher queries work direct on the information model or on the meta meta model?
 
@@ -72,6 +69,10 @@ vs.
 "Give me all object nodes with reference HasTypeDefinition to one of this ObjectTypeNodes, the object nodes should have hierachical references below this node"
 
 2nd query sounds more or less like the implementation.
+
+## Performance
+
+
 
 ## Related papers
 https://acris.aalto.fi/ws/portalfiles/portal/55667007/ENG_Hietala_et_al_GraphQL_Interface_for_IEEE_Conference_on_Industrial_Cyberphysical_Systems_ICPS_2020.pdf
