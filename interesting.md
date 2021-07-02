@@ -1,4 +1,13 @@
-https://s3.amazonaws.com/artifacts.opencypher.org/openCypher9.pdf
+### Query language for OPC UA
+
+## Why?
+
+OPC UA defines multiple services, the interesting ones for getting information about the structure of the address space are the browse services a client can invoke. The drawback when using the browse is the round trip time between client and server. Browsing the hierachical references of a big subtree (~100k nodes) can take a few minutes.
+OPC UA has defined a query service, but no server implemented it because it is maybe too generic defined.
+
+Is Cypher a suitable query language for opc ua information models?
+
+## Mapping cypher to opc ua services
 
 opc ua meta meta model (model, which must be used by the information model)
 
@@ -10,6 +19,11 @@ ReferenceTypeNode
 ...
 
 References between nodes are type with the main distinction between hierachical and nonhierachical references
+
+Examples
+
+https://s3.amazonaws.com/artifacts.opencypher.org/openCypher9.pdf
+
 
 opc ua meta model (information model)
 
