@@ -34,20 +34,25 @@ https://s3.amazonaws.com/artifacts.opencypher.org/openCypher9.pdf
 
 ## Example cypher queries
 
-Neo4j queries
-alle Subtypen \
+get all subtypes of an ObjectType \
 `match (a:ObjectType {NodeId: "Base"}) -[:HasSubTyp*0..]->(types) return types`
 
-Alle Instanzen \
+get all hierachical references \
 `match (a:ObjectType {NodeId: "Base"}) -[:HierachicalReferences*0..]->(instances) return instances`
 
-alle Instanzen mit bestimmtem Typ (keine Einschränkung auf Hierachie) \
+all instances of a certain type \
 `match(obj:Object)-[:HasTypeDefinition]->(t:ObjectType{NodeId:"Base"}) return obj`
 
-Hierachische Knoten holen
+following the hierachical references starting at a certain Node
 `match(root:Object{NodeId:"BaseInstance"})-[:HasComponent*0..]->(objs:Object) return objs`
 
-How to gather alle the hierachical references, I think there is a query missing.
+Get all Instances of a certain typ or subtyp
+
+`match (a:ObjectType {NodeId: "Base"}) -[:HasSubTyp*0..]->(types)` \
+`match (obj:Object)-[:HasTypeDefinition]->(types)` \
+`return obj, types`
+
+How to gather alle the hierachical references, I think there is a query missing. Alternative we can make the assumption to follow also subtypes of the given reference types.
 
 HierachicalReferences:
 HasComponent
