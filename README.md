@@ -14,6 +14,8 @@ Is Cypher a suitable query language for opc ua information models?
 Overview of existing graph query languages
 https://www.gqlstandards.org/existing-languages
 
+There is work going on in the direction to standardize graph query languages: https://www.gqlstandards.org/home
+
 ## Mapping cypher to opc ua services
 
 opc ua meta meta model (model, which must be used by the information model)
@@ -60,6 +62,13 @@ HasSubType
 
 NonHierachicalReferences
 HasTypeDefinition
+
+## Cypher query language
+
+The grammar of the cypher query language in EBNF form is available http://opencypher.org/resources/
+
+Interactive railroad diagrams https://s3.amazonaws.com/artifacts.opencypher.org/M16/railroad/Cypher.html
+
 
 ## Questions
 
