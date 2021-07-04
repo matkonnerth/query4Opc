@@ -1,8 +1,12 @@
 ### Query language for OPC UA
 
-## Why?
+A proposal for defining a query language for opc ua information models which also provides a prototypic implementation.
 
-OPC UA defines multiple services, the interesting ones for getting information about the structure of the address space are the browse services a client can invoke. The drawback when using the browse is the round trip time between client and server. Browsing the hierachical references of a big subtree (~100k nodes) can take a few minutes.
+## Why query?
+
+OPC UA information models can get quite big, especially when a server is aggregating multiple machines and therefore implementing multiple specifications.
+
+OPC UA defines the view service set (https://reference.opcfoundation.org/Core/docs/Part4/5.8.1/) of which the browse service is for getting information about the structure of the address space. The drawback when using the browse is the round trip time between client and server. Browsing the hierachical references of a big subtree (~100k nodes) can take a few minutes.
 OPC UA has defined a query service, but no server implemented it because it is maybe too generic defined.
 
 This proposal does some experiments with the open62541 opcua stack and tries to map the cypher query language to opc ua services.
@@ -16,7 +20,7 @@ https://www.gqlstandards.org/existing-languages
 
 There is work going on in the direction to standardize graph query languages: https://www.gqlstandards.org/home
 
-## Mapping cypher to opc ua services
+## Mapping cypher to opc ua
 
 opc ua meta meta model (model, which must be used by the information model)
 
@@ -31,30 +35,38 @@ Each NodeClass defines several attributes, for example every NodeClass has an at
 
 References between nodes are typed with the main distinction between hierachical and nonhierachical references
 
-https://s3.amazonaws.com/artifacts.opencypher.org/openCypher9.pdf
-
+label - NodeClass, type of a node
+property - Attribute
+relationship type - ReferenceType
 
 ## Example cypher queries
 
+Here is a list of example cypher queries, which we think is interesting for clients:
+
+(1) Get all Objects of an exact ObjectType \
+`match(obj:Object)-[:HasTypeDefinition]->(t:ObjectType{NodeId:"Base"}) return obj`
+
+(2) Get all Objects of a certain ObjectType or SubType of this object
+`match (a:ObjectType {NodeId: "BaseType"}) -[:HasSubTyp*0..]->(types)` \
+`match (obj:Object)-[:HasTypeDefinition]->(types)` \
+`return obj, types`
+
+(3) Get all Objects of a certain ObjectType, starting at a certain root node
+`match(root:Object{NodeId:"BaseInstance"})-[:HierachicalReferences*0..]->(objs:Object) return objs`
+`match (a:ObjectType {NodeId: "Base"}) -[:HasSubTyp*0..]->(types) return types`
+`match (obj:Object)-[:HasTypeDefinition]->(types)` \
+`return obj, types`
+
+Support queries
 get all subtypes of an ObjectType \
 `match (a:ObjectType {NodeId: "Base"}) -[:HasSubTyp*0..]->(types) return types`
 
 get all hierachical references \
-`match (a:ObjectType {NodeId: "Base"}) -[:HierachicalReferences*0..]->(instances) return instances`
+`match (a:Object{NodeId: "Base"}) -[:HierachicalReferences*0..]->(instances) return instances`
 
-all instances of a certain type \
-`match(obj:Object)-[:HasTypeDefinition]->(t:ObjectType{NodeId:"Base"}) return obj`
+### Open questions
 
-following the hierachical references starting at a certain Node
-`match(root:Object{NodeId:"BaseInstance"})-[:HasComponent*0..]->(objs:Object) return objs`
-
-Get all Instances of a certain typ or subtyp
-
-`match (a:ObjectType {NodeId: "Base"}) -[:HasSubTyp*0..]->(types)` \
-`match (obj:Object)-[:HasTypeDefinition]->(types)` \
-`return obj, types`
-
-How to gather alle the hierachical references, I think there is a query missing. Alternative we can make the assumption to follow also subtypes of the given reference types.
+How to gather all the hierachical references, I think there is a query missing. Alternative we can make the assumption to follow also subtypes of the given reference types.
 
 HierachicalReferences:
 HasComponent
@@ -84,13 +96,27 @@ vs.
 
 2nd query sounds more or less like the implementation.
 
+### Examples
+
+(1) MATCH(zone:MyZoneType) return zone vs.
+
+(2) MATCH(zone:Object)-[:HasTypeDefinition]->(zoneType:ObjectType)
+
+When we use (1), how are relationships like "HasSubType" are modelled between labels. Does openCypher specify relationships between labels?
+
 ## Performance
 
 
+## Not considered use cases
+
+Aggregating server
 
 ## Related papers
 https://acris.aalto.fi/ws/portalfiles/portal/55667007/ENG_Hietala_et_al_GraphQL_Interface_for_IEEE_Conference_on_Industrial_Cyberphysical_Systems_ICPS_2020.pdf
 https://www.researchgate.net/publication/336623537_Querying_OPC_UA_information_models_with_SPARQL
+
+## openCypher
+https://s3.amazonaws.com/artifacts.opencypher.org/openCypher9.pdf
 
 ## neo4j
 Implementierung

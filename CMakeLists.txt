@@ -11,4 +11,6 @@ target_link_libraries(server PRIVATE NodesetLoader)
 
 add_subdirectory(csvExport)
 
+# has to be built manually
+#add_subdirectory(libcypher-parser)
 add_subdirectory(tests)
