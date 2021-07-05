@@ -9,7 +9,7 @@ OPC UA information models can get quite big, especially when a server is aggrega
 OPC UA defines the view service set (https://reference.opcfoundation.org/Core/docs/Part4/5.8.1/) of which the browse service is for getting information about the structure of the address space. The drawback when using the browse is the round trip time between client and server. Browsing the hierachical references of a big subtree (~100k nodes) can take a few minutes.
 OPC UA has defined a query service, but no server implemented it because it is maybe too generic defined.
 
-This proposal does some experiments with the open62541 opcua stack and tries to map the cypher query language to opc ua services.
+This proposal does some experiments with the open62541 opcua stack and tries to map the cypher query language to opc ua services. The query implementation is done within the context of an opc ua server because of performance reasons. A other design would be to implement the query service in a standalone server beside the server to be queried. Challenge is here to keep the address space up to date. Schiekhofer has showed this with ModelChangedEvents.
 
 Is Cypher a suitable query language for opc ua information models?
 
