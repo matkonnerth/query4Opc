@@ -75,6 +75,42 @@ private:
   std::vector<T> m_types;
 };
 
+template <typename T>
+class ReferenceFilter : public Filter<T, ReferenceFilter<T>>
+{
+public:
+  ReferenceFilter(UA_Server* server, const UA_NodeId& referenceType): m_server{server}, m_referenceType{referenceType}{}
+
+  bool match(const T& input)
+  {
+      UA_BrowseDescription bd;
+      UA_BrowseDescription_init(&bd);
+      bd.browseDirection = UA_BROWSEDIRECTION_BOTH;
+      bd.includeSubtypes = true;
+      bd.referenceTypeId = m_referenceType;
+      // bd.resultMask = UA_BROWSERESULTMASK_ALL;
+      bd.resultMask = UA_BROWSERESULTMASK_NONE;
+      bd.nodeId = input.target.nodeId.nodeId;
+      bd.nodeClassMask =
+          UA_NODECLASS_OBJECT | UA_NODECLASS_OBJECTTYPE;
+      UA_BrowseResult br = UA_Server_browse(m_server, 1000, &bd);
+      auto result = false;
+      if (br.statusCode == UA_STATUSCODE_GOOD) {
+        if(br.referencesSize>0)
+        {
+          result = true;
+        }
+        result = false;
+      }
+      UA_BrowseResult_clear(&br);
+      return result;
+  }
+
+private:
+  UA_Server* m_server;
+  UA_NodeId m_referenceType;
+};
+
 /*
 class AttributeFilter : public Filter<AttributeFilter> {
 public:

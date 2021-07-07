@@ -41,3 +41,21 @@ https://neo4j.com/labs/grandstack-graphql/
 
 neo4j import
 https://neo4j.com/docs/operations-manual/current/tools/neo4j-admin-import/
+
+Wie werden in neo4j die verschiedenen ReferenceTypen abgebildet?
+für jeden ReferenceType einen eigenen node
+Bei der Relation zwischen den Knoten muss die ID des ReferenceType eingetragen werden
+
+Wie würde die Abfrage für "Gib mir alle Subtypen von xyz" aussehen?
+
+MATCH
+  (a:ObjectType),
+  (b:ObjectType)
+WHERE a.id = 'BaseType' AND b.id = 'SubType'
+CREATE (a)-[r:ReferenceType {id:'HasSubType'}]->(b)
+RETURN type(r)
+
+//importing from csv
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/matkonnerth/graphForOpc/master/output/Object?token=AASJQDBXD24KG2PNBESHONTA4SXCO' AS line
+CREATE (:Object {NodeId: line.NodeId, browseName: line.browseName})
+
