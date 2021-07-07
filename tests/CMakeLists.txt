@@ -1,5 +1,3 @@
-
-
 macro(opc_add_test arg)
     add_executable(${arg} ${arg}.cpp)
     target_compile_features(${arg} PRIVATE cxx_std_17)
