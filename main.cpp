@@ -36,12 +36,12 @@ int main(int argc, const char *argv[]) {
   std::cout << "results: " << results.size() << "\n";
   UA_LOG_INFO(UA_Log_Stdout, UA_LOGCATEGORY_USERLAND, "finished");
 
-  UA_LOG_INFO(UA_Log_Stdout, UA_LOGCATEGORY_USERLAND, "start");
-  results = QueryLite::lookupInstances(
-      server, UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER),
-      UA_NODEID_STRING(7, "Heating.TZone"));
-  std::cout << "results: " << results.size() << "\n";
-  UA_LOG_INFO(UA_Log_Stdout, UA_LOGCATEGORY_USERLAND, "finished");
+  //UA_LOG_INFO(UA_Log_Stdout, UA_LOGCATEGORY_USERLAND, "start");
+  //results = QueryLite::lookupInstances(
+  //    server, UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER),
+  //    UA_NODEID_STRING(7, "Heating.TZone"));
+  // std::cout << "results: " << results.size() << "\n";
+  //UA_LOG_INFO(UA_Log_Stdout, UA_LOGCATEGORY_USERLAND, "finished");
 
   UA_Server_run(server, &running);
   UA_Server_delete(server);

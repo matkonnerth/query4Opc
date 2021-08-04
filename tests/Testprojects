@@ -1,0 +1,28 @@
+###########################
+# UaModeler Project File  #
+# Generated at 04.08.2021 #
+###########################
+
+PROJECTNAME = Testprojects
+
+TEMPLATESET = ($TEMPLATES)/modeling/v1_0/t0/modeling.tt2set
+
+MODELS += ($MODELS)/Opc.Ua.NodeSet2.ua \
+    graph.ua \
+    objectwithproperty.ua
+
+COLORS = ($MODELS)/Opc.Ua.NodeSet2.ua: #0000ff\
+    graph.ua: #0000ff\
+    objectwithproperty.ua: #0000ff
+
+OUTPUTPATH = 
+
+GENERATE += graph.ua \
+    objectwithproperty.ua
+
+NODEACCESSINFOROLES += Administrator \
+    SecurityAdmin \
+    ConfigurationAdmin \
+    Operator \
+    Observer
+
