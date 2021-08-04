@@ -57,6 +57,11 @@ Here is a list of example cypher queries, which we think is interesting for clie
 `match (obj:Object)-[:HasTypeDefinition]->(types)` \
 `return obj, types`
 
+(4) Get all Objects of a certain ObjectType and with a hasProperty reference to a certain node (TODO: validate this)
+`tempDevices = (obj:Object)-[:HasTypeDefinition]->(:ObjectType{NodeId:"TempDevice"})`
+`match tempDevices-[:HasProperty]->(:Variable{NodeId:"MySpecialProperty"})`
+
+
 Support queries
 get all subtypes of an ObjectType \
 `match (a:ObjectType {NodeId: "Base"}) -[:HasSubTyp*0..]->(types) return types`
@@ -94,7 +99,7 @@ vs.
 
 "Give me all object nodes with reference HasTypeDefinition to one of this ObjectTypeNodes, the object nodes should have hierachical references below this node"
 
-2nd query sounds more or less like the implementation.
+2nd query sounds more or less like the implementation, but is more or less the same.
 
 ### Examples
 
@@ -103,6 +108,7 @@ vs.
 (2) MATCH(zone:Object)-[:HasTypeDefinition]->(zoneType:ObjectType)
 
 When we use (1), how are relationships like "HasSubType" are modelled between labels. Does openCypher specify relationships between labels?
+2nd query is the way to go, there is more information in their which can be used for optimization.
 
 ## Performance
 
@@ -124,3 +130,6 @@ https://neo4j.com/blog/secret-sauce-neo4j-modeling-graphconnect/
 
 import
 https://neo4j.com/docs/operations-manual/current/tools/neo4j-admin-import/
+
+First step:
+only use browse service

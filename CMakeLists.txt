@@ -16,13 +16,22 @@ conan_cmake_run(CONANFILE conanfile.txt
 find_package(NodesetLoader REQUIRED)
 find_package(open62541 REQUIRED)
 
-add_executable(server main.cpp QueryLite.cpp)
-target_link_libraries(server PRIVATE open62541::open62541)
-target_link_libraries(server PRIVATE NodesetLoader)
+# Link this 'library' to use the warnings specified in CompilerWarnings.cmake
+add_library(project_warnings INTERFACE)
+include(${CMAKE_SOURCE_DIR}/cmake/CompilerWarnings.cmake)
+set_project_warnings(project_warnings)
+
+add_library(project_options INTERFACE)
+target_compile_features(project_options INTERFACE cxx_std_17)
+
+add_library(graphForOpc INTERFACE)
+target_include_directories(graphForOpc INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_link_libraries(graphForOpc INTERFACE project_warnings project_options open62541::open62541)
 
 add_subdirectory(csvExport)
 
 include(CTest)
 enable_testing()
 
+#add_subdirectory(libcypher-parser)
 add_subdirectory(tests)
