@@ -58,7 +58,7 @@ TEST(objectWithProperty, findAllTempDevices)
    TypeFilter<Result> instancesOfType{ UA_NODEID_NUMERIC(2, 1002) };
    Sink<Result> s;
    instancesOfType.append(s);
-   HierachicalVisitor vis{ server, UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER) };
+   HierachicalVisitor vis{ server, UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER), UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES), UA_NODECLASS_OBJECT };
 
    vis.generate(instancesOfType);
    ASSERT_EQ(s.results().size(), 2);
@@ -79,7 +79,7 @@ TEST(objectWithProperty, findAllTempDevicesWithProperty)
    ReferenceFilter<Result> hasProperty{ server, UA_NODEID_NUMERIC(0, UA_NS0ID_HASPROPERTY) };
 
    instancesOfType.append(hasProperty).append(s);
-   HierachicalVisitor vis{ server, UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER) };
+   HierachicalVisitor vis{ server, UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER), UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES), UA_NODECLASS_OBJECT };
 
    vis.generate(instancesOfType);
    ASSERT_EQ(s.results().size(), 1);
@@ -98,7 +98,7 @@ TEST(objectWithProperty, findAllTempDevicesWithPropertyAndCertainPropertyId)
    Sink<Result> s;
 
    instancesOfType.append(s);
-   HierachicalVisitor vis{ server, UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER) };
+   HierachicalVisitor vis{ server, UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER), UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES), UA_NODECLASS_OBJECT };
 
    vis.generate(instancesOfType);
    ASSERT_EQ(s.results().size(), 2);
@@ -114,6 +114,44 @@ TEST(objectWithProperty, findAllTempDevicesWithPropertyAndCertainPropertyId)
 
    UA_Server_delete(server);
 }
+
+TEST(objectWithProperty, allObjects)
+{
+   UA_Server* server = UA_Server_new();
+   UA_ServerConfig_setDefault(UA_Server_getConfig(server));
+
+   ASSERT_TRUE(NodesetLoader_loadFile(server, (path + "/objectwithproperty.xml").c_str(), NULL));
+   Sink<Result> s;
+
+   TakeAllFilter<Result> ta{};
+
+   ta.append(s);
+   HierachicalVisitor vis{ server, UA_NODEID_NUMERIC(2, 5002), UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES), UA_NODECLASS_OBJECT };
+
+   vis.generate(ta);
+   ASSERT_EQ(s.results().size(), 2);
+   UA_Server_delete(server);
+}
+
+/* not working -- other nodeclasses have to be also traversed
+TEST(objectWithProperty, allVariables)
+{
+   UA_Server* server = UA_Server_new();
+   UA_ServerConfig_setDefault(UA_Server_getConfig(server));
+
+   ASSERT_TRUE(NodesetLoader_loadFile(server, (path + "/objectwithproperty.xml").c_str(), NULL));
+   Sink<Result> s;
+
+   TakeAllFilter<Result> ta{};
+
+   ta.append(s);
+   HierachicalVisitor vis{ server, UA_NODEID_NUMERIC(2, 5002), UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES), UA_NODECLASS_VARIABLE};
+
+   vis.generate(ta);
+   ASSERT_EQ(s.results().size(), 1);
+   UA_Server_delete(server);
+}
+*/
 
 int main(int argc, char** argv)
 {
