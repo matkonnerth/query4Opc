@@ -10,13 +10,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-void dumpReference(void *context, TNode *node) {
+void dumpReference(void *context, NL_Node *node) {
   if(!(node->nodeClass==NODECLASS_OBJECT || node->nodeClass==NODECLASS_OBJECTTYPE))
   {
     return;
   }
   FILE *f = (FILE *)context;
-  Reference *hierachicalRef = node->hierachicalRefs;
+  NL_Reference *hierachicalRef = node->hierachicalRefs;
   while (hierachicalRef) {
     fprintf(f, "%d:%s,%d:%s,%d:%s\n", node->id.nsIdx, node->id.id,
             hierachicalRef->target.nsIdx, hierachicalRef->target.id,
@@ -24,7 +24,7 @@ void dumpReference(void *context, TNode *node) {
     hierachicalRef = hierachicalRef->next;
   }
 
-  Reference *nonHierRef = node->nonHierachicalRefs;
+  NL_Reference *nonHierRef = node->nonHierachicalRefs;
   while (nonHierRef) {
     fprintf(f, "%d:%s,%d:%s,%d:%s\n", node->id.nsIdx, node->id.id,
             nonHierRef->target.nsIdx, nonHierRef->target.id,
@@ -57,10 +57,10 @@ int main(int argc, char *argv[]) {
     return 1;
   }
 
-  for (int i = 0; i < NODECLASS_COUNT; i++) {
-    FILE *file = fopen(concat("./output/", NODECLASS_NAME[i]), "w");
+  for (int i = 0; i < NL_NODECLASS_COUNT; i++) {
+    FILE *file = fopen(concat("./output/", NL_NODECLASS_NAME[i]), "w");
     if (!file) {
-      printf("could open %s file\n", NODECLASS_NAME[i]);
+      printf("could open %s file\n", NL_NODECLASS_NAME[i]);
     }
     fprintf(file, "NodeId,browseName\n");
     fclose(file);
@@ -73,7 +73,7 @@ int main(int argc, char *argv[]) {
 
   for (int cnt = 1; cnt < argc; cnt++) {
     NodesetLoader *loader = NodesetLoader_new(NULL, NULL);
-    FileContext handler;
+    NL_FileContext handler;
     handler.userContext = uris;
     handler.extensionHandling = NULL;
     handler.addNamespace = addNamespace;
@@ -85,11 +85,11 @@ int main(int argc, char *argv[]) {
     NodesetLoader_sort(loader);
     fprintf(refs, "START_ID,END_ID,TYPE\n");
 
-    for (int i = 0; i < NODECLASS_COUNT; i++) {
-      TNode **nodes = NULL;
-      FILE *file = fopen(concat("./output/", NODECLASS_NAME[i]), "a");
-      NodesetLoader_forEachNode(loader, (TNodeClass)i, file, (NodesetLoader_forEachNode_Func)dumpNode);
-      NodesetLoader_forEachNode(loader, (TNodeClass)i, refs,
+    for (int i = 0; i < NL_NODECLASS_COUNT; i++) {
+      NL_Node **nodes = NULL;
+      FILE *file = fopen(concat("./output/", NL_NODECLASS_NAME[i]), "a");
+      NodesetLoader_forEachNode(loader, (NL_NodeClass)i, file, (NodesetLoader_forEachNode_Func)dumpNode);
+      NodesetLoader_forEachNode(loader, (NL_NodeClass)i, refs,
                                 (NodesetLoader_forEachNode_Func)dumpReference);
       fclose(file);
     }

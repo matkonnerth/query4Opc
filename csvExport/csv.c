@@ -21,7 +21,7 @@ int addNamespace(void *userContext, const char *uri) {
     return uris->size;
 }
 
-void dumpNode(void *userContext, const TNode *node)
+void dumpNode(void *userContext, const NL_Node *node)
 {
     FILE *f = (FILE *)userContext;
     fprintf(f, "%d:%s,%s\n", node->id.nsIdx, node->id.id,
