@@ -125,6 +125,15 @@ std::optional<Query> Parser::parse(const std::string& queryString)
             {
                r.type = cypher_ast_reltype_get_name(type);
             }
+            auto direction = cypher_ast_rel_pattern_get_direction(elem);
+            if(direction == CYPHER_REL_INBOUND)
+            {
+               r.direction=-1;
+            }
+            else if(direction == CYPHER_REL_OUTBOUND)
+            {
+               r.direction = 1;
+            }
          }
          
          q.matchClauses[0].path.relations.push_back(r);

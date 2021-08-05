@@ -103,9 +103,11 @@ TEST(objectWithProperty, findAllTempDevicesWithPropertyAndCertainPropertyId)
    vis.generate(instancesOfType);
    ASSERT_EQ(s.results().size(), 2);
 
-   ReferenceFilter<Result> hasProperty{ server, UA_NODEID_NUMERIC(0, UA_NS0ID_HASPROPERTY), std::make_unique<MatchTargetNodeId>(UA_NODEID_NUMERIC(2, 6001)) };
+   ReferenceFilter<Result> hasProperty{ server, UA_NODEID_NUMERIC(0, UA_NS0ID_HASPROPERTY)};
+   hasProperty.matchNodeId(UA_NODEID_NUMERIC(2, 6001));
 
-   Sink<Result> sinkWithProperty;
+   Sink<Result>
+   sinkWithProperty;
    hasProperty.append(sinkWithProperty);
 
    SinkToSource source2{ s };

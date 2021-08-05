@@ -5,6 +5,11 @@
 #include <vector>
 #include <iostream>
 
+struct PathElement
+{
+
+};
+
 struct Node
 {
     std::optional<std::string> identifier; 
@@ -25,6 +30,7 @@ struct Node
 struct Relationship
 {
     std::optional<std::string> type; // HasTypeDefinition, HasProperty
+    int direction{0}; // -1 .. inverse, 0 .. no direction, 1 .. forward
 };
 
 struct Path

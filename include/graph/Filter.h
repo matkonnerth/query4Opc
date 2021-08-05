@@ -159,21 +159,42 @@ private:
    UA_NodeId m_targetId;
 };
 
+class MatchNodeClass: public ReferenceDescriptionMatcher
+{
+public:
+   MatchNodeClass(UA_NodeClass nodeClass)
+   : m_nodeClass{ nodeClass } {};
+   bool match(const UA_ReferenceDescription& ref) override
+   {
+      return ref.nodeClass == m_nodeClass;
+   }
+
+private:
+   UA_NodeClass m_nodeClass;
+};
+
 template <typename T>
 class ReferenceFilter : public Filter<T, ReferenceFilter<T>>
 {
 public:
+   /*
+      referenceType: the reference to match, UA_NODEID_NULL for any referenceType
+   */
    ReferenceFilter(UA_Server* server, const UA_NodeId& referenceType)
    : m_server{ server }
    , m_referenceType{ referenceType }
-   , m_refMatcher{ std::make_unique<MatchAnyReference>() }
    {}
 
-   ReferenceFilter(UA_Server* server, const UA_NodeId& referenceType, std::unique_ptr<ReferenceDescriptionMatcher> refMatcher)
-   : m_server{ server }
-   , m_referenceType{ referenceType }
-   , m_refMatcher{ std::move(refMatcher) }
-   {}
+   void matchNodeId(const UA_NodeId& id)
+   {
+      m_matchers.emplace_back(std::make_unique<MatchTargetNodeId>(id));
+   }
+
+   void matchNodeClass(UA_NodeClass nodeClass)
+   {
+      //m_matchers.emplace_back(std::make_unique<MatchNodeClass>(nodeClass));
+      m_nodeClass = nodeClass;
+   }
 
    bool match(const T& input)
    {
@@ -184,14 +205,14 @@ public:
       bd.referenceTypeId = m_referenceType;
       bd.resultMask = UA_BROWSERESULTMASK_NONE;
       bd.nodeId = input.target.nodeId.nodeId;
-      bd.nodeClassMask = UA_NODECLASS_UNSPECIFIED;
+      bd.nodeClassMask = m_nodeClass;
       UA_BrowseResult br = UA_Server_browse(m_server, 1000, &bd);
       auto result = false;
       if (br.statusCode == UA_STATUSCODE_GOOD)
       {
          for (const auto* ref = br.references; ref != br.references + br.referencesSize; ++ref)
          {
-            result = m_refMatcher->match(*ref);
+            result = isMatching(*ref);
             if (result)
             {
                break;
@@ -203,7 +224,21 @@ public:
    }
 
 private:
+
+   bool isMatching(const UA_ReferenceDescription& ref)
+   {
+      for(const auto& matcher:m_matchers)
+      {
+         if(!matcher->match(ref))
+         {
+            return false;
+         }
+      }
+      return true;
+   }
+
    UA_Server* m_server;
    UA_NodeId m_referenceType;
-   std::unique_ptr<ReferenceDescriptionMatcher> m_refMatcher;
+   std::vector<std::unique_ptr<ReferenceDescriptionMatcher>> m_matchers;
+   UA_NodeClass m_nodeClass{UA_NODECLASS_UNSPECIFIED};
 };
