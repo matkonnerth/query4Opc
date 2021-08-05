@@ -3,6 +3,7 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
+#include <iostream>
 
 struct Node
 {
@@ -38,3 +39,5 @@ struct SimplePath
     Node m_nodeB;
     Relationship m_rel;
 };
+
+std::optional<SimplePath> PathToSimplePath(const Path& p);
