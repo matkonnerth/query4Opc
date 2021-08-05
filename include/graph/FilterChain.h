@@ -5,6 +5,7 @@
 #include <cypher/Path.h>
 #include <memory>
 #include <vector>
+#include "Helper.h"
 
 class FilterChain
 {
@@ -20,6 +21,11 @@ public:
    void createHierachicalVisitorSource(const UA_NodeId& root, const UA_NodeId& referenceTypeId, UA_UInt32 nodeclasMask)
    {
       m_src = std::make_unique<HierachicalVisitor>(m_server, root, referenceTypeId, nodeclasMask);
+   }
+
+   void createSinkToSource(const Sink<Result>& sink)
+   {
+      m_src = std::make_unique<SinkToSource>(sink);
    }
 
    void createReferenceFilter(const UA_NodeId& referenceType)
@@ -67,74 +73,6 @@ private:
    std::vector<std::unique_ptr<AbstractFilter<Result>>> m_filters;
 };
 
-UA_NodeClass parseNodeClass(const std::string& nodeclass)
-{
-   // TODO: fill up this map
-   static const std::unordered_map<std::string, UA_NodeClass> m{ 
-      { "Object", UA_NODECLASS_OBJECT }, 
-      { "Variable", UA_NODECLASS_VARIABLE },
-      { "ObjectType", UA_NODECLASS_OBJECTTYPE},
-      { "Method", UA_NODECLASS_METHOD} };
-
-   auto it = m.find(nodeclass);
-   if (it != m.end())
-   {
-      return it->second;
-   }
-   return UA_NODECLASS_UNSPECIFIED;
-}
-
-UA_NodeClass parseOptionalNodeClass(const std::optional<std::string>& nodeclass)
-{
-   if (!nodeclass)
-   {
-      return UA_NODECLASS_UNSPECIFIED;
-   }
-   return parseNodeClass(*nodeclass);
-}
-
-UA_NodeId parseNodeId(const std::string& id)
-{
-   return UA_NODEID(id.c_str());
-}
-
-UA_NodeId parseOptionalNodeId(const std::optional<std::string>& id)
-{
-   if (!id)
-   {
-      return UA_NODEID_NULL;
-   }
-   return parseNodeId(*id);
-}
-
-UA_NodeId parseOptionalNodeId(const std::string* id)
-{
-   if (!id)
-   {
-      return UA_NODEID_NULL;
-   }
-   return parseNodeId(*id);
-}
-
-UA_NodeId lookupReferenceType(const std::optional<std::string>& ref)
-{
-   if (!ref)
-   {
-      return UA_NODEID_NULL;
-   }
-   static const std::unordered_map<std::string, UA_NodeId> m{
-      { "HasTypeDefinition", UA_NODEID_NUMERIC(0, UA_NS0ID_HASTYPEDEFINITION) },
-      { "HasSubType", UA_NODEID_NUMERIC(0, UA_NS0ID_HASSUBTYPE) },
-      { "HasProperty", UA_NODEID_NUMERIC(0, UA_NS0ID_HASPROPERTY) },
-   };
-   auto it = m.find(*ref);
-   if (it != m.end())
-   {
-      return it->second;
-   }
-   return UA_NODEID_NULL;
-}
-
 std::unique_ptr<FilterChain> createFilterChain(const SimplePath& path, UA_Server* server)
 {
    auto f = std::make_unique<FilterChain>(server);
@@ -145,6 +83,26 @@ std::unique_ptr<FilterChain> createFilterChain(const SimplePath& path, UA_Server
 
 
    f->createReferenceFilter(lookupReferenceType(path.m_rel.type), parseOptionalNodeId(path.m_nodeB.NodeId()), parseOptionalNodeClass(path.m_nodeB.label));
+   f->createSink();
+   return f;
+}
+
+std::unique_ptr<FilterChain> createFilterChain(const EmptyPath& path, UA_Server* server)
+{
+   auto f = std::make_unique<FilterChain>(server);
+   f->createHierachicalVisitorSource(UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER), UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES), parseOptionalNodeClass(path.m_node.label));
+   f->createSink();
+   return f;
+}
+
+std::unique_ptr<FilterChain> createFilterChain(const AppendedPath& path, const Sink<Result>& sink, UA_Server* server)
+{
+   auto f = std::make_unique<FilterChain>(server);
+   // TODO: take a or b node
+   // where to start with the visitor?
+   // should be there where we have the returned identifier
+   f->createSinkToSource(sink);
+   f->createReferenceFilter(lookupReferenceType(path.m_rel.type), parseOptionalNodeId(path.m_node.NodeId()), parseOptionalNodeClass(path.m_node.label));
    f->createSink();
    return f;
 }

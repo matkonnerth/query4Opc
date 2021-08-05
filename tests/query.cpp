@@ -26,6 +26,23 @@ TEST(serverType, findServerObject)
    UA_Server_delete(server);
 }
 
+TEST(serverType, findServerObject_reorderQuery)
+{
+   UA_Server* server = UA_Server_new();
+   UA_ServerConfig_setDefault(UA_Server_getConfig(server));
+
+   Parser p;
+   auto q = p.parse("MATCH (:ObjectType{NodeId: \"i=2004\"})<-[:HasTypeDefinition]-(obj:Object) RETURN obj");
+   ASSERT_TRUE(q);
+
+   QueryEngine e{ server };
+   e.scheduleQuery(*q);
+   auto results = e.run();
+   ASSERT_TRUE(results);
+   ASSERT_EQ(results->size(), 1);
+   UA_Server_delete(server);
+}
+
 TEST(serverType, findServerObject_WrongReferenceType)
 {
    UA_Server* server = UA_Server_new();
@@ -57,6 +74,40 @@ TEST(serverType, findObjectsWhichReferencesVariables)
    auto results = e.run();
    ASSERT_TRUE(results);
    ASSERT_GT(results->size(), 0);
+   UA_Server_delete(server);
+}
+
+TEST(serverType, emptyPath)
+{
+   UA_Server* server = UA_Server_new();
+   UA_ServerConfig_setDefault(UA_Server_getConfig(server));
+
+   Parser p;
+   auto q = p.parse("MATCH (obj:Object) RETURN obj");
+   ASSERT_TRUE(q);
+
+   QueryEngine e{ server };
+   e.scheduleQuery(*q);
+   auto results = e.run();
+   ASSERT_TRUE(results);
+   ASSERT_GT(results->size(), 0);
+   UA_Server_delete(server);
+}
+
+TEST(serverType, emptyPathObjectType)
+{
+   UA_Server* server = UA_Server_new();
+   UA_ServerConfig_setDefault(UA_Server_getConfig(server));
+
+   Parser p;
+   auto q = p.parse("MATCH (obj:ObjectType) RETURN obj");
+   ASSERT_TRUE(q);
+
+   QueryEngine e{ server };
+   e.scheduleQuery(*q);
+   auto results = e.run();
+   ASSERT_TRUE(results);
+   ASSERT_EQ(results->size(), 0);
    UA_Server_delete(server);
 }
 

@@ -12,10 +12,19 @@ public:
    {}
    void scheduleQuery(const Query& q)
    {
-      auto s = PathToSimplePath(q.matchClauses[0].path);
+      auto s = splitPaths(q.matchClauses[0].path);
       if (s)
       {
-         m_filterChain = createFilterChain(*s, m_server);
+         if(s->simplePath)
+         {
+            m_filterChain = createFilterChain(*s->simplePath, m_server);
+            return;
+         }
+         if(s->emptyPath)
+         {
+             m_filterChain = createFilterChain(*s->emptyPath, m_server);
+         }
+         
       }
    }
 

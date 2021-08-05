@@ -26,14 +26,14 @@ stores nodes at the end of filtering
 
 Path
 
-()-[]-()-()
+(n1)-[r1]-(n2)-[r2]-(n3)
 
 SimplePath
 
 (Node)-[Relationship]-(Node)
 
 can be broken down to a FilterChain with a source, a referenceFilter and a sink.
-sink can be used again as source. With that concept a variable length path can be reduced to n simple path.
+sink can be used again as source. With that concept a variable length path can be reduced to 1 simple path and n appended path.
 
 Pattern
 NodePattern

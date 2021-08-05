@@ -37,7 +37,7 @@ References between nodes are typed with the main distinction between hierachical
 
 label - NodeClass, type of a node
 property - Attribute
-relationship type - ReferenceType
+relationship type - ReferenceType: with a property we could state, that also subtypes of the ReferenceType should be considered
 
 ## Example cypher queries
 
@@ -100,7 +100,6 @@ When we use (1), how are relationships like "HasSubType" are modelled between la
 
 
 ## Not considered use cases
-
 Aggregating server
 
 ## Related papers

@@ -6,7 +6,7 @@
 class Source
 {
 public:
-   virtual void generate(AbstractFilter<Result>& filter) = 0;
+   virtual void generate(AbstractFilter<Result>& filter) const = 0;
    virtual ~Source() = default;
 };
 
@@ -20,13 +20,13 @@ public:
    , m_nodeClassMask{ nodeclasMask }
    {}
 
-   void generate(AbstractFilter<Result>& filter) override
+   void generate(AbstractFilter<Result>& filter) const override
    {
       visit(m_root, filter);
    }
 
 private:
-   UA_UInt32 calculateNodeClassMaskForBrowse()
+   UA_UInt32 calculateNodeClassMaskForBrowse() const
    {
       switch (m_nodeClassMask)
       {
@@ -39,7 +39,7 @@ private:
       }
       return UA_NODECLASS_UNSPECIFIED;
    }
-   void visit(const UA_NodeId& root, AbstractFilter<Result>& filter)
+   void visit(const UA_NodeId& root, AbstractFilter<Result>& filter) const
    {
       UA_BrowseDescription bd;
       UA_BrowseDescription_init(&bd);
@@ -75,11 +75,11 @@ private:
 class SinkToSource : public Source
 {
 public:
-   SinkToSource(Sink<Result>& s)
+   SinkToSource(const Sink<Result>& s)
    : m_sink{ s }
    {}
 
-   void generate(AbstractFilter<Result>& filter) override
+   void generate(AbstractFilter<Result>& filter) const override
    {
       // TODO: unnecessary copy?
       for (auto res : m_sink.results())
@@ -89,5 +89,5 @@ public:
    }
 
 private:
-   Sink<Result>& m_sink;
+   const Sink<Result>& m_sink;
 };
