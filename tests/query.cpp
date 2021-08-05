@@ -43,6 +43,23 @@ TEST(serverType, findServerObject_WrongReferenceType)
    UA_Server_delete(server);
 }
 
+TEST(serverType, findObjectsWhichReferencesVariables)
+{
+   UA_Server* server = UA_Server_new();
+   UA_ServerConfig_setDefault(UA_Server_getConfig(server));
+
+   Parser p;
+   auto q = p.parse("MATCH(obj:Object)--(:Variable) RETURN obj");
+   ASSERT_TRUE(q);
+
+   QueryEngine e{ server };
+   e.scheduleQuery(*q);
+   auto results = e.run();
+   ASSERT_TRUE(results);
+   ASSERT_GT(results->size(), 0);
+   UA_Server_delete(server);
+}
+
 
 int main(int argc, char** argv)
 {
