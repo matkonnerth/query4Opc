@@ -24,9 +24,9 @@ set_project_warnings(project_warnings)
 add_library(project_options INTERFACE)
 target_compile_features(project_options INTERFACE cxx_std_17)
 
-add_library(graphForOpc INTERFACE)
-target_include_directories(graphForOpc INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include)
-target_link_libraries(graphForOpc INTERFACE project_warnings project_options open62541::open62541)
+add_library(graphForOpc ${CMAKE_CURRENT_SOURCE_DIR}/src/cypher/Parser.cpp)
+target_include_directories(graphForOpc PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_link_libraries(graphForOpc PUBLIC project_warnings project_options open62541::open62541)
 
 add_subdirectory(csvExport)
 

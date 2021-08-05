@@ -2,6 +2,7 @@
 #include <optional>
 #include <string>
 #include <unordered_map>
+#include <vector>
 
 struct Node
 {
@@ -23,6 +24,12 @@ struct Node
 struct Relationship
 {
     std::optional<std::string> type; // HasTypeDefinition, HasProperty
+};
+
+struct Path
+{
+    std::vector<Node> nodes;
+    std::vector<Relationship> relations;
 };
 
 struct SimplePath

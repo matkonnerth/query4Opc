@@ -87,20 +87,6 @@ The grammar of the cypher query language in EBNF form is available http://opency
 Interactive railroad diagrams https://s3.amazonaws.com/artifacts.opencypher.org/M16/railroad/Cypher.html
 
 
-## Questions
-
-Should the cypher queries work direct on the information model or on the meta meta model?
-
-I think that working directly on the information model let's the client write more concise queries.
-
-"Give me all objects with a certain type inclusive subtypes from this subtree".
-
-vs.
-
-"Give me all object nodes with reference HasTypeDefinition to one of this ObjectTypeNodes, the object nodes should have hierachical references below this node"
-
-2nd query sounds more or less like the implementation, but is more or less the same.
-
 ### Examples
 
 (1) MATCH(zone:MyZoneType) return zone vs.
@@ -130,6 +116,3 @@ https://neo4j.com/blog/secret-sauce-neo4j-modeling-graphconnect/
 
 import
 https://neo4j.com/docs/operations-manual/current/tools/neo4j-admin-import/
-
-First step:
-only use browse service
