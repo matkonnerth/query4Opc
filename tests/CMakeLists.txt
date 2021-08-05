@@ -7,6 +7,7 @@ macro(opc_add_test arg)
 endmacro()
 
 opc_add_test("filter")
+opc_add_test("filterChain")
 
 
 

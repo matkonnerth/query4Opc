@@ -26,6 +26,7 @@ int main(int argc, char* argv[])
 {
 
    std::vector<std::string> queries;
+   queries.emplace_back("MATCH (obj:Object) RETURN obj");
    queries.emplace_back("MATCH (obj:Object)-[:HasTypeDefinition]->(t:ObjectType{NodeId:\"MyType\"}) RETURN obj");
    queries.emplace_back("MATCH (obj:Object{NodeId:\"MyObject\"}) return obj");
    queries.emplace_back("MATCH (:Variable)-[:HasProperty]-(obj:Object)-[:HasTypeDefinition]->(t:ObjectType{NodeId:\"MyType\"}) RETURN obj");

@@ -16,8 +16,8 @@ public:
    HierachicalVisitor(UA_Server* server, const UA_NodeId& root, const UA_NodeId& referenceTypeId, UA_UInt32 nodeclasMask)
    : m_server{ server }
    , m_root{ root }
-   , m_referenceType{ referenceTypeId },
-   m_nodeClassMask{nodeclasMask}
+   , m_referenceType{ referenceTypeId }
+   , m_nodeClassMask{ nodeclasMask }
    {}
 
    void generate(AbstractFilter<Result>& filter) override
@@ -26,6 +26,19 @@ public:
    }
 
 private:
+   UA_UInt32 calculateNodeClassMaskForBrowse()
+   {
+      switch (m_nodeClassMask)
+      {
+      case UA_NODECLASS_OBJECT:
+         return UA_NODECLASS_OBJECT | UA_NODECLASS_OBJECTTYPE;
+      case UA_NODECLASS_VARIABLE:
+         return UA_NODECLASS_VARIABLE | UA_NODECLASS_OBJECT | UA_NODECLASS_OBJECTTYPE | UA_NODECLASS_METHOD;
+      default:
+         return UA_NODECLASS_UNSPECIFIED;
+      }
+      return UA_NODECLASS_UNSPECIFIED;
+   }
    void visit(const UA_NodeId& root, AbstractFilter<Result>& filter)
    {
       UA_BrowseDescription bd;
@@ -33,17 +46,21 @@ private:
       bd.browseDirection = UA_BROWSEDIRECTION_FORWARD;
       bd.includeSubtypes = true;
       bd.referenceTypeId = m_referenceType;
-      // bd.resultMask = UA_BROWSERESULTMASK_ALL;
-      bd.resultMask = UA_BROWSERESULTMASK_TYPEDEFINITION;
+      //TODO: perfomance?
+      bd.resultMask = UA_BROWSERESULTMASK_ALL;
+      // bd.resultMask = UA_BROWSERESULTMASK_TYPEDEFINITION;
       bd.nodeId = root;
-      bd.nodeClassMask = m_nodeClassMask;
+      bd.nodeClassMask = calculateNodeClassMaskForBrowse();
       UA_BrowseResult br = UA_Server_browse(m_server, 1000, &bd);
       if (br.statusCode == UA_STATUSCODE_GOOD)
       {
          for (UA_ReferenceDescription* rd = br.references; rd != br.references + br.referencesSize; rd++)
          {
-
-            filter.filter(Result{ root, *rd });
+            if (rd->nodeClass == m_nodeClassMask)
+            {
+               filter.filter(Result{ root, *rd });
+            }
+            //TODO: performance, shouldn't browse variable again?
             visit(rd->nodeId.nodeId, filter);
          }
       }

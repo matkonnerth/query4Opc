@@ -1,6 +1,6 @@
-#include "Filter.h"
-#include "Sink.h"
-#include "Source.h"
+#include <graph/Filter.h>
+#include <graph/Sink.h>
+#include <graph/Source.h>
 #include <NodesetLoader/backendOpen62541.h>
 #include <gtest/gtest.h>
 #include <iostream>
@@ -133,7 +133,6 @@ TEST(objectWithProperty, allObjects)
    UA_Server_delete(server);
 }
 
-/* not working -- other nodeclasses have to be also traversed
 TEST(objectWithProperty, allVariables)
 {
    UA_Server* server = UA_Server_new();
@@ -151,7 +150,20 @@ TEST(objectWithProperty, allVariables)
    ASSERT_EQ(s.results().size(), 1);
    UA_Server_delete(server);
 }
-*/
+
+TEST(serverType, findServerObject)
+{
+   UA_Server* server = UA_Server_new();
+   UA_ServerConfig_setDefault(UA_Server_getConfig(server));
+   TypeFilter<Result> instancesOfType{ UA_NODEID_NUMERIC(0, UA_NS0ID_SERVERTYPE) };
+   Sink<Result> s;
+   instancesOfType.append(s);
+   HierachicalVisitor vis{ server, UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER), UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES), UA_NODECLASS_OBJECT };
+   vis.generate(instancesOfType);
+   ASSERT_EQ(s.results().size(), 1);
+
+   UA_Server_delete(server);
+}
 
 int main(int argc, char** argv)
 {
