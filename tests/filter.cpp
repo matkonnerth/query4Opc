@@ -66,6 +66,7 @@ TEST(objectWithProperty, findAllTempDevices)
    UA_Server_delete(server);
 }
 
+/*
 TEST(objectWithProperty, findAllTempDevicesWithProperty)
 {
    UA_Server* server = UA_Server_new();
@@ -116,6 +117,7 @@ TEST(objectWithProperty, findAllTempDevicesWithPropertyAndCertainPropertyId)
 
    UA_Server_delete(server);
 }
+*/
 
 TEST(objectWithProperty, allObjects)
 {

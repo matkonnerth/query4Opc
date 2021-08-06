@@ -3,16 +3,7 @@
 #include <memory>
 #include <open62541/server.h>
 #include <vector>
-
-/*
-template <typename Derived>
-struct TypeDefinitionTrait {
-  UA_NodeId typeDefinition() {
-    Derived *d = static_cast<Derived *>(this);
-    return d->typeDefinition();
-  }
-};
-*/
+#include <optional>
 
 struct Result
 {
@@ -58,8 +49,6 @@ public:
       return *m_nextFilter;
    }
 
-   /*
-    */
    void append(Sink<T>& s)
    {
       m_sink = &s;
@@ -173,72 +162,95 @@ private:
    UA_NodeClass m_nodeClass;
 };
 
+/*
+   referenceType: the reference to match, UA_NODEID_NULL for any referenceType
+*/
+struct PathElement
+{
+   UA_NodeId referenceType;
+   UA_NodeClass nodeClass;
+   std::optional<UA_NodeId> targetId;
+   //unused
+   UA_BrowseDirection direction;
+};
+
 template <typename T>
 class ReferenceFilter : public Filter<T, ReferenceFilter<T>>
 {
 public:
-   /*
-      referenceType: the reference to match, UA_NODEID_NULL for any referenceType
-   */
-   ReferenceFilter(UA_Server* server, const UA_NodeId& referenceType)
+   ReferenceFilter(UA_Server* server, const std::vector<PathElement>& path)
    : m_server{ server }
-   , m_referenceType{ referenceType }
+   , m_path{ path }
    {}
-
-   void matchNodeId(const UA_NodeId& id)
-   {
-      m_matchers.emplace_back(std::make_unique<MatchTargetNodeId>(id));
-   }
-
-   void matchNodeClass(UA_NodeClass nodeClass)
-   {
-      //m_matchers.emplace_back(std::make_unique<MatchNodeClass>(nodeClass));
-      m_nodeClass = nodeClass;
-   }
 
    bool match(const T& input)
    {
+      return followPath(input.target.nodeId.nodeId);
+   }
+
+private:
+   bool followPath(const UA_NodeId& startId)
+   {
+      // check, if we are finished
+      if (idx >= m_path.size())
+      {
+         idx -= 1;
+         return true;
+      }
       UA_BrowseDescription bd;
       UA_BrowseDescription_init(&bd);
       bd.browseDirection = UA_BROWSEDIRECTION_BOTH;
       bd.includeSubtypes = true;
-      bd.referenceTypeId = m_referenceType;
+      bd.referenceTypeId = m_path[idx].referenceType;
       bd.resultMask = UA_BROWSERESULTMASK_NONE;
-      bd.nodeId = input.target.nodeId.nodeId;
-      bd.nodeClassMask = m_nodeClass;
+      bd.nodeId = startId;
+      bd.nodeClassMask = m_path[idx].nodeClass;
       UA_BrowseResult br = UA_Server_browse(m_server, 1000, &bd);
       auto result = false;
-      if (br.statusCode == UA_STATUSCODE_GOOD)
+      if (br.statusCode != UA_STATUSCODE_GOOD)
+      {
+         UA_BrowseResult_clear(&br);
+         return false;
+      }
+
+      UA_NodeId nextStartId = UA_NODEID_NULL;
+
+      if(m_path[idx].targetId)
       {
          for (const auto* ref = br.references; ref != br.references + br.referencesSize; ++ref)
          {
-            result = isMatching(*ref);
-            if (result)
+            if(UA_NodeId_equal(&m_path[idx].targetId.value(), &ref->nodeId.nodeId))
             {
+               nextStartId = *m_path[idx].targetId;
+               result = true;
                break;
             }
          }
       }
+      else
+      {
+         //we have no clear startId
+         if(br.referencesSize>0)
+         {
+            for (const auto* ref = br.references; ref != br.references + br.referencesSize; ++ref)
+            {
+               nextStartId = ref->nodeId.nodeId;
+               idx += 1;
+               result = followPath(nextStartId);
+               //we have a matching subPath
+               if(result)
+               {
+                  break;
+               }
+            }
+         }
+      }
       UA_BrowseResult_clear(&br);
+      idx-=1;
       return result;
    }
 
-private:
-
-   bool isMatching(const UA_ReferenceDescription& ref)
-   {
-      for(const auto& matcher:m_matchers)
-      {
-         if(!matcher->match(ref))
-         {
-            return false;
-         }
-      }
-      return true;
-   }
-
    UA_Server* m_server;
-   UA_NodeId m_referenceType;
-   std::vector<std::unique_ptr<ReferenceDescriptionMatcher>> m_matchers;
-   UA_NodeClass m_nodeClass{UA_NODECLASS_UNSPECIFIED};
+   std::vector<PathElement> m_path;
+   size_t idx {0};
 };

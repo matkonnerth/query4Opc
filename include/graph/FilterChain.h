@@ -1,11 +1,12 @@
 #pragma once
 #include "Filter.h"
+#include "Helper.h"
 #include "Sink.h"
 #include "Source.h"
 #include <cypher/Path.h>
 #include <memory>
 #include <vector>
-#include "Helper.h"
+#include <optional>
 
 class FilterChain
 {
@@ -28,20 +29,9 @@ public:
       m_src = std::make_unique<SinkToSource>(sink);
    }
 
-   void createReferenceFilter(const UA_NodeId& referenceType)
+   void createReferenceFilter(const std::vector<PathElement>& path)
    {
-      m_filters.emplace_back(std::make_unique<ReferenceFilter<Result>>(m_server, referenceType));
-   }
-
-   void createReferenceFilter(const UA_NodeId& referenceType, const UA_NodeId& targetId, UA_NodeClass nodeClass)
-   {
-      auto filter = std::make_unique<ReferenceFilter<Result>>(m_server, referenceType);
-      filter->matchNodeClass(nodeClass);
-      if (!UA_NodeId_equal(&UA_NODEID_NULL, &targetId))
-      {
-         filter->matchNodeId(targetId);
-      }
-
+      auto filter = std::make_unique<ReferenceFilter<Result>>(m_server, path);
       m_filters.emplace_back(std::move(filter));
 
       if (m_filters.size() > 1u)
@@ -81,8 +71,13 @@ std::unique_ptr<FilterChain> createFilterChain(const SimplePath& path, UA_Server
    // should be there where we have the returned identifier
    f->createHierachicalVisitorSource(UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER), UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES), parseOptionalNodeClass(path.m_nodeA.label));
 
-
-   f->createReferenceFilter(lookupReferenceType(path.m_rel.type), parseOptionalNodeId(path.m_nodeB.NodeId()), parseOptionalNodeClass(path.m_nodeB.label));
+   std::vector<PathElement> p;
+   PathElement e;
+   //e.referenceType = lookupReferenceType(path.m_rel.type);
+   //e.nodeClass = parseOptionalNodeClass(path.m_nodeB.label);
+   //e.targetId = parseOptionalNodeId(path.m_nodeB.NodeId());
+   p.emplace_back(e);
+   f->createReferenceFilter(p);
    f->createSink();
    return f;
 }
@@ -94,7 +89,7 @@ std::unique_ptr<FilterChain> createFilterChain(const EmptyPath& path, UA_Server*
    f->createSink();
    return f;
 }
-
+/*
 std::unique_ptr<FilterChain> createFilterChain(const AppendedPath& path, const Sink<Result>& sink, UA_Server* server)
 {
    auto f = std::make_unique<FilterChain>(server);
@@ -106,3 +101,4 @@ std::unique_ptr<FilterChain> createFilterChain(const AppendedPath& path, const S
    f->createSink();
    return f;
 }
+*/

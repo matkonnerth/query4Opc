@@ -1,4 +1,5 @@
 #pragma once
+#include <unordered_map>
 
 UA_NodeClass parseNodeClass(const std::string& nodeclass)
 {

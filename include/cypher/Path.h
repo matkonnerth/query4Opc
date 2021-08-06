@@ -5,9 +5,6 @@
 #include <unordered_map>
 #include <vector>
 
-struct PathElement
-{};
-
 struct Node
 {
    std::optional<std::string> identifier;
