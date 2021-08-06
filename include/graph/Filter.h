@@ -199,7 +199,7 @@ private:
       }
       UA_BrowseDescription bd;
       UA_BrowseDescription_init(&bd);
-      bd.browseDirection = UA_BROWSEDIRECTION_BOTH;
+      bd.browseDirection = m_path[idx].direction;
       bd.includeSubtypes = true;
       bd.referenceTypeId = m_path[idx].referenceType;
       bd.resultMask = UA_BROWSERESULTMASK_NONE;
@@ -222,8 +222,12 @@ private:
             if(UA_NodeId_equal(&m_path[idx].targetId.value(), &ref->nodeId.nodeId))
             {
                nextStartId = *m_path[idx].targetId;
-               result = true;
-               break;
+               idx +=1;
+               result = followPath(nextStartId);
+               if(result)
+               {
+                  break;
+               }
             }
          }
       }

@@ -81,6 +81,18 @@ std::unique_ptr<FilterChain> createFilterChain(const Path& path, UA_Server* serv
       {
          e.targetId = parseOptionalNodeId(it.nextNode()->NodeId());
       }
+      if(it.nextRel()->direction==1)
+      {
+         e.direction = UA_BROWSEDIRECTION_FORWARD;
+      }
+      else if(it.nextRel()->direction==-1)
+      {
+         e.direction = UA_BROWSEDIRECTION_INVERSE;
+      }
+      else
+      {
+         e.direction = UA_BROWSEDIRECTION_BOTH;
+      }
       p.emplace_back(e);
       it++;
    }
