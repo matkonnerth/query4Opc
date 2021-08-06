@@ -110,12 +110,6 @@ struct SimplePath
    Relationship m_rel;
 };
 
-struct AppendedPath
-{
-   Node m_node;
-   Relationship m_rel;
-};
-
 struct EmptyPath
 {
    Node m_node;
@@ -123,9 +117,8 @@ struct EmptyPath
 
 struct SplittedPaths
 {
-   std::optional<SimplePath> simplePath;
+   std::optional<Path> path;
    std::optional<EmptyPath> emptyPath;
-   std::vector<AppendedPath> appendedPaths;
 };
 
 std::optional<SplittedPaths> splitPaths(const Path& p);

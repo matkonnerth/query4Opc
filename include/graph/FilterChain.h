@@ -63,23 +63,28 @@ private:
    std::vector<std::unique_ptr<AbstractFilter<Result>>> m_filters;
 };
 
-std::unique_ptr<FilterChain> createFilterChain(const SimplePath& path, UA_Server* server)
+/* Source starts always at node 0 */
+std::unique_ptr<FilterChain> createFilterChain(const Path& path, UA_Server* server)
 {
    auto f = std::make_unique<FilterChain>(server);
-   // TODO: take a or b node
-   // where to start with the visitor?
-   // should be there where we have the returned identifier
-   f->createHierachicalVisitorSource(UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER), UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES), parseOptionalNodeClass(path.m_nodeA.label));
+   //we start always at the first node
+   f->createHierachicalVisitorSource(UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER), UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES), parseOptionalNodeClass(path.nodes[0].label));
 
    std::vector<PathElement> p;
-   PathElement e{};
-   e.referenceType = lookupReferenceType(path.m_rel.type);
-   e.nodeClass = parseOptionalNodeClass(path.m_nodeB.label);
-   if(path.m_nodeB.NodeId())
+   PathIterator it{path};
+   while(auto rel= it.nextRel())
    {
-      e.targetId = parseOptionalNodeId(path.m_nodeB.NodeId());
-   }   
-   p.emplace_back(e);
+      PathElement e{};
+      e.referenceType = lookupReferenceType(it.nextRel()->type);
+      e.nodeClass = parseOptionalNodeClass(it.nextNode()->label);
+      if (it.nextNode()->NodeId())
+      {
+         e.targetId = parseOptionalNodeId(it.nextNode()->NodeId());
+      }
+      p.emplace_back(e);
+      it++;
+   }
+  
    f->createReferenceFilter(p);
    f->createSink();
    return f;
@@ -92,16 +97,3 @@ std::unique_ptr<FilterChain> createFilterChain(const EmptyPath& path, UA_Server*
    f->createSink();
    return f;
 }
-/*
-std::unique_ptr<FilterChain> createFilterChain(const AppendedPath& path, const Sink<Result>& sink, UA_Server* server)
-{
-   auto f = std::make_unique<FilterChain>(server);
-   // TODO: take a or b node
-   // where to start with the visitor?
-   // should be there where we have the returned identifier
-   f->createSinkToSource(sink);
-   f->createReferenceFilter(lookupReferenceType(path.m_rel.type), parseOptionalNodeId(path.m_node.NodeId()), parseOptionalNodeClass(path.m_node.label));
-   f->createSink();
-   return f;
-}
-*/

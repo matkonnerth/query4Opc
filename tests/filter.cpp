@@ -1,20 +1,20 @@
+#include <NodesetLoader/backendOpen62541.h>
 #include <graph/Filter.h>
 #include <graph/Sink.h>
 #include <graph/Source.h>
-#include <NodesetLoader/backendOpen62541.h>
 #include <gtest/gtest.h>
 #include <iostream>
 #include <open62541/server.h>
 #include <open62541/server_config_default.h>
 
-std::string path = "";
+std::string g_path = "";
 
 TEST(import, testImport)
 {
    UA_Server* server = UA_Server_new();
    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
 
-   ASSERT_TRUE(NodesetLoader_loadFile(server, (path + "/graph.xml").c_str(), NULL));
+   ASSERT_TRUE(NodesetLoader_loadFile(server, (g_path + "/graph.xml").c_str(), NULL));
 
    UA_Server_delete(server);
 }
@@ -53,7 +53,7 @@ TEST(objectWithProperty, findAllTempDevices)
    UA_Server* server = UA_Server_new();
    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
 
-   ASSERT_TRUE(NodesetLoader_loadFile(server, (path + "/objectwithproperty.xml").c_str(), NULL));
+   ASSERT_TRUE(NodesetLoader_loadFile(server, (g_path + "/objectwithproperty.xml").c_str(), NULL));
 
    TypeFilter<Result> instancesOfType{ UA_NODEID_NUMERIC(2, 1002) };
    Sink<Result> s;
@@ -66,18 +66,20 @@ TEST(objectWithProperty, findAllTempDevices)
    UA_Server_delete(server);
 }
 
-/*
+
 TEST(objectWithProperty, findAllTempDevicesWithProperty)
 {
    UA_Server* server = UA_Server_new();
    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
 
-   ASSERT_TRUE(NodesetLoader_loadFile(server, (path + "/objectwithproperty.xml").c_str(), NULL));
+   ASSERT_TRUE(NodesetLoader_loadFile(server, (g_path + "/objectwithproperty.xml").c_str(), NULL));
 
    TypeFilter<Result> instancesOfType{ UA_NODEID_NUMERIC(2, 1002) };
    Sink<Result> s;
 
-   ReferenceFilter<Result> hasProperty{ server, UA_NODEID_NUMERIC(0, UA_NS0ID_HASPROPERTY) };
+   std::vector<PathElement> p{ PathElement{ UA_NODEID_NUMERIC(0, UA_NS0ID_HASPROPERTY), UA_NODECLASS_VARIABLE, std::nullopt, UA_BROWSEDIRECTION_BOTH } };
+
+   ReferenceFilter<Result> hasProperty{ server, p };
 
    instancesOfType.append(hasProperty).append(s);
    HierachicalVisitor vis{ server, UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER), UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES), UA_NODECLASS_OBJECT };
@@ -88,12 +90,13 @@ TEST(objectWithProperty, findAllTempDevicesWithProperty)
    UA_Server_delete(server);
 }
 
+
 TEST(objectWithProperty, findAllTempDevicesWithPropertyAndCertainPropertyId)
 {
    UA_Server* server = UA_Server_new();
    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
 
-   ASSERT_TRUE(NodesetLoader_loadFile(server, (path + "/objectwithproperty.xml").c_str(), NULL));
+   ASSERT_TRUE(NodesetLoader_loadFile(server, (g_path + "/objectwithproperty.xml").c_str(), NULL));
 
    TypeFilter<Result> instancesOfType{ UA_NODEID_NUMERIC(2, 1002) };
    Sink<Result> s;
@@ -104,8 +107,8 @@ TEST(objectWithProperty, findAllTempDevicesWithPropertyAndCertainPropertyId)
    vis.generate(instancesOfType);
    ASSERT_EQ(s.results().size(), 2);
 
-   ReferenceFilter<Result> hasProperty{ server, UA_NODEID_NUMERIC(0, UA_NS0ID_HASPROPERTY)};
-   hasProperty.matchNodeId(UA_NODEID_NUMERIC(2, 6001));
+   std::vector<PathElement> p{ PathElement{ UA_NODEID_NUMERIC(0, UA_NS0ID_HASPROPERTY), UA_NODECLASS_VARIABLE, UA_NODEID_NUMERIC(2, 6001), UA_BROWSEDIRECTION_BOTH } };
+   ReferenceFilter<Result> hasProperty{ server, p};
 
    Sink<Result>
    sinkWithProperty;
@@ -117,14 +120,13 @@ TEST(objectWithProperty, findAllTempDevicesWithPropertyAndCertainPropertyId)
 
    UA_Server_delete(server);
 }
-*/
 
 TEST(objectWithProperty, allObjects)
 {
    UA_Server* server = UA_Server_new();
    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
 
-   ASSERT_TRUE(NodesetLoader_loadFile(server, (path + "/objectwithproperty.xml").c_str(), NULL));
+   ASSERT_TRUE(NodesetLoader_loadFile(server, (g_path + "/objectwithproperty.xml").c_str(), NULL));
    Sink<Result> s;
 
    TakeAllFilter<Result> ta{};
@@ -142,13 +144,13 @@ TEST(objectWithProperty, allVariables)
    UA_Server* server = UA_Server_new();
    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
 
-   ASSERT_TRUE(NodesetLoader_loadFile(server, (path + "/objectwithproperty.xml").c_str(), NULL));
+   ASSERT_TRUE(NodesetLoader_loadFile(server, (g_path + "/objectwithproperty.xml").c_str(), NULL));
    Sink<Result> s;
 
    TakeAllFilter<Result> ta{};
 
    ta.append(s);
-   HierachicalVisitor vis{ server, UA_NODEID_NUMERIC(2, 5002), UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES), UA_NODECLASS_VARIABLE};
+   HierachicalVisitor vis{ server, UA_NODEID_NUMERIC(2, 5002), UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES), UA_NODECLASS_VARIABLE };
 
    vis.generate(ta);
    ASSERT_EQ(s.results().size(), 1);
@@ -176,7 +178,7 @@ int main(int argc, char** argv)
 
    if (!(argc > 1))
       return 1;
-   path = argv[1];
+   g_path = argv[1];
 
    return RUN_ALL_TESTS();
 }

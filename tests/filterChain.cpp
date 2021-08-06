@@ -5,7 +5,7 @@
 #include <open62541/server.h>
 #include <open62541/server_config_default.h>
 
-std::string path = "";
+std::string g_path = "";
 
 /*
 TEST(serverType, findServerObject)
@@ -31,10 +31,12 @@ TEST(serverType, findServerObjectWithPath)
    UA_Server* server = UA_Server_new();
    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
 
-   SimplePath p;
-   p.m_nodeA.label = "Object";
-   p.m_nodeB.properties.emplace(std::make_pair("NodeId", "i=2004"));
-   p.m_rel.type = "i=40";
+   Path p;
+   p.nodes.emplace_back(Node{.label="Object"});
+   Node b;
+   b.properties.emplace(std::make_pair("NodeId", "i=2004"));
+   p.nodes.emplace_back(b);
+   p.relations.emplace_back(Relationship{.type="i=40"});
 
    auto f = createFilterChain(p, server);
    f->run();
@@ -52,7 +54,7 @@ int main(int argc, char** argv)
 
    if (!(argc > 1))
       return 1;
-   path = argv[1];
+   g_path = argv[1];
 
    return RUN_ALL_TESTS();
 }

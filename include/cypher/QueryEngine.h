@@ -15,16 +15,15 @@ public:
       auto s = splitPaths(q.matchClauses[0].path);
       if (s)
       {
-         if(s->simplePath)
+         if (s->emptyPath)
          {
-            m_filterChain = createFilterChain(*s->simplePath, m_server);
+            m_filterChain = createFilterChain(*s->emptyPath, m_server);
+         }
+         if(s->path)
+         {
+            m_filterChain = createFilterChain(*s->path, m_server);
             return;
          }
-         if(s->emptyPath)
-         {
-             m_filterChain = createFilterChain(*s->emptyPath, m_server);
-         }
-         
       }
    }
 
