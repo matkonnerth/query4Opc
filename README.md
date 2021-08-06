@@ -52,9 +52,8 @@ Here is a list of example cypher queries, which we think is interesting for clie
 `return obj, types`
 
 (3) Get all Objects of a certain ObjectType, starting at a certain root node
-`match(root:Object{NodeId:"BaseInstance"})-[:HierachicalReferences*0..]->(objs:Object) return objs`
 `match (a:ObjectType {NodeId: "Base"}) -[:HasSubTyp*0..]->(types) return types`
-`match (obj:Object)-[:HasTypeDefinition]->(types)` \
+`match(root:Object{NodeId:"BaseInstance"})-[:HierachicalReferences*0..]->(obj:Object)-[:HasTypeDefinition]->(types)` \
 `return obj, types`
 
 (4) Get all Objects of a certain ObjectType and with a hasProperty reference to a certain node (TODO: validate this)
