@@ -246,7 +246,10 @@ private:
          }
       }
       UA_BrowseResult_clear(&br);
-      idx-=1;
+      if(idx>0)
+      {
+         idx -= 1;
+      }      
       return result;
    }
 

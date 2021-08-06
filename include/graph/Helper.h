@@ -1,5 +1,7 @@
 #pragma once
 #include <unordered_map>
+#include <string>
+#include <open62541/types.h>
 
 UA_NodeClass parseNodeClass(const std::string& nodeclass)
 {

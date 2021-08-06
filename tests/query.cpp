@@ -8,7 +8,6 @@
 
 std::string path = "";
 
-
 TEST(serverType, findServerObject)
 {
    UA_Server* server = UA_Server_new();

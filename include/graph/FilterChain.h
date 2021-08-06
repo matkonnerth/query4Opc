@@ -5,8 +5,8 @@
 #include "Source.h"
 #include <cypher/Path.h>
 #include <memory>
-#include <vector>
 #include <optional>
+#include <vector>
 
 class FilterChain
 {
@@ -72,10 +72,13 @@ std::unique_ptr<FilterChain> createFilterChain(const SimplePath& path, UA_Server
    f->createHierachicalVisitorSource(UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER), UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES), parseOptionalNodeClass(path.m_nodeA.label));
 
    std::vector<PathElement> p;
-   PathElement e;
-   //e.referenceType = lookupReferenceType(path.m_rel.type);
-   //e.nodeClass = parseOptionalNodeClass(path.m_nodeB.label);
-   //e.targetId = parseOptionalNodeId(path.m_nodeB.NodeId());
+   PathElement e{};
+   e.referenceType = lookupReferenceType(path.m_rel.type);
+   e.nodeClass = parseOptionalNodeClass(path.m_nodeB.label);
+   if(path.m_nodeB.NodeId())
+   {
+      e.targetId = parseOptionalNodeId(path.m_nodeB.NodeId());
+   }   
    p.emplace_back(e);
    f->createReferenceFilter(p);
    f->createSink();

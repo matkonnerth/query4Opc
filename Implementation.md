@@ -77,7 +77,18 @@ That means we have to bring the wanted result node completely to the left.
 Direction of the relationship play an important role, take a look a this example:
 (:Variable)<-[:HasProperty]-(obj:Object)-[:HasTypeDefinition]->(t:ObjectType{NodeId:\"MyType\"}) RETURN obj
 
-We can decide whether we want to
+can be rewritten to
+
+(obj:Object)-[:HasProperty]->(:Variable)
+(obj)-[:HasTypeDefinition]->(t:ObjectType{NodeId:\"MyType\"})
+
+
+We can decide whether we want to start with first or second filterchain. From a performance prospective it would be good to start with the objects matching the objectType.
+
+Metrics
+We could say: A typical nodeset has 100 objectTypes with 10 instances each
+
+
 
 
 EmptyPath
