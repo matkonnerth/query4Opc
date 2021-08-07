@@ -13,7 +13,6 @@ struct PathElement
    UA_NodeId referenceType;
    UA_NodeClass nodeClass;
    std::optional<UA_NodeId> targetId;
-   // unused
    UA_BrowseDirection direction;
 };
 
