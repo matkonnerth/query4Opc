@@ -23,42 +23,50 @@ public:
    PathMatcher(UA_Server* server, const std::vector<PathElement>& path)
    : m_server{ server }
    , m_path{ path }
-   {}
+   {
+       //add the result vectors
+       if(path.empty())
+       {
+           m_results.emplace_back(std::vector<UA_ReferenceDescription>{});
+       }
+       else
+       {
+           //+1 for the start node
+           for(auto i =0u; i<path.size()+1; i++)
+           {
+              m_results.emplace_back(std::vector<UA_ReferenceDescription>{});
+           }
+       }
+   }
 
    void match(const UA_ReferenceDescription& startNode)
    {
       std::vector<UA_ReferenceDescription> actPath;
+      actPath.push_back(startNode);
       // empty Path
       if (m_path.empty())
       {
-         actPath.push_back(startNode);
-         m_results.emplace_back(std::move(actPath));
+         m_results[0].emplace_back(startNode);
          return;
       }
 
-      if (checkPath(startNode, actPath))
+      if (checkPath(actPath))
       {
          // add the path to the results
-         m_results.emplace_back(std::move(actPath));
+         for(auto i=0u; i< actPath.size(); ++i)
+         {
+             m_results[i].emplace_back(std::move(actPath[i]));
+         }
       }
    }
 
-   std::vector<UA_ReferenceDescription> results() const
+   const std::vector<UA_ReferenceDescription>* results() const
    {
-      // TODO: refactor this stuff, at the moment we are simply copying the first column of results
-      std::vector<UA_ReferenceDescription> results{};
-      for (const auto& path : m_results)
-      {
-         if (!path.empty())
-         {
-            results.emplace_back(path[0]);
-         }
-      }
-      return results;
+      return &m_results[0];
    }
 
 private:
-   bool checkPath(const UA_ReferenceDescription& startNode, std::vector<UA_ReferenceDescription>& actPath)
+   bool checkPath(std::vector<UA_ReferenceDescription>& actPath)
    {
       for (const auto& e : m_path)
       {
@@ -68,15 +76,7 @@ private:
          bd.includeSubtypes = true;
          bd.referenceTypeId = e.referenceType;
          bd.resultMask = UA_BROWSERESULTMASK_NONE;
-         if (actPath.empty())
-         {
-            bd.nodeId = startNode.nodeId.nodeId;
-         }
-         else
-         {
-            bd.nodeId = actPath.back().nodeId.nodeId;
-         }
-
+         bd.nodeId = actPath.back().nodeId.nodeId;
          bd.nodeClassMask = e.nodeClass;
          UA_BrowseResult br = UA_Server_browse(m_server, 1000, &bd);
          if (br.statusCode != UA_STATUSCODE_GOOD)

@@ -88,9 +88,6 @@ We can decide whether we want to start with first or second filterchain. From a 
 Metrics
 We could say: A typical nodeset has 100 objectTypes with 10 instances each
 
-
-
-
 EmptyPath
 
 is a path with only one node pattern.

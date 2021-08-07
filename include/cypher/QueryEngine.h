@@ -20,7 +20,7 @@ public:
       }
    }
 
-   std::vector<UA_ReferenceDescription> run()
+   const std::vector<UA_ReferenceDescription>* run()
    {
       m_filterChain->run();
       return m_filterChain->results();

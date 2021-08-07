@@ -32,7 +32,7 @@ public:
       m_pathMatcher = std::make_unique<PathMatcher>(m_server, path);
    }
 
-   std::vector<UA_ReferenceDescription> results() const
+   const std::vector<UA_ReferenceDescription>* results() const
    {
       return m_pathMatcher->results();
    }
@@ -47,7 +47,6 @@ private:
 std::unique_ptr<FilterChain> createFilterChain(const Path& path, UA_Server* server)
 {
    auto f = std::make_unique<FilterChain>(server);
-   //we start always at the first node
    f->createHierachicalVisitorSource(UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER), UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES), parseOptionalNodeClass(path.nodes[0].label));
 
    std::vector<PathElement> p;

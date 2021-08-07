@@ -20,7 +20,8 @@ TEST(serverType, findServerObject)
    QueryEngine e{server};
    e.scheduleQuery(*q);
    auto results = e.run();
-   ASSERT_EQ(results.size(), 1);
+   ASSERT_TRUE(results);
+   ASSERT_EQ(results->size(), 1);
    UA_Server_delete(server);
 }
 
@@ -30,13 +31,14 @@ TEST(serverType, findServerObject_VariablePath_WrongVariable)
    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
 
    Parser p;
-   auto q = p.parse("MATCH(obj:Object)-[:HasTypeDefinition]->(:ObjectType{NodeId: \"i=2004\"})--(:Variable{NodeId:\"123\"}) RETURN obj");
+   auto q = p.parse("MATCH (obj:Object)-[:HasTypeDefinition]->(:ObjectType{NodeId: \"i=2004\"})--(:Variable{NodeId:\"123\"}) RETURN obj");
    ASSERT_TRUE(q);
 
    QueryEngine e{ server };
    e.scheduleQuery(*q);
    auto results = e.run();
-   ASSERT_EQ(results.size(), 0);
+   ASSERT_TRUE(results);
+   ASSERT_EQ(results->size(), 0);
    UA_Server_delete(server);
 }
 
@@ -52,7 +54,8 @@ TEST(serverType, findServerObject_VariablePath_WrongDirection)
    QueryEngine e{ server };
    e.scheduleQuery(*q);
    auto results = e.run();
-   ASSERT_EQ(results.size(), 0);
+   ASSERT_TRUE(results);
+   ASSERT_EQ(results->size(), 0);
    UA_Server_delete(server);
 }
 
@@ -68,7 +71,8 @@ TEST(serverType, findServerObject_VariablePath_DirectionDoesntMatter)
    QueryEngine e{ server };
    e.scheduleQuery(*q);
    auto results = e.run();
-   ASSERT_EQ(results.size(), 1);
+   ASSERT_TRUE(results);
+   ASSERT_EQ(results->size(), 1);
    UA_Server_delete(server);
 }
 
@@ -103,7 +107,8 @@ TEST(serverType, findServerObject_WrongReferenceType)
    QueryEngine e{ server };
    e.scheduleQuery(*q);
    auto results = e.run();
-   ASSERT_EQ(results.size(), 0);
+   ASSERT_TRUE(results);
+   ASSERT_EQ(results->size(), 0);
    UA_Server_delete(server);
 }
 
@@ -119,7 +124,8 @@ TEST(serverType, findObjectsWhichReferencesVariables)
    QueryEngine e{ server };
    e.scheduleQuery(*q);
    auto results = e.run();
-   ASSERT_GT(results.size(), 0);
+   ASSERT_TRUE(results);
+   ASSERT_GT(results->size(), 0);
    UA_Server_delete(server);
 }
 
@@ -135,7 +141,8 @@ TEST(serverType, emptyPath)
    QueryEngine e{ server };
    e.scheduleQuery(*q);
    auto results = e.run();
-   ASSERT_GT(results.size(), 0);
+   ASSERT_TRUE(results);
+   ASSERT_GT(results->size(), 0);
    UA_Server_delete(server);
 }
 
@@ -151,7 +158,8 @@ TEST(serverType, emptyPathObjectType)
    QueryEngine e{ server };
    e.scheduleQuery(*q);
    auto results = e.run();
-   ASSERT_EQ(results.size(), 0);
+   ASSERT_TRUE(results);
+   ASSERT_EQ(results->size(), 0);
    UA_Server_delete(server);
 }
 
