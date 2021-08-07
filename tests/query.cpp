@@ -20,8 +20,7 @@ TEST(serverType, findServerObject)
    QueryEngine e{server};
    e.scheduleQuery(*q);
    auto results = e.run();
-   ASSERT_TRUE(results);
-   ASSERT_EQ(results->size(), 1);
+   ASSERT_EQ(results.size(), 1);
    UA_Server_delete(server);
 }
 
@@ -37,8 +36,7 @@ TEST(serverType, findServerObject_VariablePath_WrongVariable)
    QueryEngine e{ server };
    e.scheduleQuery(*q);
    auto results = e.run();
-   ASSERT_TRUE(results);
-   ASSERT_EQ(results->size(), 0);
+   ASSERT_EQ(results.size(), 0);
    UA_Server_delete(server);
 }
 
@@ -54,8 +52,7 @@ TEST(serverType, findServerObject_VariablePath_WrongDirection)
    QueryEngine e{ server };
    e.scheduleQuery(*q);
    auto results = e.run();
-   ASSERT_TRUE(results);
-   ASSERT_EQ(results->size(), 0);
+   ASSERT_EQ(results.size(), 0);
    UA_Server_delete(server);
 }
 
@@ -71,8 +68,7 @@ TEST(serverType, findServerObject_VariablePath_DirectionDoesntMatter)
    QueryEngine e{ server };
    e.scheduleQuery(*q);
    auto results = e.run();
-   ASSERT_TRUE(results);
-   ASSERT_EQ(results->size(), 1);
+   ASSERT_EQ(results.size(), 1);
    UA_Server_delete(server);
 }
 
@@ -107,8 +103,7 @@ TEST(serverType, findServerObject_WrongReferenceType)
    QueryEngine e{ server };
    e.scheduleQuery(*q);
    auto results = e.run();
-   ASSERT_TRUE(results);
-   ASSERT_EQ(results->size(), 0);
+   ASSERT_EQ(results.size(), 0);
    UA_Server_delete(server);
 }
 
@@ -124,8 +119,7 @@ TEST(serverType, findObjectsWhichReferencesVariables)
    QueryEngine e{ server };
    e.scheduleQuery(*q);
    auto results = e.run();
-   ASSERT_TRUE(results);
-   ASSERT_GT(results->size(), 0);
+   ASSERT_GT(results.size(), 0);
    UA_Server_delete(server);
 }
 
@@ -141,8 +135,7 @@ TEST(serverType, emptyPath)
    QueryEngine e{ server };
    e.scheduleQuery(*q);
    auto results = e.run();
-   ASSERT_TRUE(results);
-   ASSERT_GT(results->size(), 0);
+   ASSERT_GT(results.size(), 0);
    UA_Server_delete(server);
 }
 
@@ -158,8 +151,7 @@ TEST(serverType, emptyPathObjectType)
    QueryEngine e{ server };
    e.scheduleQuery(*q);
    auto results = e.run();
-   ASSERT_TRUE(results);
-   ASSERT_EQ(results->size(), 0);
+   ASSERT_EQ(results.size(), 0);
    UA_Server_delete(server);
 }
 

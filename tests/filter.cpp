@@ -1,11 +1,11 @@
 #include <NodesetLoader/backendOpen62541.h>
 #include <graph/Filter.h>
-#include <graph/Sink.h>
 #include <graph/Source.h>
 #include <gtest/gtest.h>
 #include <iostream>
 #include <open62541/server.h>
 #include <open62541/server_config_default.h>
+#include <graph/PathMatcher.h>
 
 std::string g_path = "";
 
@@ -19,35 +19,6 @@ TEST(import, testImport)
    UA_Server_delete(server);
 }
 
-TEST(filter, basics)
-{
-   std::vector<UA_ReferenceDescription> refs;
-   UA_ReferenceDescription ref;
-   ref.typeDefinition = UA_EXPANDEDNODEID_NUMERIC(0, 58);
-   ref.nodeId = UA_EXPANDEDNODEID_NUMERIC(1, 10000);
-   for (auto i = 0; i < 100; ++i)
-   {
-
-      refs.emplace_back(ref);
-   }
-
-   Sink<Result> s{};
-   UA_ReferenceDescription typeRef{};
-   typeRef.nodeId.nodeId = UA_NODEID_NUMERIC(0, 58);
-   TypeFilter<Result> typeFilter{ std::vector<Result>{ Result{ UA_NODEID_NUMERIC(0, 58), typeRef } } };
-   TypeFilter<Result> typeFilter2{ std::vector<Result>{ Result{ UA_NODEID_NUMERIC(0, 58), typeRef } } };
-
-   TakeAllFilter<Result> ta{};
-   typeFilter.append(typeFilter2).append(ta).append(s);
-
-   for (const auto& r : refs)
-   {
-      typeFilter.filter(Result{ UA_NODEID_NUMERIC(0, 85), r });
-   }
-
-   ASSERT_EQ(s.results().size(), 100);
-}
-
 TEST(objectWithProperty, findAllTempDevices)
 {
    UA_Server* server = UA_Server_new();
@@ -55,18 +26,21 @@ TEST(objectWithProperty, findAllTempDevices)
 
    ASSERT_TRUE(NodesetLoader_loadFile(server, (g_path + "/objectwithproperty.xml").c_str(), NULL));
 
-   TypeFilter<Result> instancesOfType{ UA_NODEID_NUMERIC(2, 1002) };
-   Sink<Result> s;
-   instancesOfType.append(s);
    HierachicalVisitor vis{ server, UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER), UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES), UA_NODECLASS_OBJECT };
 
-   vis.generate(instancesOfType);
-   ASSERT_EQ(s.results().size(), 2);
+   std::vector<PathElement> path{ PathElement{ UA_NODEID_NUMERIC(0, UA_NS0ID_HASTYPEDEFINITION), UA_NODECLASS_OBJECTTYPE, UA_NODEID_NUMERIC(2, 1002), UA_BROWSEDIRECTION_FORWARD } };
+
+   PathMatcher p{server, path};
+
+   auto f = [&](Result&& res){p.match(res.target);};
+
+   vis.generate(f);
+   ASSERT_EQ(p.results().size(), 2);
 
    UA_Server_delete(server);
 }
 
-
+/*
 TEST(objectWithProperty, findAllTempDevicesWithProperty)
 {
    UA_Server* server = UA_Server_new();
@@ -89,8 +63,10 @@ TEST(objectWithProperty, findAllTempDevicesWithProperty)
 
    UA_Server_delete(server);
 }
+*/
 
 
+/*
 TEST(objectWithProperty, findAllTempDevicesWithPropertyAndCertainPropertyId)
 {
    UA_Server* server = UA_Server_new();
@@ -120,6 +96,7 @@ TEST(objectWithProperty, findAllTempDevicesWithPropertyAndCertainPropertyId)
 
    UA_Server_delete(server);
 }
+*/
 
 TEST(objectWithProperty, allObjects)
 {
@@ -127,17 +104,18 @@ TEST(objectWithProperty, allObjects)
    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
 
    ASSERT_TRUE(NodesetLoader_loadFile(server, (g_path + "/objectwithproperty.xml").c_str(), NULL));
-   Sink<Result> s;
-
-   TakeAllFilter<Result> ta{};
-
-   ta.append(s);
    HierachicalVisitor vis{ server, UA_NODEID_NUMERIC(2, 5002), UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES), UA_NODECLASS_OBJECT };
 
-   vis.generate(ta);
-   ASSERT_EQ(s.results().size(), 2);
+   //empty Path
+   PathMatcher p{ server, std::vector<PathElement>{}};
+
+   auto f = [&](Result&& res) { p.match(res.target); };
+
+   vis.generate(f);
+   ASSERT_EQ(p.results().size(), 2);
    UA_Server_delete(server);
 }
+
 
 TEST(objectWithProperty, allVariables)
 {
@@ -145,28 +123,30 @@ TEST(objectWithProperty, allVariables)
    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
 
    ASSERT_TRUE(NodesetLoader_loadFile(server, (g_path + "/objectwithproperty.xml").c_str(), NULL));
-   Sink<Result> s;
-
-   TakeAllFilter<Result> ta{};
-
-   ta.append(s);
+ 
    HierachicalVisitor vis{ server, UA_NODEID_NUMERIC(2, 5002), UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES), UA_NODECLASS_VARIABLE };
 
-   vis.generate(ta);
-   ASSERT_EQ(s.results().size(), 1);
+   // empty Path
+   PathMatcher p{ server, std::vector<PathElement>{} };
+
+   auto f = [&](Result&& res) { p.match(res.target); };
+
+   vis.generate(f);
+   ASSERT_EQ(p.results().size(), 1);
    UA_Server_delete(server);
 }
+
 
 TEST(serverType, findServerObject)
 {
    UA_Server* server = UA_Server_new();
    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
-   TypeFilter<Result> instancesOfType{ UA_NODEID_NUMERIC(0, UA_NS0ID_SERVERTYPE) };
-   Sink<Result> s;
-   instancesOfType.append(s);
    HierachicalVisitor vis{ server, UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER), UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES), UA_NODECLASS_OBJECT };
-   vis.generate(instancesOfType);
-   ASSERT_EQ(s.results().size(), 1);
+
+   std::vector<PathElement> path{ PathElement{ UA_NODEID_NUMERIC(0, UA_NS0ID_HASTYPEDEFINITION), UA_NODECLASS_OBJECTTYPE, UA_NODEID_NUMERIC(0, UA_NS0ID_SERVERTYPE), UA_BROWSEDIRECTION_FORWARD } };
+   PathMatcher p{ server, path };
+   vis.generate([&](Result&& res) { p.match(res.target); });
+   ASSERT_EQ(p.results().size(), 1);
 
    UA_Server_delete(server);
 }

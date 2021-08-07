@@ -41,7 +41,7 @@ TEST(serverType, findServerObjectWithPath)
    auto f = createFilterChain(p, server);
    f->run();
 
-   ASSERT_EQ(f->getSink().results().size(), 1);
+   ASSERT_EQ(f->results().size(), 1);
 
    UA_Server_delete(server);
 }

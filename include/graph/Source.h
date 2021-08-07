@@ -1,12 +1,12 @@
 #pragma once
-#include "Filter.h"
-#include "Sink.h"
 #include <open62541/server.h>
+#include <functional>
+#include <vector>
 
 class Source
 {
 public:
-   virtual void generate(AbstractFilter<Result>& filter) const = 0;
+   virtual void generate(const std::function<void(Result&&)>& filter) const = 0;
    virtual ~Source() = default;
 };
 
@@ -20,7 +20,7 @@ public:
    , m_nodeClassMask{ nodeclasMask }
    {}
 
-   void generate(AbstractFilter<Result>& filter) const override
+   void generate(const std::function<void(Result&&)>& filter) const override
    {
       visit(m_root, filter);
    }
@@ -39,7 +39,7 @@ private:
       }
       return UA_NODECLASS_UNSPECIFIED;
    }
-   void visit(const UA_NodeId& root, AbstractFilter<Result>& filter) const
+   void visit(const UA_NodeId& root, const std::function<void(Result&&)>& filter) const
    {
       UA_BrowseDescription bd;
       UA_BrowseDescription_init(&bd);
@@ -58,7 +58,7 @@ private:
          {
             if (rd->nodeClass == m_nodeClassMask)
             {
-               filter.filter(Result{ root, *rd });
+               filter(Result{ root, *rd });
             }
             //TODO: performance, shouldn't browse variable again?
             visit(rd->nodeId.nodeId, filter);
@@ -75,19 +75,19 @@ private:
 class SinkToSource : public Source
 {
 public:
-   SinkToSource(const Sink<Result>& s)
+   SinkToSource(const std::vector<Result>& s)
    : m_sink{ s }
    {}
 
-   void generate(AbstractFilter<Result>& filter) const override
+   void generate(const std::function<void(Result&&)>& filter) const override
    {
       // TODO: unnecessary copy?
-      for (auto res : m_sink.results())
+      for (auto res : m_sink)
       {
-         filter.filter(std::move(res));
+         filter(std::move(res));
       }
    }
 
 private:
-   const Sink<Result>& m_sink;
+   const std::vector<Result>& m_sink;
 };
