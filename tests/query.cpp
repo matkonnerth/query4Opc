@@ -76,7 +76,6 @@ TEST(serverType, findServerObject_VariablePath_DirectionDoesntMatter)
    UA_Server_delete(server);
 }
 
-/*
 TEST(serverType, findServerObject_reorderQuery)
 {
    UA_Server* server = UA_Server_new();
@@ -93,7 +92,6 @@ TEST(serverType, findServerObject_reorderQuery)
    ASSERT_EQ(results->size(), 1);
    UA_Server_delete(server);
 }
-*/
 
 TEST(serverType, findServerObject_WrongReferenceType)
 {
@@ -160,6 +158,23 @@ TEST(serverType, emptyPathObjectType)
    auto results = e.run();
    ASSERT_TRUE(results);
    ASSERT_EQ(results->size(), 0);
+   UA_Server_delete(server);
+}
+
+TEST(serverType, playground)
+{
+   UA_Server* server = UA_Server_new();
+   UA_ServerConfig_setDefault(UA_Server_getConfig(server));
+
+   Parser p;
+   auto q = p.parse("MATCH (obj:Object)-->(:Method)-->(:Variable) RETURN obj");
+   ASSERT_TRUE(q);
+
+   QueryEngine e{ server };
+   e.scheduleQuery(*q);
+   auto results = e.run();
+   ASSERT_TRUE(results);
+   ASSERT_EQ(results->size(), 2);
    UA_Server_delete(server);
 }
 

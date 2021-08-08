@@ -9,7 +9,7 @@ struct Node
 {
    std::optional<std::string> identifier;
    std::optional<std::string> label; // Object, Variable, ObjectType
-   std::unordered_map<std::string, std::string> properties;
+   std::unordered_map<std::string, std::string> properties{};
 
    const std::string* NodeId() const
    {
@@ -70,22 +70,20 @@ struct PathIterator
 
    const Relationship* prevRel() const
    {
-      auto relIndex = static_cast<int>(idx) - 1;
-      if (relIndex < 0)
+      if(idx==0)
       {
          return nullptr;
       }
-      return &m_path.relations[relIndex];
+      return &m_path.relations[idx-1];
    }
 
    const Relationship* nextRel() const
    {
-      auto relIndex = idx;
-      if (relIndex >= m_path.relations.size())
+      if(idx==m_path.nodes.size()-1)
       {
          return nullptr;
       }
-      return &m_path.relations[relIndex];
+      return &m_path.relations[idx];
    }
 
    void operator++(int)
