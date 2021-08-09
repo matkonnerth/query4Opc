@@ -6,6 +6,7 @@
 #include <open62541/server.h>
 #include <open62541/server_config_default.h>
 #include <graph/PathMatcher.h>
+#include "testHelper.h"
 
 std::string g_path = "";
 
@@ -16,7 +17,7 @@ TEST(import, testImport)
 
    ASSERT_TRUE(NodesetLoader_loadFile(server, (g_path + "/graph.xml").c_str(), NULL));
 
-   UA_Server_delete(server);
+   cleanupServer(server);
 }
 
 TEST(objectWithProperty, findAllTempDevices)
@@ -37,7 +38,7 @@ TEST(objectWithProperty, findAllTempDevices)
    vis.generate(f);
    ASSERT_EQ(p.results()->size(), 2);
 
-   UA_Server_delete(server);
+   cleanupServer(server);
 }
 
 
@@ -61,7 +62,7 @@ TEST(objectWithProperty, findAllTempDevicesWithProperty)
    ASSERT_TRUE(p.results());
    ASSERT_EQ(p.results()->size(), 1);
 
-   UA_Server_delete(server);
+   cleanupServer(server);
 }
 
 TEST(objectWithProperty, findAllTempDevicesWithPropertyAndCertainPropertyId)
@@ -82,7 +83,7 @@ TEST(objectWithProperty, findAllTempDevicesWithPropertyAndCertainPropertyId)
    ASSERT_TRUE(p.results());
    ASSERT_EQ(p.results()->size(), 1);
 
-   UA_Server_delete(server);
+   cleanupServer(server);
 }
 
 
@@ -101,7 +102,7 @@ TEST(objectWithProperty, allObjects)
 
    vis.generate(f);
    ASSERT_EQ(p.results()->size(), 2);
-   UA_Server_delete(server);
+   cleanupServer(server);
 }
 
 
@@ -121,7 +122,7 @@ TEST(objectWithProperty, allVariables)
 
    vis.generate(f);
    ASSERT_EQ(p.results()->size(), 1);
-   UA_Server_delete(server);
+   cleanupServer(server);
 }
 
 
@@ -136,7 +137,7 @@ TEST(serverType, findServerObject)
    vis.generate([&](Result&& res) { p.match(res.target); });
    ASSERT_EQ(p.results()->size(), 1);
 
-   UA_Server_delete(server);
+   cleanupServer(server);
 }
 
 int main(int argc, char** argv)

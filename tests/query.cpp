@@ -5,6 +5,7 @@
 #include <iostream>
 #include <open62541/server.h>
 #include <open62541/server_config_default.h>
+#include "testHelper.h"
 
 std::string g_path = "";
 
@@ -178,7 +179,7 @@ TEST(serverType, subfolder)
    auto results = e.run();
    ASSERT_TRUE(results);
    ASSERT_EQ(results->size(), 3);
-   UA_Server_delete(server);
+   cleanupServer(server);
 }
 
 TEST(serverType, playground)
