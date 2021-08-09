@@ -39,6 +39,44 @@ struct PathElement
 
 using path_t = std::vector<UA_ReferenceDescription>;
 using column_t = std::vector<UA_ReferenceDescription>;
+
+template <bool leftToRight>
+struct ResultVector
+{};
+
+template <>
+struct ResultVector<true>
+{
+    void addResult(const UA_ReferenceDescription& ref)
+    {
+        data.emplace_back(ref);
+    }
+
+    const UA_ReferenceDescription& getLastResult() const
+    {
+        return data.back();
+    }
+
+    path_t data;
+};
+
+template <>
+struct ResultVector<false>
+{
+    void addResult(const UA_ReferenceDescription& ref)
+    {
+        data.insert(data.begin(), ref);
+    }
+
+    const UA_ReferenceDescription& getLastResult() const
+    {
+        return data.front();
+    }
+
+    path_t data;
+};
+
+
 class PathMatcher
 {
  public:
@@ -110,14 +148,23 @@ class PathMatcher
  private:
     std::vector<path_t> checkPath(const UA_ReferenceDescription& startNode)
     {
-        auto result = checkRightSide(startNode);
-
+        auto rResults = checkRightSide(startNode);
         std::vector<path_t> endResult{};
-        for (auto& p : result)
+        for (auto& r : rResults)
         {
-            if (checkLeftSide(p))
+            // currently only one result
+            if(m_idx>0)
             {
-                endResult.emplace_back(p);
+                auto lResults = checkLeftSide(r.at(0));
+                for (auto& l : lResults)
+                {
+                    r.insert(r.begin(), l.begin(), l.end() - 1);
+                    endResult.emplace_back(r);
+                }
+            }
+            else
+            {
+               endResult.emplace_back(r);
             }
         }
         return endResult;
@@ -144,16 +191,35 @@ class PathMatcher
     // returns paths satisfying the right side
     std::vector<path_t> checkRightSide(const UA_ReferenceDescription& start)
     {
-        std::vector<path_t> paths;
-        path_t actPath{};
-        actPath.push_back(start);
+        return check<ResultVector<true>>(start,
+                                         m_path.cbegin() + static_cast<int>(m_idx),
+                                         m_path.cend());
+    }
+
+    std::vector<path_t> checkLeftSide(const UA_ReferenceDescription& start)
+    {
+        return check<ResultVector<false>>(start,
+                                          m_path.crbegin() +
+                                          static_cast<int>(m_path.size() - m_idx),
+                                          m_path.crend());
+    }
+
+    template <typename act_path_t, typename IT>
+    std::vector<path_t> check(const UA_ReferenceDescription& start, IT begin, IT end)
+    {
+        //if (begin == end)
+        //{
+        //    return std::vector<path_t>{};
+        //}
+        std ::vector<path_t> paths;
+        act_path_t actPath{};
+        actPath.addResult(start);
 
         std::optional<UA_ReferenceDescription> lastRef{ std::nullopt };
         std::optional<PathMatcher> lastMatcher{ std::nullopt };
-
-        for (auto it = m_path.cbegin() + static_cast<int>(m_idx); it != m_path.cend(); it++)
+        for (auto it = begin; it != end; it++)
         {
-            auto bd = createBrowseDescription(actPath.back().nodeId.nodeId,
+            auto bd = createBrowseDescription(actPath.getLastResult().nodeId.nodeId,
                                               it->direction,
                                               it->referenceType,
                                               it->nodeClass);
@@ -179,8 +245,7 @@ class PathMatcher
             else
             {
                 // we have to instantiate a pathMatcher for each of this subPaths
-                PathMatcher m{ m_server,
-                               std::vector<PathElement>{ it + 1, m_path.cend() } };
+                PathMatcher m{ m_server, std::vector<PathElement>{ it + 1, end } };
                 for (const auto* ref = br.raw().references;
                      ref != br.raw().references + br.raw().referencesSize;
                      ++ref)
@@ -192,7 +257,7 @@ class PathMatcher
 
             if (lastRef)
             {
-                actPath.push_back(*lastRef);
+                actPath.addResult(*lastRef);
                 lastRef = std::nullopt;
             }
             else if (lastMatcher)
@@ -209,7 +274,7 @@ class PathMatcher
                     for (auto i = 0u; i < maxPaths; i++)
                     {
                         size_t c = 0;
-                        path_t newPath{ actPath };
+                        path_t newPath{ actPath.data };
                         while (const auto* p = lastMatcher->results(c))
                         {
                             newPath.emplace_back(p->at(i));
@@ -225,61 +290,9 @@ class PathMatcher
                 return std::vector<path_t>{};
             }
         }
-        paths.emplace_back(actPath);
-        actPath.clear();
+        paths.emplace_back(actPath.data);
+        // actPath.clear();
         return paths;
-    }
-
-
-    bool checkLeftSide(path_t& actPath)
-    {
-        for (auto it = m_path.crbegin() + static_cast<int>(m_path.size() - m_idx);
-             it != m_path.crend();
-             it++)
-        {
-            auto bd = createBrowseDescription(actPath.front().nodeId.nodeId,
-                                              it->direction,
-                                              it->referenceType,
-                                              it->nodeClass);
-            BrowseResultWrapper br{ UA_Server_browse(m_server, 1000, &bd) };
-            if (br.raw().statusCode != UA_STATUSCODE_GOOD)
-            {
-                return false;
-            }
-
-            auto result = false;
-            if (it->targetId)
-            {
-                for (const auto* ref = br.raw().references;
-                     ref != br.raw().references + br.raw().referencesSize;
-                     ++ref)
-                {
-                    if (UA_NodeId_equal(&it->targetId.value(), &ref->nodeId.nodeId))
-                    {
-                        actPath.insert(actPath.begin(), *ref);
-                        result = true;
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                // we have no clear startId
-                for (const auto* ref = br.raw().references;
-                     ref != br.raw().references + br.raw().referencesSize;
-                     ++ref)
-                {
-                    actPath.insert(actPath.begin(), *ref);
-                    result = true;
-                    break;
-                }
-            }
-            if (!result)
-            {
-                return false;
-            }
-        }
-        return true;
     }
 
     UA_Server* m_server;
