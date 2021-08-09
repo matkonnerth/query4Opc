@@ -66,3 +66,4 @@ UA_NodeId lookupReferenceType(const std::optional<std::string>& ref)
    }
    return UA_NODEID_NULL;
 }
+

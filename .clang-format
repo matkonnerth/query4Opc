@@ -27,7 +27,7 @@ BraceWrapping:
   SplitEmptyNamespace: false
 BreakBeforeTernaryOperators: false
 BreakConstructorInitializersBeforeComma: true
-ColumnLimit: 224
+ColumnLimit: 80
 CommentPragmas: ''
 CompactNamespaces: true
 ConstructorInitializerAllOnOneLineOrOnePerLine: false
@@ -39,7 +39,7 @@ FixNamespaceComments: true
 IncludeBlocks: Preserve
 IndentCaseLabels: false
 IndentFunctionDeclarationAfterType: false
-IndentWidth: 3
+IndentWidth: 4
 Language: Cpp
 MaxEmptyLinesToKeep: 2
 NamespaceIndentation: None
