@@ -1,6 +1,6 @@
-#include <cypher/QueryEngine.h>
-#include <cypher/Parser.h>
 #include <NodesetLoader/backendOpen62541.h>
+#include <cypher/Parser.h>
+#include <cypher/QueryEngine.h>
 #include <gtest/gtest.h>
 #include <iostream>
 #include <open62541/server.h>
@@ -158,6 +158,26 @@ TEST(serverType, emptyPathObjectType)
    auto results = e.run();
    ASSERT_TRUE(results);
    ASSERT_EQ(results->size(), 0);
+   UA_Server_delete(server);
+}
+
+TEST(serverType, subfolder)
+{
+   UA_Server* server = UA_Server_new();
+   UA_ServerConfig_setDefault(UA_Server_getConfig(server));
+
+   ASSERT_TRUE(NodesetLoader_loadFile(server, (g_path + "/subfolder.xml").c_str(), NULL));
+   
+   //match all BaseObjects below a folder
+   Parser p;
+   auto q = p.parse("MATCH (:ObjectType{NodeId:\"i=61\"})<--(obj:Object)-->(:Object)-->(:ObjectType{NodeId:\"i=58\"}) RETURN obj");
+   ASSERT_TRUE(q);
+
+   QueryEngine e{ server };
+   e.scheduleQuery(*q);
+   auto results = e.run();
+   ASSERT_TRUE(results);
+   ASSERT_EQ(results->size(), 3);
    UA_Server_delete(server);
 }
 
