@@ -90,19 +90,19 @@ public:
       m_path = path;
    }
 
-   const std::vector<UA_ReferenceDescription>* results() const
+   const column_t* results() const
    {
-      return m_pathMatcher->results();
+      return m_pathMatcher->results().col();
    }
 
-   const std::vector<UA_ReferenceDescription>* results(const std::string& identifier)
+   const column_t* results(const std::string& identifier)
    {
       size_t idx = 0;
       for(const auto&n:m_path.nodes)
       {
          if(n.identifier && n.identifier==identifier)
          {
-            return m_pathMatcher->results(idx);
+            return m_pathMatcher->results().col(idx);
          }
          idx++;
       }

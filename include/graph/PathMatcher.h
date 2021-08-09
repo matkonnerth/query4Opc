@@ -37,8 +37,9 @@ struct PathElement
     UA_BrowseDirection direction;
 };
 
-using path_t = std::vector<UA_ReferenceDescription>;
-using column_t = std::vector<UA_ReferenceDescription>;
+using path_element_t = UA_ReferenceDescription;
+using path_t = std::vector<path_element_t>;
+using column_t = std::vector<path_element_t>;
 
 template <bool leftToRight>
 struct ResultVector
@@ -76,6 +77,66 @@ struct ResultVector<false>
     path_t data;
 };
 
+class PathResult
+{
+ public:
+    PathResult(size_t columnCount)
+    {
+        for (auto i = 0u; i < columnCount; ++i)
+        {
+            data.emplace_back(std::vector<path_element_t>{});
+        }
+    }
+
+    void emplace(path_t&& p)
+    {
+        size_t c = 0u;
+        for (auto&& e : p)
+        {
+            data[c].emplace_back(std::move(e));
+            ++c;
+        }
+    }
+
+    const column_t* col() const
+    {
+        return col(0);
+    }
+
+    const column_t* col(size_t idx) const
+    {
+        if (idx < data.size())
+        {
+            return &data[idx];
+        }
+        return nullptr;
+    }
+
+    std::vector<path_t> paths() const
+    {
+        std::vector<path_t> res;
+        for (auto row = 0u; row < data[0].size(); ++row)
+        {
+            path_t p;
+            for (auto col = 0u; col < data.size(); ++col)
+            {
+                p.emplace_back(data[col][row]);
+            }
+            res.emplace_back(std::move(p));
+        }
+        return res;
+    }
+
+    column_t& operator[](size_t idx)
+    {
+        assert(idx < data.size());
+        return data[idx];
+    }
+
+ private:
+    std::vector<column_t> data;
+};
+
 
 class PathMatcher
 {
@@ -84,14 +145,8 @@ class PathMatcher
     : m_server{ server }
     , m_path{ path }
     , m_idx{ startIndex }
-    {
-        // add the result vectors
-        //+1 for the start node
-        for (auto i = 0u; i < path.size() + 1; i++)
-        {
-            m_results.emplace_back(path_t{});
-        }
-    }
+    , m_results{ path.size() + 1 }
+    {}
 
     PathMatcher(const PathMatcher&) = delete;
     PathMatcher& operator=(const PathMatcher&) = delete;
@@ -99,8 +154,8 @@ class PathMatcher
     PathMatcher(PathMatcher&& other)
     : m_server{ other.m_server }
     , m_path{ other.m_path }
-    , m_results{ other.m_results }
     , m_idx{ other.m_idx }
+    , m_results{ other.m_results }
     {}
 
     PathMatcher& operator=(PathMatcher&& other)
@@ -121,29 +176,17 @@ class PathMatcher
             return;
         }
 
-        for (const auto& p : checkPath(startNode))
+        for (auto&& p : checkPath(startNode))
         {
-            // add the path to the results
-            for (auto i = 0u; i < p.size(); ++i)
-            {
-                m_results[i].emplace_back(std::move(p[i]));
-            }
+            m_results.emplace(std::move(p));
         }
     }
 
-    const column_t* results() const
+    const PathResult& results() const
     {
-        return &m_results[0];
+        return m_results;
     }
 
-    const column_t* results(size_t idx) const
-    {
-        if (idx < m_results.size())
-        {
-            return &m_results[idx];
-        }
-        return nullptr;
-    }
 
  private:
     std::vector<path_t> checkPath(const UA_ReferenceDescription& startNode)
@@ -152,8 +195,7 @@ class PathMatcher
         std::vector<path_t> endResult{};
         for (auto& r : rResults)
         {
-            // currently only one result
-            if(m_idx>0)
+            if (m_idx > 0)
             {
                 auto lResults = checkLeftSide(r.at(0));
                 for (auto& l : lResults)
@@ -164,7 +206,7 @@ class PathMatcher
             }
             else
             {
-               endResult.emplace_back(r);
+                endResult.emplace_back(r);
             }
         }
         return endResult;
@@ -207,7 +249,7 @@ class PathMatcher
     template <typename act_path_t, typename IT>
     std::vector<path_t> check(const UA_ReferenceDescription& start, IT begin, IT end)
     {
-        //if (begin == end)
+        // if (begin == end)
         //{
         //    return std::vector<path_t>{};
         //}
@@ -244,7 +286,8 @@ class PathMatcher
             }
             else
             {
-                // we have to instantiate a pathMatcher for each of this subPaths
+                // we have to instantiate a pathMatcher for each of this
+                // subPaths rightToLeft is here not handled correctly
                 PathMatcher m{ m_server, std::vector<PathElement>{ it + 1, end } };
                 for (const auto* ref = br.raw().references;
                      ref != br.raw().references + br.raw().referencesSize;
@@ -263,25 +306,11 @@ class PathMatcher
             else if (lastMatcher)
             {
                 std::vector<path_t> res;
-                // add the results
-                if (lastMatcher->results())
+                for (auto&& pe : lastMatcher->results().paths())
                 {
-                    size_t maxPaths = 0;
-                    if (lastMatcher->results())
-                    {
-                        maxPaths = lastMatcher->results()->size();
-                    }
-                    for (auto i = 0u; i < maxPaths; i++)
-                    {
-                        size_t c = 0;
-                        path_t newPath{ actPath.data };
-                        while (const auto* p = lastMatcher->results(c))
-                        {
-                            newPath.emplace_back(p->at(i));
-                            c += 1;
-                        }
-                        res.emplace_back(newPath);
-                    }
+                    path_t newPath{ actPath.data };
+                    newPath.insert(newPath.end(), pe.begin(), pe.end());
+                    res.emplace_back(newPath);
                 }
                 return res;
             }
@@ -291,12 +320,11 @@ class PathMatcher
             }
         }
         paths.emplace_back(actPath.data);
-        // actPath.clear();
         return paths;
     }
 
     UA_Server* m_server;
     std::vector<PathElement> m_path;
-    std::vector<column_t> m_results;
     size_t m_idx{ 0 };
+    PathResult m_results;
 };

@@ -14,7 +14,7 @@ static void cleanupServer(UA_Server* server)
                  type != types->types + types->typesSize;
                  type++)
             {
-                free((void*)(uintptr_t)type->typeName);
+                free(const_cast<char*>(type->typeName));
                 UA_UInt32 mSize = type->membersSize;
                 if (type->typeKind == UA_DATATYPEKIND_UNION)
                 {
@@ -22,14 +22,14 @@ static void cleanupServer(UA_Server* server)
                 }
                 for (UA_DataTypeMember* m = type->members; m != type->members + mSize; m++)
                 {
-                    free((void*)m->memberName);
+                    free(const_cast<char*>(m->memberName));
                     m->memberName = NULL;
                 }
                 free(type->members);
             }
         }
-        free((void*)(uintptr_t)types->types);
-        free((void*)types);
+        free(const_cast<UA_DataType*>(types->types));
+        free(const_cast<UA_DataTypeArray*>(types));
         types = next;
     }
 }

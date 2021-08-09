@@ -36,7 +36,8 @@ TEST(objectWithProperty, findAllTempDevices)
    auto f = [&](Result&& res){p.match(res.target);};
 
    vis.generate(f);
-   ASSERT_EQ(p.results()->size(), 2);
+   ASSERT_TRUE(p.results().col());
+   ASSERT_EQ(p.results().col()->size(), 2);
 
    cleanupServer(server);
 }
@@ -59,8 +60,8 @@ TEST(objectWithProperty, findAllTempDevicesWithProperty)
    auto f = [&](Result&& res) { p.match(res.target); };
    HierachicalVisitor vis{ server, UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER), UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES), UA_NODECLASS_OBJECT };
    vis.generate(f);
-   ASSERT_TRUE(p.results());
-   ASSERT_EQ(p.results()->size(), 1);
+   ASSERT_TRUE(p.results().col());
+   ASSERT_EQ(p.results().col()->size(), 1);
 
    cleanupServer(server);
 }
@@ -80,8 +81,8 @@ TEST(objectWithProperty, findAllTempDevicesWithPropertyAndCertainPropertyId)
    auto f = [&](Result&& res) { p.match(res.target); };
    HierachicalVisitor vis{ server, UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER), UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES), UA_NODECLASS_OBJECT };
    vis.generate(f);
-   ASSERT_TRUE(p.results());
-   ASSERT_EQ(p.results()->size(), 1);
+   ASSERT_TRUE(p.results().col());
+   ASSERT_EQ(p.results().col()->size(), 1);
 
    cleanupServer(server);
 }
@@ -101,7 +102,8 @@ TEST(objectWithProperty, allObjects)
    auto f = [&](Result&& res) { p.match(res.target); };
 
    vis.generate(f);
-   ASSERT_EQ(p.results()->size(), 2);
+   ASSERT_TRUE(p.results().col());
+   ASSERT_EQ(p.results().col()->size(), 2);
    cleanupServer(server);
 }
 
@@ -121,7 +123,8 @@ TEST(objectWithProperty, allVariables)
    auto f = [&](Result&& res) { p.match(res.target); };
 
    vis.generate(f);
-   ASSERT_EQ(p.results()->size(), 1);
+   ASSERT_TRUE(p.results().col());
+   ASSERT_EQ(p.results().col()->size(), 1);
    cleanupServer(server);
 }
 
@@ -135,7 +138,8 @@ TEST(serverType, findServerObject)
    std::vector<PathElement> path{ PathElement{ UA_NODEID_NUMERIC(0, UA_NS0ID_HASTYPEDEFINITION), UA_NODECLASS_OBJECTTYPE, UA_NODEID_NUMERIC(0, UA_NS0ID_SERVERTYPE), UA_BROWSEDIRECTION_FORWARD } };
    PathMatcher p{ server, path };
    vis.generate([&](Result&& res) { p.match(res.target); });
-   ASSERT_EQ(p.results()->size(), 1);
+   ASSERT_TRUE(p.results().col());
+   ASSERT_EQ(p.results().col()->size(), 1);
 
    cleanupServer(server);
 }
