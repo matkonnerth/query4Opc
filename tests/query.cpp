@@ -128,7 +128,7 @@ TEST(serverType, findServerObject_MultipleMatchClauses)
     Parser p;
     auto q = p.parse(R"(
       MATCH (obj:Object)-[:HasTypeDefinition]->(:ObjectType{NodeId: "i=2004"})
-      MATCH (obj)--(:Variable) RETURN obj
+      MATCH (obj) RETURN obj
     )");
     ASSERT_TRUE(q);
 
@@ -139,6 +139,30 @@ TEST(serverType, findServerObject_MultipleMatchClauses)
     ASSERT_EQ(results->size(), 1);
     UA_Server_delete(server);
 }
+
+TEST(objectWithProperty, findAllTempDevicesWithProperty)
+{
+    UA_Server* server = UA_Server_new();
+    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
+
+    ASSERT_TRUE(
+    NodesetLoader_loadFile(server, (g_path + "/objectwithproperty.xml").c_str(), NULL));
+
+    Parser p;
+    auto q = p.parse(R"(
+      MATCH (obj:Object)-[:HasTypeDefinition]->(:ObjectType{NodeId: "ns=2;i=1002"})
+      MATCH (obj)-[:HasProperty]->(:Variable) RETURN obj
+    )");
+    ASSERT_TRUE(q);
+
+    QueryEngine e{ server };
+    e.scheduleQuery(*q);
+    auto results = e.run();
+    ASSERT_TRUE(results);
+    ASSERT_EQ(results->size(), 1);
+    cleanupServer(server);
+}
+
 
 TEST(serverType, findObjectsWhichReferencesVariables)
 {

@@ -72,7 +72,7 @@ std::optional<Query> Parser::parse(const std::string& queryString)
            return std::nullopt;
        }
 
-       auto matchClause = cypher_ast_query_get_clause(query, 0);
+       auto matchClause = cypher_ast_query_get_clause(query, c);
        auto pattern = cypher_ast_match_get_pattern(matchClause);
        if (cypher_astnode_type(pattern) != CYPHER_AST_PATTERN)
        {
