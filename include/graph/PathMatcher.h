@@ -169,7 +169,6 @@ class PathMatcher
 
     void match(const UA_ReferenceDescription& startNode)
     {
-        // empty Path
         if (m_path.empty())
         {
             m_results[0].emplace_back(startNode);
@@ -249,10 +248,6 @@ class PathMatcher
     template <typename act_path_t, typename IT>
     std::vector<path_t> check(const UA_ReferenceDescription& start, IT begin, IT end)
     {
-        // if (begin == end)
-        //{
-        //    return std::vector<path_t>{};
-        //}
         std ::vector<path_t> paths;
         act_path_t actPath{};
         actPath.addResult(start);
