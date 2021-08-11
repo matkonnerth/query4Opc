@@ -2,11 +2,12 @@
 #include <open62541/server.h>
 #include <functional>
 #include <vector>
+#include "Types.h"
 
 class Source
 {
 public:
-   virtual void generate(const std::function<void(Result&&)>& filter) const = 0;
+   virtual void generate(const std::function<void(path_element_t&&)>& filter) const = 0;
    virtual ~Source() = default;
 };
 
@@ -20,7 +21,7 @@ public:
    , m_nodeClassMask{ nodeclasMask }
    {}
 
-   void generate(const std::function<void(Result&&)>& filter) const override
+   void generate(const std::function<void(path_element_t&&)>& filter) const override
    {
       visit(m_root, filter);
    }
@@ -39,7 +40,7 @@ private:
       }
       return UA_NODECLASS_UNSPECIFIED;
    }
-   void visit(const UA_NodeId& root, const std::function<void(Result&&)>& filter) const
+   void visit(const UA_NodeId& root, const std::function<void(path_element_t&&)>& filter) const
    {
       UA_BrowseDescription bd;
       UA_BrowseDescription_init(&bd);
@@ -58,7 +59,7 @@ private:
          {
             if (rd->nodeClass == m_nodeClassMask)
             {
-               filter(Result{ root, *rd });
+               filter(std::move(*rd));
             }
             //TODO: performance, shouldn't browse variable again?
             visit(rd->nodeId.nodeId, filter);
@@ -72,22 +73,22 @@ private:
    UA_UInt32 m_nodeClassMask{ UA_NODECLASS_UNSPECIFIED };
 };
 
-class SinkToSource : public Source
+class ColumnAsSource : public Source
 {
 public:
-   SinkToSource(const std::vector<Result>& s)
-   : m_sink{ s }
+   ColumnAsSource(const column_t& c)
+   : col{ c }
    {}
 
-   void generate(const std::function<void(Result&&)>& filter) const override
+   void generate(const std::function<void(path_element_t&&)>& filter) const override
    {
       // TODO: unnecessary copy?
-      for (auto res : m_sink)
+      for (auto pe : col)
       {
-         filter(std::move(res));
+         filter(std::move(pe));
       }
    }
 
 private:
-   const std::vector<Result>& m_sink;
+   const column_t& col;
 };

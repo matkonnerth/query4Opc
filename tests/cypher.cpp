@@ -30,6 +30,10 @@ int main(int argc, char* argv[])
    queries.emplace_back("MATCH (obj:Object)-[:HasTypeDefinition]->(t:ObjectType{NodeId:\"MyType\"}) RETURN obj");
    queries.emplace_back("MATCH (obj:Object{NodeId:\"MyObject\"}) return obj");
    queries.emplace_back("MATCH (:Variable)-[:HasProperty]-(obj:Object)-[:HasTypeDefinition]->(t:ObjectType{NodeId:\"MyType\"}) RETURN obj");
+   queries.emplace_back(
+      R"(   MATCH (obj:Object)-[:HasTypeDefinition]->(t:ObjectType{NodeId:"MyType"})
+            MATCH (obj)--(:Variable)
+            RETURN obj)");
 
    for (const auto& q : queries)
    {

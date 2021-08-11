@@ -15,9 +15,9 @@ public:
    {}
    void run()
    {
-      auto f = [&](Result&& res)
+      auto f = [&](path_element_t&& pe)
       {
-         m_pathMatcher->match(res.target);
+         m_pathMatcher->match(pe);
       };
       m_src->generate(f);
    }
@@ -25,6 +25,11 @@ public:
    void createHierachicalVisitorSource(const UA_NodeId& root, const UA_NodeId& referenceTypeId, UA_UInt32 nodeclasMask)
    {
       m_src = std::make_unique<HierachicalVisitor>(m_server, root, referenceTypeId, nodeclasMask);
+   }
+
+   void createColumnAsSource(const column_t& col)
+   {
+      m_src = std::make_unique<ColumnAsSource>(col);
    }
 
    void createReferenceFilter(const cypher::Path& path, size_t startIndex)
@@ -95,7 +100,7 @@ public:
       return m_pathMatcher->results().col();
    }
 
-   const column_t* results(const std::string& identifier)
+   const column_t* results(const std::string& identifier) const
    {
       size_t idx = 0;
       for(const auto&n:m_path.nodes)
@@ -130,12 +135,46 @@ size_t findStartIndex(const cypher::Path &p)
    return 0u;
 }
 
-std::unique_ptr<FilterChain> createFilterChain(const cypher::Path& path, UA_Server* server)
+const column_t* findSourceColumn(const std::string id, const std::vector<std::reference_wrapper<const FilterChain>> ctx)
+{
+   for(const auto&f:ctx)
+   {
+      auto c = f.get().results(id);
+      if(c)
+      {
+         return c;
+      }
+   }
+   return nullptr;
+}
+
+std::unique_ptr<FilterChain> createFilterChain(const cypher::Path& path, std::vector<std::reference_wrapper<const FilterChain>> ctx, UA_Server* server)
 {
    auto start = findStartIndex(path);
-
    auto f = std::make_unique<FilterChain>(server);
-   f->createHierachicalVisitorSource(UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER), UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES), parseOptionalNodeClass(path.nodes[start].label));
+   if(ctx.size()==0)
+   {
+       f->createHierachicalVisitorSource(UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER),
+                                         UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES),
+                                         parseOptionalNodeClass(
+                                         path.nodes[start].label));
+   }
+   else
+   {
+      //lookup the source column
+      if(!path.nodes[start].identifier)
+      {
+         return nullptr;
+      }
+
+      auto col = findSourceColumn(*path.nodes[start].identifier, ctx);
+      if(!col)
+      {
+         return nullptr;
+      }
+      f->createColumnAsSource(*col);
+   }
+   
    f->createReferenceFilter(path, start);
    return f;
 }

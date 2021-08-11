@@ -15,6 +15,11 @@ TEST(Parser, quick)
    ASSERT_TRUE(q);
    q = p.parse("abc");
    ASSERT_FALSE(q);
+   q = p.parse(R"(
+      MATCH (obj:Object)-[:HasProperty]->(:ObjectType{NodeId: "i=2004"})
+      MATCH (obj) RETURN obj
+    )");
+   ASSERT_TRUE(q);
 }
 
 TEST(Parser, Relationship)

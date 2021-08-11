@@ -4,6 +4,7 @@
 #include <open62541/types.h>
 #include <optional>
 #include <vector>
+#include "Types.h"
 
 class BrowseResultWrapper
 {
@@ -37,9 +38,7 @@ struct PathElement
     UA_BrowseDirection direction;
 };
 
-using path_element_t = UA_ReferenceDescription;
-using path_t = std::vector<path_element_t>;
-using column_t = std::vector<path_element_t>;
+
 
 template <bool leftToRight>
 struct ResultVector

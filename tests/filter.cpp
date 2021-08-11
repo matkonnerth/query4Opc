@@ -33,7 +33,7 @@ TEST(objectWithProperty, findAllTempDevices)
 
    PathMatcher p{server, path, 0};
 
-   auto f = [&](Result&& res){p.match(res.target);};
+   auto f = [&](path_element_t&& res){p.match(res);};
 
    vis.generate(f);
    ASSERT_TRUE(p.results().col());
@@ -57,7 +57,7 @@ TEST(objectWithProperty, findAllTempDevicesWithProperty)
 
    PathMatcher p{ server, path, 1 };
 
-   auto f = [&](Result&& res) { p.match(res.target); };
+   auto f = [&](path_element_t&& res) { p.match(res); };
    HierachicalVisitor vis{ server, UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER), UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES), UA_NODECLASS_OBJECT };
    vis.generate(f);
    ASSERT_TRUE(p.results().col());
@@ -78,7 +78,7 @@ TEST(objectWithProperty, findAllTempDevicesWithPropertyAndCertainPropertyId)
 
    PathMatcher p{ server, path, 1 };
 
-   auto f = [&](Result&& res) { p.match(res.target); };
+   auto f = [&](path_element_t&& res) { p.match(res); };
    HierachicalVisitor vis{ server, UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER), UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES), UA_NODECLASS_OBJECT };
    vis.generate(f);
    ASSERT_TRUE(p.results().col());
@@ -99,7 +99,7 @@ TEST(objectWithProperty, allObjects)
    //empty Path
    PathMatcher p{ server, std::vector<PathElement>{}};
 
-   auto f = [&](Result&& res) { p.match(res.target); };
+   auto f = [&](path_element_t&& res) { p.match(res); };
 
    vis.generate(f);
    ASSERT_TRUE(p.results().col());
@@ -120,7 +120,7 @@ TEST(objectWithProperty, allVariables)
    // empty Path
    PathMatcher p{ server, std::vector<PathElement>{} };
 
-   auto f = [&](Result&& res) { p.match(res.target); };
+   auto f = [&](path_element_t&& res) { p.match(res); };
 
    vis.generate(f);
    ASSERT_TRUE(p.results().col());
@@ -137,7 +137,7 @@ TEST(serverType, findServerObject)
 
    std::vector<PathElement> path{ PathElement{ UA_NODEID_NUMERIC(0, UA_NS0ID_HASTYPEDEFINITION), UA_NODECLASS_OBJECTTYPE, UA_NODEID_NUMERIC(0, UA_NS0ID_SERVERTYPE), UA_BROWSEDIRECTION_FORWARD } };
    PathMatcher p{ server, path };
-   vis.generate([&](Result&& res) { p.match(res.target); });
+   vis.generate([&](path_element_t&& res) { p.match(res); });
    ASSERT_TRUE(p.results().col());
    ASSERT_EQ(p.results().col()->size(), 1);
 

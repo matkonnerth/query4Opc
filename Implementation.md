@@ -11,11 +11,11 @@ Source
 "Generates" nodes, example is the hierachical visitor.
 
 HierachicalVisitor
-Sinks can be uses as a source with SinkToSource
+columns of a PathResult can be used as inputs for another PathMatcher
 
 PathMatcher
 
-matches a path starting at a start node and preservers the matching paths
+matches a path starting at a start node and preserves the matching paths.
 
 Filter
 
@@ -31,15 +31,23 @@ is a alternating sequence of nodes and relationships.
 (n1)-[r1]-(n2)-[r2]-(n3)
 
 Metrics
-We could say: A typical nodeset has 100 objectTypes with 10 instances each
+We could say: A typical nodeset has 100 objectTypes with 10 instances each. Each of the objectTypes has 10 variables and 3 methods.
 
-EmptyPath
+That means the instance tree (nodes below the objects folder) would have 1000 objects, 3000 methods and 10000 variables. So the HierachicalVisitor should always start at the objectTypes. But most of the server implementations doesn't add the inverse reference from an ObjectType to the Object. (It seems like that the open62541 does add this inverse reference).
 
-is a path with only one node pattern.
+The path (obj:Object)-[HasTypeDefinition]->[:ObjectType{NodeId:"123}] could then be rewritten to (obj:Object)<-[HasTypeDefinition]-(:ObjectType{"NodeId})
+
+Also a HierachicalVisitor wouldn't be required.
+
+Cypher
 
 Pattern
 NodePattern
 RelationshipPattern
+
+EmptyPath
+
+is a path with only one node pattern.
 
 How to specify the root of the HierachicalVisitor?
 Could be done with this:

@@ -13,17 +13,35 @@ class QueryEngine
     {}
     void scheduleQuery(const Query& q)
     {
-        m_filterChain = createFilterChain(q.matchClauses[0].path, m_server);
+        for(const auto& m : q.matchClauses)
+        {
+            auto f = createFilterChain(m.path, getContext(), m_server);
+            assert(f && "creating filter chain failed");
+            m_filterChains.emplace_back(std::move(f));
+        }
+        
     }
 
     const std::vector<UA_ReferenceDescription>* run()
     {
-        m_filterChain->run();
-        return m_filterChain->results();
+        for(auto & f : m_filterChains)
+        {
+            f->run();
+        }
+        return m_filterChains.back()->results();
     }
 
  private:
+    std::vector<std::reference_wrapper<const FilterChain>> getContext() const
+    {
+        std::vector<std::reference_wrapper<const FilterChain>> ctx{};
+        for(const auto& f:m_filterChains)
+        {
+            ctx.emplace_back(*f.get());
+        }
+        return ctx;
+    }
     UA_Server* m_server;
-    std::unique_ptr<FilterChain> m_filterChain{ nullptr };
+    std::vector<std::unique_ptr<FilterChain>> m_filterChains;
 };
 } // namespace cypher

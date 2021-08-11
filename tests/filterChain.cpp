@@ -23,7 +23,7 @@ TEST(serverType, findServerObjectWithPath)
    p.nodes.emplace_back(b);
    p.relations.emplace_back(Relationship{"i=40", 1});
 
-   auto f = createFilterChain(p, server);
+   auto f = createFilterChain(p, std::vector<std::reference_wrapper<const FilterChain>>{}, server);
    f->run();
 
    ASSERT_EQ(f->results()->size(), 1);
