@@ -136,7 +136,6 @@ class PathResult
     std::vector<column_t> data;
 };
 
-
 class PathMatcher
 {
  public:
@@ -251,10 +250,9 @@ class PathMatcher
         act_path_t actPath{};
         actPath.addResult(start);
 
-        std::optional<UA_ReferenceDescription> lastRef{ std::nullopt };
-        std::optional<PathMatcher> lastMatcher{ std::nullopt };
         for (auto it = begin; it != end; it++)
         {
+            auto result = false;
             auto bd = createBrowseDescription(actPath.getLastResult().nodeId.nodeId,
                                               it->direction,
                                               it->referenceType,
@@ -273,7 +271,8 @@ class PathMatcher
                 {
                     if (UA_NodeId_equal(&it->targetId.value(), &ref->nodeId.nodeId))
                     {
-                        lastRef = *ref;
+                        actPath.addResult(*ref);
+                        result=true;
                         break;
                     }
                 }
@@ -289,18 +288,8 @@ class PathMatcher
                 {
                     m.match(*ref);
                 }
-                lastMatcher.emplace(std::move(m));
-            }
-
-            if (lastRef)
-            {
-                actPath.addResult(*lastRef);
-                lastRef = std::nullopt;
-            }
-            else if (lastMatcher)
-            {
                 std::vector<path_t> res;
-                for (auto&& pe : lastMatcher->results().paths())
+                for (auto&& pe : m.results().paths())
                 {
                     path_t newPath{ actPath.data };
                     newPath.insert(newPath.end(), pe.begin(), pe.end());
@@ -308,7 +297,8 @@ class PathMatcher
                 }
                 return res;
             }
-            else
+            //no result
+            if(!result)
             {
                 return std::vector<path_t>{};
             }
