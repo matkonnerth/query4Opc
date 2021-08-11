@@ -2,6 +2,8 @@
 #include <cypher-parser.h>
 #include <iostream>
 
+using namespace cypher;
+
 std::optional<Query> Parser::parse(const std::string& queryString)
 {
    cypher_parse_result_t* result = cypher_parse(queryString.c_str(), NULL, NULL, CYPHER_PARSE_ONLY_STATEMENTS);

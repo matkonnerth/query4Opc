@@ -1,7 +1,8 @@
 #pragma once
-#include <variant>
 #include "Path.h"
+#include <variant>
 
+namespace cypher {
 struct Match
 {
     Path path;
@@ -17,3 +18,4 @@ struct Query
     std::vector<Match> matchClauses;
     Return returnClause;
 };
+} // namespace cypher

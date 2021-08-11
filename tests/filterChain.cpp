@@ -7,6 +7,10 @@
 
 std::string g_path = "";
 
+using cypher::Path;
+using cypher::Node;
+using cypher::Relationship;
+
 TEST(serverType, findServerObjectWithPath)
 {
    UA_Server* server = UA_Server_new();

@@ -4,6 +4,7 @@
 
 std::string path = "";
 
+using namespace cypher;
 
 TEST(Parser, quick)
 {

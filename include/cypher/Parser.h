@@ -1,8 +1,10 @@
 #pragma once
 #include "Ast.h"
 
+namespace cypher {
 class Parser
 {
-public:
+ public:
     std::optional<Query> parse(const std::string& queryString);
 };
+} // namespace cypher

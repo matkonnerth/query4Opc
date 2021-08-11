@@ -8,6 +8,7 @@
 #include "testHelper.h"
 
 std::string g_path = "";
+using namespace cypher;
 
 TEST(serverType, findServerObject)
 {

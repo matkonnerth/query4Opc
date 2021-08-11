@@ -5,6 +5,8 @@
 #include <unordered_map>
 #include <vector>
 
+namespace cypher
+{
 struct Node
 {
    std::optional<std::string> identifier;
@@ -101,22 +103,4 @@ private:
    size_t idx{ 0 };
 };
 
-struct SimplePath
-{
-   Node m_nodeA;
-   Node m_nodeB;
-   Relationship m_rel;
-};
-
-struct EmptyPath
-{
-   Node m_node;
-};
-
-struct SplittedPaths
-{
-   std::optional<Path> path;
-   std::optional<EmptyPath> emptyPath;
-};
-
-std::optional<SplittedPaths> splitPaths(const Path& p);
+}

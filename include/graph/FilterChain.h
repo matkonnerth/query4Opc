@@ -27,10 +27,10 @@ public:
       m_src = std::make_unique<HierachicalVisitor>(m_server, root, referenceTypeId, nodeclasMask);
    }
 
-   void createReferenceFilter(const Path& path, size_t startIndex)
+   void createReferenceFilter(const cypher::Path& path, size_t startIndex)
    {
       std::vector<PathElement> p;
-      PathIterator it{ path };
+      cypher::PathIterator it{ path };
       size_t idx = 0;
       while (auto node = it.currentNode())
       {
@@ -113,10 +113,10 @@ private:
    UA_Server* m_server;
    std::unique_ptr<Source> m_src;
    std::unique_ptr<PathMatcher> m_pathMatcher;
-   Path m_path;
+   cypher::Path m_path;
 };
 
-size_t findStartIndex(const Path &p)
+size_t findStartIndex(const cypher::Path &p)
 {
    auto idx = 0u;
    for(const auto& e:p.nodes)
@@ -130,7 +130,7 @@ size_t findStartIndex(const Path &p)
    return 0u;
 }
 
-std::unique_ptr<FilterChain> createFilterChain(const Path& path, UA_Server* server)
+std::unique_ptr<FilterChain> createFilterChain(const cypher::Path& path, UA_Server* server)
 {
    auto start = findStartIndex(path);
 
