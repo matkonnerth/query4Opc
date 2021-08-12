@@ -1,10 +1,10 @@
 #pragma once
 #include "Filter.h"
+#include "Types.h"
 #include <open62541/server.h>
 #include <open62541/types.h>
 #include <optional>
 #include <vector>
-#include "Types.h"
 
 class BrowseResultWrapper
 {
@@ -37,7 +37,6 @@ struct PathElement
     std::optional<UA_NodeId> targetId;
     UA_BrowseDirection direction;
 };
-
 
 
 template <bool leftToRight>
@@ -169,7 +168,7 @@ class PathMatcher
     {
         if (m_path.empty())
         {
-            m_results[0].emplace_back(startNode);
+            m_results[0].push_back(std::move(startNode));
             return;
         }
 
@@ -197,13 +196,15 @@ class PathMatcher
                 auto lResults = checkLeftSide(r.at(0));
                 for (auto& l : lResults)
                 {
-                    r.insert(r.begin(), l.begin(), l.end() - 1);
-                    endResult.emplace_back(r);
+                    r.insert(r.begin(),
+                             std::make_move_iterator(l.begin()),
+                             std::make_move_iterator(l.end() - 1));
+                    endResult.push_back(std::move(r));
                 }
             }
             else
             {
-                endResult.emplace_back(r);
+                endResult.push_back(std::move(r));
             }
         }
         return endResult;
@@ -272,7 +273,7 @@ class PathMatcher
                     if (UA_NodeId_equal(&it->targetId.value(), &ref->nodeId.nodeId))
                     {
                         actPath.addResult(*ref);
-                        result=true;
+                        result = true;
                         break;
                     }
                 }
@@ -292,18 +293,20 @@ class PathMatcher
                 for (auto&& pe : m.results().paths())
                 {
                     path_t newPath{ actPath.data };
-                    newPath.insert(newPath.end(), pe.begin(), pe.end());
-                    res.emplace_back(newPath);
+                    newPath.insert(newPath.end(),
+                                   std::make_move_iterator(pe.begin()),
+                                   std::make_move_iterator(pe.end()));
+                    res.push_back(std::move(newPath));
                 }
                 return res;
             }
-            //no result
-            if(!result)
+            // no result
+            if (!result)
             {
                 return std::vector<path_t>{};
             }
         }
-        paths.emplace_back(actPath.data);
+        paths.push_back(std::move(actPath.data));
         return paths;
     }
 
