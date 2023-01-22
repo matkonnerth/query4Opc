@@ -1,4 +1,3 @@
-#include "testHelper.h"
 #include <graph/Filter.h>
 #include <graph/PathMatcher.h>
 #include <graph/Source.h>
@@ -10,21 +9,31 @@
 
 std::string g_path = "";
 
-TEST(import, testImport)
+class FilterTest : public ::testing::Test
 {
-   UA_Server* server = UA_Server_new();
-   UA_ServerConfig_setDefault(UA_Server_getConfig(server));
+ protected:
+    UA_Server* server{ nullptr };
 
-   ASSERT_EQ(UA_Server_loadNodeset(server, (g_path + "/graph.xml").c_str(), NULL), UA_STATUSCODE_GOOD);
+    void SetUp() override
+    {
+        server = UA_Server_new();
+        UA_ServerConfig_setDefault(UA_Server_getConfig(server));
+    }
 
-   cleanupServer(server);
+    void TearDown() override
+    {
+        UA_Server_delete(server);
+    }
+};
+
+TEST_F(FilterTest, testImport)
+{
+   ASSERT_TRUE(UA_StatusCode_isGood(
+   UA_Server_loadNodeset(server, (g_path + "/objectwithproperty.xml").c_str(), NULL)));
 }
 
-TEST(objectWithProperty, findAllTempDevices)
+TEST_F(FilterTest, findAllTempDevices)
 {
-   UA_Server* server = UA_Server_new();
-   UA_ServerConfig_setDefault(UA_Server_getConfig(server));
-
    ASSERT_EQ(UA_Server_loadNodeset(server, (g_path + "/objectwithproperty.xml").c_str(), NULL), UA_STATUSCODE_GOOD);
 
    HierachicalVisitor vis{ server, UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER), UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES), UA_NODECLASS_OBJECT };
@@ -38,18 +47,12 @@ TEST(objectWithProperty, findAllTempDevices)
    vis.generate(f);
    ASSERT_TRUE(p.results().col());
    ASSERT_EQ(p.results().col()->size(), 2);
-
-   cleanupServer(server);
 }
 
 
-TEST(objectWithProperty, findAllTempDevicesWithProperty)
+TEST_F(FilterTest, findAllTempDevicesWithProperty)
 {
-   UA_Server* server = UA_Server_new();
-   UA_ServerConfig_setDefault(UA_Server_getConfig(server));
-
-   ASSERT_EQ(UA_Server_loadNodeset(server, (g_path + "/objectwithproperty.xml").c_str(), NULL),
-             UA_STATUSCODE_GOOD);
+   ASSERT_TRUE(UA_StatusCode_isGood(UA_Server_loadNodeset(server, (g_path + "/objectwithproperty.xml").c_str(), NULL)));
 
    std::vector<PathElement> path{ 
       PathElement{ UA_NODEID_NUMERIC(0, UA_NS0ID_HASPROPERTY), UA_NODECLASS_VARIABLE, std::nullopt, UA_BROWSEDIRECTION_BOTH },
@@ -63,17 +66,11 @@ TEST(objectWithProperty, findAllTempDevicesWithProperty)
    vis.generate(f);
    ASSERT_TRUE(p.results().col());
    ASSERT_EQ(p.results().col()->size(), 1);
-
-   cleanupServer(server);
 }
 
-TEST(objectWithProperty, findAllTempDevicesWithPropertyAndCertainPropertyId)
+TEST_F(FilterTest, findAllTempDevicesWithPropertyAndCertainPropertyId)
 {
-   UA_Server* server = UA_Server_new();
-   UA_ServerConfig_setDefault(UA_Server_getConfig(server));
-
-   ASSERT_EQ(UA_Server_loadNodeset(server, (g_path + "/objectwithproperty.xml").c_str(), NULL),
-             UA_STATUSCODE_GOOD);
+   ASSERT_TRUE(UA_StatusCode_isGood(UA_Server_loadNodeset(server, (g_path + "/objectwithproperty.xml").c_str(), NULL)));
 
    std::vector<PathElement> path{ PathElement{ UA_NODEID_NUMERIC(0, UA_NS0ID_HASPROPERTY), UA_NODECLASS_VARIABLE, UA_NODEID_NUMERIC(2, 6001), UA_BROWSEDIRECTION_BOTH },
                                   PathElement{ UA_NODEID_NUMERIC(0, UA_NS0ID_HASTYPEDEFINITION), UA_NODECLASS_OBJECTTYPE, UA_NODEID_NUMERIC(2, 1002), UA_BROWSEDIRECTION_FORWARD } };
@@ -85,18 +82,13 @@ TEST(objectWithProperty, findAllTempDevicesWithPropertyAndCertainPropertyId)
    vis.generate(f);
    ASSERT_TRUE(p.results().col());
    ASSERT_EQ(p.results().col()->size(), 1);
-
-   cleanupServer(server);
 }
 
 
-TEST(objectWithProperty, allObjects)
+TEST_F(FilterTest, allObjects)
 {
-   UA_Server* server = UA_Server_new();
-   UA_ServerConfig_setDefault(UA_Server_getConfig(server));
-
-   ASSERT_EQ(UA_Server_loadNodeset(server, (g_path + "/objectwithproperty.xml").c_str(), NULL),
-             UA_STATUSCODE_GOOD);
+   ASSERT_TRUE(UA_StatusCode_isGood(
+   UA_Server_loadNodeset(server, (g_path + "/objectwithproperty.xml").c_str(), NULL)));
    HierachicalVisitor vis{ server, UA_NODEID_NUMERIC(2, 5002), UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES), UA_NODECLASS_OBJECT };
 
    //empty Path
@@ -107,17 +99,13 @@ TEST(objectWithProperty, allObjects)
    vis.generate(f);
    ASSERT_TRUE(p.results().col());
    ASSERT_EQ(p.results().col()->size(), 2);
-   cleanupServer(server);
 }
 
 
-TEST(objectWithProperty, allVariables)
+TEST_F(FilterTest, allVariables)
 {
-   UA_Server* server = UA_Server_new();
-   UA_ServerConfig_setDefault(UA_Server_getConfig(server));
-
-   ASSERT_EQ(UA_Server_loadNodeset(server, (g_path + "/objectwithproperty.xml").c_str(), NULL),
-             UA_STATUSCODE_GOOD);
+   ASSERT_TRUE(UA_StatusCode_isGood(
+   UA_Server_loadNodeset(server, (g_path + "/objectwithproperty.xml").c_str(), NULL)));
 
    HierachicalVisitor vis{ server, UA_NODEID_NUMERIC(2, 5002), UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES), UA_NODECLASS_VARIABLE };
 
@@ -129,14 +117,11 @@ TEST(objectWithProperty, allVariables)
    vis.generate(f);
    ASSERT_TRUE(p.results().col());
    ASSERT_EQ(p.results().col()->size(), 1);
-   cleanupServer(server);
 }
 
 
-TEST(serverType, findServerObject)
+TEST_F(FilterTest, findServerObject)
 {
-   UA_Server* server = UA_Server_new();
-   UA_ServerConfig_setDefault(UA_Server_getConfig(server));
    HierachicalVisitor vis{ server, UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER), UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES), UA_NODECLASS_OBJECT };
 
    std::vector<PathElement> path{ PathElement{ UA_NODEID_NUMERIC(0, UA_NS0ID_HASTYPEDEFINITION), UA_NODECLASS_OBJECTTYPE, UA_NODEID_NUMERIC(0, UA_NS0ID_SERVERTYPE), UA_BROWSEDIRECTION_FORWARD } };
@@ -144,8 +129,6 @@ TEST(serverType, findServerObject)
    vis.generate([&](path_element_t&& res) { p.match(res); });
    ASSERT_TRUE(p.results().col());
    ASSERT_EQ(p.results().col()->size(), 1);
-
-   cleanupServer(server);
 }
 
 int main(int argc, char** argv)

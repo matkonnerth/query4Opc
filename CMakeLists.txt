@@ -13,7 +13,6 @@ conan_cmake_run(CONANFILE conanfile.txt
                 BASIC_SETUP CMAKE_TARGETS
                 BUILD missing)
 
-find_package(NodesetLoader REQUIRED)
 find_package(open62541 REQUIRED)
 
 # Link this 'library' to use the warnings specified in CompilerWarnings.cmake
@@ -26,7 +25,8 @@ target_compile_features(project_options INTERFACE cxx_std_17)
 
 add_library(graphForOpc ${CMAKE_CURRENT_SOURCE_DIR}/src/cypher/Parser.cpp
                         ${CMAKE_CURRENT_SOURCE_DIR}/src/cypher/Path.cpp
-                        ${CMAKE_CURRENT_SOURCE_DIR}/src/graph/FilterChain.cpp)
+                        ${CMAKE_CURRENT_SOURCE_DIR}/src/graph/FilterChain.cpp
+                        ${CMAKE_CURRENT_SOURCE_DIR}/src/graph/PathMatcher.cpp)
 target_include_directories(graphForOpc PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_link_libraries(graphForOpc PUBLIC project_warnings project_options open62541::open62541)
 

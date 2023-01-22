@@ -1,4 +1,3 @@
-#include "testHelper.h"
 #include <cypher/Parser.h>
 #include <cypher/QueryEngine.h>
 #include <gtest/gtest.h>
@@ -10,11 +9,24 @@
 std::string g_path = "";
 using namespace cypher;
 
-TEST(serverType, findServerObject)
+class QueryTest : public ::testing::Test
 {
-    UA_Server* server = UA_Server_new();
-    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
+ protected:
+    UA_Server* server{nullptr};
+    
+    void SetUp() override
+    {
+        server = UA_Server_new();
+        UA_ServerConfig_setDefault(UA_Server_getConfig(server));
+    }
 
+    void TearDown() override {
+        UA_Server_delete(server);
+    }
+};
+
+TEST_F(QueryTest, findServerObject)
+{
     Parser p;
     auto q = p.parse("MATCH(obj:Object)-[:HasTypeDefinition]->(:ObjectType{"
                      "NodeId: \"i=2004\"}) RETURN obj");
@@ -25,14 +37,10 @@ TEST(serverType, findServerObject)
     auto results = e.run();
     ASSERT_TRUE(results);
     ASSERT_EQ(results->size(), 1);
-    UA_Server_delete(server);
 }
 
-TEST(serverType, findServerObject_VariablePath_WrongVariable)
+TEST_F(QueryTest, findServerObject_VariablePath_WrongVariable)
 {
-    UA_Server* server = UA_Server_new();
-    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
-
     Parser p;
     auto q =
     p.parse("MATCH (obj:Object)-[:HasTypeDefinition]->(:ObjectType{NodeId: "
@@ -44,14 +52,10 @@ TEST(serverType, findServerObject_VariablePath_WrongVariable)
     auto results = e.run();
     ASSERT_TRUE(results);
     ASSERT_EQ(results->size(), 0);
-    UA_Server_delete(server);
 }
 
-TEST(serverType, findServerObject_VariablePath_WrongDirection)
+TEST_F(QueryTest, findServerObject_VariablePath_WrongDirection)
 {
-    UA_Server* server = UA_Server_new();
-    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
-
     Parser p;
     auto q = p.parse("MATCH(obj:Object)<-[:HasTypeDefinition]-(:ObjectType{"
                      "NodeId: \"i=2004\"}) RETURN obj");
@@ -62,14 +66,10 @@ TEST(serverType, findServerObject_VariablePath_WrongDirection)
     auto results = e.run();
     ASSERT_TRUE(results);
     ASSERT_EQ(results->size(), 0);
-    UA_Server_delete(server);
 }
 
-TEST(serverType, findServerObject_VariablePath_DirectionDoesntMatter)
+TEST_F(QueryTest, findServerObject_VariablePath_DirectionDoesntMatter)
 {
-    UA_Server* server = UA_Server_new();
-    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
-
     Parser p;
     auto q = p.parse("MATCH(obj:Object)-[:HasTypeDefinition]-(:ObjectType{"
                      "NodeId: \"i=2004\"}) RETURN obj");
@@ -80,14 +80,10 @@ TEST(serverType, findServerObject_VariablePath_DirectionDoesntMatter)
     auto results = e.run();
     ASSERT_TRUE(results);
     ASSERT_EQ(results->size(), 1);
-    UA_Server_delete(server);
 }
 
-TEST(serverType, findServerObject_reorderQuery)
+TEST_F(QueryTest, findServerObject_reorderQuery)
 {
-    UA_Server* server = UA_Server_new();
-    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
-
     Parser p;
     auto q =
     p.parse("MATCH (:ObjectType{NodeId: "
@@ -99,14 +95,10 @@ TEST(serverType, findServerObject_reorderQuery)
     auto results = e.run();
     ASSERT_TRUE(results);
     ASSERT_EQ(results->size(), 1);
-    UA_Server_delete(server);
 }
 
-TEST(serverType, findServerObject_WrongReferenceType)
+TEST_F(QueryTest, findServerObject_WrongReferenceType)
 {
-    UA_Server* server = UA_Server_new();
-    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
-
     Parser p;
     auto q = p.parse("MATCH(obj:Object)-[:HasProperty]->(:ObjectType{NodeId: "
                      "\"i=2004\"}) RETURN obj");
@@ -117,14 +109,10 @@ TEST(serverType, findServerObject_WrongReferenceType)
     auto results = e.run();
     ASSERT_TRUE(results);
     ASSERT_EQ(results->size(), 0);
-    UA_Server_delete(server);
 }
 
-TEST(serverType, findServerObject_MultipleMatchClauses)
+TEST_F(QueryTest, findServerObject_MultipleMatchClauses)
 {
-    UA_Server* server = UA_Server_new();
-    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
-
     Parser p;
     auto q = p.parse(R"(
       MATCH (obj:Object)-[:HasTypeDefinition]->(:ObjectType{NodeId: "i=2004"})
@@ -137,16 +125,11 @@ TEST(serverType, findServerObject_MultipleMatchClauses)
     auto results = e.run();
     ASSERT_TRUE(results);
     ASSERT_EQ(results->size(), 1);
-    UA_Server_delete(server);
 }
 
-TEST(objectWithProperty, findAllTempDevicesWithProperty)
+TEST_F(QueryTest, findAllTempDevicesWithProperty)
 {
-    UA_Server* server = UA_Server_new();
-    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
-
-    ASSERT_EQ(UA_Server_loadNodeset(server, (g_path + "/objectwithproperty.xml").c_str(), NULL),
-              UA_STATUSCODE_GOOD);
+    ASSERT_TRUE(UA_StatusCode_isGood(UA_Server_loadNodeset(server, (g_path + "/objectwithproperty.xml").c_str(), NULL)));
 
     Parser p;
     auto q = p.parse(R"(
@@ -160,15 +143,11 @@ TEST(objectWithProperty, findAllTempDevicesWithProperty)
     auto results = e.run();
     ASSERT_TRUE(results);
     ASSERT_EQ(results->size(), 1);
-    cleanupServer(server);
 }
 
 
-TEST(serverType, findObjectsWhichReferencesVariables)
+TEST_F(QueryTest, findObjectsWhichReferencesVariables)
 {
-    UA_Server* server = UA_Server_new();
-    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
-
     Parser p;
     auto q = p.parse("MATCH(obj:Object)--(:Variable) RETURN obj");
     ASSERT_TRUE(q);
@@ -178,14 +157,10 @@ TEST(serverType, findObjectsWhichReferencesVariables)
     auto results = e.run();
     ASSERT_TRUE(results);
     ASSERT_GT(results->size(), 0);
-    UA_Server_delete(server);
 }
 
-TEST(serverType, emptyPath)
+TEST_F(QueryTest, emptyPath)
 {
-    UA_Server* server = UA_Server_new();
-    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
-
     Parser p;
     auto q = p.parse("MATCH (obj:Object) RETURN obj");
     ASSERT_TRUE(q);
@@ -195,14 +170,10 @@ TEST(serverType, emptyPath)
     auto results = e.run();
     ASSERT_TRUE(results);
     ASSERT_GT(results->size(), 0);
-    UA_Server_delete(server);
 }
 
-TEST(serverType, emptyPathObjectType)
+TEST_F(QueryTest, emptyPathObjectType)
 {
-    UA_Server* server = UA_Server_new();
-    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
-
     Parser p;
     auto q = p.parse("MATCH (obj:ObjectType) RETURN obj");
     ASSERT_TRUE(q);
@@ -212,16 +183,11 @@ TEST(serverType, emptyPathObjectType)
     auto results = e.run();
     ASSERT_TRUE(results);
     ASSERT_EQ(results->size(), 0);
-    UA_Server_delete(server);
 }
 
-TEST(serverType, subfolder)
+TEST_F(QueryTest, subfolder)
 {
-    UA_Server* server = UA_Server_new();
-    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
-
-    ASSERT_EQ(UA_Server_loadNodeset(server, (g_path + "/subfolder.xml").c_str(), NULL),
-              UA_STATUSCODE_GOOD);
+    ASSERT_TRUE(UA_StatusCode_isGood(UA_Server_loadNodeset(server, (g_path + "/subfolder.xml").c_str(), NULL)));
 
     // match all BaseObjects below a folder
     Parser p;
@@ -235,15 +201,10 @@ TEST(serverType, subfolder)
     auto results = e.run();
     ASSERT_TRUE(results);
     ASSERT_EQ(results->size(), 3);
-    cleanupServer(server);
 }
 
-
-TEST(serverType, playground)
+TEST_F(QueryTest, playground)
 {
-    UA_Server* server = UA_Server_new();
-    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
-
     Parser p;
     auto q = p.parse("MATCH (obj:Object)-->(:Method)-->(:Variable) RETURN obj");
     ASSERT_TRUE(q);
@@ -253,9 +214,7 @@ TEST(serverType, playground)
     auto results = e.run();
     ASSERT_TRUE(results);
     ASSERT_EQ(results->size(), 2);
-    UA_Server_delete(server);
 }
-
 
 int main(int argc, char** argv)
 {

@@ -1,7 +1,7 @@
 #include <graph/PathMatcher.h>
 #include <graph/BrowseResultWrapper.h>
 
-PathMatcher::PathMatcher(UA_Server* server, const std::vector<PathElement>& path, size_t startIndex)
+PathMatcher::PathMatcher(UA_Server* server, const Path& path, size_t startIndex)
 : m_server{ server }
 , m_path{ path }
 , m_idx{ startIndex }
@@ -47,11 +47,15 @@ const PathResult& PathMatcher::results() const
 std::vector<path_t> PathMatcher::checkPath(const UA_ReferenceDescription& startNode)
 {
     auto rResults = checkRightSide(startNode);
+    return results;
+    /* TODO: left side
     std::vector<path_t> endResult{};
     for (auto& r : rResults)
     {
         if (m_idx > 0)
         {
+            // man könnte auch den Path hier invertieren und ein checkrightside machen?
+            // die Ergebnisse müsse man den wieder umdrehen und einfügen
             auto lResults = checkLeftSide(r.at(0));
             for (auto& l : lResults)
             {
@@ -67,6 +71,7 @@ std::vector<path_t> PathMatcher::checkPath(const UA_ReferenceDescription& startN
         }
     }
     return endResult;
+    */
 }
 
 UA_BrowseDescription PathMatcher::createBrowseDescription(const UA_NodeId& node,

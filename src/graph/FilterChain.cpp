@@ -23,69 +23,13 @@ void FilterChain::createColumnAsSource(const column_t& col)
     m_src = std::make_unique<ColumnAsSource>(col);
 }
 
+
+
 // here (node)-(reference) decays to a single PathElement
 // think this makes sense because the opc ua browse returns n ReferenceDescriptions for a node
 void FilterChain::createReferenceFilter(const cypher::Path& path, size_t startIndex)
 {
-
-    std::vector<PathElement> p;
-    cypher::PathIterator it{ path };
-    size_t idx = 0;
-    while (auto node = it.currentNode())
-    {
-        if (!it.nextRel())
-        {
-            break;
-        }
-        PathElement e{};
-        if (idx < startIndex)
-        {
-            e.referenceType = lookupReferenceType(it.nextRel()->type);
-            e.nodeClass = parseOptionalNodeClass(node->label);
-            if (node->NodeId())
-            {
-                e.targetId = parseOptionalNodeId(node->NodeId());
-            }
-            if (it.nextRel()->direction == 1)
-            {
-                e.direction = UA_BROWSEDIRECTION_INVERSE;
-            }
-            else if (it.nextRel()->direction == -1)
-            {
-                e.direction = UA_BROWSEDIRECTION_FORWARD;
-            }
-            else
-            {
-                e.direction = UA_BROWSEDIRECTION_BOTH;
-            }
-        }
-        else
-        {
-            e.referenceType = lookupReferenceType(it.nextRel()->type);
-            e.nodeClass = parseOptionalNodeClass(it.nextNode()->label);
-            if (it.nextNode()->NodeId())
-            {
-                e.targetId = parseOptionalNodeId(it.nextNode()->NodeId());
-            }
-            if (it.nextRel()->direction == 1)
-            {
-                e.direction = UA_BROWSEDIRECTION_FORWARD;
-            }
-            else if (it.nextRel()->direction == -1)
-            {
-                e.direction = UA_BROWSEDIRECTION_INVERSE;
-            }
-            else
-            {
-                e.direction = UA_BROWSEDIRECTION_BOTH;
-            }
-        }
-
-        p.emplace_back(e);
-        it++;
-        idx++;
-    }
-    m_pathMatcher = std::make_unique<PathMatcher>(m_server, p, startIndex);
+    m_pathMatcher = std::make_unique<PathMatcher>(m_server, Path{path}, startIndex);
     m_path = path;
 }
 
