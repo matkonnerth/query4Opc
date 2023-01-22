@@ -1,5 +1,4 @@
 #include <graph/FilterChain.h>
-#include <NodesetLoader/backendOpen62541.h>
 #include <gtest/gtest.h>
 #include <iostream>
 #include <open62541/server.h>

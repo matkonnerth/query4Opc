@@ -1,12 +1,12 @@
-#include <NodesetLoader/backendOpen62541.h>
+#include "testHelper.h"
 #include <graph/Filter.h>
+#include <graph/PathMatcher.h>
 #include <graph/Source.h>
 #include <gtest/gtest.h>
 #include <iostream>
+#include <open62541/plugin/nodesetloader.h>
 #include <open62541/server.h>
 #include <open62541/server_config_default.h>
-#include <graph/PathMatcher.h>
-#include "testHelper.h"
 
 std::string g_path = "";
 
@@ -15,7 +15,7 @@ TEST(import, testImport)
    UA_Server* server = UA_Server_new();
    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
 
-   ASSERT_TRUE(NodesetLoader_loadFile(server, (g_path + "/graph.xml").c_str(), NULL));
+   ASSERT_EQ(UA_Server_loadNodeset(server, (g_path + "/graph.xml").c_str(), NULL), UA_STATUSCODE_GOOD);
 
    cleanupServer(server);
 }
@@ -25,11 +25,11 @@ TEST(objectWithProperty, findAllTempDevices)
    UA_Server* server = UA_Server_new();
    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
 
-   ASSERT_TRUE(NodesetLoader_loadFile(server, (g_path + "/objectwithproperty.xml").c_str(), NULL));
+   ASSERT_EQ(UA_Server_loadNodeset(server, (g_path + "/objectwithproperty.xml").c_str(), NULL), UA_STATUSCODE_GOOD);
 
    HierachicalVisitor vis{ server, UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER), UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES), UA_NODECLASS_OBJECT };
 
-   std::vector<PathElement> path{ PathElement{ UA_NODEID_NUMERIC(0, UA_NS0ID_HASTYPEDEFINITION), UA_NODECLASS_OBJECTTYPE, UA_NODEID_NUMERIC(2, 1002), UA_BROWSEDIRECTION_FORWARD } };
+   std::vector<PathElement> path{ PathElement{ UA_NODEID_NUMERIC(0, UA_NS0ID_HASTYPEDEFINITION), UA_NODECLASS_OBJECTTYPE, UA_NODEID_NUMERIC(2, 1002), UA_BROWSEDIRECTION_FORWARD} };
 
    PathMatcher p{server, path, 0};
 
@@ -48,7 +48,8 @@ TEST(objectWithProperty, findAllTempDevicesWithProperty)
    UA_Server* server = UA_Server_new();
    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
 
-   ASSERT_TRUE(NodesetLoader_loadFile(server, (g_path + "/objectwithproperty.xml").c_str(), NULL));
+   ASSERT_EQ(UA_Server_loadNodeset(server, (g_path + "/objectwithproperty.xml").c_str(), NULL),
+             UA_STATUSCODE_GOOD);
 
    std::vector<PathElement> path{ 
       PathElement{ UA_NODEID_NUMERIC(0, UA_NS0ID_HASPROPERTY), UA_NODECLASS_VARIABLE, std::nullopt, UA_BROWSEDIRECTION_BOTH },
@@ -71,7 +72,8 @@ TEST(objectWithProperty, findAllTempDevicesWithPropertyAndCertainPropertyId)
    UA_Server* server = UA_Server_new();
    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
 
-   ASSERT_TRUE(NodesetLoader_loadFile(server, (g_path + "/objectwithproperty.xml").c_str(), NULL));
+   ASSERT_EQ(UA_Server_loadNodeset(server, (g_path + "/objectwithproperty.xml").c_str(), NULL),
+             UA_STATUSCODE_GOOD);
 
    std::vector<PathElement> path{ PathElement{ UA_NODEID_NUMERIC(0, UA_NS0ID_HASPROPERTY), UA_NODECLASS_VARIABLE, UA_NODEID_NUMERIC(2, 6001), UA_BROWSEDIRECTION_BOTH },
                                   PathElement{ UA_NODEID_NUMERIC(0, UA_NS0ID_HASTYPEDEFINITION), UA_NODECLASS_OBJECTTYPE, UA_NODEID_NUMERIC(2, 1002), UA_BROWSEDIRECTION_FORWARD } };
@@ -93,7 +95,8 @@ TEST(objectWithProperty, allObjects)
    UA_Server* server = UA_Server_new();
    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
 
-   ASSERT_TRUE(NodesetLoader_loadFile(server, (g_path + "/objectwithproperty.xml").c_str(), NULL));
+   ASSERT_EQ(UA_Server_loadNodeset(server, (g_path + "/objectwithproperty.xml").c_str(), NULL),
+             UA_STATUSCODE_GOOD);
    HierachicalVisitor vis{ server, UA_NODEID_NUMERIC(2, 5002), UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES), UA_NODECLASS_OBJECT };
 
    //empty Path
@@ -113,8 +116,9 @@ TEST(objectWithProperty, allVariables)
    UA_Server* server = UA_Server_new();
    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
 
-   ASSERT_TRUE(NodesetLoader_loadFile(server, (g_path + "/objectwithproperty.xml").c_str(), NULL));
- 
+   ASSERT_EQ(UA_Server_loadNodeset(server, (g_path + "/objectwithproperty.xml").c_str(), NULL),
+             UA_STATUSCODE_GOOD);
+
    HierachicalVisitor vis{ server, UA_NODEID_NUMERIC(2, 5002), UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES), UA_NODECLASS_VARIABLE };
 
    // empty Path

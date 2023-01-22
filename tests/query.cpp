@@ -1,11 +1,11 @@
 #include "testHelper.h"
-#include <NodesetLoader/backendOpen62541.h>
 #include <cypher/Parser.h>
 #include <cypher/QueryEngine.h>
 #include <gtest/gtest.h>
 #include <iostream>
 #include <open62541/server.h>
 #include <open62541/server_config_default.h>
+#include <open62541/plugin/nodesetloader.h>
 
 std::string g_path = "";
 using namespace cypher;
@@ -145,8 +145,8 @@ TEST(objectWithProperty, findAllTempDevicesWithProperty)
     UA_Server* server = UA_Server_new();
     UA_ServerConfig_setDefault(UA_Server_getConfig(server));
 
-    ASSERT_TRUE(
-    NodesetLoader_loadFile(server, (g_path + "/objectwithproperty.xml").c_str(), NULL));
+    ASSERT_EQ(UA_Server_loadNodeset(server, (g_path + "/objectwithproperty.xml").c_str(), NULL),
+              UA_STATUSCODE_GOOD);
 
     Parser p;
     auto q = p.parse(R"(
@@ -220,7 +220,8 @@ TEST(serverType, subfolder)
     UA_Server* server = UA_Server_new();
     UA_ServerConfig_setDefault(UA_Server_getConfig(server));
 
-    ASSERT_TRUE(NodesetLoader_loadFile(server, (g_path + "/subfolder.xml").c_str(), NULL));
+    ASSERT_EQ(UA_Server_loadNodeset(server, (g_path + "/subfolder.xml").c_str(), NULL),
+              UA_STATUSCODE_GOOD);
 
     // match all BaseObjects below a folder
     Parser p;
