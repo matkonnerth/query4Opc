@@ -58,11 +58,15 @@ How to reduce this match clause? Would be a really good optimization.
 Result
 a vector of paths (remind, a path can consist only of one node)
 
-Currently the result is vector of paths which fit the query. There is a problem with that, imagine a node which references 3 variables, this would be represented this way
+Currently the result is a vector of paths which fit the query. There is a problem with that, imagine a node which references 3 variables, this would be represented this way
 
 Result: Node1 -- VariableNode 1,
         Node1 -- VariableNode 2,
         Node1 -- VariableNode 3
+
+A node can have multiple references with different types.
+
+Node -> vector of references -> vector of nodes
 
 
 
