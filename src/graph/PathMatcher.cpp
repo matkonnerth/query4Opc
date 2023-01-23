@@ -50,7 +50,7 @@ const PathResult& PathMatcher::results() const
 
 std::vector<path_t> PathMatcher::checkPath(const UA_ReferenceDescription& startNode)
 {
-    auto rResults = checkRightSide(startNode);
+    auto rResults = check(startNode, m_rhs);
     return results;
     /* TODO: left side
     std::vector<path_t> endResult{};
@@ -94,22 +94,6 @@ UA_BrowseDescription PathMatcher::createBrowseDescription(const UA_NodeId& node,
                     UA_BROWSERESULTMASK_NODECLASS | UA_BROWSERESULTMASK_TARGETINFO;
     bd.nodeClassMask = nodeClass;
     return bd;
-}
-
-// returns paths satisfying the right side
-std::vector<path_t> PathMatcher::checkRightSide(const UA_ReferenceDescription& start)
-{
-    return check<ResultVector<true>>(start,
-                                     m_path.cbegin() + static_cast<int>(m_idx),
-                                     m_path.cend());
-}
-
-std::vector<path_t> PathMatcher::checkLeftSide(const UA_ReferenceDescription& start)
-{
-    return check<ResultVector<false>>(start,
-                                      m_path.crbegin() +
-                                      static_cast<int>(m_path.size() - m_idx),
-                                      m_path.crend());
 }
 
 std::vector<UA_ReferenceDescription>
