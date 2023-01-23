@@ -129,11 +129,13 @@ class PathMatcher
     std::vector<path_t> checkRightSide(const UA_ReferenceDescription& start);
     std::vector<path_t> checkLeftSide(const UA_ReferenceDescription& start);
 
-    template <typename act_path_t, typename IT>
-    std::vector<path_t> check(const UA_ReferenceDescription& start, IT begin, IT end);
+    
+    std::vector<UA_ReferenceDescription> check(const UA_ReferenceDescription& start, const Path& p);
 
     UA_Server* m_server;
-    Path m_path;
+    Path m_path{};
+    Path m_rhs{};
+    Path m_lhs{};
     size_t m_idx{ 0 };
     PathResult m_results;
 };

@@ -6,7 +6,11 @@ PathMatcher::PathMatcher(UA_Server* server, const Path& path, size_t startIndex)
 , m_path{ path }
 , m_idx{ startIndex }
 , m_results{ path.size() + 1 }
-{}
+{
+    auto paths = m_path.split(startIndex);
+    m_lhs = paths.first.invert();
+    m_rhs = paths.second;
+}
 
 PathMatcher::PathMatcher(PathMatcher&& other)
 : m_server{ other.m_server }
@@ -108,34 +112,36 @@ std::vector<path_t> PathMatcher::checkLeftSide(const UA_ReferenceDescription& st
                                       m_path.crend());
 }
 
-template <typename act_path_t, typename IT>
-std::vector<path_t>
-PathMatcher::check(const UA_ReferenceDescription& start, IT begin, IT end)
+std::vector<UA_ReferenceDescription>
+PathMatcher::check(const UA_ReferenceDescription& start, const Path& path)
 {
-    std ::vector<path_t> paths;
-    act_path_t actPath{};
+    std ::vector<Path> paths;
+    std::vector<UA_ReferenceDescription> actPath{};
     actPath.addResult(start);
 
-    for (auto it = begin; it != end; it++)
+
+    auto it = path.it();
+
+    while(auto node = it.next())
     {
         auto result = false;
-        auto bd = createBrowseDescription(actPath.getLastResult().nodeId.nodeId,
-                                          it->direction,
-                                          it->referenceType,
-                                          it->nodeClass);
+        auto bd = createBrowseDescription(actPath.back().nodeId.nodeId,
+                                          it.RelationLHS()->direction,
+                                          it.RelationLHS()->referenceType,
+                                          node->nodeClass);
         BrowseResultWrapper br{ UA_Server_browse(m_server, 1000, &bd) };
         if (br.raw().statusCode != UA_STATUSCODE_GOOD)
         {
-            return std::vector<path_t>{};
+            return Path{};
         }
 
-        if (it->targetId)
+        if (node.id)
         {
             for (const auto* ref = br.raw().references;
                  ref != br.raw().references + br.raw().referencesSize;
                  ++ref)
             {
-                if (UA_NodeId_equal(&it->targetId.value(), &ref->nodeId.nodeId))
+                if (UA_NodeId_equal(&node->id, &ref->nodeId.nodeId))
                 {
                     actPath.addResult(*ref);
                     result = true;
@@ -147,7 +153,7 @@ PathMatcher::check(const UA_ReferenceDescription& start, IT begin, IT end)
         {
             // we have to instantiate a pathMatcher for each of this
             // subPaths rightToLeft is here not handled correctly
-            PathMatcher m{ m_server, std::vector<PathElement>{ it + 1, end } };
+            PathMatcher m{ m_server, path.split().second };
             for (const auto* ref = br.raw().references;
                  ref != br.raw().references + br.raw().referencesSize;
                  ++ref)
@@ -168,9 +174,10 @@ PathMatcher::check(const UA_ReferenceDescription& start, IT begin, IT end)
         // no result
         if (!result)
         {
-            return std::vector<path_t>{};
+            return Path{};
         }
     }
+    //TODO: make path from UA_ReferenceDescription
     paths.push_back(std::move(actPath.data));
     return paths;
 }

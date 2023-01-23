@@ -1,6 +1,7 @@
 #pragma once
 #include <cypher/Path.h>
 #include "Helper.h"
+#include <algorithm>
 
 struct Node
 {
@@ -87,6 +88,8 @@ public:
         }
     }
 
+    Path(const std::vector<Node>& nodes, const std::vector<Relation> relations):m_nodes{nodes}, m_relation{relations}{}
+
     size_t size() const
     {
         return m_nodes.size();
@@ -145,9 +148,23 @@ public:
         }
     }
 
+    std::pair<Path, Path> split(size_t idx) const
+    {
+        Path lhs{std::vector<Node>{m_nodes.cbegin(),m_nodes.cbegin()+idx}, std::vector<Relation>{m_relations.cbegin(), m_relations.cbegin+idx}};
+        Path rhs{std::vector<Node>{m_nodes.cbegin()+idx, m_nodes.cend()}, std::vector<Relation>{m_relations.cbegin()+idx, m_relations.cend()}};
+        return std::make_pair(lhs, rhs);
+    }
+
+    void invert()
+    {
+        std::reverse(m_nodes.begin(), m_nodes.end());
+        std::reverse(m_relations.begin(), m_relations.end());
+        invertBrowseDirections(0);
+    }
+
 
 private:
-    std::vector<Node> m_nodes;
-    std::vector<Relation> m_relations;
+    std::vector<Node> m_nodes{};
+    std::vector<Relation> m_relations{};
 };
 
