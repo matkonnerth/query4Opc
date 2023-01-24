@@ -8,7 +8,8 @@ PathMatcher::PathMatcher(UA_Server* server, const Path& path, size_t startIndex)
 , m_results{ path.size() + 1 }
 {
     auto paths = m_path.split(startIndex);
-    m_lhs = paths.first.invert();
+    m_lhs = paths.first;
+    m_lhs.invert();
     m_rhs = paths.second;
 }
 
@@ -51,7 +52,7 @@ const PathResult& PathMatcher::results() const
 std::vector<path_t> PathMatcher::checkPath(const UA_ReferenceDescription& startNode)
 {
     auto rResults = check(startNode, m_rhs);
-    return results;
+    return rResults;
     /* TODO: left side
     std::vector<path_t> endResult{};
     for (auto& r : rResults)
@@ -96,17 +97,20 @@ UA_BrowseDescription PathMatcher::createBrowseDescription(const UA_NodeId& node,
     return bd;
 }
 
-std::vector<UA_ReferenceDescription>
+std::vector<path_t>
 PathMatcher::check(const UA_ReferenceDescription& start, const Path& path)
 {
-    std ::vector<Path> paths;
-    std::vector<UA_ReferenceDescription> actPath{};
-    actPath.addResult(start);
+    std ::vector<path_t> paths;
+    path_t actPath{};
+    actPath.push_back(start);
 
 
     auto it = path.it();
 
-    while(auto node = it.next())
+    //skip first node??
+    auto node = it.next();
+
+    while(node = it.next())
     {
         auto result = false;
         auto bd = createBrowseDescription(actPath.back().nodeId.nodeId,
@@ -116,18 +120,18 @@ PathMatcher::check(const UA_ReferenceDescription& start, const Path& path)
         BrowseResultWrapper br{ UA_Server_browse(m_server, 1000, &bd) };
         if (br.raw().statusCode != UA_STATUSCODE_GOOD)
         {
-            return Path{};
+            return std::vector<path_t>{};
         }
 
-        if (node.id)
+        if (node->id.has_value())
         {
             for (const auto* ref = br.raw().references;
                  ref != br.raw().references + br.raw().referencesSize;
                  ++ref)
             {
-                if (UA_NodeId_equal(&node->id, &ref->nodeId.nodeId))
+                if (UA_NodeId_equal(&(node->id.value()), &ref->nodeId.nodeId))
                 {
-                    actPath.addResult(*ref);
+                    actPath.push_back(*ref);
                     result = true;
                     break;
                 }
@@ -137,7 +141,7 @@ PathMatcher::check(const UA_ReferenceDescription& start, const Path& path)
         {
             // we have to instantiate a pathMatcher for each of this
             // subPaths rightToLeft is here not handled correctly
-            PathMatcher m{ m_server, path.split().second };
+            PathMatcher m{ m_server, path.split(1).second };
             for (const auto* ref = br.raw().references;
                  ref != br.raw().references + br.raw().referencesSize;
                  ++ref)
@@ -147,7 +151,7 @@ PathMatcher::check(const UA_ReferenceDescription& start, const Path& path)
             std::vector<path_t> res;
             for (auto&& pe : m.results().paths())
             {
-                path_t newPath{ actPath.data };
+                path_t newPath{ actPath };
                 newPath.insert(newPath.end(),
                                std::make_move_iterator(pe.begin()),
                                std::make_move_iterator(pe.end()));
@@ -158,10 +162,10 @@ PathMatcher::check(const UA_ReferenceDescription& start, const Path& path)
         // no result
         if (!result)
         {
-            return Path{};
+            return std::vector<path_t>{};
         }
     }
-    //TODO: make path from UA_ReferenceDescription
-    paths.push_back(std::move(actPath.data));
+
+    paths.push_back(std::move(actPath));
     return paths;
 }

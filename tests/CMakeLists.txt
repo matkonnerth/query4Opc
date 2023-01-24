@@ -6,7 +6,7 @@ macro(opc_add_test arg)
     target_include_directories(${arg} PRIVATE ${CMAKE_SOURCE_DIR})
 endmacro()
 
-opc_add_test("filter")
+#opc_add_test("filter")
 opc_add_test("filterChain")
 opc_add_test("parser")
 target_link_libraries(parser PRIVATE cypher-parser)

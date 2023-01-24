@@ -18,7 +18,7 @@ struct Relation
     UA_NodeId referenceType;
 };
 
-UA_BrowseDirection getBrowseDirection(const cypher::Relationship& r)
+static inline UA_BrowseDirection getBrowseDirection(const cypher::Relationship& r)
 {
     if (r.direction == 1)
     {
@@ -69,6 +69,8 @@ public:
        size_t idx{ 0 };
    };
 
+   Path(){}
+
     Path(const cypher::Path& p)
     {
         for(const auto&cn : p.nodes)
@@ -88,7 +90,7 @@ public:
         }
     }
 
-    Path(const std::vector<Node>& nodes, const std::vector<Relation> relations):m_nodes{nodes}, m_relation{relations}{}
+    Path(const std::vector<Node>& nodes, const std::vector<Relation>& relations):m_nodes{nodes}, m_relations{relations}{}
 
     size_t size() const
     {
@@ -111,8 +113,8 @@ public:
 
     const Relation* RelationLHS(size_t idx) const
     {
-        int relIdx = idx-1;
-        if(relIdx>=0 && relIdx < m_relations.size())
+        int relIdx = static_cast<int>(idx)-1;
+        if(relIdx>=0 && relIdx < static_cast<int>(m_relations.size()))
         {
             return &m_relations[relIdx];
         }
@@ -150,7 +152,7 @@ public:
 
     std::pair<Path, Path> split(size_t idx) const
     {
-        Path lhs{std::vector<Node>{m_nodes.cbegin(),m_nodes.cbegin()+idx}, std::vector<Relation>{m_relations.cbegin(), m_relations.cbegin+idx}};
+        Path lhs{std::vector<Node>{m_nodes.cbegin(),m_nodes.cbegin()+idx}, std::vector<Relation>{m_relations.cbegin(), m_relations.cbegin()+idx}};
         Path rhs{std::vector<Node>{m_nodes.cbegin()+idx, m_nodes.cend()}, std::vector<Relation>{m_relations.cbegin()+idx, m_relations.cend()}};
         return std::make_pair(lhs, rhs);
     }

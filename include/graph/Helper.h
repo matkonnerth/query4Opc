@@ -3,7 +3,7 @@
 #include <string>
 #include <unordered_map>
 
-UA_NodeClass parseNodeClass(const std::string& nodeclass)
+static inline UA_NodeClass parseNodeClass(const std::string& nodeclass)
 {
     static const std::unordered_map<std::string, UA_NodeClass> m{
         { "Object", UA_NODECLASS_OBJECT },
@@ -24,7 +24,7 @@ UA_NodeClass parseNodeClass(const std::string& nodeclass)
     return UA_NODECLASS_UNSPECIFIED;
 }
 
-UA_NodeClass parseOptionalNodeClass(const std::optional<std::string>& nodeclass)
+static inline UA_NodeClass parseOptionalNodeClass(const std::optional<std::string>& nodeclass)
 {
     if (!nodeclass)
     {
@@ -33,12 +33,12 @@ UA_NodeClass parseOptionalNodeClass(const std::optional<std::string>& nodeclass)
     return parseNodeClass(*nodeclass);
 }
 
-UA_NodeId parseNodeId(const std::string& id)
+static inline UA_NodeId parseNodeId(const std::string& id)
 {
     return UA_NODEID(id.c_str());
 }
 
-UA_NodeId parseOptionalNodeId(const std::optional<std::string>& id)
+static inline UA_NodeId parseOptionalNodeId(const std::optional<std::string>& id)
 {
     if (!id)
     {
@@ -47,7 +47,7 @@ UA_NodeId parseOptionalNodeId(const std::optional<std::string>& id)
     return parseNodeId(*id);
 }
 
-UA_NodeId parseOptionalNodeId(const std::string* id)
+static inline UA_NodeId parseOptionalNodeId(const std::string* id)
 {
     if (!id)
     {
@@ -56,7 +56,7 @@ UA_NodeId parseOptionalNodeId(const std::string* id)
     return parseNodeId(*id);
 }
 
-UA_NodeId lookupReferenceType(const std::optional<std::string>& ref)
+static inline UA_NodeId lookupReferenceType(const std::optional<std::string>& ref)
 {
     if (!ref)
     {

@@ -6,21 +6,17 @@
 
 std::string g_path = "";
 
-using cypher::Path;
-using cypher::Node;
-using cypher::Relationship;
-
 TEST(serverType, findServerObjectWithPath)
 {
    UA_Server* server = UA_Server_new();
    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
 
-   Path p;
-   p.nodes.emplace_back(Node{"obj", "Object"});
-   Node b;
+   cypher::Path p;
+   p.nodes.emplace_back(cypher::Node{"obj", "Object"});
+   cypher::Node b;
    b.properties.emplace(std::make_pair("NodeId", "i=2004"));
    p.nodes.emplace_back(b);
-   p.relations.emplace_back(Relationship{"i=40", 1});
+   p.relations.emplace_back(cypher::Relationship{"i=40", 1});
 
    auto f = createFilterChain(p, std::vector<std::reference_wrapper<const FilterChain>>{}, server);
    f->run();

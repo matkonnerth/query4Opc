@@ -7,41 +7,6 @@
 #include <vector>
 #include "Path.h"
 
-template <bool leftToRight>
-struct ResultVector
-{};
-template <>
-struct ResultVector<true>
-{
-    void addResult(const UA_ReferenceDescription& ref)
-    {
-        data.emplace_back(ref);
-    }
-
-    const UA_ReferenceDescription& getLastResult() const
-    {
-        return data.back();
-    }
-
-    path_t data;
-};
-
-template <>
-struct ResultVector<false>
-{
-    void addResult(const UA_ReferenceDescription& ref)
-    {
-        data.insert(data.begin(), ref);
-    }
-
-    const UA_ReferenceDescription& getLastResult() const
-    {
-        return data.front();
-    }
-
-    path_t data;
-};
-
 class PathResult
 {
  public:
@@ -130,7 +95,7 @@ class PathMatcher
     std::vector<path_t> checkLeftSide(const UA_ReferenceDescription& start);
 
     
-    std::vector<UA_ReferenceDescription> check(const UA_ReferenceDescription& start, const Path& p);
+    std::vector<path_t> check(const UA_ReferenceDescription& start, const Path& p);
 
     UA_Server* m_server;
     Path m_path{};
