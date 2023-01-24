@@ -2,4 +2,4 @@
 cmake
 
 [requires]
-gtest/1.10.0
+gtest/1.11.0
