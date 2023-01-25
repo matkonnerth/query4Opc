@@ -53,6 +53,13 @@ public:
            return m_path.getNode(idx);
        }
 
+       const Node* current()
+       {
+           auto node = m_path.getNode(idx);
+           ++idx;
+           return node;
+       }
+
        const Relation* RelationLHS() const
        {
            return m_path.RelationLHS(idx);
@@ -161,6 +168,11 @@ public:
         std::reverse(m_nodes.begin(), m_nodes.end());
         std::reverse(m_relations.begin(), m_relations.end());
         invertBrowseDirections(0);
+    }
+
+    void insertDummyNode()
+    {
+        m_nodes.insert(m_nodes.begin(), Node{});
     }
 
 

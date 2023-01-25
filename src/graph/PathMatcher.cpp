@@ -10,6 +10,7 @@ PathMatcher::PathMatcher(UA_Server* server, const Path& path, size_t startIndex)
     auto paths = m_path.split(startIndex);
     m_lhs = paths.first;
     m_lhs.invert();
+    m_lhs.insertDummyNode();
     m_rhs = paths.second;
 }
 
@@ -52,21 +53,23 @@ const PathResult& PathMatcher::results() const
 std::vector<path_t> PathMatcher::checkPath(const UA_ReferenceDescription& startNode)
 {
     auto rResults = check(startNode, m_rhs);
-    return rResults;
-    /* TODO: left side
     std::vector<path_t> endResult{};
     for (auto& r : rResults)
     {
         if (m_idx > 0)
         {
-            // man könnte auch den Path hier invertieren und ein checkrightside machen?
-            // die Ergebnisse müsse man den wieder umdrehen und einfügen
-            auto lResults = checkLeftSide(r.at(0));
+            //check against inverted lhs
+            auto lResults = check(r.at(0), m_lhs);
+
+            //invert lResults
+            std::reverse(lResults.begin(), lResults.end());
+            //merge            
             for (auto& l : lResults)
             {
+
                 r.insert(r.begin(),
                          std::make_move_iterator(l.begin()),
-                         std::make_move_iterator(l.end() - 1));
+                         std::make_move_iterator(l.end()));
                 endResult.push_back(std::move(r));
             }
         }
@@ -76,7 +79,6 @@ std::vector<path_t> PathMatcher::checkPath(const UA_ReferenceDescription& startN
         }
     }
     return endResult;
-    */
 }
 
 UA_BrowseDescription PathMatcher::createBrowseDescription(const UA_NodeId& node,
@@ -107,8 +109,6 @@ PathMatcher::check(const UA_ReferenceDescription& start, const Path& path)
 
     auto it = path.it();
 
-    //skip first node??
-    //auto node = it.next();
     const Node* node{nullptr};
 
     while(node = it.next())
