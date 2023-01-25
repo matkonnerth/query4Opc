@@ -22,11 +22,11 @@ static inline UA_BrowseDirection getBrowseDirection(const cypher::Relationship& 
 {
     if (r.direction == 1)
     {
-        return UA_BROWSEDIRECTION_INVERSE;
+        return UA_BROWSEDIRECTION_FORWARD;
     }
     else if (r.direction== -1)
     {
-        return UA_BROWSEDIRECTION_FORWARD;
+        return UA_BROWSEDIRECTION_INVERSE;
     }
     else
     {
@@ -49,9 +49,8 @@ public:
 
        const Node* next()
        {
-           auto node = m_path.getNode(idx);
            ++idx;
-           return node;
+           return m_path.getNode(idx);
        }
 
        const Relation* RelationLHS() const

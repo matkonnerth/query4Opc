@@ -108,7 +108,8 @@ PathMatcher::check(const UA_ReferenceDescription& start, const Path& path)
     auto it = path.it();
 
     //skip first node??
-    auto node = it.next();
+    //auto node = it.next();
+    const Node* node{nullptr};
 
     while(node = it.next())
     {
