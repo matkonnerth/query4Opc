@@ -5,7 +5,7 @@ PathMatcher::PathMatcher(UA_Server* server, const Path& path, size_t startIndex)
 : m_server{ server }
 , m_path{ path }
 , m_idx{ startIndex }
-, m_results{ path.size() + 1 }
+, m_results{ path.size() }
 {
     auto paths = m_path.split(startIndex);
     m_lhs = paths.first;
@@ -68,7 +68,7 @@ std::vector<path_t> PathMatcher::checkPath(const UA_ReferenceDescription& startN
             {
 
                 r.insert(r.begin(),
-                         std::make_move_iterator(l.begin()),
+                         std::make_move_iterator(l.begin()+1),
                          std::make_move_iterator(l.end()));
                 endResult.push_back(std::move(r));
             }

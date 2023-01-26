@@ -47,11 +47,11 @@ static inline UA_NodeId parseOptionalNodeId(const std::optional<std::string>& id
     return parseNodeId(*id);
 }
 
-static inline UA_NodeId parseOptionalNodeId(const std::string* id)
+static inline std::optional<UA_NodeId> parseOptionalNodeId(const std::string* id)
 {
     if (!id)
     {
-        return UA_NODEID_NULL;
+        return std::nullopt;
     }
     return parseNodeId(*id);
 }

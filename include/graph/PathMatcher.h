@@ -20,6 +20,7 @@ class PathResult
 
     void emplace(path_t&& p)
     {
+        assert(p.size()==data.size());
         size_t c = 0u;
         for (auto&& e : p)
         {

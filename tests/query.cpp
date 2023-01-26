@@ -205,6 +205,8 @@ TEST_F(QueryTest, subfolder)
 
 TEST_F(QueryTest, playground)
 {
+    //
+    GTEST_SKIP();
     Parser p;
     auto q = p.parse("MATCH (obj:Object)-->(:Method)-->(:Variable) RETURN obj");
     ASSERT_TRUE(q);

@@ -109,7 +109,7 @@ std::optional<Query> Parser::parse(const std::string& queryString)
     printf("Read %d statements\n", cypher_parse_result_ndirectives(result));
     printf("Encountered %d errors\n", cypher_parse_result_nerrors(result));
 
-    cypher_parse_result_fprint_ast(result, stdout, 20, cypher_parser_ansi_colorization, 0);
+    //cypher_parse_result_fprint_ast(result, stdout, 20, cypher_parser_ansi_colorization, 0);
 
     if (cypher_parse_result_nerrors(result))
     {
