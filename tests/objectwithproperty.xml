@@ -52,4 +52,25 @@
             <Reference ReferenceType="Organizes" IsForward="false">ns=1;i=5002</Reference>
         </References>
     </UAObject>
+    <UAObject NodeId="ns=1;i=100" BrowseName="1:Level1">
+        <DisplayName>Test_ObjectWithProperty</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+            <Reference ReferenceType="Organizes">ns=1;i=200</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">i=85</Reference>
+        </References>
+    </UAObject>
+    <UAObject NodeId="ns=1;i=200" BrowseName="1:Level2">
+        <DisplayName>Test_ObjectWithProperty</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+            <Reference ReferenceType="Organizes">ns=1;i=300</Reference>
+        </References>
+    </UAObject>
+    <UAObject NodeId="ns=1;i=300" BrowseName="1:Level3">
+        <DisplayName>Test_ObjectWithProperty</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+        </References>
+    </UAObject>
 </UANodeSet>

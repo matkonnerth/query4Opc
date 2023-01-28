@@ -9,6 +9,7 @@ PathMatcher::PathMatcher(UA_Server* server, const Path& path, size_t startIndex)
 {
     auto paths = m_path.split(startIndex);
     m_lhs = paths.first;
+    //traversing the path is always from left to right
     m_lhs.invert();
     m_lhs.insertDummyNode();
     m_rhs = paths.second;
@@ -66,7 +67,7 @@ std::vector<path_t> PathMatcher::checkPath(const UA_ReferenceDescription& startN
             //merge            
             for (auto& l : lResults)
             {
-
+                //TODO: why +1??
                 r.insert(r.begin(),
                          std::make_move_iterator(l.begin()+1),
                          std::make_move_iterator(l.end()));
@@ -141,7 +142,6 @@ PathMatcher::check(const UA_ReferenceDescription& start, const Path& path)
         else
         {
             // we have to instantiate a pathMatcher for each of this
-            // subPaths rightToLeft is here not handled correctly
             PathMatcher m{ m_server, path.split(1).second };
             for (const auto* ref = br.raw().references;
                  ref != br.raw().references + br.raw().referencesSize;

@@ -203,6 +203,22 @@ TEST_F(QueryTest, subfolder)
     ASSERT_EQ(results->size(), 3);
 }
 
+TEST_F(QueryTest, threeObjects)
+{
+    ASSERT_TRUE(UA_StatusCode_isGood(
+    UA_Server_loadNodeset(server, (g_path + "/objectwithproperty.xml").c_str(), NULL)));
+    Parser p;
+    auto q = p.parse(
+    "MATCH (obj:Object)-->(:Object) RETURN obj");
+    ASSERT_TRUE(q);
+
+    QueryEngine e{ server };
+    e.scheduleQuery(*q);
+    auto results = e.run();
+    ASSERT_TRUE(results);
+    ASSERT_EQ(results->size(), 1);
+}
+
 TEST_F(QueryTest, playground)
 {
     //
