@@ -28,7 +28,7 @@ void FilterChain::createColumnAsSource(const column_t& col)
     m_src = std::make_unique<ColumnAsSource>(col);
 }
 
-void FilterChain::createReferenceFilter(const cypher::Path& path, size_t startIndex)
+void FilterChain::createReferenceFilter(const cypher::Path& path, int startIndex)
 {
     m_pathMatcher = std::make_unique<PathMatcher>(m_server, Path{path}, startIndex);
     m_path = path;
@@ -53,9 +53,9 @@ const column_t* FilterChain::results(const std::string& identifier) const
     return nullptr;
 }
 
-size_t graph::findStartIndex(const cypher::Path& p)
+int graph::findStartIndex(const cypher::Path& p)
 {
-    auto idx = 0u;
+    auto idx = 0;
     for (const auto& e : p.nodes)
     {
         if (e.identifier)
@@ -64,7 +64,7 @@ size_t graph::findStartIndex(const cypher::Path& p)
         }
         idx += 1;
     }
-    return 0u;
+    return 0;
 }
 
 const column_t*
@@ -96,17 +96,18 @@ graph::createFilterChain(const cypher::Path& path,
         f->createHierachicalVisitorSource(
         UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER),
         UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES),
-        parseOptionalNodeClass(path.nodes[start].label));
+        parseOptionalNodeClass(path.nodes[static_cast<size_t>(start)].label));
     }
     else
     {
         // lookup the source column
-        if (!path.nodes[start].identifier)
+        if (!path.nodes[static_cast<size_t>(start)].identifier)
         {
             return nullptr;
         }
 
-        auto col = graph::findSourceColumn(*path.nodes[start].identifier, ctx);
+        auto col =
+        graph::findSourceColumn(*path.nodes[static_cast<size_t>(start)].identifier, ctx);
         if (!col)
         {
             return nullptr;

@@ -1,3 +1,1 @@
 #include <cypher/Path.h>
-
-;

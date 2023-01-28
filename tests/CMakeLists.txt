@@ -6,6 +6,7 @@ macro(opc_add_test arg)
     target_include_directories(${arg} PRIVATE ${CMAKE_SOURCE_DIR})
 endmacro()
 
+#TODO: enable again
 #opc_add_test("filter")
 opc_add_test("filterChain")
 opc_add_test("parser")

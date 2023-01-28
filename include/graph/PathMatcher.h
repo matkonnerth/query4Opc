@@ -75,7 +75,7 @@ class PathResult
 class PathMatcher
 {
  public:
-    PathMatcher(UA_Server* server, const Path& path, size_t startIndex = 0);
+    PathMatcher(UA_Server* server, const Path& path, int startIndex = 0);
 
     PathMatcher(const PathMatcher&) = delete;
     PathMatcher& operator=(const PathMatcher&) = delete;
@@ -104,7 +104,7 @@ class PathMatcher
     Path m_path{};
     Path m_rhs{};
     Path m_lhs{};
-    size_t m_idx{ 0 };
+    int m_idx{ 0 };
     PathResult m_results;
 };
 

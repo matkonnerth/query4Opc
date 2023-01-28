@@ -2,7 +2,7 @@
 #include <graph/BrowseResultWrapper.h>
 
 using namespace graph;
-PathMatcher::PathMatcher(UA_Server* server, const Path& path, size_t startIndex)
+PathMatcher::PathMatcher(UA_Server* server, const Path& path, int startIndex)
 : m_server{ server }
 , m_path{ path }
 , m_idx{ startIndex }
@@ -10,9 +10,7 @@ PathMatcher::PathMatcher(UA_Server* server, const Path& path, size_t startIndex)
 {
     auto paths = m_path.split(startIndex);
     m_lhs = paths.first;
-    //traversing the path is always from left to right
-    m_lhs.invert();
-    m_lhs.insertDummyNode();
+    m_lhs.transformForLeftToRightTraversal();
     m_rhs = paths.second;
 }
 
@@ -54,6 +52,7 @@ const PathResult& PathMatcher::results() const
 
 std::vector<path_t> PathMatcher::checkPath(const UA_ReferenceDescription& startNode)
 {
+    //TODO: why always start with rhs path?
     auto rResults = check(startNode, m_rhs);
     std::vector<path_t> endResult{};
     for (auto& r : rResults)
@@ -68,7 +67,7 @@ std::vector<path_t> PathMatcher::checkPath(const UA_ReferenceDescription& startN
             //merge            
             for (auto& l : lResults)
             {
-                //TODO: why +1??
+                //TODO: +1, because first node is already contained in the rhs result
                 r.insert(r.begin(),
                          std::make_move_iterator(l.begin()+1),
                          std::make_move_iterator(l.end()));
@@ -110,10 +109,7 @@ PathMatcher::check(const UA_ReferenceDescription& start, const Path& path)
 
 
     auto it = path.it();
-
-    const Node* node{nullptr};
-
-    while(node = it.next())
+    while(auto node = it.next())
     {
         auto result = false;
         auto bd = createBrowseDescription(actPath.back().nodeId.nodeId,

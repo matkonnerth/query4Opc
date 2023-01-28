@@ -16,7 +16,7 @@ public:
 
    void createHierachicalVisitorSource(const UA_NodeId& root, const UA_NodeId& referenceTypeId, UA_UInt32 nodeclasMask);
    void createColumnAsSource(const column_t& col);
-   void createReferenceFilter(const cypher::Path& path, size_t startIndex);
+   void createReferenceFilter(const cypher::Path& path, int startIndex);
    const column_t* results() const;
    const column_t* results(const std::string& identifier) const;
 
@@ -27,7 +27,7 @@ private:
    cypher::Path m_path;
 };
 
-size_t findStartIndex(const cypher::Path &p);
+int findStartIndex(const cypher::Path &p);
 const column_t* findSourceColumn(const std::string id, const std::vector<std::reference_wrapper<const FilterChain>> ctx);
 
 // translates a cypher Path to a FilterChain

@@ -89,12 +89,14 @@ public:
     const Relation* RelationRHS(size_t idx) const;
     PathIterator it() const;
     void invertBrowseDirections(size_t idx);
-    std::pair<Path, Path> split(size_t idx) const;
-    void invert();
-    void insertDummyNode();
+    std::pair<Path, Path> split(int idx) const;
+
+    void transformForLeftToRightTraversal();
+    
 
 private:
-    std::vector<Node> m_nodes{};
-    std::vector<Relation> m_relations{};
+   void invert();
+   std::vector<Node> m_nodes{};
+   std::vector<Relation> m_relations{};
 };
 }
