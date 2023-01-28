@@ -105,7 +105,29 @@ PathMatcher::check(const UA_ReferenceDescription& start, const Path& path)
 {
     std ::vector<path_t> paths;
     path_t actPath{};
+
+    if(path.size()==1)
+    {
+        
+        if(path.getNode(0)->id)
+        {
+            if(UA_NodeId_equal(&(path.getNode(0)->id.value()), &start.nodeId.nodeId))
+            {
+                actPath.push_back(start);
+                paths.push_back(actPath);
+            }
+        }
+        else if (start.nodeClass == path.getNode(0)->nodeClass || path.getNode(0)->nodeClass==UA_NODECLASS_UNSPECIFIED)
+        {
+            actPath.push_back(start);
+            paths.push_back(actPath);
+        }
+        return paths;
+    }
+
     actPath.push_back(start);
+
+
 
 
     auto it = path.it();

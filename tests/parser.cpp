@@ -41,3 +41,10 @@ TEST(Parser, noRefType)
     //forward ref
     ASSERT_EQ(q->matchClauses[0].path.relations[0].direction, 1);
 }
+
+TEST(Parser, singleNode)
+{
+    Parser p;
+    auto q = p.parse("Match (n:Object) RETURN n");
+    ASSERT_TRUE(q);
+}

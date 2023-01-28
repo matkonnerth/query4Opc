@@ -46,7 +46,7 @@ Here is a list of example cypher queries, which we think is interesting for clie
 (1) Get all Objects of an exact ObjectType \
 `match(obj:Object)-[:HasTypeDefinition]->(t:ObjectType{NodeId:"Base"}) return obj`
 
-(2) Get all Objects of a certain ObjectType or SubType of this object
+(2) Get all Objects of a certain ObjectType or SubType of this object \
 `match (a:ObjectType {NodeId: "BaseType"}) -[:HasSubTyp*0..]->(types)` \
 `match (obj:Object)-[:HasTypeDefinition]->(types)` \
 `return obj, types`
@@ -56,7 +56,7 @@ Here is a list of example cypher queries, which we think is interesting for clie
 `match(root:Object{NodeId:"BaseInstance"})-[:HierachicalReferences*0..]->(obj:Object)-[:HasTypeDefinition]->(types)` \
 `return obj, types`
 
-(4) Get all Objects of a certain ObjectType and with a hasProperty reference to a certain node (TODO: validate this)
+(4) Get all Objects of a certain ObjectType and with a hasProperty reference to a certain node (TODO: validate this) \
 `tempDevices = (obj:Object)-[:HasTypeDefinition]->(:ObjectType{NodeId:"TempDevice"})`
 `match tempDevices-[:HasProperty]->(:Variable{NodeId:"MySpecialProperty"})`
 
@@ -114,3 +114,9 @@ https://neo4j.com/blog/secret-sauce-neo4j-modeling-graphconnect/
 
 import
 https://neo4j.com/docs/operations-manual/current/tools/neo4j-admin-import/
+
+## Implementation
+
+take a look at [Implementation]("Implementation.md").
+
+

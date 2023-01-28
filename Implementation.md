@@ -2,35 +2,38 @@ First step:
 only use browse service
 no multiple returns
 no where clauses
-we do not try to change direction of reference
 
-GraphTraversal and Filtering
+## GraphTraversal and Filtering
 
-Source
+### Source
 
 "Generates" nodes, example is the hierachical visitor.
 
-HierachicalVisitor
+#### HierachicalVisitor
 columns of a PathResult can be used as inputs for another PathMatcher
 
-PathMatcher
+## PathMatcher
 
 matches a path starting at a start node and preserves the matching paths.
 
-Filter
+## Filter
 
 Filters nodes on a certain attribute, for example the typedefinition id.
 TypeFilter (specialization of a type filter)
 
+## FilterChain
+TODO: wording FilterChain?
 a Source, multiple filters and a PathMatcher can be combined to a FilterChain.
 
-Path
+## graph::Path
 
 is a alternating sequence of nodes and relationships.
 
 (n1)-[r1]-(n2)-[r2]-(n3)
 
-Metrics
+Path matching is always done from left to right!
+
+## Metrics
 We could say: A typical nodeset has 100 objectTypes with 10 instances each. Each of the objectTypes has 10 variables and 3 methods.
 
 That means the instance tree (nodes below the objects folder) would have 1000 objects, 3000 methods and 10000 variables. So the HierachicalVisitor should always start at the objectTypes. But most of the server implementations doesn't add the inverse reference from an ObjectType to the Object. (It seems like that the open62541 does add this inverse reference).
@@ -39,7 +42,7 @@ The path (obj:Object)-[HasTypeDefinition]->[:ObjectType{NodeId:"123}] could then
 
 Also a HierachicalVisitor wouldn't be required.
 
-Cypher
+## Cypher
 
 Pattern
 NodePattern
@@ -55,10 +58,10 @@ Could be done with this:
 
 How to reduce this match clause? Would be a really good optimization.
 
-Result
+## Result
 a vector of paths (remind, a path can consist only of one node)
 
-Currently the result is a vector of paths which fit the query. There is a problem with that, imagine a node which references 3 variables, this would be represented this way
+Currently the result is a vector of paths which fit the query. A node which references 3 variables, would be represented this way:
 
 Result: Node1 -- VariableNode 1,
         Node1 -- VariableNode 2,
@@ -66,7 +69,14 @@ Result: Node1 -- VariableNode 1,
 
 A node can have multiple references with different types.
 
-Node -> vector of references -> vector of nodes
+## TODOs:
+
+At the moment it is hard to track down how the query is executed, good debugging output is necessary;
+
+
+
+
+
 
 
 

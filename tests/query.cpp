@@ -235,6 +235,20 @@ TEST_F(QueryTest, playground)
     ASSERT_EQ(results->size(), 2);
 }
 
+TEST_F(QueryTest, serverObject)
+{
+    // match all BaseObjects below a folder
+    Parser p;
+    auto q = p.parse("Match(obj: Object{NodeId:\"i=2253\"}) RETURN obj");
+    ASSERT_TRUE(q);
+
+    QueryEngine e{ server };
+    e.scheduleQuery(*q);
+    auto results = e.run();
+    ASSERT_TRUE(results);
+    ASSERT_EQ(results->size(), 1);
+}
+
 int main(int argc, char** argv)
 {
 
