@@ -146,6 +146,25 @@ TEST_F(QueryTest, findAllTempDevicesWithProperty)
     ASSERT_EQ(results->size(), 1);
 }
 
+TEST_F(QueryTest, findAllTempDevicesWithPropertyOneQuery)
+{
+    ASSERT_TRUE(UA_StatusCode_isGood(
+    UA_Server_loadNodeset(server, (g_path + "/objectwithproperty.xml").c_str(), NULL)));
+
+    Parser p;
+    auto q = p.parse(R"(
+      MATCH (:Variable)<-[:HasProperty]-(obj:Object)-[:HasTypeDefinition]->(:ObjectType{NodeId: "ns=2;i=1002"})
+      RETURN obj
+    )");
+    ASSERT_TRUE(q);
+
+    QueryEngine e{ server };
+    e.scheduleQuery(*q);
+    auto results = e.run();
+    ASSERT_TRUE(results);
+    ASSERT_EQ(results->size(), 1);
+}
+
 
 TEST_F(QueryTest, findObjectsWhichReferencesVariables)
 {
