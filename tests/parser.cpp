@@ -1,9 +1,6 @@
 #include <cypher/Parser.h>
 #include <gtest/gtest.h>
 
-
-std::string path = "";
-
 using namespace cypher;
 
 TEST(Parser, quick)
@@ -41,17 +38,6 @@ TEST(Parser, noRefType)
     auto q = p.parse(
     "Match (n:Object)-->(:Object) RETURN n");
     ASSERT_TRUE(q);
+    //forward ref
     ASSERT_EQ(q->matchClauses[0].path.relations[0].direction, 1);
-}
-
-int main(int argc, char** argv)
-{
-
-   testing::InitGoogleTest(&argc, argv);
-
-   if (!(argc > 1))
-      return 1;
-   path = argv[1];
-
-   return RUN_ALL_TESTS();
 }

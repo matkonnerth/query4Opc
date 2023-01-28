@@ -1,6 +1,7 @@
 #include <graph/PathMatcher.h>
 #include <graph/BrowseResultWrapper.h>
 
+using namespace graph;
 PathMatcher::PathMatcher(UA_Server* server, const Path& path, size_t startIndex)
 : m_server{ server }
 , m_path{ path }

@@ -7,6 +7,8 @@
 #include <vector>
 #include "Path.h"
 
+namespace graph
+{
 class PathResult
 {
  public:
@@ -105,3 +107,5 @@ class PathMatcher
     size_t m_idx{ 0 };
     PathResult m_results;
 };
+
+}

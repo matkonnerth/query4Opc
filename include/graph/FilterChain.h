@@ -6,6 +6,8 @@
 #include <optional>
 #include <vector>
 
+namespace graph
+{
 class FilterChain
 {
 public:
@@ -14,9 +16,6 @@ public:
 
    void createHierachicalVisitorSource(const UA_NodeId& root, const UA_NodeId& referenceTypeId, UA_UInt32 nodeclasMask);
    void createColumnAsSource(const column_t& col);
-
-   // here (node)-(reference) decays to a single PathElement
-   // think this makes sense because the opc ua browse returns n ReferenceDescriptions for a node
    void createReferenceFilter(const cypher::Path& path, size_t startIndex);
    const column_t* results() const;
    const column_t* results(const std::string& identifier) const;
@@ -33,3 +32,5 @@ const column_t* findSourceColumn(const std::string id, const std::vector<std::re
 
 // translates a cypher Path to a FilterChain
 std::unique_ptr<FilterChain> createFilterChain(const cypher::Path& path, std::vector<std::reference_wrapper<const FilterChain>> ctx, UA_Server* server);
+
+}

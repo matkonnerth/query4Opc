@@ -8,6 +8,7 @@
 
 std::string g_path = "";
 using namespace cypher;
+using namespace graph;
 
 class QueryTest : public ::testing::Test
 {

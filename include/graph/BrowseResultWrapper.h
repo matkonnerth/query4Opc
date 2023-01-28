@@ -1,5 +1,7 @@
 #pragma once
 
+namespace graph
+{
 class BrowseResultWrapper
 {
  public:
@@ -20,3 +22,4 @@ class BrowseResultWrapper
  private:
     UA_BrowseResult m_br;
 };
+}

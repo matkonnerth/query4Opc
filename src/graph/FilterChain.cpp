@@ -1,6 +1,11 @@
 #include <graph/FilterChain.h>
 #include <graph/Helper.h>
 
+using graph::FilterChain;
+using graph::createFilterChain;
+using graph::parseOptionalNodeClass;
+using graph::column_t;
+
 FilterChain::FilterChain(UA_Server* server)
 : m_server{ server }
 {}
@@ -48,7 +53,7 @@ const column_t* FilterChain::results(const std::string& identifier) const
     return nullptr;
 }
 
-size_t findStartIndex(const cypher::Path& p)
+size_t graph::findStartIndex(const cypher::Path& p)
 {
     auto idx = 0u;
     for (const auto& e : p.nodes)
@@ -63,7 +68,7 @@ size_t findStartIndex(const cypher::Path& p)
 }
 
 const column_t*
-findSourceColumn(const std::string id,
+graph::findSourceColumn(const std::string id,
                  const std::vector<std::reference_wrapper<const FilterChain>> ctx)
 {
     for (const auto& f : ctx)
@@ -79,11 +84,11 @@ findSourceColumn(const std::string id,
 
 // translates a cypher Path to a FilterChain
 std::unique_ptr<FilterChain>
-createFilterChain(const cypher::Path& path,
+graph::createFilterChain(const cypher::Path& path,
                   std::vector<std::reference_wrapper<const FilterChain>> ctx,
                   UA_Server* server)
 {
-    auto start = findStartIndex(path);
+    auto start = graph::findStartIndex(path);
     auto f = std::make_unique<FilterChain>(server);
     if (ctx.size() == 0)
     {
@@ -101,7 +106,7 @@ createFilterChain(const cypher::Path& path,
             return nullptr;
         }
 
-        auto col = findSourceColumn(*path.nodes[start].identifier, ctx);
+        auto col = graph::findSourceColumn(*path.nodes[start].identifier, ctx);
         if (!col)
         {
             return nullptr;

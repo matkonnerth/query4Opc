@@ -12,5 +12,5 @@ TEST(PahtTest, buildPath)
    p.nodes.emplace_back(b);
    p.relations.emplace_back(cypher::Relationship{"i=40", 1});
 
-   Path path(p);
+   graph::Path path(p);
 }

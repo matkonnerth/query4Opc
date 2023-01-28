@@ -4,6 +4,8 @@
 #include <vector>
 #include <optional>
 
+namespace graph
+{
 struct Result
 {
    UA_NodeId parentId;
@@ -109,3 +111,5 @@ public:
 private:
    std::vector<T> m_types;
 };
+
+}

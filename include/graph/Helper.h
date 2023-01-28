@@ -3,6 +3,8 @@
 #include <string>
 #include <unordered_map>
 
+namespace graph
+{
 static inline UA_NodeClass parseNodeClass(const std::string& nodeclass)
 {
     static const std::unordered_map<std::string, UA_NodeClass> m{
@@ -74,4 +76,5 @@ static inline UA_NodeId lookupReferenceType(const std::optional<std::string>& re
         return it->second;
     }
     return UA_NODEID_NULL;
+}
 }

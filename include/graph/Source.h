@@ -4,6 +4,8 @@
 #include <vector>
 #include "Types.h"
 
+namespace graph
+{
 class Source
 {
 public:
@@ -92,3 +94,4 @@ public:
 private:
    const column_t& col;
 };
+}
