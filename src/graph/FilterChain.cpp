@@ -23,10 +23,6 @@ void FilterChain::createColumnAsSource(const column_t& col)
     m_src = std::make_unique<ColumnAsSource>(col);
 }
 
-
-
-// here (node)-(reference) decays to a single PathElement
-// think this makes sense because the opc ua browse returns n ReferenceDescriptions for a node
 void FilterChain::createReferenceFilter(const cypher::Path& path, size_t startIndex)
 {
     m_pathMatcher = std::make_unique<PathMatcher>(m_server, Path{path}, startIndex);
@@ -91,6 +87,7 @@ createFilterChain(const cypher::Path& path,
     auto f = std::make_unique<FilterChain>(server);
     if (ctx.size() == 0)
     {
+        //TODO: remove hardcoded start node
         f->createHierachicalVisitorSource(
         UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER),
         UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES),

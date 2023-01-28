@@ -203,13 +203,14 @@ TEST_F(QueryTest, subfolder)
     ASSERT_EQ(results->size(), 3);
 }
 
-TEST_F(QueryTest, threeObjects)
+TEST_F(QueryTest, eightObjects)
 {
     ASSERT_TRUE(UA_StatusCode_isGood(
     UA_Server_loadNodeset(server, (g_path + "/objectwithproperty.xml").c_str(), NULL)));
     Parser p;
-    auto q = p.parse(
-    "MATCH (obj:Object)-->(:Object) RETURN obj");
+    auto q = p.parse("MATCH "
+                     "(obj:Object)-->(:Object)-->(:Object)-->(:Object)-->(:"
+                     "Object)-->(:Object)-->(:Object)-->(:Object) RETURN obj");
     ASSERT_TRUE(q);
 
     QueryEngine e{ server };
@@ -221,7 +222,6 @@ TEST_F(QueryTest, threeObjects)
 
 TEST_F(QueryTest, playground)
 {
-    //
     GTEST_SKIP();
     Parser p;
     auto q = p.parse("MATCH (obj:Object)-->(:Method)-->(:Variable) RETURN obj");
