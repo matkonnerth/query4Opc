@@ -35,6 +35,15 @@ TEST(Parser, Relationship)
    ASSERT_EQ(*q->matchClauses[0].path.relations[0].type, "HasTypeDefinition");
 }
 
+TEST(Parser, noRefType)
+{
+    Parser p;
+    auto q = p.parse(
+    "Match (n:Object)-->(:Object) RETURN n");
+    ASSERT_TRUE(q);
+    ASSERT_EQ(q->matchClauses[0].path.relations[0].direction, 1);
+}
+
 int main(int argc, char** argv)
 {
 
