@@ -41,12 +41,36 @@ static void findServerObject(UA_Server* server, const UA_NodeId& startNode)
     UA_BrowseResult_clear(&br);
 }
 
+static void addObject(UA_Server* server, int depth, int rowIndex)
+{
+    UA_NodeId parentId = UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER);
+    if(depth>0)
+    {
+        parentId = UA_NODEID_NUMERIC(1, rowIndex * 100 + depth -1);
+    }
+    UA_ObjectAttributes attr = UA_ObjectAttributes_default;
+    UA_Server_addObjectNode(server, UA_NODEID_NUMERIC(1, rowIndex*100+depth), parentId, UA_NODEID_NUMERIC(0, UA_NS0ID_HASCOMPONENT),
+    UA_QUALIFIEDNAME_ALLOC(1, ("Object_"+std::to_string(rowIndex*100)+"_"+std::to_string(depth)).c_str()), UA_NODEID_NUMERIC(0, UA_NS0ID_BASEOBJECTTYPE), attr, nullptr, nullptr);
+}
+
+void addObjectsToAddressSpace(UA_Server* server, int maxDepth, int maxRows)
+{
+    for(int row=1; row<=maxRows; row++)
+    {
+        for(int depth=0; depth<maxDepth; depth++)
+        {
+            addObject(server, depth, row);
+        }
+    }
+}
+
 static void standardBrowse(benchmark::State& state)
 {
     auto server = UA_Server_new();
     UA_ServerConfig_setDefault(UA_Server_getConfig(server));
-    UA_StatusCode_isGood(
-    UA_Server_loadNodeset(server, (g_path + "/testNodeset.xml").c_str(), NULL));
+    addObjectsToAddressSpace(server, 100, 1000);
+
+
 
     for (auto _ : state)
     {
@@ -73,8 +97,7 @@ static void queryServerObject(benchmark::State& state)
 {
     auto server = UA_Server_new();
     UA_ServerConfig_setDefault(UA_Server_getConfig(server));
-    UA_StatusCode_isGood(
-    UA_Server_loadNodeset(server, (g_path + "/testNodeset.xml").c_str(), NULL));
+    addObjectsToAddressSpace(server, 100, 1000);
 
     for (auto _ : state)
     {
@@ -91,12 +114,6 @@ BENCHMARK(queryServerObject);
 
 int main(int argc, char** argv)
 {
-    if (!(argc > 1))
-    {
-        std::cout << "path to nodesets needed\n";
-        return 1;
-    }        
-    g_path = argv[1];
     ::benchmark::Initialize(&argc, argv);
     ::benchmark::RunSpecifiedBenchmarks();
 }
