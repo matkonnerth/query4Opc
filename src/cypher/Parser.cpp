@@ -105,9 +105,9 @@ std::optional<Query> Parser::parse(const std::string& queryString)
         return std::nullopt;
     }
 
-    printf("Parsed %d AST nodes\n", cypher_parse_result_nnodes(result));
-    printf("Read %d statements\n", cypher_parse_result_ndirectives(result));
-    printf("Encountered %d errors\n", cypher_parse_result_nerrors(result));
+    //printf("Parsed %d AST nodes\n", cypher_parse_result_nnodes(result));
+    //printf("Read %d statements\n", cypher_parse_result_ndirectives(result));
+    //printf("Encountered %d errors\n", cypher_parse_result_nerrors(result));
 
     //cypher_parse_result_fprint_ast(result, stdout, 20, cypher_parser_ansi_colorization, 0);
 

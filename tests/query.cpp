@@ -1,5 +1,5 @@
 #include <cypher/Parser.h>
-#include <cypher/QueryEngine.h>
+#include <graph/QueryEngine.h>
 #include <gtest/gtest.h>
 #include <iostream>
 #include <open62541/server.h>

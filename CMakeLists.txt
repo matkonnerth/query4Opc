@@ -36,5 +36,5 @@ add_subdirectory(csvExport)
 include(CTest)
 enable_testing()
 
-#add_subdirectory(libcypher-parser)
 add_subdirectory(tests)
+add_subdirectory(benchmark)
