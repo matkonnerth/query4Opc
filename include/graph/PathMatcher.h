@@ -1,5 +1,4 @@
 #pragma once
-#include "Filter.h"
 #include "Types.h"
 #include <open62541/server.h>
 #include <open62541/types.h>
