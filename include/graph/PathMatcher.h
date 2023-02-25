@@ -91,11 +91,6 @@ class PathMatcher
                                                  UA_BrowseDirection direction,
                                                  const UA_NodeId& refType,
                                                  UA_NodeClass nodeClass);
-
-    // returns paths satisfying the right side
-    std::vector<path_t> checkRightSide(const UA_ReferenceDescription& start);
-    std::vector<path_t> checkLeftSide(const UA_ReferenceDescription& start);
-
     
     std::vector<path_t> check(const UA_ReferenceDescription& start, const Path& p);
 

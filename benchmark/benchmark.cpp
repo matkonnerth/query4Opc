@@ -93,6 +93,17 @@ void queryServerObjectImpl(UA_Server* server)
     auto results = e.run();
 }
 
+void queryServerObjectImplInvertPath(UA_Server* server)
+{
+    cypher::Parser p;
+    auto q =
+    p.parse("MATCH(:ObjectType{""NodeId: \"i=2004\"})<-[:HasTypeDefinition]-(obj:Object) RETURN obj");
+
+    graph::QueryEngine e{ server };
+    e.scheduleQuery(*q);
+    auto results = e.run();
+}
+
 static void queryServerObject(benchmark::State& state)
 {
     auto server = UA_Server_new();
@@ -109,8 +120,25 @@ static void queryServerObject(benchmark::State& state)
     std::cout << "found: " << found;
 }
 
+static void queryServerObjectInvertPath(benchmark::State& state)
+{
+    auto server = UA_Server_new();
+    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
+    addObjectsToAddressSpace(server, 100, 1000);
+
+    for (auto _ : state)
+    {
+        queryServerObjectImplInvertPath(server);
+    }
+
+    UA_Server_delete(server);
+
+    std::cout << "found: " << found;
+}
+
 BENCHMARK(standardBrowse);
 BENCHMARK(queryServerObject);
+BENCHMARK(queryServerObjectInvertPath);
 
 int main(int argc, char** argv)
 {
