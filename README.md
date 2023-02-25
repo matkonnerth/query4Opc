@@ -97,6 +97,13 @@ When we use (1), how are relationships like "HasSubType" are modelled between la
 
 ## Performance
 
+### Find server object (benchmark/benchmark.cpp)
+
+address space is populated with 100k object nodes, both implementations have to visit all object nodes and check the typedefinition.
+
+Straighforward find server object: 82ms
+Query: 214ms
+Query (with inverted path): 222ms
 
 ## Not considered use cases
 Aggregating server

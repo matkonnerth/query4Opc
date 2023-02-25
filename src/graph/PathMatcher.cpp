@@ -14,22 +14,6 @@ PathMatcher::PathMatcher(UA_Server* server, const Path& path, int startIndex)
     m_rhs = paths.second;
 }
 
-PathMatcher::PathMatcher(PathMatcher&& other)
-: m_server{ other.m_server }
-, m_path{ other.m_path }
-, m_idx{ other.m_idx }
-, m_results{ other.m_results }
-{}
-
-PathMatcher& PathMatcher::operator=(PathMatcher&& other)
-{
-    m_server = other.m_server;
-    m_path = std::move(other.m_path);
-    m_idx = other.m_idx;
-    m_results = std::move(other.m_results);
-    return *this;
-}
-
 void PathMatcher::match(const UA_ReferenceDescription& startNode)
 {
     if (m_path.empty())

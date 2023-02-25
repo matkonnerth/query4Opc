@@ -15,7 +15,6 @@ conan_cmake_run(CONANFILE conanfile.txt
 
 find_package(open62541 REQUIRED)
 
-# Link this 'library' to use the warnings specified in CompilerWarnings.cmake
 add_library(project_warnings INTERFACE)
 include(${CMAKE_SOURCE_DIR}/cmake/CompilerWarnings.cmake)
 set_project_warnings(project_warnings)

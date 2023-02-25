@@ -12,7 +12,7 @@ FilterChain::FilterChain(UA_Server* server)
 
 void FilterChain::run()
 {
-    auto f = [&](path_element_t&& pe) { m_pathMatcher->match(pe); };
+    auto f = [&](path_element_t&& pe) { m_pathMatcher.match(pe); };
     m_src->generate(f);
 }
 
@@ -30,13 +30,13 @@ void FilterChain::createColumnAsSource(const column_t& col)
 
 void FilterChain::createReferenceFilter(const cypher::Path& path, int startIndex)
 {
-    m_pathMatcher = std::make_unique<PathMatcher>(m_server, Path{path}, startIndex);
+    m_pathMatcher = std::move(PathMatcher(m_server, Path{path}, startIndex));
     m_path = path;
 }
 
 const column_t* FilterChain::results() const
 {
-    return m_pathMatcher->results().col();
+    return m_pathMatcher.results().col();
 }
 
 const column_t* FilterChain::results(const std::string& identifier) const
@@ -46,7 +46,7 @@ const column_t* FilterChain::results(const std::string& identifier) const
     {
         if (n.identifier && n.identifier == identifier)
         {
-            return m_pathMatcher->results().col(idx);
+            return m_pathMatcher.results().col(idx);
         }
         idx++;
     }

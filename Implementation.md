@@ -1,8 +1,3 @@
-First step:
-only use browse service
-no multiple returns
-no where clauses
-
 ## GraphTraversal and Filtering
 
 ### Source

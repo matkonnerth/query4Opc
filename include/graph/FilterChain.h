@@ -23,7 +23,7 @@ public:
 private:
    UA_Server* m_server;
    std::unique_ptr<Source> m_src;
-   std::unique_ptr<PathMatcher> m_pathMatcher;
+   PathMatcher m_pathMatcher;
    cypher::Path m_path;
 };
 

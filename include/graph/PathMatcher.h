@@ -11,6 +11,7 @@ namespace graph
 class PathResult
 {
  public:
+    PathResult()=default;
     PathResult(size_t columnCount)
     {
         for (auto i = 0u; i < columnCount; ++i)
@@ -74,12 +75,13 @@ class PathResult
 class PathMatcher
 {
  public:
+    PathMatcher()=default;
     PathMatcher(UA_Server* server, const Path& path, int startIndex = 0);
 
     PathMatcher(const PathMatcher&) = delete;
     PathMatcher& operator=(const PathMatcher&) = delete;
-    PathMatcher(PathMatcher&& other);
-    PathMatcher& operator=(PathMatcher&& other);
+    PathMatcher(PathMatcher&& other)=default;
+    PathMatcher& operator=(PathMatcher&& other)=default;
 
     void match(const UA_ReferenceDescription& startNode);
     const PathResult& results() const;
@@ -94,7 +96,7 @@ class PathMatcher
     
     std::vector<path_t> check(const UA_ReferenceDescription& start, const Path& p);
 
-    UA_Server* m_server;
+    UA_Server* m_server{nullptr};
     Path m_path{};
     Path m_rhs{};
     Path m_lhs{};
