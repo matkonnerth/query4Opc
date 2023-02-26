@@ -1,5 +1,8 @@
 #include <graph/PathMatcher.h>
 #include <graph/BrowseResultWrapper.h>
+#include <graph/tracing.h>
+
+
 
 using namespace graph;
 PathMatcher::PathMatcher(UA_Server* server, const Path& path, int startIndex)
@@ -85,30 +88,21 @@ UA_BrowseDescription PathMatcher::createBrowseDescription(const UA_NodeId& node,
 }
 
 std::vector<path_t>
-PathMatcher::check(const UA_ReferenceDescription& start, const Path& path)
+PathMatcher::check(const path_element_t& start, const Path& path)
 {
     std ::vector<path_t> paths;
     path_t actPath{};
 
     if(path.size()==1)
     {
-        
-        if(path.getNode(0)->id)
-        {
-            if(UA_NodeId_equal(&(path.getNode(0)->id.value()), &start.nodeId.nodeId))
-            {
-                actPath.push_back(start);
-                paths.push_back(actPath);
-            }
-        }
-        else if (start.nodeClass == path.getNode(0)->nodeClass || path.getNode(0)->nodeClass==UA_NODECLASS_UNSPECIFIED)
+        if (is_matching(start, *path.getNode(0)))
         {
             actPath.push_back(start);
             paths.push_back(actPath);
         }
         return paths;
     }
-
+    
     actPath.push_back(start);
 
 
@@ -122,12 +116,14 @@ PathMatcher::check(const UA_ReferenceDescription& start, const Path& path)
                                           it.RelationLHS()->direction,
                                           it.RelationLHS()->referenceType,
                                           node->nodeClass);
+        browsePathMatcher();
         BrowseResultWrapper br{ UA_Server_browse(m_server, 1000, &bd) };
         if (br.raw().statusCode != UA_STATUSCODE_GOOD)
         {
             return std::vector<path_t>{};
         }
 
+        //this is a special case, because if it is looked for a certain nodeId, there can be only 1 result
         if (node->id.has_value())
         {
             for (const auto* ref = br.raw().references;

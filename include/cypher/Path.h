@@ -4,6 +4,7 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
+#include <optional>
 
 namespace cypher
 {
@@ -13,14 +14,24 @@ struct Node
    std::optional<std::string> label; // Object, Variable, ObjectType
    std::unordered_map<std::string, std::string> properties{};
 
-   const std::string* NodeId() const
+   std::optional<std::string> NodeId() const
    {
       auto it = properties.find("NodeId");
       if (it != properties.end())
       {
-         return &it->second;
+         return it->second;
       }
-      return nullptr;
+      return std::nullopt;
+   }
+
+   std::optional<std::string> TypeDefinitionId() const
+   {
+       auto it = properties.find("TypeDefinitionId");
+       if (it != properties.end())
+       {
+           return it->second;
+       }
+       return std::nullopt;
    }
 };
 

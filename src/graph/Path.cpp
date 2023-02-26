@@ -11,6 +11,7 @@ Path::Path(const cypher::Path& p)
     {
         Node n;
         n.id = parseOptionalNodeId(cn.NodeId());
+        n.typeDefinitionId = parseOptionalNodeId(cn.TypeDefinitionId());
         n.nodeClass = parseOptionalNodeClass(cn.label);
         m_nodes.push_back(n);
     }

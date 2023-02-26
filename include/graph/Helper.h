@@ -40,16 +40,7 @@ static inline UA_NodeId parseNodeId(const std::string& id)
     return UA_NODEID(id.c_str());
 }
 
-static inline UA_NodeId parseOptionalNodeId(const std::optional<std::string>& id)
-{
-    if (!id)
-    {
-        return UA_NODEID_NULL;
-    }
-    return parseNodeId(*id);
-}
-
-static inline std::optional<UA_NodeId> parseOptionalNodeId(const std::string* id)
+static inline std::optional<UA_NodeId> parseOptionalNodeId(const std::optional<std::string>& id)
 {
     if (!id)
     {

@@ -5,6 +5,7 @@
 #include <open62541/plugin/nodesetloader.h>
 #include <open62541/server.h>
 #include <open62541/server_config_default.h>
+#include <graph/tracing.h>
 
 static auto serverId = UA_NODEID_NUMERIC(0, UA_NS0ID_SERVER);
 
@@ -24,6 +25,7 @@ static void findServerObject(UA_Server* server, const UA_NodeId& startNode)
     // bd.resultMask = UA_BROWSERESULTMASK_TYPEDEFINITION;
     bd.nodeId = startNode;
     bd.nodeClassMask = UA_NODECLASS_OBJECT;
+    browseLegacy();
     UA_BrowseResult br = UA_Server_browse(server, 1000, &bd);
     if (br.statusCode == UA_STATUSCODE_GOOD)
     {
@@ -66,6 +68,7 @@ void addObjectsToAddressSpace(UA_Server* server, int maxDepth, int maxRows)
 
 static void standardBrowse(benchmark::State& state)
 {
+    resetCounters();
     auto server = UA_Server_new();
     UA_ServerConfig_setDefault(UA_Server_getConfig(server));
     addObjectsToAddressSpace(server, 100, 1000);
@@ -80,6 +83,7 @@ static void standardBrowse(benchmark::State& state)
     UA_Server_delete(server);
 
     std::cout << "found: " << found;
+    printCounters();
 }
 
 void queryServerObjectImpl(UA_Server* server)
@@ -106,6 +110,7 @@ void queryServerObjectImplInvertPath(UA_Server* server)
 
 static void queryServerObject(benchmark::State& state)
 {
+    resetCounters();
     auto server = UA_Server_new();
     UA_ServerConfig_setDefault(UA_Server_getConfig(server));
     addObjectsToAddressSpace(server, 100, 1000);
@@ -118,10 +123,12 @@ static void queryServerObject(benchmark::State& state)
     UA_Server_delete(server);
 
     std::cout << "found: " << found;
+    printCounters();
 }
 
 static void queryServerObjectInvertPath(benchmark::State& state)
 {
+    resetCounters();
     auto server = UA_Server_new();
     UA_ServerConfig_setDefault(UA_Server_getConfig(server));
     addObjectsToAddressSpace(server, 100, 1000);
@@ -134,6 +141,8 @@ static void queryServerObjectInvertPath(benchmark::State& state)
     UA_Server_delete(server);
 
     std::cout << "found: " << found;
+    printCounters();
+
 }
 
 BENCHMARK(standardBrowse);

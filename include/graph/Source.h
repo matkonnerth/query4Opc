@@ -3,6 +3,9 @@
 #include <functional>
 #include <vector>
 #include "Types.h"
+#include "tracing.h"
+
+
 
 namespace graph
 {
@@ -54,6 +57,7 @@ private:
       // bd.resultMask = UA_BROWSERESULTMASK_TYPEDEFINITION;
       bd.nodeId = root;
       bd.nodeClassMask = calculateNodeClassMaskForBrowse();
+      browseSource();
       UA_BrowseResult br = UA_Server_browse(m_server, 1000, &bd);
       if (br.statusCode == UA_STATUSCODE_GOOD)
       {

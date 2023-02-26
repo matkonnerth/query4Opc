@@ -2,13 +2,16 @@
 #include <cypher/Path.h>
 #include "Helper.h"
 #include <algorithm>
+#include "Types.h"
 
 namespace graph
 {
+
 struct Node
 {
     UA_NodeClass nodeClass;
     std::optional<UA_NodeId> id;
+    std::optional<UA_NodeId> typeDefinitionId;
 };
 
 /*
@@ -19,6 +22,26 @@ struct Relation
     UA_BrowseDirection direction;
     UA_NodeId referenceType;
 };
+
+static inline bool is_matching_NodeId(const std::optional<UA_NodeId>& optId, const UA_NodeId& id)
+{
+    if (!optId)
+    {
+        return true;
+    }
+    return UA_NodeId_equal(&(optId.value()), &id);
+}
+
+static inline bool is_matching_NodeClass(UA_NodeClass current, UA_NodeClass expected)
+{
+    return current == expected || current == UA_NODECLASS_UNSPECIFIED;
+}
+
+static inline bool is_matching(const path_element_t& ref, const struct Node& node)
+{
+    return is_matching_NodeId(node.id, ref.nodeId.nodeId) &&
+           is_matching_NodeClass(node.nodeClass, ref.nodeClass) && is_matching_NodeId(node.typeDefinitionId, ref.typeDefinition.nodeId);
+}
 
 static inline UA_BrowseDirection getBrowseDirection(const cypher::Relationship& r)
 {
