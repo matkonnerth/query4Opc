@@ -105,6 +105,16 @@ Straighforward find server object: 82ms
 Query: 214ms
 Query (with inverted path): 222ms
 
+Big difference there is that with naive implementation the nodes are browse once (to get every node) and then the typedefinition is checked.
+With the query all nodes are browsed (in Source.h) to get every node to see, then there is a second a second browse in the pathMatcher to
+get the typdefinition id. Would be cool to get some optimization there.
+
+MATCH(obj:Object)-[:HasTypeDefinition]->(:ObjectType{NodeId: \"i=2004\"}) RETURN obj
+
+can be reduced to
+
+MATCH (obj:Object{TypeDefinitionId:\"i=2004\"}) RETURN obj
+
 ## Not considered use cases
 Aggregating server
 

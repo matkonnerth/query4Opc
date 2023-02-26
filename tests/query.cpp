@@ -192,6 +192,19 @@ TEST_F(QueryTest, emptyPath)
     ASSERT_GT(results->size(), 0);
 }
 
+TEST_F(QueryTest, TypeDefinitionId)
+{
+    Parser p;
+    auto q = p.parse("MATCH (obj:Object{TypeDefinitionId:\"i=2004\"}) RETURN obj");
+    ASSERT_TRUE(q);
+
+    QueryEngine e{ server };
+    e.scheduleQuery(*q);
+    auto results = e.run();
+    ASSERT_TRUE(results);
+    ASSERT_EQ(results->size(), 1);
+}
+
 TEST_F(QueryTest, emptyPathObjectType)
 {
     Parser p;
