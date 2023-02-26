@@ -104,6 +104,7 @@ address space is populated with 100k object nodes, both implementations have to 
 Straighforward find server object: 82ms
 Query: 214ms
 Query (with inverted path): 222ms
+Query (reduced, see below): 132ms
 
 Big difference there is that with naive implementation the nodes are browse once (to get every node) and then the typedefinition is checked.
 With the query all nodes are browsed (in Source.h) to get every node to see, then there is a second a second browse in the pathMatcher to
