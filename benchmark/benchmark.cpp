@@ -21,8 +21,8 @@ static void findServerObject(UA_Server* server, const UA_NodeId& startNode)
     bd.includeSubtypes = true;
     bd.referenceTypeId = UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES);
     // TODO: perfomance?
-    bd.resultMask = UA_BROWSERESULTMASK_ALL;
-    // bd.resultMask = UA_BROWSERESULTMASK_TYPEDEFINITION;
+    bd.resultMask =
+    UA_BROWSERESULTMASK_TYPEDEFINITION | UA_BROWSERESULTMASK_NODECLASS;
     bd.nodeId = startNode;
     bd.nodeClassMask = UA_NODECLASS_OBJECT;
     browseLegacy();

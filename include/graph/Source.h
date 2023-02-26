@@ -53,8 +53,8 @@ private:
       bd.includeSubtypes = true;
       bd.referenceTypeId = m_referenceType;
       //TODO: perfomance?
-      bd.resultMask = UA_BROWSERESULTMASK_ALL;
-      // bd.resultMask = UA_BROWSERESULTMASK_TYPEDEFINITION;
+      bd.resultMask = UA_BROWSERESULTMASK_TYPEDEFINITION |
+                      UA_BROWSERESULTMASK_NODECLASS;
       bd.nodeId = root;
       bd.nodeClassMask = calculateNodeClassMaskForBrowse();
       browseSource();
