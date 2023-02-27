@@ -101,9 +101,9 @@ When we use (1), how are relationships like "HasSubType" are modelled between la
 
 address space is populated with 100k object nodes, both implementations have to visit all object nodes and check the typedefinition.
 
-Straighforward find server object: 82ms
-Query: 214ms
-Query (with inverted path): 222ms
+Straightforward find server object: 82ms \
+Query: 214ms \
+Query (with inverted path): 222ms \
 Query (reduced, see below): 132ms
 
 Big difference there is that with naive implementation the nodes are browse once (to get every node) and then the typedefinition is checked.
@@ -125,9 +125,9 @@ is quite fast, on an i7 it imposes an additional overhead of ~2ns per call, that
 configuring the result mask  with bd.resultMask = UA_BROWSERESULTMASK_TYPEDEFINITION | UA_BROWSERESULTMASK_NODECLASS;
 
 results in big gains:
-Straighforward find server object: 8ms
-Query: 186ms
-Query (with inverted path): 200ms
+Straightforward find server object: 8ms \
+Query: 186ms \
+Query (with inverted path): 200ms \
 Query (reduced, see below): 72ms
 
 
