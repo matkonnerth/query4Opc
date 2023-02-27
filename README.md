@@ -110,11 +110,11 @@ Big difference there is that with naive implementation the nodes are browse once
 With the query all nodes are browsed (in Source.h) to get every node to see, then there is a second a second browse in the pathMatcher to
 get the typdefinition id. Would be cool to get some optimization there.
 
-MATCH(obj:Object)-[:HasTypeDefinition]->(:ObjectType{NodeId: \"i=2004\"}) RETURN obj
+`MATCH(obj:Object)-[:HasTypeDefinition]->(:ObjectType{NodeId: \"i=2004\"}) RETURN obj`
 
 can be reduced to
 
-MATCH (obj:Object{TypeDefinitionId:\"i=2004\"}) RETURN obj
+`MATCH (obj:Object{TypeDefinitionId:\"i=2004\"}) RETURN obj`
 
 ### std::function
 
@@ -124,7 +124,7 @@ is quite fast, on an i7 it imposes an additional overhead of ~2ns per call, that
 
 configuring the result mask  with bd.resultMask = UA_BROWSERESULTMASK_TYPEDEFINITION | UA_BROWSERESULTMASK_NODECLASS;
 
-results in big gains:
+results in big gains: \
 Straightforward find server object: 8ms \
 Query: 186ms \
 Query (with inverted path): 200ms \
