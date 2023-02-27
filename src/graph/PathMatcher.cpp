@@ -25,7 +25,13 @@ void PathMatcher::match(const UA_ReferenceDescription& startNode)
         return;
     }
 
-    for (auto&& p : checkPath(startNode))
+    auto paths = checkPath(startNode);
+    if(!paths)
+    {
+        return;
+    }
+
+    for (auto&& p : *paths)
     {
         m_results.emplace(std::move(p));
     }
@@ -37,12 +43,16 @@ const PathResult& PathMatcher::results() const
 }
 
 
-std::vector<path_t> PathMatcher::checkPath(const UA_ReferenceDescription& startNode)
+std::optional<std::vector<path_t>> PathMatcher::checkPath(const UA_ReferenceDescription& startNode)
 {
     //TODO: why always start with rhs path?
     auto rResults = check(startNode, m_rhs);
+    if(!rResults)
+    {
+        return std::nullopt;
+    }
     std::vector<path_t> endResult{};
-    for (auto& r : rResults)
+    for (auto& r : *rResults)
     {
         if (m_idx > 0)
         {
@@ -50,9 +60,9 @@ std::vector<path_t> PathMatcher::checkPath(const UA_ReferenceDescription& startN
             auto lResults = check(r.at(0), m_lhs);
 
             //invert lResults
-            std::reverse(lResults.begin(), lResults.end());
+            std::reverse(lResults->begin(), lResults->end());
             //merge            
-            for (auto& l : lResults)
+            for (auto& l : *lResults)
             {
                 //TODO: +1, because first node is already contained in the rhs result
                 r.insert(r.begin(),
@@ -87,22 +97,24 @@ UA_BrowseDescription PathMatcher::createBrowseDescription(const UA_NodeId& node,
     return bd;
 }
 
-std::vector<path_t>
+std::optional<std::vector<path_t>>
 PathMatcher::check(const path_element_t& start, const Path& path)
 {
-    std ::vector<path_t> paths;
-    path_t actPath{};
-
+    //TODO: extract function
     if(path.size()==1)
     {
         if (is_matching(start, *path.getNode(0)))
         {
+            std ::vector<path_t> paths;
+            path_t actPath{};
             actPath.push_back(start);
             paths.push_back(actPath);
         }
-        return paths;
+        return std::nullopt;
     }
-    
+
+    std ::vector<path_t> paths;
+    path_t actPath{};
     actPath.push_back(start);
 
 
