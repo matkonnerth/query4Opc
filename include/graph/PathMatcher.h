@@ -87,14 +87,14 @@ class PathMatcher
     const PathResult& results() const;
 
  private:
-    std::optional<std::vector<path_t>> checkPath(const UA_ReferenceDescription& startNode);
+    std::vector<path_t> checkPath(const UA_ReferenceDescription& startNode);
 
     UA_BrowseDescription createBrowseDescription(const UA_NodeId& node,
                                                  UA_BrowseDirection direction,
                                                  const UA_NodeId& refType,
                                                  UA_NodeClass nodeClass);
     
-    std::optional<std::vector<path_t>> check(const UA_ReferenceDescription& start, const Path& p);
+    std::vector<path_t> check(const UA_ReferenceDescription& start, const Path& p);
 
     UA_Server* m_server{nullptr};
     Path m_path{};
