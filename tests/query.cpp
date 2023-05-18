@@ -281,6 +281,15 @@ TEST_F(QueryTest, serverObject)
     ASSERT_EQ(results->size(), 1);
 }
 
+TEST_F(QueryTest, path_to_ServerObject)
+{
+   auto path = graph::getPathToParentNode(server, UA_NODEID_NUMERIC(0, 2253));
+
+   ASSERT_EQ(2, path.size());
+   ASSERT_EQ(85u, path[0].nodeId.nodeId.identifier.numeric);
+   ASSERT_EQ(84u, path[1].nodeId.nodeId.identifier.numeric);
+}
+
 int main(int argc, char** argv)
 {
 

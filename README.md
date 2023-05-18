@@ -107,7 +107,7 @@ Query (with inverted path): 222ms \
 Query (reduced, see below): 132ms
 
 Big difference there is that with naive implementation the nodes are browse once (to get every node) and then the typedefinition is checked.
-With the query all nodes are browsed (in Source.h) to get every node to see, then there is a second a second browse in the pathMatcher to
+With the query all nodes are browsed (in Source.h) to get every node to see, then there is a second browse in the pathMatcher to
 get the typdefinition id. Would be cool to get some optimization there.
 
 `MATCH(obj:Object)-[:HasTypeDefinition]->(:ObjectType{NodeId: \"i=2004\"}) RETURN obj`
@@ -115,10 +115,6 @@ get the typdefinition id. Would be cool to get some optimization there.
 can be reduced to
 
 `MATCH (obj:Object{TypeDefinitionId:\"i=2004\"}) RETURN obj`
-
-### std::function
-
-is quite fast, on an i7 it imposes an additional overhead of ~2ns per call, that means for 1000k calls this are approximately 2ms.-> there is not really something to gain.
 
 ### browseResultMask
 
@@ -130,7 +126,13 @@ Query: 186ms \
 Query (with inverted path): 200ms \
 Query (reduced, see below): 72ms
 
+### std::function
 
+is quite fast, on an i7 it imposes an additional overhead of ~2ns per call, that means for 1000k calls this are approximately 2ms.-> there is not really something to gain.
+
+### Result
+
+The result of a query is a vector of paths. Some clients want to have a qualified path a node of these paths. Idea: specify a vector of nodes and browse the hierachical inverse reference to get the path to root nodes of the specified nodes?
 
 ## Not considered use cases
 Aggregating server

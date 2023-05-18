@@ -173,11 +173,29 @@ static void queryServerObjectReduced(benchmark::State& state)
     printCounters();
 }
 
+static void bench_getPathToParent(benchmark::State& state)
+{
+    resetCounters();
+    auto server = UA_Server_new();
+    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
+    addObjectsToAddressSpace(server, 100, 1000);
+
+
+    for (auto _ : state)
+    {
+        auto path = graph::getPathToParentNode(server, UA_NODEID_NUMERIC(0, 2253));
+        benchmark::DoNotOptimize(path);
+    }
+
+    UA_Server_delete(server);
+}
+
 
 BENCHMARK(standardBrowse);
 BENCHMARK(queryServerObject);
 BENCHMARK(queryServerObjectInvertPath);
 BENCHMARK(queryServerObjectReduced);
+BENCHMARK(bench_getPathToParent);
 
 int main(int argc, char** argv)
 {

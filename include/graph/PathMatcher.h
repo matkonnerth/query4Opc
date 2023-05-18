@@ -8,6 +8,8 @@
 
 namespace graph
 {
+
+/* the raw result of a query, a vector of all path_t */
 class PathResult
 {
  public:

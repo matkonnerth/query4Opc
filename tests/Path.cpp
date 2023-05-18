@@ -3,7 +3,7 @@
 
 std::string g_path = "";
 
-TEST(PahtTest, buildPath)
+TEST(PathTest, buildPath)
 {
    cypher::Path p;
    p.nodes.emplace_back(cypher::Node{"obj", "Object"});
