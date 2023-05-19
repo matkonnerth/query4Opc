@@ -66,8 +66,19 @@ A node can have multiple references with different types.
 
 ## TODOs:
 
-At the moment it is hard to track down how the query is executed, good debugging output is necessary;
+At the moment it is hard to track down how the query is executed, good debugging output is necessary.
 
+QueryService
+
+Result Query(NodeId startNode, queryString)
+
+Results:
+Specify json result
+hierachical result (result with paths from some start node, maybe objects folder)
+
+tests, tests, tests
+
+move sdk dependent code to abstraction layer?
 
 
 

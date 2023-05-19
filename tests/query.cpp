@@ -2,9 +2,9 @@
 #include <graph/QueryEngine.h>
 #include <gtest/gtest.h>
 #include <iostream>
+#include <open62541/plugin/nodesetloader.h>
 #include <open62541/server.h>
 #include <open62541/server_config_default.h>
-#include <open62541/plugin/nodesetloader.h>
 
 std::string g_path = "";
 using namespace cypher;
@@ -13,15 +13,16 @@ using namespace graph;
 class QueryTest : public ::testing::Test
 {
  protected:
-    UA_Server* server{nullptr};
-    
+    UA_Server* server{ nullptr };
+
     void SetUp() override
     {
         server = UA_Server_new();
         UA_ServerConfig_setDefault(UA_Server_getConfig(server));
     }
 
-    void TearDown() override {
+    void TearDown() override
+    {
         UA_Server_delete(server);
     }
 };
@@ -130,7 +131,8 @@ TEST_F(QueryTest, findServerObject_MultipleMatchClauses)
 
 TEST_F(QueryTest, findAllTempDevicesWithProperty)
 {
-    ASSERT_TRUE(UA_StatusCode_isGood(UA_Server_loadNodeset(server, (g_path + "/objectwithproperty.xml").c_str(), NULL)));
+    ASSERT_TRUE(UA_StatusCode_isGood(
+    UA_Server_loadNodeset(server, (g_path + "/objectwithproperty.xml").c_str(), NULL)));
 
     Parser p;
     auto q = p.parse(R"(
@@ -143,7 +145,9 @@ TEST_F(QueryTest, findAllTempDevicesWithProperty)
     e.scheduleQuery(*q);
     auto results = e.run();
     ASSERT_TRUE(results);
-    ASSERT_EQ(results->size(), 1);
+    ASSERT_EQ(1, results->size());
+    ASSERT_EQ(1, e.pathResult().paths().size());
+    ASSERT_EQ(2, e.pathResult().paths()[0].size());
 }
 
 TEST_F(QueryTest, findAllTempDevicesWithPropertyOneQuery)
@@ -162,7 +166,9 @@ TEST_F(QueryTest, findAllTempDevicesWithPropertyOneQuery)
     e.scheduleQuery(*q);
     auto results = e.run();
     ASSERT_TRUE(results);
-    ASSERT_EQ(results->size(), 1);
+    ASSERT_EQ(1, results->size());
+    ASSERT_EQ(1, e.pathResult().paths().size());
+    ASSERT_EQ(3, e.pathResult().paths()[0].size());
 }
 
 
@@ -176,7 +182,9 @@ TEST_F(QueryTest, findObjectsWhichReferencesVariables)
     e.scheduleQuery(*q);
     auto results = e.run();
     ASSERT_TRUE(results);
-    ASSERT_GT(results->size(), 0);
+    ASSERT_TRUE(results->size() > 0);
+    ASSERT_TRUE(e.pathResult().paths().size() > 0);
+    ASSERT_EQ(2, e.pathResult().paths()[0].size());
 }
 
 TEST_F(QueryTest, emptyPath)
@@ -189,20 +197,23 @@ TEST_F(QueryTest, emptyPath)
     e.scheduleQuery(*q);
     auto results = e.run();
     ASSERT_TRUE(results);
-    ASSERT_GT(results->size(), 0);
+    ASSERT_TRUE(results->size() > 0);
+    ASSERT_TRUE(e.pathResult().paths().size() > 0);
+    ASSERT_EQ(1, e.pathResult().paths()[0].size());
 }
 
 TEST_F(QueryTest, TypeDefinitionId)
 {
     Parser p;
-    auto q = p.parse("MATCH (obj:Object{TypeDefinitionId:\"i=2004\"}) RETURN obj");
+    auto q =
+    p.parse("MATCH (obj:Object{TypeDefinitionId:\"i=2004\"}) RETURN obj");
     ASSERT_TRUE(q);
 
     QueryEngine e{ server };
     e.scheduleQuery(*q);
     auto results = e.run();
     ASSERT_TRUE(results);
-    ASSERT_EQ(results->size(), 1);
+    ASSERT_EQ(1, results->size());
 }
 
 TEST_F(QueryTest, emptyPathObjectType)
@@ -215,12 +226,13 @@ TEST_F(QueryTest, emptyPathObjectType)
     e.scheduleQuery(*q);
     auto results = e.run();
     ASSERT_TRUE(results);
-    ASSERT_EQ(results->size(), 0);
+    ASSERT_EQ(0, results->size());
 }
 
 TEST_F(QueryTest, subfolder)
 {
-    ASSERT_TRUE(UA_StatusCode_isGood(UA_Server_loadNodeset(server, (g_path + "/subfolder.xml").c_str(), NULL)));
+    ASSERT_TRUE(UA_StatusCode_isGood(
+    UA_Server_loadNodeset(server, (g_path + "/subfolder.xml").c_str(), NULL)));
 
     // match all BaseObjects below a folder
     Parser p;
@@ -233,7 +245,9 @@ TEST_F(QueryTest, subfolder)
     e.scheduleQuery(*q);
     auto results = e.run();
     ASSERT_TRUE(results);
-    ASSERT_EQ(results->size(), 3);
+    ASSERT_EQ(3, results->size());
+    ASSERT_EQ(3, e.pathResult().paths().size());
+    ASSERT_EQ(4, e.pathResult().paths()[0].size());
 }
 
 TEST_F(QueryTest, eightObjects)
@@ -264,7 +278,7 @@ TEST_F(QueryTest, playground)
     e.scheduleQuery(*q);
     auto results = e.run();
     ASSERT_TRUE(results);
-    ASSERT_EQ(results->size(), 2);
+    ASSERT_EQ(2, results->size());
 }
 
 TEST_F(QueryTest, serverObject)
@@ -279,15 +293,17 @@ TEST_F(QueryTest, serverObject)
     auto results = e.run();
     ASSERT_TRUE(results);
     ASSERT_EQ(results->size(), 1);
+    ASSERT_EQ(e.pathResult().paths().size(), 1);
+    ASSERT_EQ(e.pathResult().paths()[0].size(), 1);
 }
 
 TEST_F(QueryTest, path_to_ServerObject)
 {
-   auto path = graph::getPathToParentNode(server, UA_NODEID_NUMERIC(0, 2253));
+    auto path = graph::getPathToParentNode(server, UA_NODEID_NUMERIC(0, 2253));
 
-   ASSERT_EQ(2, path.size());
-   ASSERT_EQ(85u, path[0].nodeId.nodeId.identifier.numeric);
-   ASSERT_EQ(84u, path[1].nodeId.nodeId.identifier.numeric);
+    ASSERT_EQ(2, path.size());
+    ASSERT_EQ(85u, path[0].nodeId.nodeId.identifier.numeric);
+    ASSERT_EQ(84u, path[1].nodeId.nodeId.identifier.numeric);
 }
 
 int main(int argc, char** argv)

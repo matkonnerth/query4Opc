@@ -1,10 +1,12 @@
 #include <graph/FilterChain.h>
 #include <graph/Helper.h>
+#include <graph/PathResult.h>
 
-using graph::FilterChain;
-using graph::createFilterChain;
-using graph::parseOptionalNodeClass;
 using graph::column_t;
+using graph::createFilterChain;
+using graph::FilterChain;
+using graph::parseOptionalNodeClass;
+using graph::PathResult;
 
 FilterChain::FilterChain(UA_Server* server)
 : m_server{ server }
@@ -30,7 +32,7 @@ void FilterChain::createColumnAsSource(const column_t& col)
 
 void FilterChain::createReferenceFilter(const cypher::Path& path, int startIndex)
 {
-    m_pathMatcher = std::move(PathMatcher(m_server, Path{path}, startIndex));
+    m_pathMatcher = std::move(PathMatcher(m_server, Path{ path }, startIndex));
     m_path = path;
 }
 
@@ -69,7 +71,7 @@ int graph::findStartIndex(const cypher::Path& p)
 
 const column_t*
 graph::findSourceColumn(const std::string id,
-                 const std::vector<std::reference_wrapper<const FilterChain>> ctx)
+                        const std::vector<std::reference_wrapper<const FilterChain>> ctx)
 {
     for (const auto& f : ctx)
     {
@@ -85,14 +87,14 @@ graph::findSourceColumn(const std::string id,
 // translates a cypher Path to a FilterChain
 std::unique_ptr<FilterChain>
 graph::createFilterChain(const cypher::Path& path,
-                  std::vector<std::reference_wrapper<const FilterChain>> ctx,
-                  UA_Server* server)
+                         std::vector<std::reference_wrapper<const FilterChain>> ctx,
+                         UA_Server* server)
 {
     auto start = graph::findStartIndex(path);
     auto f = std::make_unique<FilterChain>(server);
     if (ctx.size() == 0)
     {
-        //TODO: remove hardcoded start node
+        // TODO: remove hardcoded start node
         f->createHierachicalVisitorSource(
         UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER),
         UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES),
@@ -117,4 +119,9 @@ graph::createFilterChain(const cypher::Path& path,
 
     f->createReferenceFilter(path, start);
     return f;
+}
+
+const PathResult& FilterChain::pathResult() const
+{
+    return m_pathMatcher.results();
 }

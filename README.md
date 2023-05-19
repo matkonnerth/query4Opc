@@ -6,12 +6,10 @@ A proposal for defining a query language for opc ua information models which als
 
 OPC UA information models can get quite big, especially when a server is aggregating multiple machines and therefore implementing multiple specifications.
 
-OPC UA defines the view service set (https://reference.opcfoundation.org/Core/docs/Part4/5.8.1/) of which the browse service is for getting information about the structure of the address space. The drawback when using the browse is the round trip time between client and server. Browsing the hierachical references of a big subtree (~100k nodes) can take a few minutes.
+OPC UA defines the view service set (https://reference.opcfoundation.org/Core/docs/Part4/5.8.1/) of which the browse service is for getting information about the structure of the address space. The drawback when using the browse is the round trip time between client and server. The client has to await the BrowseResults and can then continue browsing. Browsing the hierachical references of a big subtree (~100k nodes) can take a few minutes.
 OPC UA has defined a query service, but no server implemented it because it is maybe too generic defined.
 
 This proposal does some experiments with the open62541 opcua stack and tries to map the cypher query language to opc ua services. The query implementation is done within the context of an opc ua server because of performance reasons. A other design would be to implement the query service in a standalone server beside the server to be queried. Challenge is here to keep the address space up to date. Schiekhofer has showed this with ModelChangedEvents.
-
-Is Cypher a suitable query language for opc ua information models?
 
 ## Query Languages
 
@@ -19,6 +17,8 @@ Overview of existing graph query languages
 https://www.gqlstandards.org/existing-languages
 
 There is work going on in the direction to standardize graph query languages: https://www.gqlstandards.org/home
+
+Is Cypher a suitable query language for opc ua information models?
 
 ## Mapping cypher to opc ua
 
@@ -44,47 +44,35 @@ relationship type - ReferenceType: with a property we could state, that also sub
 Here is a list of example cypher queries, which we think is interesting for clients:
 
 (1) Get all Objects of an exact ObjectType \
-`match(obj:Object)-[:HasTypeDefinition]->(t:ObjectType{NodeId:"Base"}) return obj`
+`MATCH (obj:Object)-[:HasTypeDefinition]->(t:ObjectType{NodeId:"Base"}) RETURN obj`
 
 (2) Get all Objects of a certain ObjectType or SubType of this object \
-`match (a:ObjectType {NodeId: "BaseType"}) -[:HasSubTyp*0..]->(types)` \
-`match (obj:Object)-[:HasTypeDefinition]->(types)` \
-`return obj, types`
+`MATCH (a:ObjectType {NodeId: "BaseType"}) -[:HasSubTyp*0..]->(types)` \
+`MATCH (obj:Object)-[:HasTypeDefinition]->(types)` \
+`RETURN obj, types`
 
 (3) Get all Objects of a certain ObjectType, starting at a certain root node
-`match (a:ObjectType {NodeId: "Base"}) -[:HasSubTyp*0..]->(types) return types`
-`match(root:Object{NodeId:"BaseInstance"})-[:HierachicalReferences*0..]->(obj:Object)-[:HasTypeDefinition]->(types)` \
-`return obj, types`
+`MATCH (a:ObjectType {NodeId: "Base"}) -[:HasSubTyp*0..]->(types) RETURN types`
+`MATCH (root:Object{NodeId:"BaseInstance"})-[:HierachicalReferences*0..]->(obj:Object)-[:HasTypeDefinition]->(types)` \
+`RETURN obj, types`
 
 (4) Get all Objects of a certain ObjectType and with a hasProperty reference to a certain node (TODO: validate this) \
 `tempDevices = (obj:Object)-[:HasTypeDefinition]->(:ObjectType{NodeId:"TempDevice"})`
-`match tempDevices-[:HasProperty]->(:Variable{NodeId:"MySpecialProperty"})`
+`MATCH tempDevices-[:HasProperty]->(:Variable{NodeId:"MySpecialProperty"})`
 
 
 Support queries
 get all subtypes of an ObjectType \
-`match (a:ObjectType {NodeId: "Base"}) -[:HasSubTyp*0..]->(types) return types`
+`MATCH (a:ObjectType {NodeId: "Base"}) -[:HasSubTyp*0..]->(types) RETURN types`
 
 get all hierachical references \
-`match (a:Object{NodeId: "Base"}) -[:HierachicalReferences*0..]->(instances) return instances`
-
-### Open questions
-
-How to gather all the hierachical references, I think there is a query missing. Alternative we can make the assumption to follow also subtypes of the given reference types.
-
-HierachicalReferences:
-HasComponent
-HasSubType
-
-NonHierachicalReferences
-HasTypeDefinition
+`MATCH (a:Object{NodeId: "Base"}) -[:HierachicalReferences*0..]->(instances) RETURN instances`
 
 ## Cypher query language
 
 The grammar of the cypher query language in EBNF form is available http://opencypher.org/resources/
 
 Interactive railroad diagrams https://s3.amazonaws.com/artifacts.opencypher.org/M16/railroad/Cypher.html
-
 
 ### Examples
 

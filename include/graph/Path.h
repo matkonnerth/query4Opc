@@ -1,11 +1,10 @@
 #pragma once
-#include <cypher/Path.h>
 #include "Helper.h"
-#include <algorithm>
 #include "Types.h"
+#include <algorithm>
+#include <cypher/Path.h>
 
-namespace graph
-{
+namespace graph {
 
 struct Node
 {
@@ -23,7 +22,8 @@ struct Relation
     UA_NodeId referenceType;
 };
 
-static inline bool is_matching_NodeId(const std::optional<UA_NodeId>& optId, const UA_NodeId& id)
+static inline bool
+is_matching_NodeId(const std::optional<UA_NodeId>& optId, const UA_NodeId& id)
 {
     if (!optId)
     {
@@ -40,7 +40,8 @@ static inline bool is_matching_NodeClass(UA_NodeClass current, UA_NodeClass expe
 static inline bool is_matching(const path_element_t& ref, const struct Node& node)
 {
     return is_matching_NodeId(node.id, ref.nodeId.nodeId) &&
-           is_matching_NodeClass(node.nodeClass, ref.nodeClass) && is_matching_NodeId(node.typeDefinitionId, ref.typeDefinition.nodeId);
+           is_matching_NodeClass(node.nodeClass, ref.nodeClass) &&
+           is_matching_NodeId(node.typeDefinitionId, ref.typeDefinition.nodeId);
 }
 
 static inline UA_BrowseDirection getBrowseDirection(const cypher::Relationship& r)
@@ -49,7 +50,7 @@ static inline UA_BrowseDirection getBrowseDirection(const cypher::Relationship& 
     {
         return UA_BROWSEDIRECTION_FORWARD;
     }
-    else if (r.direction== -1)
+    else if (r.direction == -1)
     {
         return UA_BROWSEDIRECTION_INVERSE;
     }
@@ -61,44 +62,43 @@ static inline UA_BrowseDirection getBrowseDirection(const cypher::Relationship& 
 }
 
 
-
 class Path
 {
-public:
-   class PathIterator
-   {
-    public:
-       PathIterator(const Path& p)
-       : m_path{ p }
-       {}
+ public:
+    class PathIterator
+    {
+     public:
+        PathIterator(const Path& p)
+        : m_path{ p }
+        {}
 
-       const Node* next()
-       {
-           ++idx;
-           return m_path.getNode(idx);
-       }
+        const Node* next()
+        {
+            ++idx;
+            return m_path.getNode(idx);
+        }
 
-       const Node* current()
-       {
-           auto node = m_path.getNode(idx);
-           ++idx;
-           return node;
-       }
+        const Node* current()
+        {
+            auto node = m_path.getNode(idx);
+            ++idx;
+            return node;
+        }
 
-       const Relation* RelationLHS() const
-       {
-           return m_path.RelationLHS(idx);
-       }
+        const Relation* RelationLHS() const
+        {
+            return m_path.RelationLHS(idx);
+        }
 
-       const Relation* RelationRHS() const
-       {
-           return m_path.RelationRHS(idx);
-       }
+        const Relation* RelationRHS() const
+        {
+            return m_path.RelationRHS(idx);
+        }
 
-    private:
-       const Path& m_path;
-       size_t idx{ 0 };
-   };
+     private:
+        const Path& m_path;
+        size_t idx{ 0 };
+    };
 
     Path();
     Path(const cypher::Path& p);
@@ -115,11 +115,11 @@ public:
     std::pair<Path, Path> split(int idx) const;
 
     void transformForLeftToRightTraversal();
-    
 
-private:
-   void invert();
-   std::vector<Node> m_nodes{};
-   std::vector<Relation> m_relations{};
+
+ private:
+    void invert();
+    std::vector<Node> m_nodes{};
+    std::vector<Relation> m_relations{};
 };
-}
+} // namespace graph
