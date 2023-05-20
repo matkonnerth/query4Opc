@@ -216,17 +216,17 @@ TEST_F(QueryTest, TypeDefinitionId)
     ASSERT_EQ(1, results->size());
 }
 
-TEST_F(QueryTest, emptyPathObjectType)
+TEST_F(QueryTest, ObjectTypes)
 {
     Parser p;
-    auto q = p.parse("MATCH (obj:ObjectType) RETURN obj");
+    auto q = p.parse("MATCH (types:ObjectType) RETURN types");
     ASSERT_TRUE(q);
 
     QueryEngine e{ server };
     e.scheduleQuery(*q);
     auto results = e.run();
     ASSERT_TRUE(results);
-    ASSERT_EQ(0, results->size());
+    ASSERT_TRUE(results->size()>0);
 }
 
 TEST_F(QueryTest, subfolder)
@@ -304,6 +304,28 @@ TEST_F(QueryTest, path_to_ServerObject)
     ASSERT_EQ(2, path.size());
     ASSERT_EQ(85u, path[0].nodeId.nodeId.identifier.numeric);
     ASSERT_EQ(84u, path[1].nodeId.nodeId.identifier.numeric);
+}
+
+TEST_F(QueryTest, types)
+{
+    ASSERT_TRUE(UA_StatusCode_isGood(
+    UA_Server_loadNodeset(server, (g_path + "/objectwithproperty.xml").c_str(), NULL)));
+
+    //this is working because the open62541 server also adds the inverse reference from objectType to object
+    Parser p;
+    auto q = p.parse(R"(
+        MATCH (:Object)-->(types:ObjectType)
+        MATCH (types)<--(obj:Object{NodeId:"i=2253"}) RETURN obj
+        )");
+    ASSERT_TRUE(q);
+
+    QueryEngine e{ server };
+    e.scheduleQuery(*q);
+    auto results = e.run();
+    ASSERT_TRUE(results);
+    ASSERT_EQ(1, results->size());
+    ASSERT_EQ(1, e.pathResult().paths().size());
+    ASSERT_EQ(2004, e.pathResult().paths()[0].at(0).nodeId.nodeId.identifier.numeric);
 }
 
 int main(int argc, char** argv)

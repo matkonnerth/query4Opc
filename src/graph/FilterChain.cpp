@@ -1,6 +1,7 @@
 #include <graph/FilterChain.h>
 #include <graph/Helper.h>
 #include <graph/PathResult.h>
+#include <iostream>
 
 using graph::column_t;
 using graph::createFilterChain;
@@ -62,6 +63,7 @@ int graph::findStartIndex(const cypher::Path& p)
     {
         if (e.identifier)
         {
+            std::cout << "start Index for FilterChain at node with identifier: " << *e.identifier << "\n";
             return idx;
         }
         idx += 1;
@@ -94,11 +96,18 @@ graph::createFilterChain(const cypher::Path& path,
     auto f = std::make_unique<FilterChain>(server);
     if (ctx.size() == 0)
     {
-        // TODO: remove hardcoded start node
-        f->createHierachicalVisitorSource(
-        UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER),
-        UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES),
-        parseOptionalNodeClass(path.nodes[static_cast<size_t>(start)].label));
+        auto startNodeClass =
+        parseOptionalNodeClass(path.nodes[static_cast<size_t>(start)].label);
+
+        auto rootNode =
+        UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER);
+
+        if(startNodeClass == UA_NODECLASS_OBJECTTYPE)
+        {
+            rootNode = UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTTYPESFOLDER);
+        }
+
+        f->createHierachicalVisitorSource(rootNode, UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES), startNodeClass);
     }
     else
     {

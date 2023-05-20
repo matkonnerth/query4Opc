@@ -20,7 +20,7 @@ break it down to
 intermediateResults = (obj:Object)-[:HasTypeDefinition]->(:ObjectType{NodeId:"MyId"})
 Sink = ReferenceFilter( with ReferenceDescriptionMatcher(HasTypeDefinition))
 
-not supported queries
+## (Currently) noot supported queries
 
 all references of a Node
 
@@ -29,3 +29,7 @@ MATCH (:Object{NodeId:"MyNode"})--(nodes) return nodes
 multiple returns
 
 MATCH (objs)--(vars) return obs, vars
+
+all subtypes of an ObjectType
+
+MATCH (:Object)-[:HasTypeDefinition]->(:VECTOR_OF_OBJECTTYPE)

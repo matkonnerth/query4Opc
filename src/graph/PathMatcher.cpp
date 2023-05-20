@@ -42,8 +42,12 @@ std::vector<path_t> PathMatcher::checkPath(const UA_ReferenceDescription& startN
     //TODO: why always start with rhs path?
     auto rResults = check(startNode, m_rhs);
     std::vector<path_t> endResult{};
-    for (auto& r : rResults)
+
+    for (const auto& r : rResults)
     {
+        assert(!r.empty());
+        assert(r.size()==m_rhs.nodeCount());
+        
         if (m_idx > 0)
         {
             //check against inverted lhs
@@ -54,15 +58,20 @@ std::vector<path_t> PathMatcher::checkPath(const UA_ReferenceDescription& startN
             //merge            
             for (auto& l : lResults)
             {
+                assert(l.size()==m_lhs.nodeCount());
+                assert(r.size()+l.size()-1==m_path.nodeCount());
                 //TODO: +1, because first node is already contained in the rhs result
-                r.insert(r.begin(),
+                auto rcopy = r;
+                rcopy.insert(rcopy.begin(),
                          std::make_move_iterator(l.begin()+1),
                          std::make_move_iterator(l.end()));
-                endResult.push_back(std::move(r));
+                assert(rcopy.size()==m_path.nodeCount());
+                endResult.push_back(std::move(rcopy));
             }
         }
         else
         {
+            assert(r.size() == m_path.nodeCount());
             endResult.push_back(std::move(r));
         }
     }
@@ -90,7 +99,7 @@ UA_BrowseDescription PathMatcher::createBrowseDescription(const UA_NodeId& node,
 std::vector<path_t>
 PathMatcher::check(const path_element_t& start, const Path& path)
 {
-    std ::vector<path_t> paths;
+    std ::vector<path_t> paths{};
     path_t actPath{};
 
     if(path.size()==1)
@@ -98,6 +107,7 @@ PathMatcher::check(const path_element_t& start, const Path& path)
         if (is_matching(start, *path.getNode(0)))
         {
             actPath.push_back(start);
+            assert(actPath.size()==path.nodeCount());
             paths.push_back(actPath);
         }
         return paths;
@@ -148,13 +158,14 @@ PathMatcher::check(const path_element_t& start, const Path& path)
             {
                 m.match(*ref);
             }
-            std::vector<path_t> res;
+            std::vector<path_t> res{};
             for (auto&& pe : m.results().paths())
             {
                 path_t newPath{ actPath };
                 newPath.insert(newPath.end(),
                                std::make_move_iterator(pe.begin()),
                                std::make_move_iterator(pe.end()));
+                assert(newPath.size() == path.nodeCount());
                 res.push_back(std::move(newPath));
             }
             return res;
@@ -166,6 +177,7 @@ PathMatcher::check(const path_element_t& start, const Path& path)
         }
     }
 
+    assert(actPath.size()==path.nodeCount());
     paths.push_back(std::move(actPath));
     return paths;
 }

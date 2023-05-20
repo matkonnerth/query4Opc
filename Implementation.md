@@ -75,6 +75,7 @@ Result Query(NodeId startNode, queryString)
 Results:
 Specify json result
 hierachical result (result with paths from some start node, maybe objects folder)
+all paths of the last statement match statement are returned
 
 tests, tests, tests
 

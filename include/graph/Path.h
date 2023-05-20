@@ -116,6 +116,11 @@ class Path
 
     void transformForLeftToRightTraversal();
 
+    const auto nodeCount() const
+    {
+        return m_nodes.size();
+    }
+
 
  private:
     void invert();
