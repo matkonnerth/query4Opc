@@ -81,7 +81,19 @@ tests, tests, tests
 
 move sdk dependent code to abstraction layer?
 
+check if the direction of an reference can be inverted (hasTypeDefinition for example)
 
+## before Sink (PathMatcher was a member of FilterChain)
+
+queryServerObjectReduced      76486076 ns     76485279 ns            7
+queryServerObjectInvertPath  202772078 ns    202749008 ns            3
+queryServerObject            189415935 ns    189407763 ns            4
+standardBrowse                25198709 ns     25196128 ns           21
+
+## after sink
+
+nearly the same result:
+queryServerObjectReduced      74843691 ns     74840762 ns            7
 
 
 

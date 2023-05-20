@@ -33,12 +33,44 @@ struct Node
        }
        return std::nullopt;
    }
+
+   bool queryObjectTypeAndAllSubTypes() const
+   {
+      if(!label.has_value() || *label!="ObjectType")
+      {
+         return false;
+      }
+      if(!identifier.has_value())
+      {
+         return false;
+      }
+      if(!NodeId().has_value())
+      {
+         return false;
+      }
+      auto it = properties.find("includeSubTypes");
+      if(it==properties.end())
+      {
+         return false;
+      }
+      return true;
+   }
+};
+
+enum class Range
+{
+   INFINITE,
+   EXACTLY_ONCE,
+   ZERO_TO_N,
+   ONE_TO_N
 };
 
 struct Relationship
 {
    std::optional<std::string> type; // HasTypeDefinition, HasProperty
    int direction{ 0 }; // -1 .. inverse, 0 .. no direction, 1 .. forward
+   Range range{Range::EXACTLY_ONCE};
+   int upperBoundRange {1};
 };
 
 struct Path

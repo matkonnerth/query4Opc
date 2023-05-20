@@ -17,7 +17,7 @@ PathMatcher::PathMatcher(UA_Server* server, const Path& path, int startIndex)
     m_rhs = paths.second;
 }
 
-void PathMatcher::match(const UA_ReferenceDescription& startNode)
+void PathMatcher::filter(path_element_t&& startNode)
 {
     if (m_path.empty())
     {
@@ -152,11 +152,11 @@ PathMatcher::check(const path_element_t& start, const Path& path)
         {
             // we have to instantiate a pathMatcher for each of this
             PathMatcher m{ m_server, path.split(1).second };
-            for (const auto* ref = br.raw().references;
+            for (auto* ref = br.raw().references;
                  ref != br.raw().references + br.raw().referencesSize;
                  ++ref)
             {
-                m.match(*ref);
+                m.filter(std::move(*ref));
             }
             std::vector<path_t> res{};
             for (auto&& pe : m.results().paths())

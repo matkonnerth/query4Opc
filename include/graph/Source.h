@@ -26,6 +26,9 @@ public:
 
    void generate(const std::function<void(path_element_t&&)>& filter) const override
    {
+      UA_ReferenceDescription rd{};
+      rd.nodeId.nodeId=m_root;
+      filter(std::move(rd));
       visit(m_root, filter);
    }
 

@@ -264,7 +264,7 @@ TEST_F(QueryTest, eightObjects)
     e.scheduleQuery(*q);
     auto results = e.run();
     ASSERT_TRUE(results);
-    ASSERT_EQ(results->size(), 1);
+    ASSERT_EQ(results->size(), 2);
 }
 
 TEST_F(QueryTest, playground)
@@ -327,6 +327,36 @@ TEST_F(QueryTest, types)
     ASSERT_EQ(1, e.pathResult().paths().size());
     ASSERT_EQ(2004, e.pathResult().paths()[0].at(0).nodeId.nodeId.identifier.numeric);
 }
+
+TEST_F(QueryTest, allSubTypes_TempDevice_and_SpecialTempDevice)
+{
+    ASSERT_TRUE(UA_StatusCode_isGood(
+    UA_Server_loadNodeset(server, (g_path + "/subtype.xml").c_str(), NULL)));
+    Parser p;
+    auto q = p.parse(R"(MATCH (types: ObjectType{NodeId:"ns=2;i=1002", includeSubTypes: "true"}) RETURN types)");
+    ASSERT_TRUE(q);
+
+    QueryEngine e{ server };
+    e.scheduleQuery(*q);
+    auto results = e.run();
+    ASSERT_EQ(2, e.pathResult().paths().size());
+    ASSERT_EQ(1, e.pathResult().paths()[0].size());
+}
+
+TEST_F(QueryTest, allSubTypes_ServerTypeHasNoSubType_onlyServerType)
+{
+    Parser p;
+    auto q = p.parse(R"(MATCH (types: ObjectType{NodeId:"i=2253", includeSubTypes: "true"}) RETURN types)");
+    ASSERT_TRUE(q);
+
+    QueryEngine e{ server };
+    e.scheduleQuery(*q);
+    auto results = e.run();
+    ASSERT_EQ(1, e.pathResult().paths().size());
+    ASSERT_EQ(1, e.pathResult().paths()[0].size());
+    ASSERT_EQ(2253, e.pathResult().paths()[0][0].nodeId.nodeId.identifier.numeric);
+}
+
 
 int main(int argc, char** argv)
 {

@@ -20,7 +20,7 @@ break it down to
 intermediateResults = (obj:Object)-[:HasTypeDefinition]->(:ObjectType{NodeId:"MyId"})
 Sink = ReferenceFilter( with ReferenceDescriptionMatcher(HasTypeDefinition))
 
-## (Currently) noot supported queries
+## (Currently) not supported queries
 
 all references of a Node
 

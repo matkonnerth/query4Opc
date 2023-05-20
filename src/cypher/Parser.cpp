@@ -52,6 +52,28 @@ static Relationship parseRelationshipPattern(const cypher_astnode_t& elem)
     {
         r.direction = 1;
     }
+    auto range = cypher_ast_rel_pattern_get_varlength(&elem);
+    if(range)
+    {
+        auto start = cypher_ast_range_get_start(range);
+        auto end = cypher_ast_range_get_end(range);
+        if(start)
+        {
+            std::cout << cypher_ast_integer_get_valuestr(start) << "\n";
+        }
+        
+
+        if(end)
+        {
+            std::cout << cypher_ast_integer_get_valuestr(end) << "\n";
+        }
+        
+    }
+    else
+    {
+        std::cout << "no range found" << "\n";
+    }
+
     return r;
 }
 

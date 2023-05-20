@@ -64,6 +64,8 @@
         "thread": "cpp",
         "variant": "cpp",
         "cfenv": "cpp",
-        "numbers": "cpp"
+        "numbers": "cpp",
+        "forward_list": "cpp",
+        "unordered_set": "cpp"
     }
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include "Path.h"
 #include "PathResult.h"
+#include "Sink.h"
 #include "Types.h"
 #include <open62541/server.h>
 #include <open62541/types.h>
@@ -9,10 +10,9 @@
 
 namespace graph {
 // takes an graph::Path and matches against the server address space with browsing
-class PathMatcher
+class PathMatcher : public Sink
 {
  public:
-    PathMatcher() = default;
     PathMatcher(UA_Server* server, const Path& path, int startIndex = 0);
 
     PathMatcher(const PathMatcher&) = delete;
@@ -20,8 +20,10 @@ class PathMatcher
     PathMatcher(PathMatcher&& other) = default;
     PathMatcher& operator=(PathMatcher&& other) = default;
 
-    void match(const UA_ReferenceDescription& startNode);
-    const PathResult& results() const;
+    //void filter(const UA_ReferenceDescription& startNode) override;
+    void filter(path_element_t&& startNode) override;
+
+    const PathResult& results() const override;
 
  private:
     std::vector<path_t> checkPath(const UA_ReferenceDescription& startNode);

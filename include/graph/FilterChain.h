@@ -21,14 +21,17 @@ class FilterChain
                                         UA_UInt32 nodeclasMask);
     void createColumnAsSource(const column_t& col);
     void createReferenceFilter(const cypher::Path& path, int startIndex);
+    void createDefaultSink();
+    
     const column_t* results() const;
     const column_t* results(const std::string& identifier) const;
+    
     const PathResult& pathResult() const;
 
  private:
     UA_Server* m_server;
     std::unique_ptr<Source> m_src;
-    PathMatcher m_pathMatcher;
+    std::unique_ptr<Sink> m_sink;
     cypher::Path m_path;
 };
 

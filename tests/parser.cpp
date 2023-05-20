@@ -8,7 +8,7 @@ TEST(Parser, quick)
    Parser p;
    auto q = p.parse("MATCH (n:Object) RETURN n");
    ASSERT_TRUE(q);
-   q = p.parse("Match (n:Object)-[:HasTypeDefinition]->(:ObjectType{NodeId:\"123\"}) RETURN n");
+   q = p.parse("Match (n:Object)-[:HasTypeDefinition*]->(:ObjectType{NodeId:\"123\"}) RETURN n");
    ASSERT_TRUE(q);
    q = p.parse("abc");
    ASSERT_FALSE(q);

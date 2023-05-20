@@ -15,7 +15,7 @@ FilterChain::FilterChain(UA_Server* server)
 
 void FilterChain::run()
 {
-    auto f = [&](path_element_t&& pe) { m_pathMatcher.match(pe); };
+    auto f = [&](path_element_t&& pe) { m_sink->filter(std::move(pe)); };
     m_src->generate(f);
 }
 
@@ -33,13 +33,13 @@ void FilterChain::createColumnAsSource(const column_t& col)
 
 void FilterChain::createReferenceFilter(const cypher::Path& path, int startIndex)
 {
-    m_pathMatcher = std::move(PathMatcher(m_server, Path{ path }, startIndex));
+    m_sink = std::make_unique<PathMatcher>(m_server, Path{ path }, startIndex);
     m_path = path;
 }
 
 const column_t* FilterChain::results() const
 {
-    return m_pathMatcher.results().col();
+    return m_sink->results().col();
 }
 
 const column_t* FilterChain::results(const std::string& identifier) const
@@ -49,11 +49,16 @@ const column_t* FilterChain::results(const std::string& identifier) const
     {
         if (n.identifier && n.identifier == identifier)
         {
-            return m_pathMatcher.results().col(idx);
+            return m_sink->results().col(idx);
         }
         idx++;
     }
     return nullptr;
+}
+
+void FilterChain::createDefaultSink()
+{
+    m_sink = std::make_unique<DefaultSink>();
 }
 
 int graph::findStartIndex(const cypher::Path& p)
@@ -63,7 +68,8 @@ int graph::findStartIndex(const cypher::Path& p)
     {
         if (e.identifier)
         {
-            std::cout << "start Index for FilterChain at node with identifier: " << *e.identifier << "\n";
+            std::cout << "start Index for FilterChain at node with identifier: "
+                      << *e.identifier << "\n";
             return idx;
         }
         idx += 1;
@@ -94,20 +100,35 @@ graph::createFilterChain(const cypher::Path& path,
 {
     auto start = graph::findStartIndex(path);
     auto f = std::make_unique<FilterChain>(server);
+
+    // get objectTypes and subtypes
     if (ctx.size() == 0)
     {
-        auto startNodeClass =
-        parseOptionalNodeClass(path.nodes[static_cast<size_t>(start)].label);
-
-        auto rootNode =
-        UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER);
-
-        if(startNodeClass == UA_NODECLASS_OBJECTTYPE)
+        if (path.nodes.size() == 1 && path.nodes[0].queryObjectTypeAndAllSubTypes())
         {
-            rootNode = UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTTYPESFOLDER);
+            auto rootNode = parseNodeId(*path.nodes[0].NodeId());
+            f->createHierachicalVisitorSource(rootNode,
+                                              UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES),
+                                              UA_NODECLASS_OBJECTTYPE);
+            f->createDefaultSink();
         }
+        else
+        {
+            auto startNodeClass =
+            parseOptionalNodeClass(path.nodes[static_cast<size_t>(start)].label);
 
-        f->createHierachicalVisitorSource(rootNode, UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES), startNodeClass);
+            auto rootNode = UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER);
+
+            if (startNodeClass == UA_NODECLASS_OBJECTTYPE)
+            {
+                rootNode = UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTTYPESFOLDER);
+            }
+
+            f->createHierachicalVisitorSource(rootNode,
+                                              UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES),
+                                              startNodeClass);
+            f->createReferenceFilter(path, start);
+        }
     }
     else
     {
@@ -124,13 +145,12 @@ graph::createFilterChain(const cypher::Path& path,
             return nullptr;
         }
         f->createColumnAsSource(*col);
+        f->createReferenceFilter(path, start);
     }
-
-    f->createReferenceFilter(path, start);
     return f;
 }
 
 const PathResult& FilterChain::pathResult() const
 {
-    return m_pathMatcher.results();
+    return m_sink->results();
 }
