@@ -4,6 +4,7 @@
 #include <vector>
 #include "Types.h"
 #include "tracing.h"
+#include <iostream>
 
 namespace graph
 {
@@ -26,8 +27,16 @@ public:
 
    void generate(const std::function<void(path_element_t&&)>& filter) const override
    {
+      UA_NodeClass nodeclass{};
+      auto status = UA_Server_readNodeClass(m_server, m_root, &nodeclass);
+      if(!UA_StatusCode_isGood(status))
+      {
+         std::cout << "root node not found \n";
+         return;
+      }
       UA_ReferenceDescription rd{};
       rd.nodeId.nodeId=m_root;
+      rd.nodeClass = nodeclass;
       filter(std::move(rd));
       visit(m_root, filter);
    }

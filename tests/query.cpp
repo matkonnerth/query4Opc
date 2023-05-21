@@ -377,6 +377,20 @@ TEST_F(QueryTest, includeSubTypes_specialTempDevice)
     ASSERT_EQ(5003, e.pathResult().paths()[0][0].nodeId.nodeId.identifier.numeric);
 }
 
+TEST_F(QueryTest, includeSubTypes_nonExistingObjectType)
+{
+    Parser p;
+    auto q = p.parse(R"(
+        MATCH (types: ObjectType{NodeId:"ns=27;i=42", includeSubTypes: "true"}) RETURN types
+        )");
+    ASSERT_TRUE(q);
+
+    QueryEngine e{ server };
+    e.scheduleQuery(*q);
+    auto results = e.run();
+    ASSERT_EQ(0, e.pathResult().paths().size());
+}
+
 
 int main(int argc, char** argv)
 {
