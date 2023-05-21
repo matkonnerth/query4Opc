@@ -1,6 +1,0 @@
-alle Objecte mit browseName Heating:
-
-GRAPH.QUERY IMM6 "MATCH (obj:Object) WHERE obj.browseName='Heating' RETURN obj"
-
-Redisgraph ~5ms
-open: ~100ms
