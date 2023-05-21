@@ -7,12 +7,12 @@
 namespace graph {
 
 class PathResult;
-class QueryEngine
+class QueryEngine final
 {
  public:
     QueryEngine(UA_Server* server);
     void scheduleQuery(const cypher::Query& q);
-    const std::vector<UA_ReferenceDescription>* run();
+    void run();
     const PathResult& pathResult() const;
     const PathResult& pathResult(size_t idx) const;
 

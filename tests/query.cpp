@@ -37,9 +37,8 @@ TEST_F(QueryTest, findServerObject)
 
     QueryEngine e{ server };
     e.scheduleQuery(*q);
-    auto results = e.run();
-    ASSERT_TRUE(results);
-    ASSERT_EQ(results->size(), 1);
+    e.run();
+    ASSERT_EQ(1, e.pathResult().paths().size());
 }
 
 TEST_F(QueryTest, findServerObject_VariablePath_WrongVariable)
@@ -52,9 +51,8 @@ TEST_F(QueryTest, findServerObject_VariablePath_WrongVariable)
 
     QueryEngine e{ server };
     e.scheduleQuery(*q);
-    auto results = e.run();
-    ASSERT_TRUE(results);
-    ASSERT_EQ(results->size(), 0);
+    e.run();
+    ASSERT_EQ(0, e.pathResult().paths().size());
 }
 
 TEST_F(QueryTest, findServerObject_VariablePath_WrongDirection)
@@ -66,9 +64,8 @@ TEST_F(QueryTest, findServerObject_VariablePath_WrongDirection)
 
     QueryEngine e{ server };
     e.scheduleQuery(*q);
-    auto results = e.run();
-    ASSERT_TRUE(results);
-    ASSERT_EQ(results->size(), 0);
+    e.run();
+    ASSERT_EQ(0, e.pathResult().paths().size());
 }
 
 TEST_F(QueryTest, findServerObject_VariablePath_DirectionDoesntMatter)
@@ -80,9 +77,8 @@ TEST_F(QueryTest, findServerObject_VariablePath_DirectionDoesntMatter)
 
     QueryEngine e{ server };
     e.scheduleQuery(*q);
-    auto results = e.run();
-    ASSERT_TRUE(results);
-    ASSERT_EQ(results->size(), 1);
+    e.run();
+    ASSERT_EQ(1, e.pathResult().paths().size());
 }
 
 TEST_F(QueryTest, findServerObject_reorderQuery)
@@ -95,9 +91,8 @@ TEST_F(QueryTest, findServerObject_reorderQuery)
 
     QueryEngine e{ server };
     e.scheduleQuery(*q);
-    auto results = e.run();
-    ASSERT_TRUE(results);
-    ASSERT_EQ(results->size(), 1);
+    e.run();
+    ASSERT_EQ(1, e.pathResult().paths().size());
 }
 
 TEST_F(QueryTest, findServerObject_WrongReferenceType)
@@ -109,9 +104,8 @@ TEST_F(QueryTest, findServerObject_WrongReferenceType)
 
     QueryEngine e{ server };
     e.scheduleQuery(*q);
-    auto results = e.run();
-    ASSERT_TRUE(results);
-    ASSERT_EQ(results->size(), 0);
+    e.run();
+    ASSERT_EQ(0, e.pathResult().paths().size());
 }
 
 TEST_F(QueryTest, findServerObject_MultipleMatchClauses)
@@ -125,9 +119,8 @@ TEST_F(QueryTest, findServerObject_MultipleMatchClauses)
 
     QueryEngine e{ server };
     e.scheduleQuery(*q);
-    auto results = e.run();
-    ASSERT_TRUE(results);
-    ASSERT_EQ(results->size(), 1);
+    e.run();
+    ASSERT_EQ(1, e.pathResult().paths().size());
 }
 
 TEST_F(QueryTest, findAllTempDevicesWithProperty)
@@ -144,9 +137,7 @@ TEST_F(QueryTest, findAllTempDevicesWithProperty)
 
     QueryEngine e{ server };
     e.scheduleQuery(*q);
-    auto results = e.run();
-    ASSERT_TRUE(results);
-    ASSERT_EQ(1, results->size());
+    e.run();
     ASSERT_EQ(1, e.pathResult().paths().size());
     ASSERT_EQ(2, e.pathResult().paths()[0].size());
 }
@@ -165,9 +156,7 @@ TEST_F(QueryTest, findAllTempDevicesWithPropertyOneQuery)
 
     QueryEngine e{ server };
     e.scheduleQuery(*q);
-    auto results = e.run();
-    ASSERT_TRUE(results);
-    ASSERT_EQ(1, results->size());
+    e.run();
     ASSERT_EQ(1, e.pathResult().paths().size());
     ASSERT_EQ(3, e.pathResult().paths()[0].size());
 }
@@ -181,9 +170,7 @@ TEST_F(QueryTest, findObjectsWhichReferencesVariables)
 
     QueryEngine e{ server };
     e.scheduleQuery(*q);
-    auto results = e.run();
-    ASSERT_TRUE(results);
-    ASSERT_TRUE(results->size() > 0);
+    e.run();
     ASSERT_TRUE(e.pathResult().paths().size() > 0);
     ASSERT_EQ(2, e.pathResult().paths()[0].size());
 }
@@ -196,9 +183,7 @@ TEST_F(QueryTest, emptyPath)
 
     QueryEngine e{ server };
     e.scheduleQuery(*q);
-    auto results = e.run();
-    ASSERT_TRUE(results);
-    ASSERT_TRUE(results->size() > 0);
+    e.run();
     ASSERT_TRUE(e.pathResult().paths().size() > 0);
     ASSERT_EQ(1, e.pathResult().paths()[0].size());
 }
@@ -212,9 +197,8 @@ TEST_F(QueryTest, TypeDefinitionId)
 
     QueryEngine e{ server };
     e.scheduleQuery(*q);
-    auto results = e.run();
-    ASSERT_TRUE(results);
-    ASSERT_EQ(1, results->size());
+    e.run();
+    ASSERT_EQ(1, e.pathResult().paths().size());
 }
 
 TEST_F(QueryTest, ObjectTypes)
@@ -225,9 +209,8 @@ TEST_F(QueryTest, ObjectTypes)
 
     QueryEngine e{ server };
     e.scheduleQuery(*q);
-    auto results = e.run();
-    ASSERT_TRUE(results);
-    ASSERT_TRUE(results->size()>0);
+    e.run();
+    ASSERT_TRUE(e.pathResult().paths().size()>0);
 }
 
 TEST_F(QueryTest, subfolder)
@@ -244,9 +227,7 @@ TEST_F(QueryTest, subfolder)
 
     QueryEngine e{ server };
     e.scheduleQuery(*q);
-    auto results = e.run();
-    ASSERT_TRUE(results);
-    ASSERT_EQ(3, results->size());
+    e.run();
     ASSERT_EQ(3, e.pathResult().paths().size());
     ASSERT_EQ(4, e.pathResult().paths()[0].size());
 }
@@ -263,9 +244,8 @@ TEST_F(QueryTest, eightObjects)
 
     QueryEngine e{ server };
     e.scheduleQuery(*q);
-    auto results = e.run();
-    ASSERT_TRUE(results);
-    ASSERT_EQ(results->size(), 2);
+    e.run();
+    ASSERT_EQ(2, e.pathResult().paths().size());
 }
 
 TEST_F(QueryTest, playground)
@@ -277,9 +257,8 @@ TEST_F(QueryTest, playground)
 
     QueryEngine e{ server };
     e.scheduleQuery(*q);
-    auto results = e.run();
-    ASSERT_TRUE(results);
-    ASSERT_EQ(2, results->size());
+    e.run();
+    ASSERT_EQ(2, e.pathResult().paths().size());
 }
 
 TEST_F(QueryTest, serverObject)
@@ -291,11 +270,9 @@ TEST_F(QueryTest, serverObject)
 
     QueryEngine e{ server };
     e.scheduleQuery(*q);
-    auto results = e.run();
-    ASSERT_TRUE(results);
-    ASSERT_EQ(results->size(), 1);
-    ASSERT_EQ(e.pathResult().paths().size(), 1);
-    ASSERT_EQ(e.pathResult().paths()[0].size(), 1);
+    e.run();
+    ASSERT_EQ(1, e.pathResult().paths().size());
+    ASSERT_EQ(1, e.pathResult().paths()[0].size());
 }
 
 TEST_F(QueryTest, path_to_ServerObject)
@@ -322,9 +299,7 @@ TEST_F(QueryTest, types)
 
     QueryEngine e{ server };
     e.scheduleQuery(*q);
-    auto results = e.run();
-    ASSERT_TRUE(results);
-    ASSERT_EQ(1, results->size());
+    e.run();
     ASSERT_EQ(1, e.pathResult().paths().size());
     ASSERT_EQ(2004, e.pathResult().paths()[0].at(0).nodeId.nodeId.identifier.numeric);
 }
@@ -339,7 +314,7 @@ TEST_F(QueryTest, allSubTypes_TempDevice_and_SpecialTempDevice)
 
     QueryEngine e{ server };
     e.scheduleQuery(*q);
-    auto results = e.run();
+    e.run();
     ASSERT_EQ(2, e.pathResult().paths().size());
     ASSERT_EQ(1, e.pathResult().paths()[0].size());
 }
@@ -352,7 +327,7 @@ TEST_F(QueryTest, allSubTypes_ServerTypeHasNoSubType_onlyServerType)
 
     QueryEngine e{ server };
     e.scheduleQuery(*q);
-    auto results = e.run();
+    e.run();
     ASSERT_EQ(1, e.pathResult().paths().size());
     ASSERT_EQ(1, e.pathResult().paths()[0].size());
     ASSERT_EQ(2253, e.pathResult().paths()[0][0].nodeId.nodeId.identifier.numeric);
@@ -371,7 +346,7 @@ TEST_F(QueryTest, includeSubTypes_specialTempDevice)
 
     QueryEngine e{ server };
     e.scheduleQuery(*q);
-    auto results = e.run();
+    e.run();
     ASSERT_EQ(2, e.pathResult(0).paths().size());
     ASSERT_EQ(1, e.pathResult().paths().size());
     ASSERT_EQ(5003, e.pathResult().paths()[0][0].nodeId.nodeId.identifier.numeric);
@@ -387,7 +362,7 @@ TEST_F(QueryTest, includeSubTypes_nonExistingObjectType)
 
     QueryEngine e{ server };
     e.scheduleQuery(*q);
-    auto results = e.run();
+    e.run();
     ASSERT_EQ(0, e.pathResult().paths().size());
 }
 

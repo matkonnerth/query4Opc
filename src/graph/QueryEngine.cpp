@@ -17,13 +17,12 @@ void QueryEngine::scheduleQuery(const cypher::Query& q)
     }
 }
 
-const std::vector<UA_ReferenceDescription>* QueryEngine::run()
+void QueryEngine::run()
 {
     for (auto& f : m_matchClauses)
     {
         f->run();
     }
-    return m_matchClauses.back()->results();
 }
 
 const PathResult& QueryEngine::pathResult() const
