@@ -13,14 +13,14 @@ class PathResult;
 class MatchClause
 {
  public:
-    MatchClause(UA_Server* server);
+    MatchClause(UA_Server* server, const cypher::Path& path);
     void run();
 
     void createHierachicalVisitorSource(const UA_NodeId& root,
                                         const UA_NodeId& referenceTypeId,
                                         UA_UInt32 nodeclasMask);
     void createColumnAsSource(const column_t& col);
-    void createReferenceFilter(const cypher::Path& path, int startIndex);
+    void createReferenceFilter(int startIndex);
     void createDefaultSink();
     
     const column_t* results() const;
@@ -35,7 +35,8 @@ class MatchClause
     cypher::Path m_path;
 };
 
-int findStartIndex(const cypher::Path& p);
+int findStartIndex(const cypher::Path& p,
+                   const std::vector<std::reference_wrapper<const MatchClause>> ctx);
 const column_t*
 findSourceColumn(const std::string id,
                  const std::vector<std::reference_wrapper<const MatchClause>> ctx);

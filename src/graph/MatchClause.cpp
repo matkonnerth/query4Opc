@@ -9,8 +9,8 @@ using graph::MatchClause;
 using graph::parseOptionalNodeClass;
 using graph::PathResult;
 
-MatchClause::MatchClause(UA_Server* server)
-: m_server{ server }
+MatchClause::MatchClause(UA_Server* server, const cypher::Path& path)
+: m_server{ server }, m_path{path}
 {}
 
 void MatchClause::run()
@@ -31,10 +31,9 @@ void MatchClause::createColumnAsSource(const column_t& col)
     m_src = std::make_unique<ColumnAsSource>(col);
 }
 
-void MatchClause::createReferenceFilter(const cypher::Path& path, int startIndex)
+void MatchClause::createReferenceFilter(int startIndex)
 {
-    m_sink = std::make_unique<PathMatcher>(m_server, Path{ path }, startIndex);
-    m_path = path;
+    m_sink = std::make_unique<PathMatcher>(m_server, Path{ m_path }, startIndex);
 }
 
 const column_t* MatchClause::results() const
@@ -61,8 +60,10 @@ void MatchClause::createDefaultSink()
     m_sink = std::make_unique<DefaultSink>();
 }
 
-int graph::findStartIndex(const cypher::Path& p)
+int graph::findStartIndex(const cypher::Path& p,
+                          const std::vector<std::reference_wrapper<const MatchClause>> ctx)
 {
+    auto idxWithIdentifier = 0;
     auto idx = 0;
     for (const auto& e : p.nodes)
     {
@@ -70,11 +71,19 @@ int graph::findStartIndex(const cypher::Path& p)
         {
             std::cout << "start Index for MatchClause at node with identifier: "
                       << *e.identifier << "\n";
-            return idx;
+            auto c = graph::findSourceColumn(*e.identifier, ctx);
+            if(c)
+            {
+                return idx;
+            }
+            if(idxWithIdentifier==0)
+            {
+                idxWithIdentifier = idx;
+            }
         }
         idx += 1;
     }
-    return 0;
+    return idxWithIdentifier;
 }
 
 const column_t*
@@ -98,8 +107,8 @@ graph::createMatchClause(const cypher::Path& path,
                          std::vector<std::reference_wrapper<const MatchClause>> ctx,
                          UA_Server* server)
 {
-    auto start = graph::findStartIndex(path);
-    auto f = std::make_unique<MatchClause>(server);
+    auto start = graph::findStartIndex(path, ctx);
+    auto f = std::make_unique<MatchClause>(server, path);
 
     // get objectTypes and subtypes
     if (ctx.size() == 0)
@@ -127,7 +136,7 @@ graph::createMatchClause(const cypher::Path& path,
             f->createHierachicalVisitorSource(rootNode,
                                               UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES),
                                               startNodeClass);
-            f->createReferenceFilter(path, start);
+            f->createReferenceFilter(start);
         }
     }
     else
@@ -140,12 +149,14 @@ graph::createMatchClause(const cypher::Path& path,
 
         auto col =
         graph::findSourceColumn(*path.nodes[static_cast<size_t>(start)].identifier, ctx);
+        assert(col && "findSourceColumn failed");
         if (!col)
         {
+            
             return nullptr;
         }
         f->createColumnAsSource(*col);
-        f->createReferenceFilter(path, start);
+        f->createReferenceFilter(start);
     }
     return f;
 }

@@ -31,6 +31,11 @@ const PathResult& QueryEngine::pathResult() const
     return m_matchClauses.back()->pathResult();
 }
 
+const PathResult& QueryEngine::pathResult(size_t idx) const
+{
+    return m_matchClauses.at(idx)->pathResult();
+}
+
 
 std::vector<std::reference_wrapper<const graph::MatchClause>> QueryEngine::getContext() const
 {

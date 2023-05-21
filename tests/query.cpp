@@ -27,6 +27,7 @@ class QueryTest : public ::testing::Test
     }
 };
 
+
 TEST_F(QueryTest, findServerObject)
 {
     Parser p;
@@ -355,6 +356,25 @@ TEST_F(QueryTest, allSubTypes_ServerTypeHasNoSubType_onlyServerType)
     ASSERT_EQ(1, e.pathResult().paths().size());
     ASSERT_EQ(1, e.pathResult().paths()[0].size());
     ASSERT_EQ(2253, e.pathResult().paths()[0][0].nodeId.nodeId.identifier.numeric);
+}
+
+TEST_F(QueryTest, includeSubTypes_specialTempDevice)
+{
+    ASSERT_TRUE(UA_StatusCode_isGood(
+    UA_Server_loadNodeset(server, (g_path + "/subtype.xml").c_str(), NULL)));
+    Parser p;
+    auto q = p.parse(R"(
+        MATCH (types: ObjectType{NodeId:"ns=2;i=1002", includeSubTypes: "true"}) RETURN types
+        MATCH (obj: Object)-->(types) RETURN obj
+        )");
+    ASSERT_TRUE(q);
+
+    QueryEngine e{ server };
+    e.scheduleQuery(*q);
+    auto results = e.run();
+    ASSERT_EQ(2, e.pathResult(0).paths().size());
+    ASSERT_EQ(1, e.pathResult().paths().size());
+    ASSERT_EQ(5003, e.pathResult().paths()[0][0].nodeId.nodeId.identifier.numeric);
 }
 
 

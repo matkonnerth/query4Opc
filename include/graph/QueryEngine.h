@@ -14,6 +14,7 @@ class QueryEngine
     void scheduleQuery(const cypher::Query& q);
     const std::vector<UA_ReferenceDescription>* run();
     const PathResult& pathResult() const;
+    const PathResult& pathResult(size_t idx) const;
 
  private:
     std::vector<std::reference_wrapper<const graph::MatchClause>> getContext() const;

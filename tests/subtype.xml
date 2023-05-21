@@ -27,4 +27,11 @@
             <Reference ReferenceType="HasSubtype" IsForward="false">ns=1;i=1002</Reference>
         </References>
     </UAObjectType>
+    <UAObject NodeId="ns=1;i=5003" BrowseName="1:TempDevice1">
+        <DisplayName>TempDevice1</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=1;i=1003</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">i=85</Reference>
+        </References>
+    </UAObject>
 </UANodeSet>

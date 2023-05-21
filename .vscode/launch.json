@@ -84,10 +84,10 @@
             ]
         },
         {
-            "name": "filterChain",
+            "name": "matchclause",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/bin/filterChain",
+            "program": "${workspaceFolder}/build/bin/matchclause",
             "args": [
                 "${workspaceFolder}/tests"
             ],
