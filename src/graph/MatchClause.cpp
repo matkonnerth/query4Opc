@@ -1,48 +1,48 @@
-#include <graph/FilterChain.h>
+#include <graph/MatchClause.h>
 #include <graph/Helper.h>
 #include <graph/PathResult.h>
 #include <iostream>
 
 using graph::column_t;
-using graph::createFilterChain;
-using graph::FilterChain;
+using graph::createMatchClause;
+using graph::MatchClause;
 using graph::parseOptionalNodeClass;
 using graph::PathResult;
 
-FilterChain::FilterChain(UA_Server* server)
+MatchClause::MatchClause(UA_Server* server)
 : m_server{ server }
 {}
 
-void FilterChain::run()
+void MatchClause::run()
 {
     auto f = [&](path_element_t&& pe) { m_sink->filter(std::move(pe)); };
     m_src->generate(f);
 }
 
-void FilterChain::createHierachicalVisitorSource(const UA_NodeId& root,
+void MatchClause::createHierachicalVisitorSource(const UA_NodeId& root,
                                                  const UA_NodeId& referenceTypeId,
                                                  UA_UInt32 nodeclasMask)
 {
     m_src = std::make_unique<HierachicalVisitor>(m_server, root, referenceTypeId, nodeclasMask);
 }
 
-void FilterChain::createColumnAsSource(const column_t& col)
+void MatchClause::createColumnAsSource(const column_t& col)
 {
     m_src = std::make_unique<ColumnAsSource>(col);
 }
 
-void FilterChain::createReferenceFilter(const cypher::Path& path, int startIndex)
+void MatchClause::createReferenceFilter(const cypher::Path& path, int startIndex)
 {
     m_sink = std::make_unique<PathMatcher>(m_server, Path{ path }, startIndex);
     m_path = path;
 }
 
-const column_t* FilterChain::results() const
+const column_t* MatchClause::results() const
 {
     return m_sink->results().col();
 }
 
-const column_t* FilterChain::results(const std::string& identifier) const
+const column_t* MatchClause::results(const std::string& identifier) const
 {
     size_t idx = 0;
     for (const auto& n : m_path.nodes)
@@ -56,7 +56,7 @@ const column_t* FilterChain::results(const std::string& identifier) const
     return nullptr;
 }
 
-void FilterChain::createDefaultSink()
+void MatchClause::createDefaultSink()
 {
     m_sink = std::make_unique<DefaultSink>();
 }
@@ -68,7 +68,7 @@ int graph::findStartIndex(const cypher::Path& p)
     {
         if (e.identifier)
         {
-            std::cout << "start Index for FilterChain at node with identifier: "
+            std::cout << "start Index for MatchClause at node with identifier: "
                       << *e.identifier << "\n";
             return idx;
         }
@@ -79,7 +79,7 @@ int graph::findStartIndex(const cypher::Path& p)
 
 const column_t*
 graph::findSourceColumn(const std::string id,
-                        const std::vector<std::reference_wrapper<const FilterChain>> ctx)
+                        const std::vector<std::reference_wrapper<const MatchClause>> ctx)
 {
     for (const auto& f : ctx)
     {
@@ -92,14 +92,14 @@ graph::findSourceColumn(const std::string id,
     return nullptr;
 }
 
-// translates a cypher Path to a FilterChain
-std::unique_ptr<FilterChain>
-graph::createFilterChain(const cypher::Path& path,
-                         std::vector<std::reference_wrapper<const FilterChain>> ctx,
+// translates a cypher Path to a MatchClause
+std::unique_ptr<MatchClause>
+graph::createMatchClause(const cypher::Path& path,
+                         std::vector<std::reference_wrapper<const MatchClause>> ctx,
                          UA_Server* server)
 {
     auto start = graph::findStartIndex(path);
-    auto f = std::make_unique<FilterChain>(server);
+    auto f = std::make_unique<MatchClause>(server);
 
     // get objectTypes and subtypes
     if (ctx.size() == 0)
@@ -150,7 +150,7 @@ graph::createFilterChain(const cypher::Path& path,
     return f;
 }
 
-const PathResult& FilterChain::pathResult() const
+const PathResult& MatchClause::pathResult() const
 {
     return m_sink->results();
 }

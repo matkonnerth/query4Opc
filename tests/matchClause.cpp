@@ -1,4 +1,4 @@
-#include <graph/FilterChain.h>
+#include <graph/MatchClause.h>
 #include <gtest/gtest.h>
 #include <iostream>
 #include <open62541/server.h>
@@ -20,7 +20,7 @@ TEST(serverType, findServerObjectWithPath)
    p.nodes.emplace_back(b);
    p.relations.emplace_back(cypher::Relationship{"i=40", 1});
 
-   auto f = createFilterChain(p, std::vector<std::reference_wrapper<const FilterChain>>{}, server);
+   auto f = createMatchClause(p, std::vector<std::reference_wrapper<const MatchClause>>{}, server);
    f->run();
 
    ASSERT_EQ(f->results()->size(), 1);

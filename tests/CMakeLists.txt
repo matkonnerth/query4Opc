@@ -8,7 +8,7 @@ endmacro()
 
 #TODO: enable again
 #opc_add_test("filter")
-opc_add_test("filterChain")
+opc_add_test("matchClause")
 opc_add_test("parser")
 target_link_libraries(parser PRIVATE cypher-parser)
 opc_add_test("query")

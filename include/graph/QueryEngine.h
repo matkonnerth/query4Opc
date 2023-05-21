@@ -1,7 +1,7 @@
 #pragma once
 #include <cypher/Ast.h>
 #include <cypher/Path.h>
-#include <graph/FilterChain.h>
+#include <graph/MatchClause.h>
 #include <memory>
 
 namespace graph {
@@ -16,8 +16,8 @@ class QueryEngine
     const PathResult& pathResult() const;
 
  private:
-    std::vector<std::reference_wrapper<const graph::FilterChain>> getContext() const;
+    std::vector<std::reference_wrapper<const graph::MatchClause>> getContext() const;
     UA_Server* m_server;
-    std::vector<std::unique_ptr<graph::FilterChain>> m_filterChains;
+    std::vector<std::unique_ptr<graph::MatchClause>> m_matchClauses;
 };
 } // namespace graph

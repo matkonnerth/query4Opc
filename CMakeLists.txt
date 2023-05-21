@@ -24,7 +24,7 @@ target_compile_features(project_options INTERFACE cxx_std_17)
 
 add_library(graphForOpc ${CMAKE_CURRENT_SOURCE_DIR}/src/cypher/Parser.cpp
                         ${CMAKE_CURRENT_SOURCE_DIR}/src/cypher/Path.cpp
-                        ${CMAKE_CURRENT_SOURCE_DIR}/src/graph/FilterChain.cpp
+                        ${CMAKE_CURRENT_SOURCE_DIR}/src/graph/MatchClause.cpp
                         ${CMAKE_CURRENT_SOURCE_DIR}/src/graph/PathMatcher.cpp
                         ${CMAKE_CURRENT_SOURCE_DIR}/src/graph/Path.cpp
                         ${CMAKE_CURRENT_SOURCE_DIR}/src/graph/tracing.cpp

@@ -11,14 +11,8 @@ columns of a PathResult can be used as inputs for another PathMatcher
 
 matches a path starting at a start node and preserves the matching paths.
 
-## Filter
-
-Filters nodes on a certain attribute, for example the typedefinition id.
-TypeFilter (specialization of a type filter)
-
-## FilterChain
-TODO: wording FilterChain?
-a Source, multiple filters and a PathMatcher can be combined to a FilterChain.
+## MatchClause
+a Source (e.g. HierachicalVisitor, ColumnAsSource) and a sink (e.g. PathMatcher, DefaultSink)  can be combined to a MatchClause.
 
 ## graph::Path
 
@@ -51,6 +45,7 @@ How to specify the root of the HierachicalVisitor?
 Could be done with this:
 `match(root:Object{NodeId:"BaseInstance"})-[:HierachicalReferences*0..]->(obj:Objects` \
 
+TODO:
 How to reduce this match clause? Would be a really good optimization.
 
 ## Result
@@ -68,16 +63,12 @@ A node can have multiple references with different types.
 
 At the moment it is hard to track down how the query is executed, good debugging output is necessary.
 
-QueryService
-
 Result Query(NodeId startNode, queryString)
 
 Results:
 Specify json result
 hierachical result (result with paths from some start node, maybe objects folder)
 all paths of the last statement match statement are returned
-
-tests, tests, tests
 
 move sdk dependent code to abstraction layer?
 

@@ -11,31 +11,31 @@ void QueryEngine::scheduleQuery(const cypher::Query& q)
 {
     for (const auto& m : q.matchClauses)
     {
-        auto f = graph::createFilterChain(m.path, getContext(), m_server);
+        auto f = graph::createMatchClause(m.path, getContext(), m_server);
         assert(f && "creating filter chain failed");
-        m_filterChains.emplace_back(std::move(f));
+        m_matchClauses.emplace_back(std::move(f));
     }
 }
 
 const std::vector<UA_ReferenceDescription>* QueryEngine::run()
 {
-    for (auto& f : m_filterChains)
+    for (auto& f : m_matchClauses)
     {
         f->run();
     }
-    return m_filterChains.back()->results();
+    return m_matchClauses.back()->results();
 }
 
 const PathResult& QueryEngine::pathResult() const
 {
-    return m_filterChains.back()->pathResult();
+    return m_matchClauses.back()->pathResult();
 }
 
 
-std::vector<std::reference_wrapper<const graph::FilterChain>> QueryEngine::getContext() const
+std::vector<std::reference_wrapper<const graph::MatchClause>> QueryEngine::getContext() const
 {
-    std::vector<std::reference_wrapper<const graph::FilterChain>> ctx{};
-    for (const auto& f : m_filterChains)
+    std::vector<std::reference_wrapper<const graph::MatchClause>> ctx{};
+    for (const auto& f : m_matchClauses)
     {
         ctx.emplace_back(*f.get());
     }

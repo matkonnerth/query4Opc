@@ -10,10 +10,10 @@ namespace graph {
 
 class PathResult;
 
-class FilterChain
+class MatchClause
 {
  public:
-    FilterChain(UA_Server* server);
+    MatchClause(UA_Server* server);
     void run();
 
     void createHierachicalVisitorSource(const UA_NodeId& root,
@@ -38,12 +38,12 @@ class FilterChain
 int findStartIndex(const cypher::Path& p);
 const column_t*
 findSourceColumn(const std::string id,
-                 const std::vector<std::reference_wrapper<const FilterChain>> ctx);
+                 const std::vector<std::reference_wrapper<const MatchClause>> ctx);
 
-// translates a cypher Path to a FilterChain
-std::unique_ptr<FilterChain>
-createFilterChain(const cypher::Path& path,
-                  std::vector<std::reference_wrapper<const FilterChain>> ctx,
+// translates a cypher Path to a MatchClause
+std::unique_ptr<MatchClause>
+createMatchClause(const cypher::Path& path,
+                  std::vector<std::reference_wrapper<const MatchClause>> ctx,
                   UA_Server* server);
 
 } // namespace graph

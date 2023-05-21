@@ -86,7 +86,7 @@ static void standardBrowse(benchmark::State& state)
     printCounters();
 }
 
-void queryServerObjectImpl(UA_Server* server)
+auto queryServerObjectImpl(UA_Server* server)
 {
     cypher::Parser p;
     auto q = p.parse("MATCH(obj:Object)-[:HasTypeDefinition]->(:ObjectType{"
@@ -94,7 +94,7 @@ void queryServerObjectImpl(UA_Server* server)
 
     graph::QueryEngine e{ server };
     e.scheduleQuery(*q);
-    auto results = e.run();
+    return e.run();
 }
 
 static void queryServerObject(benchmark::State& state)
@@ -106,7 +106,8 @@ static void queryServerObject(benchmark::State& state)
 
     for (auto _ : state)
     {
-        queryServerObjectImpl(server);
+        auto results = queryServerObjectImpl(server);
+        benchmark::DoNotOptimize(results);
     }
 
     UA_Server_delete(server);
@@ -115,7 +116,7 @@ static void queryServerObject(benchmark::State& state)
     printCounters();
 }
 
-void queryServerObjectImplInvertPath(UA_Server* server)
+auto queryServerObjectImplInvertPath(UA_Server* server)
 {
     cypher::Parser p;
     auto q = p.parse(
@@ -124,7 +125,7 @@ void queryServerObjectImplInvertPath(UA_Server* server)
 
     graph::QueryEngine e{ server };
     e.scheduleQuery(*q);
-    auto results = e.run();
+    return e.run();
 }
 
 static void queryServerObjectInvertPath(benchmark::State& state)
@@ -136,7 +137,8 @@ static void queryServerObjectInvertPath(benchmark::State& state)
 
     for (auto _ : state)
     {
-        queryServerObjectImplInvertPath(server);
+        auto results = queryServerObjectImplInvertPath(server);
+        benchmark::DoNotOptimize(results);
     }
 
     UA_Server_delete(server);
@@ -145,14 +147,14 @@ static void queryServerObjectInvertPath(benchmark::State& state)
     printCounters();
 }
 
-void queryServerObjectReducedImpl(UA_Server* server)
+auto queryServerObjectReducedImpl(UA_Server* server)
 {
     cypher::Parser p;
     auto q = p.parse("MATCH (obj:Object{TypeDefinitionId:\"i=2004\"}) RETURN obj");
 
     graph::QueryEngine e{ server };
     e.scheduleQuery(*q);
-    auto results = e.run();
+    return e.run();
 }
 
 static void queryServerObjectReduced(benchmark::State& state)
@@ -164,7 +166,8 @@ static void queryServerObjectReduced(benchmark::State& state)
 
     for (auto _ : state)
     {
-        queryServerObjectReducedImpl(server);
+        auto results = queryServerObjectReducedImpl(server);
+        benchmark::DoNotOptimize(results);
     }
 
     UA_Server_delete(server);
