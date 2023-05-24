@@ -36,7 +36,7 @@ int main(int argc, char* argv[])
             RETURN obj)");
    queries.emplace_back(R"(
    MATCH (:Variable)-[:HasProperty]-(obj:Object)-[:HasTypeDefinition]->(t:ObjectType{NodeId: "MyType"})
-   WHERE (root:Object{NodeId: "i=85"})
+   WHERE root:Object{NodeId: "i=85"}
    RETURN obj)");
 
    for (const auto& q : queries)
