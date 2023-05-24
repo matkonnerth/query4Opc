@@ -11,7 +11,7 @@ void QueryEngine::scheduleQuery(const cypher::Query& q)
 {
     for (const auto& m : q.matchClauses)
     {
-        auto f = graph::createMatchClause(m.path, getContext(), m_server);
+        auto f = graph::createMatchClause(m, getContext(), m_server);
         assert(f && "creating filter chain failed");
         m_matchClauses.emplace_back(std::move(f));
     }

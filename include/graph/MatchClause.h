@@ -43,7 +43,7 @@ findSourceColumn(const std::string id,
 
 // translates a cypher Path to a MatchClause
 std::unique_ptr<MatchClause>
-createMatchClause(const cypher::Path& path,
+createMatchClause(const cypher::Match& match,
                   std::vector<std::reference_wrapper<const MatchClause>> ctx,
                   UA_Server* server);
 

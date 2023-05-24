@@ -59,21 +59,6 @@ Result: Node1 -- VariableNode 1,
 
 A node can have multiple references with different types.
 
-## TODOs:
-
-At the moment it is hard to track down how the query is executed, good debugging output is necessary.
-
-Result Query(NodeId startNode, queryString)
-
-Results:
-Specify json result
-hierachical result (result with paths from some start node, maybe objects folder)
-all paths of the last statement match statement are returned
-
-move sdk dependent code to abstraction layer?
-
-check if the direction of an reference can be inverted (hasTypeDefinition for example)
-
 ## before Sink (PathMatcher was a member of FilterChain)
 
 queryServerObjectReduced      76486076 ns     76485279 ns            7

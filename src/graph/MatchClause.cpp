@@ -103,19 +103,19 @@ graph::findSourceColumn(const std::string id,
 
 // translates a cypher Path to a MatchClause
 std::unique_ptr<MatchClause>
-graph::createMatchClause(const cypher::Path& path,
+graph::createMatchClause(const cypher::Match& match,
                          std::vector<std::reference_wrapper<const MatchClause>> ctx,
                          UA_Server* server)
 {
-    auto start = graph::findStartIndex(path, ctx);
-    auto f = std::make_unique<MatchClause>(server, path);
+    auto start = graph::findStartIndex(match.path, ctx);
+    auto f = std::make_unique<MatchClause>(server, match.path);
 
     // get objectTypes and subtypes
     if (ctx.size() == 0)
     {
-        if (path.nodes.size() == 1 && path.nodes[0].queryObjectTypeAndAllSubTypes())
+        if (match.path.nodes.size() == 1 && match.path.nodes[0].queryObjectTypeAndAllSubTypes())
         {
-            auto rootNode = parseNodeId(*path.nodes[0].NodeId());
+            auto rootNode = parseNodeId(*match.path.nodes[0].NodeId());
             f->createHierachicalVisitorSource(rootNode,
                                               UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES),
                                               UA_NODECLASS_OBJECTTYPE);
@@ -123,10 +123,13 @@ graph::createMatchClause(const cypher::Path& path,
         }
         else
         {
-            auto startNodeClass =
-            parseOptionalNodeClass(path.nodes[static_cast<size_t>(start)].label);
-
             auto rootNode = UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER);
+            if(match.where && match.where->nodes[0].identifier && match.where->nodes[0].identifier.value_or("")=="root" && match.where->nodes[0].NodeId())
+            {
+                rootNode =  parseNodeId(*match.where->nodes[0].NodeId());
+            }
+            auto startNodeClass =
+            parseOptionalNodeClass(match.path.nodes[static_cast<size_t>(start)].label);
 
             if (startNodeClass == UA_NODECLASS_OBJECTTYPE)
             {
@@ -142,13 +145,13 @@ graph::createMatchClause(const cypher::Path& path,
     else
     {
         // lookup the source column
-        if (!path.nodes[static_cast<size_t>(start)].identifier)
+        if (!match.path.nodes[static_cast<size_t>(start)].identifier)
         {
             return nullptr;
         }
 
         auto col =
-        graph::findSourceColumn(*path.nodes[static_cast<size_t>(start)].identifier, ctx);
+        graph::findSourceColumn(*match.path.nodes[static_cast<size_t>(start)].identifier, ctx);
         assert(col && "findSourceColumn failed");
         if (!col)
         {

@@ -53,28 +53,46 @@ static Relationship parseRelationshipPattern(const cypher_astnode_t& elem)
         r.direction = 1;
     }
     auto range = cypher_ast_rel_pattern_get_varlength(&elem);
-    if(range)
+    if (range)
     {
         auto start = cypher_ast_range_get_start(range);
         auto end = cypher_ast_range_get_end(range);
-        if(start)
+        if (start)
         {
             std::cout << cypher_ast_integer_get_valuestr(start) << "\n";
         }
-        
 
-        if(end)
+
+        if (end)
         {
             std::cout << cypher_ast_integer_get_valuestr(end) << "\n";
         }
-        
     }
     else
     {
-        std::cout << "no range found" << "\n";
+        std::cout << "no range found"
+                  << "\n";
     }
 
     return r;
+}
+
+static Path parsePath(const cypher_astnode_t& patternPath)
+{
+    Path p{};
+    for (auto i = 0u; i < cypher_ast_pattern_path_nelements(&patternPath); ++i)
+    {
+        auto elem = cypher_ast_pattern_path_get_element(&patternPath, i);
+        if (i % 2 == 0)
+        {
+            p.nodes.push_back(parseNodePattern(*elem));
+        }
+        else
+        {
+            p.relations.push_back(parseRelationshipPattern(*elem));
+        }
+    }
+    return p;
 }
 
 static std::optional<Match> parseMatchClause(const cypher_astnode_t& clause)
@@ -94,27 +112,36 @@ static std::optional<Match> parseMatchClause(const cypher_astnode_t& clause)
         return std::nullopt;
     }
 
+
+
     Match m{};
-    for (auto i = 0u; i < cypher_ast_pattern_path_nelements(patternPath); ++i)
+    m.path = parsePath(*patternPath);
+
+
+    auto where = cypher_ast_match_get_predicate(&clause);
+    if (where && cypher_astnode_type(where) == CYPHER_AST_PATTERN_PATH)
     {
-        auto elem = cypher_ast_pattern_path_get_element(patternPath, i);
-        if (i % 2 == 0)
-        {
-            m.path.nodes.push_back(parseNodePattern(*elem));
-        }
-        else
-        {
-            m.path.relations.push_back(parseRelationshipPattern(*elem));
-        }
+        std::cout << "second pattern path"
+                  << "\n";
+        m.where = parsePath(*where);
     }
+
+
     return m;
 }
+
+
+
+//static std::optional<Where> parseWhereClause(const cypher_astnode_t& n)
+//{
+    //auto p = cypher_ast_match_get_predicate(n);
+    //if(p && cypher_astnode_type(p)==CYPHER_AST_)
+//}
 
 static std::optional<Return> parseReturnClause(const cypher_astnode_t&)
 {
     return Return{ "notImplemented" };
 }
-
 
 std::optional<Query> Parser::parse(const std::string& queryString)
 {
@@ -127,11 +154,11 @@ std::optional<Query> Parser::parse(const std::string& queryString)
         return std::nullopt;
     }
 
-    //printf("Parsed %d AST nodes\n", cypher_parse_result_nnodes(result));
-    //printf("Read %d statements\n", cypher_parse_result_ndirectives(result));
-    //printf("Encountered %d errors\n", cypher_parse_result_nerrors(result));
+    // printf("Parsed %d AST nodes\n", cypher_parse_result_nnodes(result));
+    // printf("Read %d statements\n", cypher_parse_result_ndirectives(result));
+    // printf("Encountered %d errors\n", cypher_parse_result_nerrors(result));
 
-    //cypher_parse_result_fprint_ast(result, stdout, 20, cypher_parser_ansi_colorization, 0);
+    // cypher_parse_result_fprint_ast(result, stdout, 20, cypher_parser_ansi_colorization, 0);
 
     if (cypher_parse_result_nerrors(result))
     {

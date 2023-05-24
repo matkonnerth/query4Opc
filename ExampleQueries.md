@@ -20,12 +20,6 @@ MATCH (:Variable{NodeId:"SpecialTag"})<-[:HasProperty]-(objs:Object)-[:HasTypeDe
 
 MATCH (types: ObjectType{NodeId:"i=2253", includeSubTypes: "true"}) RETURN types
 
-includeSubTypes has nothing to do with ObjectTypeNode, maybe add it to Match clause?
-
-(6) TODO: 
-
-
-
 ## (Currently) not supported queries
 
 all references of a Node

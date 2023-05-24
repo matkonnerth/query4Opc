@@ -79,6 +79,12 @@ struct Path
    std::vector<Relationship> relations;
 };
 
+struct Match
+{
+    Path path;
+    std::optional<Path> where;
+};
+
 struct PathIterator
 {
    PathIterator(const Path& p)

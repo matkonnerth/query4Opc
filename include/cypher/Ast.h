@@ -3,10 +3,6 @@
 #include <variant>
 
 namespace cypher {
-struct Match
-{
-    Path path;
-};
 
 struct Return
 {

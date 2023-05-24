@@ -13,6 +13,8 @@ TEST(serverType, findServerObjectWithPath)
    UA_Server* server = UA_Server_new();
    UA_ServerConfig_setDefault(UA_Server_getConfig(server));
 
+   cypher::Match m{};
+
    cypher::Path p;
    p.nodes.emplace_back(cypher::Node{"obj", "Object"});
    cypher::Node b;
@@ -20,7 +22,9 @@ TEST(serverType, findServerObjectWithPath)
    p.nodes.emplace_back(b);
    p.relations.emplace_back(cypher::Relationship{"i=40", 1});
 
-   auto f = createMatchClause(p, std::vector<std::reference_wrapper<const MatchClause>>{}, server);
+   m.path = p;
+
+   auto f = createMatchClause(m, std::vector<std::reference_wrapper<const MatchClause>>{}, server);
    f->run();
 
    ASSERT_EQ(f->results()->size(), 1);

@@ -38,6 +38,15 @@ int main(int argc, char* argv[])
    MATCH (:Variable)-[:HasProperty]-(obj:Object)-[:HasTypeDefinition]->(t:ObjectType{NodeId: "MyType"})
    WHERE root:Object{NodeId: "i=85"}
    RETURN obj)");
+   queries.emplace_back(R"(
+   MATCH (:Variable)-[:HasProperty]-(obj:Object)-[:HasTypeDefinition]->(t:ObjectType{NodeId: "MyType"})
+   USING SCAN root:Object WHERE root.NodeId = "i=85"
+   RETURN obj)");
+   queries.emplace_back(R"(
+   MATCH (:Variable)-[:HasProperty]-(obj:Object)-[:HasTypeDefinition]->(t:ObjectType{NodeId: "MyType"})
+   WHERE (root:Object{NodeId: "rootNode"}) -- (obj)
+   RETURN obj)");
+
 
    for (const auto& q : queries)
    {

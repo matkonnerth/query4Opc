@@ -27,7 +27,6 @@ class QueryTest : public ::testing::Test
     }
 };
 
-
 TEST_F(QueryTest, findServerObject)
 {
     Parser p;
@@ -358,6 +357,39 @@ TEST_F(QueryTest, includeSubTypes_nonExistingObjectType)
     auto q = p.parse(R"(
         MATCH (types: ObjectType{NodeId:"ns=27;i=42", includeSubTypes: "true"}) RETURN types
         )");
+    ASSERT_TRUE(q);
+
+    QueryEngine e{ server };
+    e.scheduleQuery(*q);
+    e.run();
+    ASSERT_EQ(0, e.pathResult().paths().size());
+}
+
+TEST_F(QueryTest, serverObject_startNode)
+{
+    // match all Server objects below a root folder
+    Parser p;
+    auto q = p.parse(R"(
+        MATCH (obj: Object{NodeId: "i=2253"})
+        WHERE (root:Object{NodeId: "i=85"}) -- (obj)
+        RETURN obj )");
+    ASSERT_TRUE(q);
+
+    QueryEngine e{ server };
+    e.scheduleQuery(*q);
+    e.run();
+    ASSERT_EQ(1, e.pathResult().paths().size());
+    ASSERT_EQ(1, e.pathResult().paths()[0].size());
+}
+
+TEST_F(QueryTest, serverObject_startNode_notFound)
+{
+    // match all BaseObjects below a folder
+    Parser p;
+    auto q = p.parse(R"(
+        MATCH (obj: Object{NodeId: "i=2253"})
+        WHERE (root:Object{NodeId: "i=27"}) -- (obj)
+        RETURN obj )");
     ASSERT_TRUE(q);
 
     QueryEngine e{ server };
