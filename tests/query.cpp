@@ -5,6 +5,7 @@
 #include <open62541/plugin/nodesetloader.h>
 #include <open62541/server.h>
 #include <open62541/server_config_default.h>
+#include <graph/json/json.h>
 
 std::string g_path = "";
 using namespace cypher;
@@ -358,7 +359,6 @@ TEST_F(QueryTest, includeSubTypes_nonExistingObjectType)
         MATCH (types: ObjectType{NodeId:"ns=27;i=42", includeSubTypes: "true"}) RETURN types
         )");
     ASSERT_TRUE(q);
-
     QueryEngine e{ server };
     e.scheduleQuery(*q);
     e.run();
@@ -380,6 +380,8 @@ TEST_F(QueryTest, serverObject_startNode)
     e.run();
     ASSERT_EQ(1, e.pathResult().paths().size());
     ASSERT_EQ(1, e.pathResult().paths()[0].size());
+
+    graph::json_encode(e.pathResult());
 }
 
 TEST_F(QueryTest, serverObject_startNode_notFound)

@@ -30,7 +30,7 @@ add_library(graphForOpc ${CMAKE_CURRENT_SOURCE_DIR}/src/cypher/Parser.cpp
                         ${CMAKE_CURRENT_SOURCE_DIR}/src/graph/tracing.cpp
                         ${CMAKE_CURRENT_SOURCE_DIR}/src/graph/QueryEngine.cpp)
 target_include_directories(graphForOpc PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
-target_link_libraries(graphForOpc PUBLIC project_warnings project_options open62541::open62541)
+target_link_libraries(graphForOpc PUBLIC project_warnings project_options open62541::open62541 CONAN_PKG::nlohmann_json)
 
 add_subdirectory(csvExport)
 

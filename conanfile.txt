@@ -4,3 +4,4 @@ cmake
 [requires]
 gtest/1.11.0
 benchmark/1.7.1
+nlohmann_json/3.11.2
