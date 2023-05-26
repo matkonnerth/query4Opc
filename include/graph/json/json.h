@@ -3,44 +3,41 @@
 #include <nlohmann/json.hpp>
 using json = nlohmann::json;
 
-namespace graph{
-
-void to_json(json& j, const path_element_t& e)
+void to_json(json& j, const UA_ReferenceDescription& e)
 {
     UA_String idString{};
     UA_NodeId_print(&e.nodeId.nodeId, &idString);
     std::string standardString{};
     standardString.assign((char*)idString.data, idString.length);
-    j = json{{"id", standardString}};
+    j["id"] = standardString;
 }
 
-void to_json(json& j, const path_t& path)
+void to_json(json& j, const std::vector<UA_ReferenceDescription>& path)
 {
-    json obj;
-    for(const auto& e: path)
+    json nodes{};
+    for (const auto& e : path)
     {
-        json je = e;
-        obj.push_back(je);
+        nodes.push_back(e);
     }
-    j=obj;
-    
+    j["nodes"] = nodes;
 }
+namespace graph{
+
+
+
 
 void to_json(json& j, const PathResult& result)
 {
-    json obj{};
     for(const auto& p: result.paths())
     {
-        json jp = p;
-        obj.push_back(jp);
+        j["paths"].push_back(p);
     }
-    j = obj;
 }
 
 std::string json_encode(const PathResult& result)
 {
     json obj = result;
-    return obj.dump();
+    return obj.dump(2);
 }
 
 }

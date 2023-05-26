@@ -317,6 +317,7 @@ TEST_F(QueryTest, allSubTypes_TempDevice_and_SpecialTempDevice)
     e.run();
     ASSERT_EQ(2, e.pathResult().paths().size());
     ASSERT_EQ(1, e.pathResult().paths()[0].size());
+    std::cout << graph::json_encode(e.pathResult());
 }
 
 TEST_F(QueryTest, allSubTypes_ServerTypeHasNoSubType_onlyServerType)
@@ -350,6 +351,7 @@ TEST_F(QueryTest, includeSubTypes_specialTempDevice)
     ASSERT_EQ(2, e.pathResult(0).paths().size());
     ASSERT_EQ(1, e.pathResult().paths().size());
     ASSERT_EQ(5003, e.pathResult().paths()[0][0].nodeId.nodeId.identifier.numeric);
+    std::cout << graph::json_encode(e.pathResult());
 }
 
 TEST_F(QueryTest, includeSubTypes_nonExistingObjectType)
@@ -381,7 +383,7 @@ TEST_F(QueryTest, serverObject_startNode)
     ASSERT_EQ(1, e.pathResult().paths().size());
     ASSERT_EQ(1, e.pathResult().paths()[0].size());
 
-    graph::json_encode(e.pathResult());
+    std::cout << graph::json_encode(e.pathResult());
 }
 
 TEST_F(QueryTest, serverObject_startNode_notFound)
