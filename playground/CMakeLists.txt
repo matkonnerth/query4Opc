@@ -1,0 +1,2 @@
+add_executable(queryServer queryServer.cpp)
+target_link_libraries(queryServer PRIVATE graphForOpc cypher-parser)
