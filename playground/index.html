@@ -1,0 +1,30 @@
+<style>
+
+</style>
+
+<h1>Query</h1>
+
+<form id="queryForm">
+    <label for="queryString">Query</label>
+    <input type="text" name="queryString">
+    <input type="submit">
+</form>
+
+<div id="result">
+    <textarea id="queryResultText" cols="300" rows="600"></textarea>
+</div>
+
+<script>
+
+    queryForm.onsubmit = async (e) => {
+        e.preventDefault();
+        let data = new FormData(document.getElementById('queryForm'));
+        console.log(data);
+        let res = await fetch('/query', {
+            method: 'POST',
+            body: data
+        });
+        document.getElementById("queryResultText").value = await res.text()
+    };
+
+</script>
