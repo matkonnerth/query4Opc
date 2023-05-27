@@ -18,6 +18,8 @@ move sdk dependent code to abstraction layer?
 
 Filter based on node attributes (e.g. value > limit)
 
+valgrind tests
+
 ideas:
 
 typecache
