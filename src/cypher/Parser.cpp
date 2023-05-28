@@ -145,6 +145,12 @@ static std::optional<Return> parseReturnClause(const cypher_astnode_t&)
 
 std::optional<Query> Parser::parse(const std::string& queryString)
 {
+    if(queryString.empty())
+    {
+        std::cout << "empty cypher query, do not parse"
+                  << "\n";
+        return std::nullopt;
+    }
     cypher_parse_result_t* result =
     cypher_parse(queryString.c_str(), NULL, NULL, CYPHER_PARSE_ONLY_STATEMENTS);
     if (result == NULL)

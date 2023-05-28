@@ -63,7 +63,7 @@ static void methodCalled(UA_Client* client, void* userdata, UA_UInt32 requestId,
                         UA_LOGCATEGORY_USERLAND,
                         "**** CallRequest Response - Req: %u (%lu) failed",
                         requestId,
-                        (unsigned long)i);
+                        (unsigned long)i);            
             continue;
         }
 
@@ -104,19 +104,6 @@ void invokeQuery(UA_Client* client, const std::string& query, Commands& c)
                          &id);
 }
 
-
-/*
-void input(Commands* c)
-{
-    while (running)
-    {
-        for (std::string line; std::getline(std::cin, line);)
-        {
-            c->query(line);
-        }
-    }
-}
-*/
 
 void input(Commands* c, std::string indexHtml)
 {

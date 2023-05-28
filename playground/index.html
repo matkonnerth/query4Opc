@@ -8,7 +8,7 @@
 <button class="button" onclick="runQuery()">Run</button>
 <select name="exampleQueries" id="exampleQueries" onchange="setQuery(this.value)">
     <option value="MATCH (obj:Object) RETURN *">allObjects</option>
-    <option value="MATCH (obj:Object)--\>(:ObjectType{NodeId: &quot;i=2253&quot;}) RETURN *">serverObject</option>
+    <option value="MATCH (obj:Object)--&gt;(:ObjectType{NodeId: &quot;i=2004&quot;}) RETURN *">serverObject</option>
     <option value="MATCH (types: ObjectType{NodeId:&quot;ns=2;i=1002&quot;, includeSubTypes: &quot;true&quot;}">allSubtypes</option>
     <option value="MATCH (obj: Object{NodeId: &quot;i=2253&quot;})&NewLine;WHERE (root:Object{NodeId: &quot;i=85&quot;}) -- (obj)&NewLine;RETURN obj">queryWithRootNode</option>
 </select>

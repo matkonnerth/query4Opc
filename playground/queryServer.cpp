@@ -1,6 +1,7 @@
 #include <cypher/Parser.h>
 #include <graph/QueryEngine.h>
 #include <graph/json/json.h>
+#include <open62541/plugin/nodesetloader.h>
 
 static UA_StatusCode queryCallback(UA_Server* server,
                                               const UA_NodeId* sessionId,
@@ -23,7 +24,9 @@ static UA_StatusCode queryCallback(UA_Server* server,
     auto q = p.parse(queryString);
     if(!q)
     {
-        return UA_STATUSCODE_BAD;
+        auto result = UA_STRING("parsing the query failed");
+        UA_Variant_setScalarCopy(output, &result, &UA_TYPES[UA_TYPES_STRING]);
+        return UA_STATUSCODE_GOOD;
     }
 
     graph::QueryEngine e{ server };
@@ -36,8 +39,6 @@ static UA_StatusCode queryCallback(UA_Server* server,
     uaResult.length = result.size();
 
     UA_Variant_setScalarCopy(output, &uaResult, &UA_TYPES[UA_TYPES_STRING]);
-    //UA_String_clear(&tmp);
-    //UA_LOG_INFO(UA_Log_Stdout, UA_LOGCATEGORY_SERVER, "Hello World was called");
     return UA_STATUSCODE_GOOD;
 }
 
@@ -45,15 +46,15 @@ static void addQueryMethod(UA_Server* server)
 {
     UA_Argument inputArgument;
     UA_Argument_init(&inputArgument);
-    inputArgument.description = UA_LOCALIZEDTEXT("en-US", "A String");
-    inputArgument.name = UA_STRING("MyInput");
+    inputArgument.description = UA_LOCALIZEDTEXT("en-US", "Cypher query string");
+    inputArgument.name = UA_STRING("CypherQueryString");
     inputArgument.dataType = UA_TYPES[UA_TYPES_STRING].typeId;
     inputArgument.valueRank = UA_VALUERANK_SCALAR;
 
     UA_Argument outputArgument;
     UA_Argument_init(&outputArgument);
-    outputArgument.description = UA_LOCALIZEDTEXT("en-US", "A String");
-    outputArgument.name = UA_STRING("MyOutput");
+    outputArgument.description = UA_LOCALIZEDTEXT("en-US", "Cypher query result");
+    outputArgument.name = UA_STRING("CypherQueryResult");
     outputArgument.dataType = UA_TYPES[UA_TYPES_STRING].typeId;
     outputArgument.valueRank = UA_VALUERANK_SCALAR;
 
@@ -82,6 +83,16 @@ int main(int argc, char* argv[])
     UA_Server* server = UA_Server_new();
 
     addQueryMethod(server);
+
+    for (int cnt = 1; cnt < argc; cnt++)
+    {
+        if (UA_StatusCode_isBad(UA_Server_loadNodeset(server, argv[cnt], NULL)))
+        {
+            printf("Nodeset %s could not be loaded, exit\n", argv[cnt]);
+            return EXIT_FAILURE;
+        }
+    }
+
     UA_StatusCode retval = UA_Server_runUntilInterrupt(server);
 
     UA_Server_delete(server);
