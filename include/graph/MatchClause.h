@@ -28,6 +28,20 @@ class MatchClause
     
     const PathResult& pathResult() const;
 
+    std::string explain() const
+    {
+        std::string explanation{ "MatchClause\n" };
+        if (m_src)
+        {
+            explanation.append(m_src->explain());
+        }
+        if (m_sink)
+        {
+            explanation.append(m_sink->explain());
+        }
+        return explanation;
+    }
+
  private:
     UA_Server* m_server;
     std::unique_ptr<Source> m_src;
@@ -46,5 +60,7 @@ std::unique_ptr<MatchClause>
 createMatchClause(const cypher::Match& match,
                   std::vector<std::reference_wrapper<const MatchClause>> ctx,
                   UA_Server* server);
+
+
 
 } // namespace graph

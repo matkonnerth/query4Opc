@@ -20,10 +20,23 @@ class PathMatcher : public Sink
     PathMatcher(PathMatcher&& other) = default;
     PathMatcher& operator=(PathMatcher&& other) = default;
 
-    //void filter(const UA_ReferenceDescription& startNode) override;
     void filter(path_element_t&& startNode) override;
 
     const PathResult& results() const override;
+
+    int startIndex() const
+    {
+      return m_idx;
+    }
+
+    std::string explain() const override
+    {
+        std::string explanation{ "PathMatcher\n" };
+        explanation.append("startIndex: ");
+        explanation.append(std::to_string(startIndex()));
+        explanation.append("\n");
+        return explanation;
+    }
 
  private:
     std::vector<path_t> checkPath(const UA_ReferenceDescription& startNode);
@@ -42,5 +55,7 @@ class PathMatcher : public Sink
     int m_idx{ 0 };
     PathResult m_results;
 };
+
+
 
 } // namespace graph

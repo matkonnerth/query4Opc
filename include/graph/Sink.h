@@ -10,6 +10,7 @@ class Sink
  public:
     virtual void filter(path_element_t&& element) = 0;
     virtual const PathResult& results() const =  0;
+    virtual std::string explain() const = 0;
     virtual ~Sink() = default;
 
     
@@ -28,6 +29,12 @@ class DefaultSink final : public Sink
     const PathResult& results() const override
     {
         return m_results;
+    }
+
+    std::string explain() const override
+    {
+        std::string explanation{"DefaultSink\n"};
+        return explanation;
     }
 
 private:

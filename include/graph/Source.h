@@ -12,6 +12,7 @@ class Source
 {
 public:
    virtual void generate(const std::function<void(path_element_t&&)>& filter) const = 0;
+   virtual std::string explain() const = 0;
    virtual ~Source() = default;
 };
 
@@ -39,6 +40,24 @@ public:
       rd.nodeClass = nodeclass;
       filter(std::move(rd));
       visit(m_root, filter);
+   }
+
+   const UA_NodeId& startNode() const
+   {
+      return m_root;
+   }
+
+   std::string explain() const override
+   {
+       std::string explanation{ "HierachicalVisitor\n" };
+       explanation.append("startNode: ");
+       UA_String id{};
+       UA_NodeId_print(&startNode(), &id);
+       std::string idString{};
+       idString.assign((char*)id.data, id.length);
+       explanation.append(idString);
+       explanation.append("\n");
+       return explanation;
    }
 
 private:
@@ -91,6 +110,8 @@ private:
    UA_UInt32 m_nodeClassMask{ UA_NODECLASS_UNSPECIFIED };
 };
 
+
+
 class ColumnAsSource : public Source
 {
 public:
@@ -107,9 +128,17 @@ public:
       }
    }
 
+   std::string explain() const override
+   {
+       std::string explanation{ "ColumnAsSource\n" };
+       return explanation;
+   }
+
 private:
    const column_t& col;
 };
+
+
 
 inline std::optional<path_element_t> getInverseHierachicalReference(UA_Server* server, const UA_NodeId& node)
 {

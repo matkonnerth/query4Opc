@@ -15,6 +15,7 @@ class QueryEngine final
     void run();
     const PathResult& pathResult() const;
     const PathResult& pathResult(size_t idx) const;
+    std::string explain() const;
 
  private:
     std::vector<std::reference_wrapper<const graph::MatchClause>> getContext() const;

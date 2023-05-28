@@ -45,3 +45,17 @@ std::vector<std::reference_wrapper<const graph::MatchClause>> QueryEngine::getCo
     }
     return ctx;
 }
+
+std::string QueryEngine::explain() const
+{
+    std::string explanation{"Query: \n"};
+    explanation.append("Match clauses count: ");
+    explanation.append(std::to_string(m_matchClauses.size()));
+    explanation.append("\n");
+    for(const auto& m : m_matchClauses)
+    {
+        explanation.append(m->explain());
+        explanation.append("\n");
+    }
+    return explanation;
+}

@@ -347,6 +347,7 @@ TEST_F(QueryTest, includeSubTypes_specialTempDevice)
 
     QueryEngine e{ server };
     e.scheduleQuery(*q);
+    std::cout << e.explain() << "\n";
     e.run();
     ASSERT_EQ(2, e.pathResult(0).paths().size());
     ASSERT_EQ(1, e.pathResult().paths().size());
@@ -398,6 +399,7 @@ TEST_F(QueryTest, serverObject_startNode_notFound)
 
     QueryEngine e{ server };
     e.scheduleQuery(*q);
+    std::cout << e.explain() << "\n";
     e.run();
     ASSERT_EQ(0, e.pathResult().paths().size());
 }
