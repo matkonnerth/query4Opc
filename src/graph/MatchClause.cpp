@@ -31,7 +31,7 @@ void MatchClause::createColumnAsSource(const column_t& col)
     m_src = std::make_unique<ColumnAsSource>(col);
 }
 
-void MatchClause::createReferenceFilter(int startIndex)
+void MatchClause::createPathMatcher(int startIndex)
 {
     m_sink = std::make_unique<PathMatcher>(m_server, Path{ m_path }, startIndex);
 }
@@ -43,14 +43,9 @@ const column_t* MatchClause::results() const
 
 const column_t* MatchClause::results(const std::string& identifier) const
 {
-    size_t idx = 0;
-    for (const auto& n : m_path.nodes)
+    if(auto idx = m_path.getIndex(identifier); idx.has_value())
     {
-        if (n.identifier && n.identifier == identifier)
-        {
-            return m_sink->results().col(idx);
-        }
-        idx++;
+        return m_sink->results().col(*idx);
     }
     return nullptr;
 }
@@ -139,7 +134,7 @@ graph::createMatchClause(const cypher::Match& match,
             f->createHierachicalVisitorSource(rootNode,
                                               UA_NODEID_NUMERIC(0, UA_NS0ID_HIERARCHICALREFERENCES),
                                               startNodeClass);
-            f->createReferenceFilter(start);
+            f->createPathMatcher(start);
         }
     }
     else
@@ -159,7 +154,7 @@ graph::createMatchClause(const cypher::Match& match,
             return nullptr;
         }
         f->createColumnAsSource(*col);
-        f->createReferenceFilter(start);
+        f->createPathMatcher(start);
     }
     return f;
 }

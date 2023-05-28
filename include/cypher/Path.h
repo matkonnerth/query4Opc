@@ -77,6 +77,20 @@ struct Path
 {
    std::vector<Node> nodes;
    std::vector<Relationship> relations;
+
+   std::optional<int> getIndex(const std::string& identifier) const
+   {
+      int i {0};
+      for(const auto& n : nodes)
+      {
+         if(n.identifier && n.identifier.value()==identifier)
+         {
+            return i;
+         }
+         i++;
+      }
+      return std::nullopt;
+   }
 };
 
 struct Match

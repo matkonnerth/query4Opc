@@ -20,7 +20,7 @@ class MatchClause
                                         const UA_NodeId& referenceTypeId,
                                         UA_UInt32 nodeclasMask);
     void createColumnAsSource(const column_t& col);
-    void createReferenceFilter(int startIndex);
+    void createPathMatcher(int startIndex);
     void createDefaultSink();
     
     const column_t* results() const;
