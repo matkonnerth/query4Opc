@@ -118,7 +118,7 @@ void input(Commands* c, std::string indexHtml)
         std::cout << queryString << "\n";
         auto f = c->query(queryString);
 
-        switch (auto status = f.wait_for(1s); status)
+        switch (auto status = f.wait_for(3s); status)
         {
         case std::future_status::deferred:
             std::cout << "deferred\n";

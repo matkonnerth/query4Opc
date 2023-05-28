@@ -78,6 +78,39 @@ static void addQueryMethod(UA_Server* server)
                             NULL);
 }
 
+static void addObject(UA_Server* server, int depth, int rowIndex)
+{
+    UA_NodeId parentId = UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER);
+    if (depth > 0)
+    {
+        parentId = UA_NODEID_NUMERIC(1, rowIndex * 1000 + depth - 1);
+    }
+    UA_ObjectAttributes attr = UA_ObjectAttributes_default;
+    UA_Server_addObjectNode(
+    server,
+    UA_NODEID_NUMERIC(1, rowIndex * 1000 + depth),
+    parentId,
+    UA_NODEID_NUMERIC(0, UA_NS0ID_HASCOMPONENT),
+    UA_QUALIFIEDNAME_ALLOC(
+    1,
+    ("Object_" + std::to_string(rowIndex * 1000) + "_" + std::to_string(depth)).c_str()),
+    UA_NODEID_NUMERIC(0, UA_NS0ID_BASEOBJECTTYPE),
+    attr,
+    nullptr,
+    nullptr);
+}
+
+void addObjectsToAddressSpace(UA_Server* server, int maxDepth, int maxRows)
+{
+    for (int row = 1; row <= maxRows; row++)
+    {
+        for (int depth = 0; depth < maxDepth; depth++)
+        {
+            addObject(server, depth, row);
+        }
+    }
+}
+
 int main(int argc, char* argv[])
 {
     UA_Server* server = UA_Server_new();
@@ -92,6 +125,8 @@ int main(int argc, char* argv[])
             return EXIT_FAILURE;
         }
     }
+
+    addObjectsToAddressSpace(server, 1000, 10);
 
     UA_StatusCode retval = UA_Server_runUntilInterrupt(server);
 
