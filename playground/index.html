@@ -4,11 +4,14 @@
 
 <h1>Query</h1>
 
-<form id="queryForm">
-    <label for="queryString">Query</label>
-    <input type="text" name="queryString">
-    <input type="submit">
-</form>
+<textarea id="queryTextArea" cols="40" rows="5"></textarea>
+<button class="button" onclick="runQuery()">Run</button>
+<select name="exampleQueries" id="exampleQueries" onchange="setQuery(this.value)">
+    <option value="MATCH (obj:Object) RETURN *">allObjects</option>
+    <option value="MATCH (obj:Object)--\>(:ObjectType{NodeId: &quot;i=2253&quot;}) RETURN *">serverObject</option>
+    <option value="MATCH (types: ObjectType{NodeId:&quot;ns=2;i=1002&quot;, includeSubTypes: &quot;true&quot;}">allSubtypes</option>
+    <option value="MATCH (obj: Object{NodeId: &quot;i=2253&quot;})&NewLine;WHERE (root:Object{NodeId: &quot;i=85&quot;}) -- (obj)&NewLine;RETURN obj">queryWithRootNode</option>
+</select>
 
 <div id="result">
     <textarea id="queryResultText" cols="300" rows="600"></textarea>
@@ -16,9 +19,8 @@
 
 <script>
 
-    queryForm.onsubmit = async (e) => {
-        e.preventDefault();
-        let data = new FormData(document.getElementById('queryForm'));
+    async function runQuery() {
+        let data = document.getElementById('queryTextArea').value;
         console.log(data);
         let res = await fetch('/query', {
             method: 'POST',
@@ -26,5 +28,10 @@
         });
         document.getElementById("queryResultText").value = await res.text()
     };
+
+    function setQuery(queryString)
+    {
+        document.getElementById('queryTextArea').value = queryString;
+    }
 
 </script>

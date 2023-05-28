@@ -127,7 +127,7 @@ void input(Commands* c, std::string indexHtml)
 
     svr.Post("/query", [&c](const Request& req, Response& res) {
         using namespace std::chrono_literals;
-        auto queryString = req.get_file_value("queryString").content;
+        auto queryString = req.body;
         std::cout << queryString << "\n";
         auto f = c->query(queryString);
 
