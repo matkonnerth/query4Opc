@@ -1,6 +1,6 @@
 ### Query language for OPC UA
 
-A proposal for defining a query language for opc ua information models which also provides a prototypic implementation.
+A proposal for defining a query language for opc ua information models which also provides a PROTOTYPIC implementation.
 
 ## Why query?
 
@@ -41,13 +41,13 @@ relationship type - ReferenceType: with a property we could state, that also sub
 
 ## Example cypher queries
 
-Here is a list of example cypher queries, which we think is interesting for clients:
+Here is a list of example cypher queries:
 
 (1) Get all Objects of an exact ObjectType \
 `MATCH (obj:Object)-[:HasTypeDefinition]->(t:ObjectType{NodeId:"Base"}) RETURN obj`
 
 (2) Get all Objects of a certain ObjectType or SubType of this object \
-`MATCH (a:ObjectType {NodeId: "BaseType"}) -[:HasSubTyp*0..]->(types)` \
+`MATCH (types:ObjectType {NodeId: "BaseType", includeSubTypes: "true"})` \
 `MATCH (obj:Object)-[:HasTypeDefinition]->(types)` \
 `RETURN obj, types`
 
@@ -60,13 +60,9 @@ Here is a list of example cypher queries, which we think is interesting for clie
 `tempDevices = (obj:Object)-[:HasTypeDefinition]->(:ObjectType{NodeId:"TempDevice"})`
 `MATCH tempDevices-[:HasProperty]->(:Variable{NodeId:"MySpecialProperty"})`
 
+## Playground
 
-Support queries
-get all subtypes of an ObjectType \
-`MATCH (a:ObjectType {NodeId: "Base"}) -[:HasSubTyp*0..]->(types) RETURN types`
-
-get all hierachical references \
-`MATCH (a:Object{NodeId: "Base"}) -[:HierachicalReferences*0..]->(instances) RETURN instances`
+Take a look at the playground folder, there is queryServer and a queryClient. The queryServer implements a method for querying the address space. The queryClient uses this method and also hosts a rest-interface at localhost:12121, where queries can be send from and results are displayed there.
 
 ## Cypher query language
 
@@ -138,9 +134,4 @@ https://neo4j.com/blog/secret-sauce-neo4j-modeling-graphconnect/
 
 import
 https://neo4j.com/docs/operations-manual/current/tools/neo4j-admin-import/
-
-## Implementation
-
-take a look at [Implementation]("Implementation.md").
-
 

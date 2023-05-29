@@ -2,9 +2,9 @@
 
 ### Source
 
-"Generates" nodes, example is the hierachical visitor.
+Visits nodes which are interesting for a query, example is the HierachicalVisistor
 
-#### HierachicalVisitor
+#### ColumnAsSource
 columns of a PathResult can be used as inputs for another PathMatcher
 
 ## PathMatcher
@@ -48,7 +48,7 @@ Could be done with this:
 TODO:
 How to reduce this match clause? Would be a really good optimization.
 
-## Result
+## PathResult
 a vector of paths (remind, a path can consist only of one node)
 
 Currently the result is a vector of paths which fit the query. A node which references 3 variables, would be represented this way:
@@ -58,19 +58,6 @@ Result: Node1 -- VariableNode 1,
         Node1 -- VariableNode 3
 
 A node can have multiple references with different types.
-
-## before Sink (PathMatcher was a member of FilterChain)
-
-queryServerObjectReduced      76486076 ns     76485279 ns            7
-queryServerObjectInvertPath  202772078 ns    202749008 ns            3
-queryServerObject            189415935 ns    189407763 ns            4
-standardBrowse                25198709 ns     25196128 ns           21
-
-## after sink
-
-nearly the same result:
-queryServerObjectReduced      74843691 ns     74840762 ns            7
-
 
 
 
