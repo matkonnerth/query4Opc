@@ -1,146 +1,22 @@
 #pragma once
-#include <open62541/server.h>
-#include <functional>
-#include <vector>
 #include "Types.h"
 #include "tracing.h"
+#include <functional>
 #include <iostream>
+#include <open62541/server.h>
+#include <vector>
 
-namespace graph
-{
+namespace graph {
 class Source
 {
-public:
-   virtual void generate(const std::function<void(path_element_t&&)>& filter) const = 0;
-   virtual std::string explain() const = 0;
-   virtual ~Source() = default;
+ public:
+    virtual void generate(const std::function<void(path_element_t&&)>& filter) const = 0;
+    virtual std::string explain() const = 0;
+    virtual ~Source() = default;
 };
 
-class HierachicalVisitor : public Source
-{
-public:
-   HierachicalVisitor(UA_Server* server, const UA_NodeId& root, const UA_NodeId& referenceTypeId, UA_UInt32 nodeclasMask)
-   : m_server{ server }
-   , m_root{ root }
-   , m_referenceType{ referenceTypeId }
-   , m_nodeClassMask{ nodeclasMask }
-   {}
-
-   void generate(const std::function<void(path_element_t&&)>& filter) const override
-   {
-      UA_NodeClass nodeclass{};
-      auto status = UA_Server_readNodeClass(m_server, m_root, &nodeclass);
-      if(!UA_StatusCode_isGood(status))
-      {
-         std::cout << "root node not found \n";
-         return;
-      }
-      UA_ReferenceDescription rd{};
-      rd.nodeId.nodeId=m_root;
-      rd.nodeClass = nodeclass;
-      filter(std::move(rd));
-      visit(m_root, filter);
-   }
-
-   const UA_NodeId& startNode() const
-   {
-      return m_root;
-   }
-
-   std::string explain() const override
-   {
-       std::string explanation{ "HierachicalVisitor\n" };
-       explanation.append("startNode: ");
-       UA_String id{};
-       UA_NodeId_print(&startNode(), &id);
-       std::string idString{};
-       idString.assign((char*)id.data, id.length);
-       explanation.append(idString);
-       explanation.append("\n");
-       return explanation;
-   }
-
-private:
-   UA_UInt32 calculateNodeClassMaskForBrowse() const
-   {
-      switch (m_nodeClassMask)
-      {
-      case UA_NODECLASS_OBJECT:
-         return UA_NODECLASS_OBJECT | UA_NODECLASS_OBJECTTYPE;
-      case UA_NODECLASS_VARIABLE:
-         return UA_NODECLASS_VARIABLE | UA_NODECLASS_OBJECT | UA_NODECLASS_OBJECTTYPE | UA_NODECLASS_METHOD;
-      case UA_NODECLASS_OBJECTTYPE:
-         return UA_NODECLASS_OBJECTTYPE;
-      default:
-         return UA_NODECLASS_UNSPECIFIED;
-      }
-      return UA_NODECLASS_UNSPECIFIED;
-   }
-   void visit(const UA_NodeId& root, const std::function<void(path_element_t&&)>& filter) const
-   {
-      UA_BrowseDescription bd;
-      UA_BrowseDescription_init(&bd);
-      bd.browseDirection = UA_BROWSEDIRECTION_FORWARD;
-      bd.includeSubtypes = true;
-      bd.referenceTypeId = m_referenceType;
-      //TODO: perfomance?
-      bd.resultMask = UA_BROWSERESULTMASK_TYPEDEFINITION |
-                      UA_BROWSERESULTMASK_NODECLASS;
-      bd.nodeId = root;
-      bd.nodeClassMask = calculateNodeClassMaskForBrowse();
-      browseSource();
-      UA_BrowseResult br = UA_Server_browse(m_server, 1000, &bd);
-      if (br.statusCode == UA_STATUSCODE_GOOD)
-      {
-         for (UA_ReferenceDescription* rd = br.references; rd != br.references + br.referencesSize; rd++)
-         {
-            if (rd->nodeClass == m_nodeClassMask)
-            {
-               filter(std::move(*rd));
-            }
-            //TODO: performance, shouldn't browse variable again?
-            visit(rd->nodeId.nodeId, filter);
-         }
-      }
-      UA_BrowseResult_clear(&br);
-   }
-   UA_Server* m_server;
-   const UA_NodeId m_root;
-   const UA_NodeId m_referenceType;
-   UA_UInt32 m_nodeClassMask{ UA_NODECLASS_UNSPECIFIED };
-};
-
-
-
-class ColumnAsSource : public Source
-{
-public:
-   ColumnAsSource(const column_t& c)
-   : col{ c }
-   {}
-
-   void generate(const std::function<void(path_element_t&&)>& filter) const override
-   {
-      // TODO: unnecessary copy?
-      for (auto pe : col)
-      {
-         filter(std::move(pe));
-      }
-   }
-
-   std::string explain() const override
-   {
-       std::string explanation{ "ColumnAsSource\n" };
-       return explanation;
-   }
-
-private:
-   const column_t& col;
-};
-
-
-
-inline std::optional<path_element_t> getInverseHierachicalReference(UA_Server* server, const UA_NodeId& node)
+inline std::optional<path_element_t>
+getInverseHierachicalReference(UA_Server* server, const UA_NodeId& node)
 {
     UA_BrowseDescription bd;
     UA_BrowseDescription_init(&bd);
@@ -167,22 +43,22 @@ inline std::optional<path_element_t> getInverseHierachicalReference(UA_Server* s
     return std::nullopt;
 }
 
-const int MAX_PATH_LENGTH=100;
+const int MAX_PATH_LENGTH = 100;
 
 inline path_t getPathToParentNode(UA_Server* server, const UA_NodeId& node)
 {
-   path_t path{};
-   auto actNode = node;
-   for(int i=0; i<MAX_PATH_LENGTH; ++i)
-   {
-       auto parent = getInverseHierachicalReference(server, actNode);
-       if(!parent)
-       {
-         break;
-       }
-       actNode=parent->nodeId.nodeId;
-       path.emplace_back(std::move(*parent));
-   }
-   return path;
+    path_t path{};
+    auto actNode = node;
+    for (int i = 0; i < MAX_PATH_LENGTH; ++i)
+    {
+        auto parent = getInverseHierachicalReference(server, actNode);
+        if (!parent)
+        {
+            break;
+        }
+        actNode = parent->nodeId.nodeId;
+        path.emplace_back(std::move(*parent));
+    }
+    return path;
 }
-}
+} // namespace graph

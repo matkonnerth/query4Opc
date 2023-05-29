@@ -14,6 +14,7 @@ target_link_libraries(parser PRIVATE cypher-parser)
 opc_add_test("query")
 target_link_libraries(query PRIVATE cypher-parser)
 opc_add_test("Path")
+opc_add_test("HierachicalVisitor")
 
 
 

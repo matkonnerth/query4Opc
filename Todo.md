@@ -4,6 +4,7 @@ implement explain
 valgrind tests
 
 Filter based on node attributes (e.g. value > limit)
+vector of AttributeMatcher, attached to graph::Node
 
 includeSubTypes has nothing to do with ObjectTypeNode, maybe add it to Match clause?
 
@@ -23,6 +24,8 @@ move sdk dependent code to abstraction layer?
 
 match all nodes
 match () return * is not working
+
+UA_String <-> std::string conversion
 
 ideas:
 

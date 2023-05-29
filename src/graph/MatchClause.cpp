@@ -1,6 +1,8 @@
-#include <graph/MatchClause.h>
 #include <graph/Helper.h>
+#include <graph/HierachicalVisitor.h>
+#include <graph/MatchClause.h>
 #include <graph/PathResult.h>
+#include <graph/SourceColumn.h>
 #include <iostream>
 
 using graph::column_t;
@@ -10,7 +12,8 @@ using graph::parseOptionalNodeClass;
 using graph::PathResult;
 
 MatchClause::MatchClause(UA_Server* server, const cypher::Path& path)
-: m_server{ server }, m_path{path}
+: m_server{ server }
+, m_path{ path }
 {}
 
 void MatchClause::run()
@@ -28,7 +31,7 @@ void MatchClause::createHierachicalVisitorSource(const UA_NodeId& root,
 
 void MatchClause::createColumnAsSource(const column_t& col)
 {
-    m_src = std::make_unique<ColumnAsSource>(col);
+    m_src = std::make_unique<SourceColumn>(col);
 }
 
 void MatchClause::createPathMatcher(int startIndex)
@@ -43,7 +46,7 @@ const column_t* MatchClause::results() const
 
 const column_t* MatchClause::results(const std::string& identifier) const
 {
-    if(auto idx = m_path.getIndex(identifier); idx.has_value())
+    if (auto idx = m_path.getIndex(identifier); idx.has_value())
     {
         return m_sink->results().col(*idx);
     }
@@ -67,11 +70,11 @@ int graph::findStartIndex(const cypher::Path& p,
             std::cout << "start Index for MatchClause at node with identifier: "
                       << *e.identifier << "\n";
             auto c = graph::findSourceColumn(*e.identifier, ctx);
-            if(c)
+            if (c)
             {
                 return idx;
             }
-            if(idxWithIdentifier==0)
+            if (idxWithIdentifier == 0)
             {
                 idxWithIdentifier = idx;
             }
@@ -119,9 +122,11 @@ graph::createMatchClause(const cypher::Match& match,
         else
         {
             auto rootNode = UA_NODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER);
-            if(match.where && match.where->nodes[0].identifier && match.where->nodes[0].identifier.value_or("")=="root" && match.where->nodes[0].NodeId())
+            if (match.where && match.where->nodes[0].identifier &&
+                match.where->nodes[0].identifier.value_or("") == "root" &&
+                match.where->nodes[0].NodeId())
             {
-                rootNode =  parseNodeId(*match.where->nodes[0].NodeId());
+                rootNode = parseNodeId(*match.where->nodes[0].NodeId());
             }
             auto startNodeClass =
             parseOptionalNodeClass(match.path.nodes[static_cast<size_t>(start)].label);
@@ -150,7 +155,7 @@ graph::createMatchClause(const cypher::Match& match,
         assert(col && "findSourceColumn failed");
         if (!col)
         {
-            
+
             return nullptr;
         }
         f->createColumnAsSource(*col);
