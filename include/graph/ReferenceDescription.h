@@ -42,6 +42,8 @@ class ReferenceDescription final
         m_ref.nodeId = other.m_ref.nodeId;
         m_ref.referenceTypeId = other.m_ref.referenceTypeId;
         m_ref.typeDefinition = other.m_ref.typeDefinition;
+        //reset other ref description to sane defaults
+        UA_ReferenceDescription_init(&other.m_ref);
     }
 
     ReferenceDescription& operator=(ReferenceDescription&& other)
@@ -59,6 +61,8 @@ class ReferenceDescription final
         m_ref.nodeId = other.m_ref.nodeId;
         m_ref.referenceTypeId = other.m_ref.referenceTypeId;
         m_ref.typeDefinition = other.m_ref.typeDefinition;
+        // reset other ref description to sane defaults
+        UA_ReferenceDescription_init(&other.m_ref);
         return *this;
     }
 

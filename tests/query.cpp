@@ -280,8 +280,8 @@ TEST_F(QueryTest, path_to_ServerObject)
     auto path = graph::getPathToParentNode(server, UA_NODEID_NUMERIC(0, 2253));
 
     ASSERT_EQ(2, path.size());
-    ASSERT_EQ(85u, path[0].nodeId.nodeId.identifier.numeric);
-    ASSERT_EQ(84u, path[1].nodeId.nodeId.identifier.numeric);
+    ASSERT_EQ(85u, path[0].impl().nodeId.nodeId.identifier.numeric);
+    ASSERT_EQ(84u, path[1].impl().nodeId.nodeId.identifier.numeric);
 }
 
 TEST_F(QueryTest, types)
@@ -301,7 +301,7 @@ TEST_F(QueryTest, types)
     e.scheduleQuery(*q);
     e.run();
     ASSERT_EQ(1, e.pathResult().paths().size());
-    ASSERT_EQ(2004, e.pathResult().paths()[0].at(0).nodeId.nodeId.identifier.numeric);
+    ASSERT_EQ(2004, e.pathResult().paths()[0].at(0).impl().nodeId.nodeId.identifier.numeric);
 }
 
 TEST_F(QueryTest, allSubTypes_TempDevice_and_SpecialTempDevice)
@@ -331,7 +331,7 @@ TEST_F(QueryTest, allSubTypes_ServerTypeHasNoSubType_onlyServerType)
     e.run();
     ASSERT_EQ(1, e.pathResult().paths().size());
     ASSERT_EQ(1, e.pathResult().paths()[0].size());
-    ASSERT_EQ(2253, e.pathResult().paths()[0][0].nodeId.nodeId.identifier.numeric);
+    ASSERT_EQ(2253, e.pathResult().paths()[0][0].impl().nodeId.nodeId.identifier.numeric);
 }
 
 TEST_F(QueryTest, includeSubTypes_specialTempDevice)
@@ -351,7 +351,7 @@ TEST_F(QueryTest, includeSubTypes_specialTempDevice)
     e.run();
     ASSERT_EQ(2, e.pathResult(0).paths().size());
     ASSERT_EQ(1, e.pathResult().paths().size());
-    ASSERT_EQ(5003, e.pathResult().paths()[0][0].nodeId.nodeId.identifier.numeric);
+    ASSERT_EQ(5003, e.pathResult().paths()[0][0].impl().nodeId.nodeId.identifier.numeric);
     std::cout << graph::json_encode(e.pathResult());
 }
 

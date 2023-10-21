@@ -24,7 +24,7 @@ void HierachicalVisitor::generate(const std::function<void(path_element_t&&)>& f
     UA_ReferenceDescription rd{};
     rd.nodeId.nodeId = m_root;
     rd.nodeClass = nodeclass;
-    filter(std::move(rd));
+    filter(ReferenceDescription{rd});
     visit(m_root, filter);
 }
 
@@ -89,7 +89,7 @@ void HierachicalVisitor::visit(const UA_NodeId& root,
         {
             if (rd->nodeClass == m_nodeClassMask)
             {
-                filter(std::move(*rd));
+                filter(ReferenceDescription{*rd});
             }
             // TODO: performance, shouldn't browse variable again?
             visit(rd->nodeId.nodeId, filter);

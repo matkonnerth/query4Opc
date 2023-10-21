@@ -35,7 +35,7 @@ getInverseHierachicalReference(UA_Server* server, const UA_NodeId& node)
              rd != br.references + br.referencesSize;
              rd++)
         {
-            auto result = *rd;
+            ReferenceDescription result{*rd};
             UA_BrowseResult_clear(&br);
             return result;
         }
@@ -57,7 +57,7 @@ inline path_t getPathToParentNode(UA_Server* server, const UA_NodeId& node)
         {
             break;
         }
-        actNode = parent->nodeId.nodeId;
+        actNode = parent->impl().nodeId.nodeId;
         path.emplace_back(std::move(*parent));
     }
     return path;

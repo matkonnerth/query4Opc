@@ -39,9 +39,9 @@ static inline bool is_matching_NodeClass(UA_NodeClass current, UA_NodeClass expe
 
 static inline bool is_matching(const path_element_t& ref, const struct Node& node)
 {
-    return is_matching_NodeId(node.id, ref.nodeId.nodeId) &&
-           is_matching_NodeClass(node.nodeClass, ref.nodeClass) &&
-           is_matching_NodeId(node.typeDefinitionId, ref.typeDefinition.nodeId);
+    return is_matching_NodeId(node.id, ref.impl().nodeId.nodeId) &&
+           is_matching_NodeClass(node.nodeClass, ref.impl().nodeClass) &&
+           is_matching_NodeId(node.typeDefinitionId, ref.impl().typeDefinition.nodeId);
 }
 
 static inline UA_BrowseDirection getBrowseDirection(const cypher::Relationship& r)

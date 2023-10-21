@@ -37,7 +37,7 @@ const PathResult& PathMatcher::results() const
 }
 
 
-std::vector<path_t> PathMatcher::checkPath(const UA_ReferenceDescription& startNode)
+std::vector<path_t> PathMatcher::checkPath(const ReferenceDescription& startNode)
 {
     //TODO: why always start with rhs path?
     auto rResults = check(startNode, m_rhs);
@@ -122,7 +122,7 @@ PathMatcher::check(const path_element_t& start, const Path& path)
     while(auto node = it.next())
     {
         auto result = false;
-        auto bd = createBrowseDescription(actPath.back().nodeId.nodeId,
+        auto bd = createBrowseDescription(actPath.back().impl().nodeId.nodeId,
                                           it.RelationLHS()->direction,
                                           it.RelationLHS()->referenceType,
                                           node->nodeClass);
@@ -142,7 +142,7 @@ PathMatcher::check(const path_element_t& start, const Path& path)
             {
                 if (UA_NodeId_equal(&(node->id.value()), &ref->nodeId.nodeId))
                 {
-                    actPath.push_back(*ref);
+                    actPath.emplace_back(ReferenceDescription{*ref});
                     result = true;
                     break;
                 }
@@ -156,7 +156,7 @@ PathMatcher::check(const path_element_t& start, const Path& path)
                  ref != br.raw().references + br.raw().referencesSize;
                  ++ref)
             {
-                m.filter(std::move(*ref));
+                m.filter(ReferenceDescription{*ref});
             }
             std::vector<path_t> res{};
             for (auto&& pe : m.results().paths())
