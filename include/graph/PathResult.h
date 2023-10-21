@@ -1,6 +1,7 @@
 #pragma once
 #include "Types.h"
 #include <vector>
+#include <cassert>
 
 namespace graph {
 
