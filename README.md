@@ -73,7 +73,7 @@ Query: 214ms \
 Query (with inverted path): 222ms \
 Query (reduced, see below): 132ms
 
-Big difference there is that with naive implementation the nodes are browse once (to get every node) and then the typedefinition is checked.
+Big difference there is that with naive implementation the nodes are browsed once (to get every node) and then the typedefinition is checked.
 With the query all nodes are browsed (in Source.h) to get every node to see, then there is a second browse in the pathMatcher to
 get the typdefinition id. Would be cool to get some optimization there.
 
