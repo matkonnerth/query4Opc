@@ -93,6 +93,14 @@ Query: 186ms \
 Query (with inverted path): 200ms \
 Query (reduced, see below): 72ms
 
+### performance with release build open62541 and query
+
+Straightforward find server object: 0,5ms \
+Query: 138ms \
+Query (with inverted path): 174ms \
+Query (reduced, see below): 1,2ms
+
+
 ### std::function
 
 is quite fast, on an i7 it imposes an additional overhead of ~2ns per call, that means for 1000k calls this are approximately 2ms.-> there is not really something to gain.

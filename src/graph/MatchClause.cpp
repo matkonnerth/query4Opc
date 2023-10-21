@@ -67,8 +67,8 @@ int graph::findStartIndex(const cypher::Path& p,
     {
         if (e.identifier)
         {
-            std::cout << "start Index for MatchClause at node with identifier: "
-                      << *e.identifier << "\n";
+            //std::cout << "start Index for MatchClause at node with identifier: "
+            //          << *e.identifier << "\n";
             auto c = graph::findSourceColumn(*e.identifier, ctx);
             if (c)
             {
