@@ -5,6 +5,7 @@
 #include <iostream>
 #include <open62541/server.h>
 #include <vector>
+#include <optional>
 
 namespace graph {
 class Source

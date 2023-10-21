@@ -2,6 +2,7 @@
 #include <open62541/types.h>
 #include <string>
 #include <unordered_map>
+#include <optional>
 
 namespace graph
 {

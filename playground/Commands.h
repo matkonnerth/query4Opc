@@ -3,6 +3,7 @@
 #include <mutex>
 #include <string>
 #include <unordered_map>
+#include <optional>
 
 
 class Commands
