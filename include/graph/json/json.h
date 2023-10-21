@@ -10,8 +10,8 @@ void to_json(json& j, const ReferenceDescription& e)
 {
     UA_String idString{};
     UA_NodeId_print(&e.impl().nodeId.nodeId, &idString);
-    std::string standardString{};
-    standardString.assign((char*)idString.data, idString.length);
+    std::string standardString{ (char*)idString.data, idString.length };
+    UA_String_clear(&idString);
     j["id"] = standardString;
 }
 

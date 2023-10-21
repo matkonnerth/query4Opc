@@ -39,8 +39,8 @@ std::string HierachicalVisitor::explain() const
     explanation.append("startNode: ");
     UA_String id{};
     UA_NodeId_print(&startNode(), &id);
-    std::string idString{};
-    idString.assign((char*)id.data, id.length);
+    std::string idString{ (char*)id.data, id.length };
+    UA_String_clear(&id);
     explanation.append(idString);
     explanation.append("\n");
     return explanation;
