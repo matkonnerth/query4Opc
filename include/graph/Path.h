@@ -6,17 +6,83 @@
 
 namespace graph {
 
-struct Node
+struct Node final
 {
-    UA_NodeClass nodeClass;
-    std::optional<UA_NodeId> id;
-    std::optional<UA_NodeId> typeDefinitionId;
+    UA_NodeClass nodeClass{};
+    std::optional<UA_NodeId> id{};
+    std::optional<UA_NodeId> typeDefinitionId{};
+
+    Node() = default;
+
+
+    Node(const Node& other)
+    {
+        nodeClass = other.nodeClass;
+        if(other.id)
+        {
+            UA_NodeId copy{};
+            UA_NodeId_copy(&other.id.value(), &copy);
+            id.emplace(copy);
+        }
+
+        if (other.typeDefinitionId)
+        {
+            UA_NodeId copy{};
+            UA_NodeId_copy(&other.typeDefinitionId.value(), &copy);
+            typeDefinitionId.emplace(copy);
+        }
+    }
+
+    Node& operator=(const Node& other)
+    {
+        if(this==&other)
+        {
+            return *this;
+        }
+
+        if (id.has_value())
+        {
+            UA_NodeId_clear(&id.value());
+        }
+        if (typeDefinitionId.has_value())
+        {
+            UA_NodeId_clear(&typeDefinitionId.value());
+        }
+
+        nodeClass = other.nodeClass;
+        if (other.id)
+        {
+            UA_NodeId copy{};
+            UA_NodeId_copy(&other.id.value(), &copy);
+            id.emplace(copy);
+        }
+
+        if (other.typeDefinitionId)
+        {
+            UA_NodeId copy{};
+            UA_NodeId_copy(&other.typeDefinitionId.value(), &copy);
+            typeDefinitionId.emplace(copy);
+        }
+        return *this;
+    }
+
+    ~Node()
+    {
+        if(id.has_value())
+        {
+            UA_NodeId_clear(&id.value());
+        }
+        if (typeDefinitionId.has_value())
+        {
+            UA_NodeId_clear(&typeDefinitionId.value());
+        }
+    }
 };
 
 /*
    referenceType: the reference to match, UA_NODEID_NULL for any referenceType
 */
-struct Relation
+struct Relation final
 {
     UA_BrowseDirection direction;
     UA_NodeId referenceType;

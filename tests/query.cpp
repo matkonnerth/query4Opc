@@ -142,6 +142,25 @@ TEST_F(QueryTest, findAllTempDevicesWithProperty)
     ASSERT_EQ(2, e.pathResult().paths()[0].size());
 }
 
+TEST_F(QueryTest, findAllTempDevicesWithProperty_stringIds)
+{
+    ASSERT_TRUE(UA_StatusCode_isGood(
+    UA_Server_loadNodeset(server, (g_path + "/objectwithproperty_stringIds.xml").c_str(), NULL)));
+
+    Parser p;
+    auto q = p.parse(R"(
+      MATCH (obj:Object)-[:HasTypeDefinition]->(:ObjectType{NodeId: "ns=2;s=TempDeviceType"})
+      MATCH (obj)-[:HasProperty]->(:Variable) RETURN obj
+    )");
+    ASSERT_TRUE(q);
+
+    QueryEngine e{ server };
+    e.scheduleQuery(*q);
+    e.run();
+    ASSERT_EQ(1, e.pathResult().paths().size());
+    ASSERT_EQ(2, e.pathResult().paths()[0].size());
+}
+
 TEST_F(QueryTest, findAllTempDevicesWithPropertyOneQuery)
 {
     ASSERT_TRUE(UA_StatusCode_isGood(
@@ -302,6 +321,27 @@ TEST_F(QueryTest, types)
     e.run();
     ASSERT_EQ(1, e.pathResult().paths().size());
     ASSERT_EQ(2004, e.pathResult().paths()[0].at(0).impl().nodeId.nodeId.identifier.numeric);
+}
+
+TEST_F(QueryTest, types_StringIds)
+{
+    ASSERT_TRUE(UA_StatusCode_isGood(
+    UA_Server_loadNodeset(server, (g_path + "/objectwithproperty_stringIds.xml").c_str(), NULL)));
+
+    // this is working because the open62541 server also adds the inverse reference from objectType to object
+    Parser p;
+    auto q = p.parse(R"(
+        MATCH (:Object)-->(types:ObjectType)
+        MATCH (types)<--(obj:Object{NodeId:"i=2253"}) RETURN obj
+        )");
+    ASSERT_TRUE(q);
+
+    QueryEngine e{ server };
+    e.scheduleQuery(*q);
+    e.run();
+    ASSERT_EQ(1, e.pathResult().paths().size());
+    ASSERT_EQ(2004,
+              e.pathResult().paths()[0].at(0).impl().nodeId.nodeId.identifier.numeric);
 }
 
 TEST_F(QueryTest, allSubTypes_TempDevice_and_SpecialTempDevice)
