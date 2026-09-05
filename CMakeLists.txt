@@ -1,19 +1,12 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.10)
 
-project(graphForOpc)
-
-if(NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")
-message(STATUS "Downloading conan.cmake from https://github.com/conan-io/cmake-conan")
-file(DOWNLOAD "https://github.com/conan-io/cmake-conan/raw/v0.16.1/conan.cmake"
-                "${CMAKE_BINARY_DIR}/conan.cmake")
-endif()
-
-include(${CMAKE_BINARY_DIR}/conan.cmake)
-conan_cmake_run(CONANFILE conanfile.txt
-                BASIC_SETUP CMAKE_TARGETS
-                BUILD missing)
+project(graphForOpc LANGUAGES C CXX)
 
 find_package(open62541 REQUIRED)
+find_package(nlohmann_json REQUIRED)
+find_package(benchmark REQUIRED)
+find_package(httplib REQUIRED)
+find_package(GTest REQUIRED)
 
 add_library(project_warnings INTERFACE)
 include(${CMAKE_SOURCE_DIR}/cmake/CompilerWarnings.cmake)
@@ -32,7 +25,7 @@ add_library(graphForOpc ${CMAKE_CURRENT_SOURCE_DIR}/src/cypher/Parser.cpp
                         ${CMAKE_CURRENT_SOURCE_DIR}/src/graph/HierachicalVisitor.cpp
                         ${CMAKE_CURRENT_SOURCE_DIR}/src/graph/SourceColumn.cpp)
 target_include_directories(graphForOpc PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
-target_link_libraries(graphForOpc PUBLIC project_warnings project_options open62541::open62541 CONAN_PKG::nlohmann_json)
+target_link_libraries(graphForOpc PUBLIC project_warnings project_options open62541::open62541 nlohmann_json::nlohmann_json)
 
 #add_subdirectory(csvExport)
 add_subdirectory(playground)
